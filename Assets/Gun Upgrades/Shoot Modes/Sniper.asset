@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  GunName: Sniper
+  Crosshair: {fileID: 21300000, guid: 995d3bbb6105cd541b85c931161feec5, type: 3}
+  ModelPrefab: {fileID: 5483999566083830392, guid: 411f3d40c58ed3c45adedf8b84153fc4,
+    type: 3}
+  gunIcon: {fileID: 0}
+  RPM: 90
+  BulletsPerShot: 1
+  BulletAccuracyOffset: 0
+  HoldFire: 0
+  BulletSpeed: 100
+  BulletDamage: 160
+  RecoilForce: 0.01
