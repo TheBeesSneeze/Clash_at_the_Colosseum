@@ -50,8 +50,8 @@ public class GrapplingHook : MonoBehaviour
 
     void Start()
     {
-        InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
-        InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
+        InputEvents.Instance.GrappleStarted.AddListener(StartGrapple);
+        InputEvents.Instance.GrappleCanceled.AddListener(StopGrapple);
         hookRenderer = gameObject.AddComponent<LineRenderer>();
         //hookRenderer.endWidth = 0.05f;
         //hookRenderer.startWidth = 0.05f;

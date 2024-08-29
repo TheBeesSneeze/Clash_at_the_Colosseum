@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        Debug.Log(jumpRaycastDistance);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayer))
         {
             Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpRaycastDistance), Color.blue);
@@ -114,7 +113,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log(airJumpCounter);
         if (GrapplingHook.isGrappling)
         {
             return;
