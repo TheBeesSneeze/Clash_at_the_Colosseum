@@ -45,9 +45,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (distance < pathPosition * 0.15f)
             path = path.nextPath;
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawCube(path.cell.transform.position, path.cell.transform.lossyScale * 1.1f);
-
         Vector3 targetPosition = getTargetPosition();
         Vector3 direction = targetPosition - transform.position;
         Debug.DrawLine(transform.position, targetPosition, Color.blue);

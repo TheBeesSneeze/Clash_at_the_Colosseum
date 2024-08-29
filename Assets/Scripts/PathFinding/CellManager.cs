@@ -46,7 +46,7 @@ namespace PathFinding
             List<Cell> exploredCells = new List<Cell>();
             Path startNode = new Path(target, navigator);
 
-            foreach (Cell cell in target.Neighbors)
+            foreach (Cell cell in target.SideNeighbors)
             {
                 if(!cell.Solid)
                     nextCells.Add(new Path( cell, startNode, navigator));
@@ -65,7 +65,7 @@ namespace PathFinding
                 if(next.cell == navigator)
                     return next;
 
-                foreach (Cell cell in next.cell.Neighbors)
+                foreach (Cell cell in next.cell.SideNeighbors)
                 {
                     if(!exploredCells.Contains(cell) && !cell.Solid)
                         nextCells.Add(new Path(cell, next, navigator));
