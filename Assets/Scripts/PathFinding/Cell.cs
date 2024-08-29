@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace PathFinding
 {
     public class Cell : MonoBehaviour
     {
         public bool Solid = false;
-        [Header("Debug")]
-        [SerializeField] private List<Cell> _neighbors = new List<Cell>();
-        [SerializeField] public List<Cell> Neighbors { get => _neighbors; }
+        //[Header("Debug")]
+        private List<Cell> _neighbors = new List<Cell>();
+        public List<Cell> Neighbors { get => _neighbors; }
 
         // should ve called in cellmanager MAYBE
         void Awake()
@@ -19,6 +20,7 @@ namespace PathFinding
 
             GetComponent<Collider>().isTrigger = !Solid;
             GetComponent<MeshRenderer>().enabled = Solid;
+            gameObject.layer = Solid ? 0 : 6;
         }
 
         // Update is called once per frame
@@ -88,6 +90,13 @@ namespace PathFinding
                 Cell c = _neighbors[i];
                 Gizmos.DrawWireCube(c.transform.position, c.transform.lossyScale);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            GetComponent<Collider>().isTrigger = !Solid;
+            GetComponent<MeshRenderer>().enabled = Solid;
+            gameObject.layer = Solid ? 0 : 6;
         }
     }
 }

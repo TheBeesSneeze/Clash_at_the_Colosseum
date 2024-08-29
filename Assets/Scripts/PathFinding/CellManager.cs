@@ -26,7 +26,7 @@ namespace PathFinding
            playerCell = cell;
         }
 
-        public Path NavigateToPlayer(Cell navigator)
+        public Path GetPathToPlayer(Cell navigator)
         {
             if (playerCell == null)
                 return null;
