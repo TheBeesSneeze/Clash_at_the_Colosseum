@@ -188,6 +188,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -318,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -845,12 +861,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 332776498}
+  - component: {fileID: 332776501}
+  - component: {fileID: 332776502}
   - component: {fileID: 332776497}
   - component: {fileID: 332776496}
   - component: {fileID: 332776495}
   - component: {fileID: 332776500}
-  - component: {fileID: 332776501}
-  - component: {fileID: 332776502}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -937,7 +953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332776494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 1, z: 0}
+  m_LocalPosition: {x: 4, y: 1.57, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -969,7 +985,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &332776501
 MonoBehaviour:
@@ -1004,6 +1020,7 @@ MonoBehaviour:
   _speed: 1.5
   Player: {fileID: 737148408}
   debug: 1
+  currentCell: {fileID: 0}
 --- !u!1001 &349183786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1063,6 +1080,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -1199,6 +1224,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -1605,6 +1638,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -1801,6 +1842,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -2117,6 +2166,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -2201,6 +2258,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -2337,6 +2402,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -2625,6 +2698,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -2765,6 +2846,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -3043,6 +3132,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -3117,6 +3214,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -3197,6 +3302,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -3399,6 +3512,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -3612,6 +3733,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -3748,6 +3877,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -3817,6 +3954,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -4095,6 +4240,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -4164,6 +4317,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
@@ -4296,6 +4457,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fill Cell (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
       value: 0
@@ -4370,6 +4539,14 @@ PrefabInstance:
     - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: m_Name
       value: Fill Cell (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3709756959208345032, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080394476894496534, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718046695698135211, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}
       propertyPath: Solid
