@@ -49,16 +49,16 @@ public class InputEvents : Singleton<InputEvents>
         Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started += ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Sprint.started += ctx => SprintPressed = true;
-        Respawn.started += ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
-        Secondary.started += ctx => SecondaryStarted.Invoke();
-        Secondary.canceled += ctx => SecondaryCanceled.Invoke();
+        //Sprint.started += ctx => SprintPressed = true;
+        //Respawn.started += ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
+        //Secondary.started += ctx => SecondaryStarted.Invoke();
+        //Secondary.canceled += ctx => SecondaryCanceled.Invoke();
         Pause.started += ctx => { PausePressed = true; PauseStarted.Invoke(); };
 
         Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled += ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Sprint.canceled += ctx => SprintPressed = false;
+        //Sprint.canceled += ctx => SprintPressed = false;
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         Pause.performed += OnPause;
     }
@@ -96,11 +96,11 @@ public class InputEvents : Singleton<InputEvents>
         Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Sprint.started -= ctx => SprintPressed = true;
-        Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
+        //Sprint.started -= ctx => SprintPressed = true;
+        //Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
         Secondary.started -= ctx => SecondaryStarted.Invoke();
         Secondary.canceled -= ctx => SecondaryCanceled.Invoke();
-        Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
+       // Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
 
         Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
