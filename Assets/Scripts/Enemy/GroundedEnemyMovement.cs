@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathFinding;
+using TMPro;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private Path path;
     private Cell currentCell;
-    private Transform target;
 
     private void Start()
     {
@@ -21,6 +21,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        UpdateCurrentCell();
         if (currentCell == null)
             return;
 
@@ -35,28 +36,39 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         float distance = Vector3.Distance(path.cell.transform.position, transform.position);
         float pathPosition = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.y) / 2;
-        Debug.Log(distance);
+        //Debug.Log(distance);
 
         if (distance < pathPosition * 0.75f)
             path = path.nextPath;
 
-        if (path != null)
-            target = path.cell.transform;
-        else
-            target = Player;
-
-
-        Vector3 direction = target.position - transform.position;
+        Vector3 targetPosition = getTargetPosition();
+        Vector3 direction = targetPosition - transform.position;
         Debug.DrawLine(transform.position, transform.position + direction, Color.blue);
         direction = direction.normalized * _speed;
         rb.velocity = direction;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private Vector3 getTargetPosition()
     {
-        if (other.GetComponent<Cell>())
+        if (path == null)
+            return Player.position;
+
+        if (path.nextPath != null)
+            return (path.nextPath.cell.transform.position + path.cell.transform.position) / 2;
+
+        return (path.cell.transform.position);
+    }
+
+    private void UpdateCurrentCell()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.up, 1 * transform.lossyScale.y);
+        foreach (RaycastHit hit in hits)
         {
-            currentCell = other.GetComponent<Cell>();
+            if (hit.transform.GetComponent<Cell>())
+            {
+                currentCell = hit.transform.GetComponent<Cell>();
+                return;
+            }
         }
     }
 
