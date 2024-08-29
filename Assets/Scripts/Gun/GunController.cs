@@ -82,22 +82,14 @@ public class GunController : MonoBehaviour
     private void Shoot()
     {
         secondsSinceLastShoot = 0;
-        animator.SetTrigger("Shoot");
-
-        /*
-        Gun.TryGetComponent(out AudioSource source);
-
-        if (source != null)
-            source.Play();
-        */
-        AudioManager.instance.Play("Shoot Default");
+        //AudioManager.instance.Play("Shoot Default");
 
         for (int i = 0; i < shootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
 
-        playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
+        //playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }
 
     /// <summary>
@@ -122,13 +114,13 @@ public class GunController : MonoBehaviour
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
-        var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        bullet.transform.forward = dir.normalized;
-        var bulletObj = bullet.GetComponent<Bullet>();
-        bulletObj.damageAmount = shootingMode.BulletDamage;
-        bulletObj.bulletForce = shootingMode.BulletSpeed;
-        bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+        //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        //bullet.transform.forward = dir.normalized;
+        //var bulletObj = bullet.GetComponent<Bullet>();
+        //bulletObj.damageAmount = shootingMode.BulletDamage;
+        //bulletObj.bulletForce = shootingMode.BulletSpeed;
+        //bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
+        //bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
     }
     
     private void Update()

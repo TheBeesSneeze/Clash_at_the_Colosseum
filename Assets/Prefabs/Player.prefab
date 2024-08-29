@@ -67,6 +67,10 @@ GameObject:
   - component: {fileID: 7276286209156100238}
   - component: {fileID: 6418794678596623099}
   - component: {fileID: 4396328925986979071}
+  - component: {fileID: 7151011196388326143}
+  - component: {fileID: 2558676147345522402}
+  - component: {fileID: 7911197565489766704}
+  - component: {fileID: 2500800751219141097}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,7 +92,7 @@ Transform:
   m_Children:
   - {fileID: 6588910392244687457}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -190,3 +194,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7151011196388326143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61a536cc3df2b44a92ab1b65b6fc3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultHealth: 0
+  Speed: 0
+  Friction: 0.175
+  AirMovementMultiplier: 0.5
+  MaxSpeed: 20
+  HealthRegen: 1
+  SecondsUntilHealing: 2
+  AirJumps: 1
+  JumpHeight: 2.5
+  GravityBoost: 10
+--- !u!114 &2558676147345522402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2231677ca646d1428c78cba20d2e5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraHolder: {fileID: 0}
+  playerCamera: {fileID: 0}
+  playerOrientationTracker: {fileID: 0}
+  cameraFollowPoint: {fileID: 0}
+  ConsistentJumps: 1
+--- !u!114 &7911197565489766704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e987b627af848f7448efdb5010912b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 1
+  redVignette: {fileID: 0}
+--- !u!114 &2500800751219141097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 90e489baa51959142bad0888256d6c36, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
