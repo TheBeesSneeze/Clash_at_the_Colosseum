@@ -17,6 +17,10 @@ namespace DefaultNamespace
     {
         
         public GameObject ExplosionPrefab;
+
+        public override void Initialize()
+        {
+        }
         public override void OnEnemyHit(EnemyType type, float damage)
         {
             Debug.LogWarning("old code. pls update");

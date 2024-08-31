@@ -8,6 +8,8 @@ public class WindBullet : BulletEffect
 {
     public float KnockBackForce = 10f;
     public float PlayerKnockBackForce = 10f;
+
+    public override void Initialize(){}
     public override void OnEnemyHit(EnemyType type, float damage)
     {
         Debug.LogWarning("old code. pls update"); //make a universal variables singleton?

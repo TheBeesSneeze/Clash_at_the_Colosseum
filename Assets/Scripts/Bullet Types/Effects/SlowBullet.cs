@@ -14,6 +14,9 @@ namespace DefaultNamespace
     public class SlowBullet : BulletEffect
     {
         [field:SerializeField] public float SlowTime { get; private set; }= 2f;
+        public override void Initialize()
+        {
+        }
         public override void OnEnemyHit(EnemyType type, float damgae)
         {
             Debug.LogWarning("old code. pls update");

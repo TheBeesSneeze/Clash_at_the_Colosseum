@@ -20,7 +20,13 @@ namespace DefaultNamespace
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
 
-        public LayerMask OnlyEnemiesMask;
+        private int _onlyEnemiesMask;
+
+        public override void Initialize()
+        {
+            _onlyEnemiesMask = LayerMask.NameToLayer("Enemy");
+            throw new System.NotImplementedException();
+        }
 
         public override void OnEnemyHit(EnemyType type, float damage)
         {
@@ -65,7 +71,7 @@ namespace DefaultNamespace
             //sorry if this breaks and u gotta do shit to it later
 
             RaycastHit[] hit;
-            hit = Physics.SphereCastAll(enemy.transform.position, MaxEnemiesToZap, Vector3.up, 0, OnlyEnemiesMask);
+            hit = Physics.SphereCastAll(enemy.transform.position, MaxEnemiesToZap, Vector3.up, 0, _onlyEnemiesMask);
 
             int l = Mathf.Max(0, hit.Length - 1);
             EnemyType[] enemies = new EnemyType[l];
