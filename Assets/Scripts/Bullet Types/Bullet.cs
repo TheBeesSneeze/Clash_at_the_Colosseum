@@ -79,7 +79,7 @@ public class Bullet : MonoBehaviour
                 
                 AudioSource audio = obj.AddComponent<AudioSource>();
 
-                if (hit.collider.TryGetComponent(out EnemyType enemy))
+                if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy))
                 {
                     audio.clip = instance.LoadFromGroup("Hit Enemy");
                     enemy.TakeDamage(damageAmount);

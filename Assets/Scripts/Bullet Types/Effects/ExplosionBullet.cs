@@ -21,7 +21,7 @@ namespace DefaultNamespace
         public override void Initialize()
         {
         }
-        public override void OnEnemyHit(EnemyType type, float damage)
+        public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
             Debug.LogWarning("old code. pls update");
             GameObject explosion = Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);

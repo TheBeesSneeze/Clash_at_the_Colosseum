@@ -28,10 +28,10 @@ namespace DefaultNamespace
             throw new System.NotImplementedException();
         }
 
-        public override void OnEnemyHit(EnemyType type, float damage)
+        public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
             Debug.Log("electricity hit");
-            EnemyType[] closeEnemies = GetEnemiesInRange(type);
+            EnemyTakeDamage[] closeEnemies = GetEnemiesInRange(type);
 
             if (closeEnemies.Length == 0) return;
 
@@ -46,7 +46,7 @@ namespace DefaultNamespace
 
         public override void OnHitOther(Vector3 point, float damage) { }
 
-        private void Electrocute(EnemyType enemy, float damage, Vector3 origin)
+        private void Electrocute(EnemyTakeDamage enemy, float damage, Vector3 origin)
         {
             enemy.TakeDamage(damage);
             Visualize(origin, enemy.transform.position);
@@ -63,7 +63,7 @@ namespace DefaultNamespace
         /// </summary>
         /// <param name="enemy"></param>
         /// <returns></returns>
-        private EnemyType[] GetEnemiesInRange(EnemyType enemy)
+        private EnemyTakeDamage[] GetEnemiesInRange(EnemyTakeDamage enemy)
         {
             //weird logic im sorry
             //i wanted to challenge myself to not use a list but i really should have tbh
@@ -74,12 +74,12 @@ namespace DefaultNamespace
             hit = Physics.SphereCastAll(enemy.transform.position, MaxEnemiesToZap, Vector3.up, 0, _onlyEnemiesMask);
 
             int l = Mathf.Max(0, hit.Length - 1);
-            EnemyType[] enemies = new EnemyType[l];
+            EnemyTakeDamage[] enemies = new EnemyTakeDamage[l];
 
             int offset = 0;
             for (int i = 0; i < hit.Length; i++)
             {
-                EnemyType e = hit[i].transform.GetComponent<EnemyType>();
+                EnemyTakeDamage e = hit[i].transform.GetComponent<EnemyTakeDamage>();
 
                 if (e == enemy)
                 {

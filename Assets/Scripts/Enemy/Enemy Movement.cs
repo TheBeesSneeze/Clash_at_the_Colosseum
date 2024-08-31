@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private EnemyStats enemyBasics;
 
+    [SerializeField] Rigidbody rb;
     [SerializeField] Transform playerLocation; 
 
     private void Start()
@@ -41,6 +42,11 @@ public class EnemyMovement : MonoBehaviour
     private void MoveBasicEnemy()
     {
 
+        Vector3 direction = playerLocation.position - transform.position;
+        direction.Normalize();
+        direction *= enemyBasics.EnemySpeed;
+        direction.y = 0f;
+        rb.AddForce(direction);
     }
-    
+
 }
