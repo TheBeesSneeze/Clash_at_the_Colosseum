@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae486a9476a9e7245b85c4bf4dd47130, type: 3}
-  m_Name: BurstBullet
+  m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
+  m_Name: Default
   m_EditorClassIdentifier: 
-  TrailColor: {r: 0.9339623, g: 0.82976145, b: 0.18855463, a: 1}
-  UpgradeName: Burst Bullet
-  DamageMultiplier: 0.5
-  KnockBackForce: 5
-  PlayerKnockBackForce: 100
+  GunName: Pistol
+  ShotsPerSecond: 1
+  BulletsPerShot: 1
+  BulletAccuracyOffset: 0.25
+  HoldFire: 1
+  BulletSpeed: 100
+  BulletDamage: 42
+  RecoilForce: 0.01
