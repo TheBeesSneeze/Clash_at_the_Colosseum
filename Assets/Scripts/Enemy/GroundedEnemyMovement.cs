@@ -121,7 +121,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         Vector3 lastPoint = path.cell.transform.position;
 
-        Path parth = path;
+        Path parth = path; //this is my worst variable name yet
         while (parth != null)
         {
             //Debug.Log(parth.cell.gameObject.name);
