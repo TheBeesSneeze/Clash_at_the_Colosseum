@@ -1,5 +1,5 @@
 /*******************************************************************************
- * File Name :         PlayerControler.cs
+ * File Name :         PlayerController.cs
  * Author(s) :         Toby, Tyler
  * Creation Date :     3/18/2024
  *
@@ -9,13 +9,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using static AudioManager;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private int _airJumps=1;
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerStats stats;
     public Rigidbody RB => rb;
+    private int groundLayer;
 
     private float xMovement;
     private float yMovement;
@@ -32,10 +33,12 @@ public class PlayerController : MonoBehaviour
     public bool ConsistentJumps = true;
 
     private int airJumpCounter;
-    private bool jumping;
 
     private float timeSinceLastFootstep = 0;
     private AudioSource source;
+
+
+    [SerializeField]private float jumpRaycastDistance;
 
     /// <summary>
     /// every frame while move is held
@@ -54,6 +57,19 @@ public class PlayerController : MonoBehaviour
 
         
         FootStepSound();
+        IsGrounded();
+    }
+
+    private bool IsGrounded()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayer))
+        {
+            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpRaycastDistance), Color.blue);
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -89,63 +105,45 @@ public class PlayerController : MonoBehaviour
         if (input.y > 0 && yMag >  maxSpeed) input.y = 0;
         if (input.y < 0 && yMag < -maxSpeed) input.y = 0;
 
-        float multiplier = 1f;
 
         //Apply forces to move player
-        rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime * multiplier));
-        rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime * multiplier));
+        rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime ));
+        rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));
     }
 
     private void Jump()
     {
-        jumping = true;
-        if (airJumpCounter <= 0 || GrapplingHook.isGrappling)
+        if (GrapplingHook.isGrappling)
         {
             return;
         }
 
         if (instance != null)
-                instance.Play("Jump");
-        
-        airJumpCounter--;
-
-        if (ConsistentJumps)
-            HalfYVelocity();
+            instance.Play("Jump");
 
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
 
-        rb.AddForce(
-            Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse); 
-
-        //rb.AddForce(
-          //      feet.GroundNormal * (Mathf.Sqrt(2 * stats.JumpHeight * grav) * 0.5f),
-            //    ForceMode.Impulse);
-    }
-
-    /// <summary>
-    /// guess what this function does. ill give you 3 tries.
-    /// </summary>
-    public void HalfYVelocity()
-    {
-        if (rb.velocity.y < 0)
+        if (IsGrounded())
         {
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        }
-        else
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / 2, rb.velocity.z);
-        }
-    }
+            rb.AddForce(
+                Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
 
-    private void ResetJump()
-    {
-        jumping = false;
+            airJumpCounter = _airJumps;
+
+            return;
+        }
+
+        if(airJumpCounter > 0)
+        {
+            rb.AddForce(
+                Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
+
+            airJumpCounter--;
+        }
     }
 
     private void ApplyCounterMovement(float x, float y, Vector2 mag)
     {
-        //if (!feet.Grounded || jumping) return;
-
         if (Math.Abs(mag.x) > 0.01f && Math.Abs(x) < 0.05f || (mag.x < -0.01f && x > 0) || (mag.x > 0.01f && x < 0))
         {
             rb.AddForce(
@@ -200,6 +198,7 @@ public class PlayerController : MonoBehaviour
     // Start is called every frame
     void Start()
     {
+        groundLayer = LayerMask.NameToLayer("Ground");
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();
@@ -209,7 +208,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         cameraHolder.transform.parent = null;
         InputEvents.Instance.JumpStarted.AddListener(Jump);
-        InputEvents.Instance.JumpStarted.AddListener(ResetJump);
         airJumpCounter = stats.AirJumps;
     }
 }
