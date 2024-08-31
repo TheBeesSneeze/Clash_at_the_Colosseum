@@ -11,7 +11,6 @@ namespace PathFinding
     public class Cell : MonoBehaviour
     {
         public bool Solid = false;
-        //[Header("Debug")]
         private List<Cell> _sideNeighbors = new List<Cell>();
         public List<Cell> SideNeighbors { get => _sideNeighbors; }
 
@@ -74,6 +73,7 @@ namespace PathFinding
 
         private void raycastSideNeighbor(Vector3 direction, float distance)
         {
+            //idk if boxcast better yet
             /*
             
             RaycastHit hit;

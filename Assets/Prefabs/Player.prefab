@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &132478337340530818
+--- !u!1 &1268625551565947900
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,21 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6588910392244687457}
-  - component: {fileID: 2797893611726193409}
-  m_Layer: 0
-  m_Name: gun
+  - component: {fileID: 3274248623167992823}
+  m_Layer: 9
+  m_Name: Bullet Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6588910392244687457
+--- !u!4 &3274248623167992823
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132478337340530818}
+  m_GameObject: {fileID: 1268625551565947900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,28 +31,6 @@ Transform:
   m_Father: {fileID: 9054523835055469481}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2797893611726193409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132478337340530818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0efeac330da4e4ab59168860396e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
-  BulletPrefab: {fileID: 0}
-  Gun: {fileID: 6588910392244687457}
-  bulletSpawnPoint: {fileID: 6588910392244687457}
-  bulletEffect1: {fileID: 0}
-  bulletEffect2: {fileID: 0}
-  scanMask:
-    serializedVersion: 2
-    m_Bits: 0
-  gunModel: {fileID: 0}
 --- !u!1 &3199585334150164854
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +47,8 @@ GameObject:
   - component: {fileID: 7151011196388326143}
   - component: {fileID: 2558676147345522402}
   - component: {fileID: 7911197565489766704}
-  m_Layer: 0
+  - component: {fileID: 18831259720661764}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,9 +67,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6588910392244687457}
   - {fileID: 3447060050390161073}
   - {fileID: 7450907664879607023}
+  - {fileID: 3274248623167992823}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _airJumps: 1
   cameraHolder: {fileID: 3447060050390161073}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 5315044224774374552}
   playerOrientationTracker: {fileID: 7450907664879607023}
   cameraFollowPoint: {fileID: 7450907664879607023}
   ConsistentJumps: 1
@@ -250,6 +228,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 1
   redVignette: {fileID: 0}
+--- !u!114 &18831259720661764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0efeac330da4e4ab59168860396e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
+  BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
+  bulletSpawnPoint: {fileID: 3274248623167992823}
+  bulletEffect1: {fileID: 0}
+  bulletEffect2: {fileID: 0}
 --- !u!1 &8574478487850517060
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7450907664879607023}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ReferencePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3447060050390161073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +319,7 @@ GameObject:
   - component: {fileID: 5315044224774374552}
   - component: {fileID: 4888265777734007721}
   - component: {fileID: 4517530145506046257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
