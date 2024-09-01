@@ -22,6 +22,8 @@ public class EnemyStats : MonoBehaviour
 
     public enum KindOfEnemy
     {
-        BasicEnemy
+        BasicEnemy,
+        Flyer,
+        Tank
     }
 }
