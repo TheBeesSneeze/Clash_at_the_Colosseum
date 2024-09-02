@@ -865,36 +865,15 @@ GameObject:
   - component: {fileID: 332776502}
   - component: {fileID: 332776497}
   - component: {fileID: 332776496}
-  - component: {fileID: 332776495}
   - component: {fileID: 332776500}
-  m_Layer: 0
+  - component: {fileID: 332776503}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &332776495
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332776494}
-  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &332776496
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -944,7 +923,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332776494}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &332776498
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,6 +1000,27 @@ MonoBehaviour:
   Player: {fileID: 737148408}
   debug: 1
   currentCell: {fileID: 0}
+--- !u!135 &332776503
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332776494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &349183786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2597,7 +2597,7 @@ GameObject:
   - component: {fileID: 998977501}
   - component: {fileID: 998977502}
   m_Layer: 0
-  m_Name: Cell Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,12 +2627,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 998977500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8db63ba191a9146a41b3f7d3df1b31, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6ef034ddd573445893f399613c9c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path:
-    cell: {fileID: 0}
-  playerCell: {fileID: 0}
 --- !u!4 &1000358106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1535938086252215521, guid: 4ec3454ed3e3fd04099487963d2de1a3, type: 3}

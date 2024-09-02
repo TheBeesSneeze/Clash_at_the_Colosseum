@@ -112,7 +112,7 @@ public class GunController : MonoBehaviour
         if (!InputEvents.Instance.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
-        if (!shootingMode.HoldFire)
+        if (!shootingMode.CanHoldFire)
             canShoot = false;
 
         //shootin time

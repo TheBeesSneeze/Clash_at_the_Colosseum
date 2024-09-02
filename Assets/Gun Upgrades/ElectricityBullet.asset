@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
   UpgradeName: 
-  DamageMultiplier: 0
-  ElectrocutionRange: 0
-  MaxEnemiesToZap: 0
-  OnlyEnemiesMask:
-    serializedVersion: 2
-    m_Bits: 0
+  DamageMultiplier: 1
+  ElectrocutionRange: 10
+  MaxEnemiesToZap: 3

@@ -16,16 +16,21 @@ public class ShootingMode : ScriptableObject
 {
     [Header("Display")]
     public string GunName;
-    [Tooltip("RPM of bullets shot")] public float ShotsPerSecond = 1;
-    [Tooltip("# of bullets shot at one time (imagine a shotgun)")]
+
+    [Header("Stats")]
+    [Tooltip("RPM of bullets shot")][Min(0.0001f)] 
+    public float ShotsPerSecond = 1;
+    [Tooltip("# of bullets shot at one time (imagine a shotgun)")][Min(1)] 
     public int BulletsPerShot=1; 
-    [Tooltip("(angle) How much to randomize angle (0 is perfect precision)")]
+    [Tooltip("(angle) How much to randomize angle (0 is perfect precision)")] [Range(0f, 1f)]
     public float BulletAccuracyOffset=0;
-    [Tooltip("The player can hold click to repeat fire")]
-    public bool HoldFire=true; //@TODO
-    [Tooltip("Speed of the projectile itself (units/second)")]
-    public float BulletSpeed=10; //@TODO
-    public float BulletDamage=1; //@TODO
+    [Tooltip("The player can hold click to repeat fire")] 
+    public bool CanHoldFire=true; //@TODO
+    [Tooltip("Speed of the projectile itself (units/second)")] [Min(1)]
+    public float BulletSpeed=10;
+    [Min(0.1f)]
+    public float BulletDamage=1;
+    [Tooltip("How much to push player back by. Setting negative pulls player forward")]
     public float RecoilForce;
 
     [Button]
