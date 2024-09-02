@@ -16,6 +16,8 @@ public class ShootingMode : ScriptableObject
 {
     [Header("Display")]
     public string GunName;
+
+    [Header("Stats")]
     [Tooltip("RPM of bullets shot")][Min(0.0001f)] 
     public float ShotsPerSecond = 1;
     [Tooltip("# of bullets shot at one time (imagine a shotgun)")][Min(1)] 

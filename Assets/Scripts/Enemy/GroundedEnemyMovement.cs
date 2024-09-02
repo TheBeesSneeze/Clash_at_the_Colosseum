@@ -4,6 +4,7 @@ using UnityEngine;
 using PathFinding;
 using TMPro;
 using NaughtyAttributes;
+using Utilities;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     public Transform Player;
     public bool debug = true;
     private Rigidbody rb;
+    private SphereCollider _collider;
 
     private Path path;
     private int _emptyCellLayer = 6;
@@ -20,6 +22,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         _emptyCellLayer = LayerMask.NameToLayer("Empty Cell");
         rb = GetComponent<Rigidbody>();
+        _collider=GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -28,22 +31,24 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (currentCell == null)
             return;
 
-        path = CellManager.Instance.GetPathToPlayer(currentCell);
+        path = GameManager.pathManager.GetPathToPlayer(currentCell);
 
         if (path == null ) return;
         if (path.nextPath == null) return;
-        path = path.nextPath;
+        //path = path.nextPath;
 
         NavigateToPlayer();
     }
 
     private void NavigateToPlayer()
     {
-        float distance = Vector3.Distance(path.cell.transform.position, transform.position);
-        float pathPosition = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.y) / 2;
+        float distance = Vector3.Distance(path.position, transform.position);
+        float avgPathSize = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.z) / 2;
 
-        if (distance < pathPosition * 0.15f)
+        if (distance < avgPathSize * 0.05f)
             path = path.nextPath;
+
+        path = path.nextPath;
 
         Vector3 targetPosition = getTargetPosition();
         Vector3 direction = targetPosition - transform.position;
@@ -60,20 +65,27 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         if (path.nextPath != null)
         {
-            //Vector3 avgPosition = (path.nextPath.cell.transform.position + path.cell.transform.position) / 2;
-            //if(HasClearViewToPoint(avgPosition))
-            //    return avgPosition;
+            Vector3 avgPosition = (path.nextPath.position + path.position) / 2;
+            if (HasClearViewToPoint(avgPosition))
+            {
+                //DebugUtilities.DrawBox(path.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
+                //DebugUtilities.DrawBox(path.nextPath.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
+                return avgPosition;
+            }
         }
 
-        return path.cell.transform.position;
+        //DebugUtilities.DrawBox(path.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
+        return path.position;
     }
 
     private bool HasClearViewToPoint(Vector3 point)
     {
         Vector3 direction = point - transform.position;
         float distance = Vector3.Distance(point, transform.position);
-        if(Physics.BoxCast(transform.position, transform.lossyScale, direction, out RaycastHit hit, Quaternion.identity,distance, ~_emptyCellLayer))
+        Vector3 radius = _collider.radius * transform.lossyScale / 2.1f;
+        if(Physics.BoxCast(transform.position, radius, direction, out RaycastHit hit, Quaternion.identity, distance, ~_emptyCellLayer))
         {
+            DebugUtilities.DrawBoxCastBox(transform.position, radius, Quaternion.identity, direction, distance, Color.magenta);
             Debug.Log("unclear view");
             return false;
         }
@@ -119,7 +131,7 @@ public class GroundedEnemyMovement : MonoBehaviour
             return;
         }
 
-        Vector3 lastPoint = path.cell.transform.position;
+        Vector3 lastPoint = path.position;
 
         Path parth = path; //this is my worst variable name yet
         while (parth != null)

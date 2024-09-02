@@ -7,11 +7,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 namespace Utilities
 {
     public static class DebugUtilities
     {
+        #region boxcast
         //Draws just the box at where it is currently hitting.
         public static void DrawBoxCastOnHit(Vector3 origin, Vector3 halfExtents, Quaternion orientation, Vector3 direction, float hitInfoDistance, Color color)
         {
@@ -118,6 +120,7 @@ namespace Utilities
             Vector3 direction = point - pivot;
             return pivot + rotation * direction;
         }
+        #endregion
     }
 }
 

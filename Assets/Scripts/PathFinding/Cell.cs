@@ -44,7 +44,7 @@ namespace PathFinding
             Debug.Log("collide");
             if(other.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
-                CellManager.Instance.PlayerCellUpdate(this);
+                GameManager.pathManager.PlayerCellUpdate(this);
             }
         }
 
@@ -56,40 +56,25 @@ namespace PathFinding
             Debug.Log("collide");
             if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
-                CellManager.Instance.PlayerCellUpdate(this);
+                GameManager.pathManager.PlayerCellUpdate(this);
             }
         }
 
         public void GetNeighbors()
         {
             _sideNeighbors.Clear();
-            raycastSideNeighbor(new Vector3(1, 0,0), transform.lossyScale.x);
-            raycastSideNeighbor(new Vector3(-1,0,0), transform.lossyScale.x);
-            raycastSideNeighbor(new Vector3(0,0, 1), transform.lossyScale.z);
-            raycastSideNeighbor(new Vector3(0,0,-1), transform.lossyScale.z);
-            raycastVerticalNeighbor(new Vector3(0, 1, 0), transform.lossyScale.y);
-            raycastVerticalNeighbor(new Vector3(0, -1, 0), transform.lossyScale.y);
+            raycastSideNeighbor(new Vector3(1, 0,0));
+            raycastSideNeighbor(new Vector3(-1,0,0));
+            raycastSideNeighbor(new Vector3(0,0, 1));
+            raycastSideNeighbor(new Vector3(0,0,-1));
+            raycastVerticalNeighbor(new Vector3(0, 1, 0));
+            raycastVerticalNeighbor(new Vector3(0, -1, 0));
         }
 
-        private void raycastSideNeighbor(Vector3 direction, float distance)
-        {
-            //idk if boxcast better yet
-            /*
-            
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, direction, out hit, distance, ~6))
-            {
-                Cell cell = hit.transform.gameObject.GetComponent<Cell>();
-                if (cell != null)
-                {
-                    _neighbors.Add(cell);
-                }
-            }
-            */
-            
-            distance = 0.1f;
+        private void raycastSideNeighbor(Vector3 direction, float distance=0.1f)
+        { 
             RaycastHit[] hits;
-            hits = Physics.BoxCastAll(transform.position, transform.lossyScale * 0.4f, direction, transform.rotation, distance);
+            hits = Physics.BoxCastAll(transform.position, transform.lossyScale/2.1f, direction, transform.rotation,distance);
             
             foreach (RaycastHit hit in hits )
             {
@@ -100,24 +85,10 @@ namespace PathFinding
                 }
             }
         }
-        private void raycastVerticalNeighbor(Vector3 direction, float distance)
+        private void raycastVerticalNeighbor(Vector3 direction, float distance=0.1f)
         {
-            /*
-            
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, direction, out hit, distance, ~6))
-            {
-                Cell cell = hit.transform.gameObject.GetComponent<Cell>();
-                if (cell != null)
-                {
-                    _neighbors.Add(cell);
-                }
-            }
-            */
-
-            distance = 0.1f;
             RaycastHit[] hits;
-            hits = Physics.BoxCastAll(transform.position, transform.lossyScale * 0.4f, direction, transform.rotation, distance);
+            hits = Physics.BoxCastAll(transform.position, transform.lossyScale/2.1f, direction, transform.rotation, distance);
 
             foreach (RaycastHit hit in hits)
             {
