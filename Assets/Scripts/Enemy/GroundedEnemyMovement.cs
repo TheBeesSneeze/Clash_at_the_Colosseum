@@ -8,8 +8,13 @@ using Utilities;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
-    [SerializeField] float _speed= 1; 
-    public Transform Player;
+    [SerializeField] float _speed= 1;
+    [SerializeField] float _turningSpeed = 1; //TODO
+    [SerializeField] float _stopDistanceToPlayer= 1;
+    [SerializeField] bool _needsToSeePlayer = false;
+    [Tooltip("Distance until enemy starts moving towards player")]
+    [SerializeField] float _sightDistance = 10; 
+    private Transform _player;
     public bool debug = true;
     private Rigidbody rb;
     private SphereCollider _collider;
@@ -20,6 +25,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform; 
         _emptyCellLayer = LayerMask.NameToLayer("Empty Cell");
         rb = GetComponent<Rigidbody>();
         _collider=GetComponent<SphereCollider>();
@@ -35,13 +41,29 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         if (path == null ) return;
         if (path.nextPath == null) return;
-        //path = path.nextPath;
 
         NavigateToPlayer();
+        RotateColliderTowardsDirection(rb.velocity);
+
+    }
+
+    private void RotateColliderTowardsDirection(Vector3 direction)
+    {
+        if (direction.magnitude < 0.01f)
+            return;
+
+        Quaternion targetRoation = Quaternion.LookRotation(direction);
+        rb.transform.rotation = Quaternion.Lerp(transform.rotation, targetRoation, Time.deltaTime * _turningSpeed);
     }
 
     private void NavigateToPlayer()
     {
+        if (_needsToSeePlayer && !HasClearViewToPoint(_player.transform.position, _sightDistance))
+            return;
+
+        if (Vector3.Distance(transform.position, _player.transform.position) < _stopDistanceToPlayer)
+            return;
+
         float distance = Vector3.Distance(path.position, transform.position);
         float avgPathSize = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.z) / 2;
 
@@ -54,14 +76,13 @@ public class GroundedEnemyMovement : MonoBehaviour
         Vector3 direction = targetPosition - transform.position;
         Debug.DrawLine(transform.position, targetPosition, Color.blue);
         direction = direction.normalized * _speed;
-        rb.velocity = direction;
-        RotateColliderTowardsDirection(direction);
+        rb.velocity = Vector3.Lerp( rb.velocity, direction, _speed * Time.deltaTime);
     }
 
     private Vector3 getTargetPosition()
     {
         if (path == null)
-            return Player.position;
+            return _player.position;
 
         if (path.nextPath != null)
         {
@@ -80,10 +101,15 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private bool HasClearViewToPoint(Vector3 point)
     {
-        Vector3 direction = point - transform.position;
         float distance = Vector3.Distance(point, transform.position);
+        return HasClearViewToPoint(point, distance);
+    }
+
+    private bool HasClearViewToPoint(Vector3 point, float distance)
+    {
+        Vector3 direction = point - transform.position;
         Vector3 radius = _collider.radius * transform.lossyScale / 2.1f;
-        if(Physics.BoxCast(transform.position, radius, direction, out RaycastHit hit, Quaternion.identity, distance, ~_emptyCellLayer))
+        if (Physics.BoxCast(transform.position, radius, direction, out RaycastHit hit, Quaternion.identity, distance, ~_emptyCellLayer))
         {
             DebugUtilities.DrawBoxCastBox(transform.position, radius, Quaternion.identity, direction, distance, Color.magenta);
             Debug.Log("unclear view");
@@ -93,10 +119,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         return true;
     }
 
-    private void RotateColliderTowardsDirection(Vector3 direction)
-    {
-        transform.rotation.SetLookRotation(direction);
-    }
+
 
     private void UpdateCurrentCell()
     {
