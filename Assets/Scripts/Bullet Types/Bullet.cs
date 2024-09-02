@@ -64,12 +64,13 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         if (lastTime < despawnTime)
-        {
+        { 
             lastTime += Time.fixedDeltaTime;
             Debug.DrawRay(lastPosition, transform.forward);
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
+                
                 GameObject obj = null;
                 if (hitImpactEffectPrefab != null)
                 {
@@ -78,19 +79,20 @@ public class Bullet : MonoBehaviour
                 }
                 
                 AudioSource audio = obj.AddComponent<AudioSource>();
-
-                if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy))
+                
+                if (hit.collider.TryGetComponent(out EnemyStats enemy ))
                 {
+                    s
                     audio.clip = instance.LoadFromGroup("Hit Enemy");
-                    enemy.TakeDamage(damageAmount);
+                    //enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
-                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
+                        //_bulletEffect1.OnEnemyHit(enemy, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
+                        //_bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
