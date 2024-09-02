@@ -19,8 +19,7 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
-    [SerializeField] private GameObject hitImpactEffectPrefab;
-    [SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
+    //[SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
 
     [HideInInspector] public BulletEffect _bulletEffect1;
     [HideInInspector] public BulletEffect _bulletEffect2;
@@ -61,8 +60,18 @@ public class Bullet : MonoBehaviour
         SetColorGradient();
     }
 
+    public void ResetBullet()
+    {
+        _bulletEffect1 = null;
+        _bulletEffect2 = null;
+        lastTime = 0;
+    }
+
     private void FixedUpdate()
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         if (lastTime < despawnTime)
         { 
             lastTime += Time.fixedDeltaTime;
@@ -72,18 +81,11 @@ public class Bullet : MonoBehaviour
             {
                 
                 GameObject obj = null;
-                if (hitImpactEffectPrefab != null)
-                {
-                    /// = Instantiate(hitImpactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-                    obj = Instantiate(hitImpactEffectPrefab, hit.point, Camera.main.transform.rotation);
-                }
                 
                 AudioSource audio = obj.AddComponent<AudioSource>();
                 
                 if (hit.collider.TryGetComponent(out EnemyStats enemy ))
                 {
-                    s
-                    audio.clip = instance.LoadFromGroup("Hit Enemy");
                     //enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
@@ -102,9 +104,6 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    if (instance != null)
-                        audio.clip = instance.LoadFromGroup("Hit Wall");
-
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
@@ -117,6 +116,7 @@ public class Bullet : MonoBehaviour
                     }
                 }
 
+                /*
                 if (instance != null)
                 {
                     audio.spatialBlend = 1;
@@ -125,10 +125,10 @@ public class Bullet : MonoBehaviour
                     audio.rolloffMode = AudioRolloffMode.Linear;
                     AssignGroupToAudioSource(audio, "SFX");
                     audio.Play();
-                }
+                }*/
 
-                Destroy(obj, impactEffectPrefabDespawnTime);
-                Destroy(gameObject);
+                ResetBullet();
+                gameObject.SetActive(false);
 
 
             }
@@ -137,7 +137,8 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            ResetBullet();
+            gameObject.SetActive(false);
         }
     }
 
