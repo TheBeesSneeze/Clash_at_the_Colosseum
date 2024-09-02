@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
             if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
                     QueryTriggerInteraction.Ignore))
             {
-                
+                 
                 GameObject obj = null;
                 if (hitImpactEffectPrefab != null)
                 {
@@ -78,21 +78,21 @@ public class Bullet : MonoBehaviour
                     obj = Instantiate(hitImpactEffectPrefab, hit.point, Camera.main.transform.rotation);
                 }
                 
-                AudioSource audio = obj.AddComponent<AudioSource>();
+                //AudioSource audio = obj.AddComponent<AudioSource>();
                 
-                if (hit.collider.TryGetComponent(out EnemyStats enemy ))
+                if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
                 {
-                    s
-                    audio.clip = instance.LoadFromGroup("Hit Enemy");
-                    //enemy.TakeDamage(damageAmount);
+                    
+                    //audio.clip = instance.LoadFromGroup("Hit Enemy");
+                    enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
-                        //_bulletEffect1.OnEnemyHit(enemy, damageAmount);
+                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        //_bulletEffect2.OnEnemyHit(enemy, damageAmount);
+                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
@@ -103,7 +103,7 @@ public class Bullet : MonoBehaviour
                 else
                 {
                     if (instance != null)
-                        audio.clip = instance.LoadFromGroup("Hit Wall");
+                        //audio.clip = instance.LoadFromGroup("Hit Wall");
 
                     Debug.Log("hit other");
                     if (_bulletEffect1 != null)
@@ -119,12 +119,12 @@ public class Bullet : MonoBehaviour
 
                 if (instance != null)
                 {
-                    audio.spatialBlend = 1;
-                    audio.maxDistance = 50;
-                    audio.volume = 0.4f;
-                    audio.rolloffMode = AudioRolloffMode.Linear;
-                    AssignGroupToAudioSource(audio, "SFX");
-                    audio.Play();
+                    //audio.spatialBlend = 1;
+                    //audio.maxDistance = 50;
+                    //audio.volume = 0.4f;
+                    //audio.rolloffMode = AudioRolloffMode.Linear;
+                    //AssignGroupToAudioSource(audio, "SFX");
+                    //audio.Play();
                 }
 
                 Destroy(obj, impactEffectPrefabDespawnTime);
