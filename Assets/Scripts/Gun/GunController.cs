@@ -21,19 +21,16 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject BulletPrefab;
     
     [Header("Unity Stuff")]
-    public Transform Gun;
     public Transform bulletSpawnPoint;
 
     [ReadOnly] public BulletEffect bulletEffect1;
     [ReadOnly] public BulletEffect bulletEffect2;
-    public LayerMask scanMask;
+    private LayerMask scanMask;
 
     private float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Camera playerCamera;
     private Animator animator;
-
-    [SerializeField] private GameObject gunModel;
 
     private bool canShoot;
 
@@ -55,25 +52,6 @@ public class GunController : MonoBehaviour
         //Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
 
         canShoot = true;
-
-        SwapModel();
-    }
-
-    private void SwapModel()
-    {
-        if (shootingMode.ModelPrefab == null) return;
-
-        if (gunModel == null)
-        {
-            Debug.LogWarning("no gun model in " + shootingMode.name + " uh oh");
-            //gunModel = Instantiate(shootingMode.ModelPrefab, Gun.GetChild(0));
-            return;
-        }
-
-        //swap em out baby
-        Transform parent = gunModel.transform.parent;
-        Destroy(gunModel);
-        gunModel = Instantiate(shootingMode.ModelPrefab, parent);
     }
 
     /// <summary>
@@ -81,6 +59,7 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        Debug.Log("pew");
         secondsSinceLastShoot = 0;
         //AudioManager.instance.Play("Shoot Default");
 
@@ -114,13 +93,21 @@ public class GunController : MonoBehaviour
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
+
         //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        //bullet.transform.forward = dir.normalized;
-        //var bulletObj = bullet.GetComponent<Bullet>();
-        //bulletObj.damageAmount = shootingMode.BulletDamage;
-        //bulletObj.bulletForce = shootingMode.BulletSpeed;
-        //bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        //bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+        GameObject bullet = BulletPoolManager.Instance.GetPooledObject();
+        if (bullet == null)
+        {
+            return;
+        }
+        Debug.Log("setting active rn");
+        bullet.transform.position = bulletSpawnPoint.position;
+        bullet.transform.forward = dir.normalized;
+        var bulletObj = bullet.GetComponent<Bullet>();
+        bulletObj.damageAmount = shootingMode.BulletDamage;
+        bulletObj.bulletForce = shootingMode.BulletSpeed;
+        bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
+        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
     }
     
     private void Update()
@@ -130,9 +117,9 @@ public class GunController : MonoBehaviour
 
         if (!canShoot) return;
         if (!InputEvents.Instance.ShootPressed) return;
-        if (secondsSinceLastShoot < (60f / shootingMode.RPM)) return;
+        if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
-        if (!shootingMode.HoldFire)
+        if (!shootingMode.CanHoldFire)
             canShoot = false;
 
         //shootin time
@@ -169,6 +156,8 @@ public class GunController : MonoBehaviour
         animator = GetComponent<Animator>();
         LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
+        scanMask |= (1 << LayerMask.GetMask("Default"));
+        scanMask |= (1 << LayerMask.GetMask("Enemy"));
     }
 
     
