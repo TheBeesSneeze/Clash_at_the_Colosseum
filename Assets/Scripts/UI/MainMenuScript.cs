@@ -19,8 +19,9 @@ public class MainMenuScript : MonoBehaviour
     public GameObject quitButton;
     public void playClicked()
     {
-        print("Play clicked");
+        print("Loading Game...");
         SceneManager.LoadScene(playSceneNumber);
+        print("Entered play scene");
     }
     public void settingsClicked()
     {
@@ -36,7 +37,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void quitClicked()
     {
-        print("Quit CLicked");
+        print("Exiting Game...");
+        //Save the stats you want to save here
         Application.Quit();
     }
 }
