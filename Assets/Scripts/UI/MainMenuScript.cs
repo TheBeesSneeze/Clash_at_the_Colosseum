@@ -11,20 +11,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
-    [Tooltip("Main menu object goes here")]
-    public GameObject pauseMenu;
-
     public GameObject playButton;
+    public int playSceneNumber;
     public GameObject settingsButton;
     public GameObject statsButton;
     public GameObject helpButton;
     public GameObject quitButton;
-
-    public bool isPaused = false;
-    public int mainMenuSceneNumber = 0;
     public void playClicked()
     {
         print("Play clicked");
+        SceneManager.LoadScene(playSceneNumber);
     }
     public void settingsClicked()
     {
@@ -40,6 +36,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void quitClicked()
     {
+        print("Quit CLicked");
         Application.Quit();
     }
 }
