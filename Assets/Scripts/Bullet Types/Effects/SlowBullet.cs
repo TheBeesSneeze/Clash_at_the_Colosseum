@@ -17,7 +17,7 @@ namespace DefaultNamespace
         public override void Initialize()
         {
         }
-        public override void OnEnemyHit(EnemyType type, float damgae)
+        public override void OnEnemyHit(EnemyTakeDamage type, float damgae)
         {
             Debug.LogWarning("old code. pls update");
             //slow down the enemy some how

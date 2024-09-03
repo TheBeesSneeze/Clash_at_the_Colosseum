@@ -56,7 +56,6 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
         //Sprint.canceled += ctx => SprintPressed = false;
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
-        Pause.performed += OnPause;
     }
 
     void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
@@ -71,13 +70,14 @@ public class InputEvents : Singleton<InputEvents>
         actionEvent?.Invoke();
     }
 
-    public void OnPause(InputAction.CallbackContext context)
+    /*public void OnPause(InputAction.CallbackContext context)
     {
+
         if (context.phase == InputActionPhase.Performed)
         {
             Debug.Log("Pause event triggered");
         }
-    }
+    }*/
 
     private void Update()
     {
@@ -92,17 +92,16 @@ public class InputEvents : Singleton<InputEvents>
         Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        //Sprint.started -= ctx => SprintPressed = true;
-        //Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
+        Sprint.started -= ctx => SprintPressed = true;
+        Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
         Secondary.started -= ctx => GrappleStarted.Invoke();
         Secondary.canceled -= ctx => GrappleCanceled.Invoke();
-       // Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
+        Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
 
         Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
         Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
         Sprint.canceled -= ctx => SprintPressed = false;
-        //Pause.canceled -= ctx => { PausePressed = false; PauseCanceled.Invoke(); };
-        //Pause.performed -= OnPause;
+        Pause.canceled -= ctx => { PausePressed = false; PauseCanceled.Invoke(); };
     }
 }
