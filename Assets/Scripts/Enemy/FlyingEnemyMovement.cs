@@ -1,3 +1,7 @@
+///
+/// Toby
+/// 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +29,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         float y = GetYPosition();
         Vector3 targetPosition = GetHorizontalPosition(y);
-        Vector3 direction = targetPosition - _player.position;
+        Vector3 direction = targetPosition - transform.position;
         rb.velocity = direction; 
     }
 
@@ -36,7 +40,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         Debug.DrawRay(transform.position, Vector3.down * _heightAboveGround, Color.red);
 
         //Go Up
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _heightAboveGround, ~_groundMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _heightAboveGround, _groundMask))
         { 
             targetY = hit.point.y + _heightAboveGround;
         }
