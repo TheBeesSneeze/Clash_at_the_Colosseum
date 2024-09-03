@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
 {
     public static CellManager cellManager;
     public static PathManager pathManager;
+    public static BulletPoolManager bulletPoolManager;
 
     void Start()
     {
@@ -31,5 +32,10 @@ public class GameManager : Singleton<GameManager>
     private void InitializePathManager()
     {
         pathManager = new PathManager();
+    }
+
+    private void InitializeBulletPoolManager()
+    {
+        //bulletPoolManager = new BulletPoolManager();
     }
 }

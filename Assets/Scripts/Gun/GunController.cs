@@ -94,7 +94,14 @@ public class GunController : MonoBehaviour
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
 
-        var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        GameObject bullet = BulletPoolManager.Instance.GetPooledObject();
+        if (bullet == null)
+        {
+            return;
+        }
+        Debug.Log("setting active rn");
+        bullet.transform.position = bulletSpawnPoint.position;
         bullet.transform.forward = dir.normalized;
         var bulletObj = bullet.GetComponent<Bullet>();
         bulletObj.damageAmount = shootingMode.BulletDamage;

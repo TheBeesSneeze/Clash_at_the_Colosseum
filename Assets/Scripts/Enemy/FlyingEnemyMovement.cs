@@ -11,12 +11,14 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     private Transform _player;
     private int _groundMask;
+    private Rigidbody rb;
 
 
     private void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _groundMask = LayerMask.NameToLayer("Fill Cell");
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -24,6 +26,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         float y = GetYPosition();
         Vector3 targetPosition = GetHorizontalPosition(y);
         Vector3 direction = targetPosition - _player.position;
+        rb.velocity = direction; 
     }
 
     private float GetYPosition()
