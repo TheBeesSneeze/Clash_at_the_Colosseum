@@ -1,7 +1,13 @@
+/*******************************************************************************
+ * File Name :         FloorGrid.cs
+ * Author(s) :         Tyler
+ * Creation Date :     8/29/2024
+ *
+ * Brief Description : Spawns in a grid of tiles for the ground.
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class FloorGrid : MonoBehaviour
 {
     [SerializeField] private GameObject tile;
