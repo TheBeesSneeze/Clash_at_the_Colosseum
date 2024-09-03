@@ -25,7 +25,7 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        player = GetComponent<PlayerBehaviour>();
+        player = playerObject.GetComponent<PlayerBehaviour>();
     }
     private void Update()
     {
