@@ -1,3 +1,7 @@
+///
+/// Toby
+/// 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +29,8 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         float y = GetYPosition();
         Vector3 targetPosition = GetHorizontalPosition(y);
-        Vector3 direction = targetPosition - _player.position;
+        Vector3 direction = targetPosition - transform.position;
+
         rb.velocity = direction; 
     }
 
@@ -33,23 +38,15 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         float currentY = transform.position.y;
         float targetY;
-        Debug.DrawRay(transform.position, Vector3.down * _heightAboveGround, Color.red);
+        //Debug.DrawRay(transform.position, Vector3.down * _heightAboveGround, Color.red);
 
         //Go Up
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _heightAboveGround, ~_groundMask))
-        { 
-            targetY = hit.point.y + _heightAboveGround;
+        {
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+            return hit.point.y + _heightAboveGround;
         }
-        // Go Down
-        else
-        { 
-            targetY = currentY - _verticalSpeed;
-        }
-
-        float difference = Mathf.Abs(currentY - targetY);
-        float t = _verticalSpeed * Time.deltaTime / difference;
-        float y = Mathf.Lerp(currentY, targetY, t);
-        return y;
+        return currentY - _verticalSpeed;
     }
 
     private Vector3 GetHorizontalPosition(float y)
@@ -64,6 +61,6 @@ public class FlyingEnemyMovement : MonoBehaviour
         if (distance < _stoppingDistanceToPlayer)
             return enemyPos;
 
-        return Vector3.MoveTowards(enemyPos, playerPos, _horizontalSpeed * Time.deltaTime);
+        return Vector3.MoveTowards(enemyPos, playerPos, _horizontalSpeed);// * Time.deltaTime);
     }
 }
