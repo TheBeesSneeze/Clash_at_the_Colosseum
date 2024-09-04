@@ -471,6 +471,7 @@ MonoBehaviour:
   EnemyDamage: 2
   EnemySpeed: 1
   EnemyAttackRange: 1
+  EnemyAttackCooldownSpeed: 15
   EnemyType: 0
 --- !u!54 &560369706
 Rigidbody:
@@ -544,6 +545,10 @@ PrefabInstance:
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: Speed
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: DefaultHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9054523835055469481, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_RootOrder

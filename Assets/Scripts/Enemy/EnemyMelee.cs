@@ -18,30 +18,46 @@ using UnityEngine.UIElements;
 public class EnemyMelee : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
-
+    
     private EnemyStats stats;
     private PlayerBehaviour player;
+    private float coolDown;
+    private float timeBetweenAttacks;
 
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
         player = playerObject.GetComponent<PlayerBehaviour>();
+        timeBetweenAttacks = stats.EnemyAttackCooldownSpeed;
+        coolDown = 0f;
     }
     private void Update()
     {
-        DetectPlayer();
+        coolDown -= Time.deltaTime;
+        AttemptAttack();
     }
 
-    private void DetectPlayer()
+    private void AttemptAttack()
+    {
+        if (coolDown <= 0f)
+        {
+            float distanceToPlayer = GetDistanceFromPlayer();
+            if (distanceToPlayer <= stats.EnemyAttackRange)
+            {
+                player.TakeDamage(stats.EnemyDamage);
+                coolDown = timeBetweenAttacks; 
+            }
+        }
+
+    }
+
+    private float GetDistanceFromPlayer()
     {
         var distance = (transform.position - playerObject.transform.position).normalized;
         distance.y = 0f;
         float distanceFrom = distance.magnitude;
 
-        if(distanceFrom <= stats.EnemyAttackRange)
-        {
-            player.TakeDamage(stats.EnemyDamage); 
-        }
+        return distanceFrom;
     }
 
    
