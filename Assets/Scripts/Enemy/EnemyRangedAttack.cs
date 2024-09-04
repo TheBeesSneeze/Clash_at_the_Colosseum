@@ -14,14 +14,18 @@ using UnityEngine;
 
 public class EnemyRangedAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyStats stats;
+    private GunController gunController;
+    private GameObject playerObject;
+
+    private void Start()
     {
-        
+        stats = GetComponent<EnemyStats>();
+        gunController = GetComponent<GunController>(); 
+        playerObject = stats.playerObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         
     }

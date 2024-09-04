@@ -82,7 +82,7 @@ public class Bullet : MonoBehaviour
                 
                 GameObject obj = null;
                 
-                AudioSource audio = obj.AddComponent<AudioSource>();
+                //AudioSource audio = obj.AddComponent<AudioSource>();
                 
                 if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
                 {
