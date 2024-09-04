@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -239,8 +239,10 @@ GameObject:
   - component: {fileID: 255360929}
   - component: {fileID: 255360930}
   - component: {fileID: 255360931}
+  - component: {fileID: 255360932}
+  - component: {fileID: 255360933}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: Flying Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _horizontalSpeed: 1
   _verticalSpeed: 1
-  _heightAboveGround: 10
+  _heightAboveGround: 7
   _stoppingDistanceToPlayer: 1
 --- !u!54 &255360931
 Rigidbody:
@@ -305,6 +307,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &255360932
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255360928}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &255360933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255360928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3722bb7e6827d07488f4a84b86edb936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _yMin: -0.5
+  _yMax: 0.5
+  _speed: 0.5
+  _targetObject: {fileID: 890833643}
 --- !u!1 &866772596
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletList: []
-  amountToPool: 20
+  amountToPool: 0
   bullet: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
 --- !u!4 &1359603918
 Transform:
