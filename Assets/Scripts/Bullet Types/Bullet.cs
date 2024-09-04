@@ -84,17 +84,17 @@ public class Bullet : MonoBehaviour
                 
                 AudioSource audio = obj.AddComponent<AudioSource>();
                 
-                if (hit.collider.TryGetComponent(out EnemyStats enemy ))
+                if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
                 {
-                    //enemy.TakeDamage(damageAmount);
+                    enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
-                        //_bulletEffect1.OnEnemyHit(enemy, damageAmount);
+                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
                     }
 
                     if (_bulletEffect2 != null)
                     {
-                        //_bulletEffect2.OnEnemyHit(enemy, damageAmount);
+                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))

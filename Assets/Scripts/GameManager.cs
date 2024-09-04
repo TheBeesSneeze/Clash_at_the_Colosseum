@@ -18,10 +18,15 @@ public class GameManager : Singleton<GameManager>
     public static PathManager pathManager;
     public static BulletPoolManager bulletPoolManager;
 
+    [Header("BulletPool")]
+    [SerializeField] private int amountToPool;
+    [SerializeField] private GameObject bullet;
+
     void Start()
     {
         InitializeCellManager();
         InitializePathManager();
+        InitializeBulletPoolManager();
     }
 
     private void InitializeCellManager()
@@ -36,6 +41,6 @@ public class GameManager : Singleton<GameManager>
 
     private void InitializeBulletPoolManager()
     {
-        //bulletPoolManager = new BulletPoolManager();
+        bulletPoolManager = new BulletPoolManager(amountToPool, bullet);
     }
 }

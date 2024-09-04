@@ -95,7 +95,7 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
 
         //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        GameObject bullet = BulletPoolManager.Instance.GetPooledObject();
+        GameObject bullet = BulletPoolManager.GetPooledObject();
         if (bullet == null)
         {
             return;
@@ -116,7 +116,7 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot += Time.deltaTime;
 
         if (!canShoot) return;
-        if (!InputEvents.Instance.ShootPressed) return;
+        if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
         if (!shootingMode.CanHoldFire)

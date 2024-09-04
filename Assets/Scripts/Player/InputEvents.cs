@@ -5,19 +5,19 @@ using UnityEngine.InputSystem;
 public class InputEvents : Singleton<InputEvents>
 {
     // Events
-    public UnityEvent MoveStarted, MoveHeld, MoveCanceled;
-    public UnityEvent ShootStarted, ShootHeld, ShootCanceled;
-    public UnityEvent GrappleStarted, GrappleHeld, GrappleCanceled;
-    public UnityEvent JumpStarted, JumpHeld, JumpCanceled;
-    public UnityEvent SprintStarted, SprintHeld, SprintCanceled;
-    public UnityEvent PauseStarted, PauseCanceled;
-    public UnityEvent RestartStarted, RespawnStarted;
+    [HideInInspector] public UnityEvent MoveStarted, MoveHeld, MoveCanceled;
+    [HideInInspector] public UnityEvent ShootStarted, ShootHeld, ShootCanceled;
+    [HideInInspector] public UnityEvent GrappleStarted, GrappleHeld, GrappleCanceled;
+    [HideInInspector] public UnityEvent JumpStarted, JumpHeld, JumpCanceled;
+    [HideInInspector] public UnityEvent SprintStarted, SprintHeld, SprintCanceled;
+    [HideInInspector] public UnityEvent PauseStarted, PauseCanceled;
+    [HideInInspector] public UnityEvent RestartStarted, RespawnStarted;
 
     // Input values and flags
     public Vector2 LookDelta => Look.ReadValue<Vector2>();
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
-    public bool MovePressed, JumpPressed, ShootPressed, SprintPressed;
+    public static bool MovePressed, JumpPressed, ShootPressed, SprintPressed;
 
     public static bool RespawnPressed, PausePressed;
 
@@ -69,15 +69,6 @@ public class InputEvents : Singleton<InputEvents>
         pressedFlag = false;
         actionEvent?.Invoke();
     }
-
-    /*public void OnPause(InputAction.CallbackContext context)
-    {
-
-        if (context.phase == InputActionPhase.Performed)
-        {
-            Debug.Log("Pause event triggered");
-        }
-    }*/
 
     private void Update()
     {

@@ -98,7 +98,7 @@ public class GrapplingHook : MonoBehaviour
     {
         if (joint == null) return;
 
-        if(InputEvents.Instance.JumpPressed)
+        if(InputEvents.JumpPressed)
         {
             joint.spring = jumpingSpring;
             joint.damper = jumpingDamper;

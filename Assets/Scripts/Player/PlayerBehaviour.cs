@@ -66,4 +66,3 @@ public class PlayerBehaviour : CharacterType
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
-
