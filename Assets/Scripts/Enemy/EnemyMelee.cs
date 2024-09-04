@@ -17,10 +17,10 @@ using UnityEngine.UIElements;
 
 public class EnemyMelee : MonoBehaviour
 {
-    [SerializeField] GameObject playerObject;
     
     private EnemyStats stats;
     private PlayerBehaviour player;
+    private GameObject playerObject;
     private float coolDown;
     private float timeBetweenAttacks;
 
@@ -29,6 +29,7 @@ public class EnemyMelee : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         player = playerObject.GetComponent<PlayerBehaviour>();
         timeBetweenAttacks = stats.EnemyAttackCooldownSpeed;
+        playerObject = stats.playerObject; 
         coolDown = 0f;
     }
     private void Update()
