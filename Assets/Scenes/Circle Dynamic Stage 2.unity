@@ -1395,7 +1395,8 @@ GameObject:
   - component: {fileID: 671205876}
   - component: {fileID: 671205878}
   - component: {fileID: 671205877}
-  m_Layer: 0
+  - component: {fileID: 671205879}
+  m_Layer: 7
   m_Name: Cylinder 6.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1467,6 +1468,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671205875}
   m_Mesh: {fileID: -4910214857761193365, guid: f0ae4a578e9951043b66475e0fed22c0, type: 3}
+--- !u!65 &671205879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671205875}
+  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0079999985, y: 0.0079999985, z: 0.019999998}
+  m_Center: {x: 1.1641532e-10, y: 4.656613e-10, z: -0.000000059604645}
 --- !u!1 &718729787
 GameObject:
   m_ObjectHideFlags: 0
