@@ -57,7 +57,6 @@ public class PlayerBehaviour : CharacterType
 
     public override void TakeDamage(float damage)
     {
-        print("Player took Damage");
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
     }
