@@ -18,7 +18,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] public float EnemyDamage;
     [SerializeField] public float EnemySpeed;
     [SerializeField] public float EnemyAttackRange;
-    [SerializeField] public float EnemyAttackCooldownSpeed; 
+    [SerializeField] public float EnemyAttackCooldownSpeed;
+    [SerializeField] public GameObject playerObject;
     
     [SerializeField] public KindOfEnemy EnemyType;
 
