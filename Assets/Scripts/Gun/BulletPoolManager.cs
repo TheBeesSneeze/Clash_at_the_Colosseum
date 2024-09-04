@@ -2,39 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPoolManager : MonoBehaviour
+public class BulletPoolManager
 {
-    public List<GameObject> bulletList = new List<GameObject>();
+    private static List<GameObject> bulletList = new List<GameObject>();
+    private static GameObject bullet;
 
-    [Tooltip ("Amount that gets pooled, won't need serializefield later")]
-    [SerializeField] private int amountToPool;
-    [SerializeField] private GameObject bullet;
-
-    public static BulletPoolManager Instance;
-
-    private void Awake()
+    public BulletPoolManager(int amountPooled, GameObject bulletPrefab)
     {
-        if (Instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+        bullet = bulletPrefab;
 
-    private void Start()
-    {
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < amountPooled; i++)
         {
-            GameObject shot = Instantiate(bullet);
+            GameObject shot = GameObject.Instantiate(bulletPrefab);
             bulletList.Add(shot);
             shot.SetActive(false);
         }
     }
 
-    public GameObject GetPooledObject()
+    public static GameObject GetPooledObject()
     {
         for (int i = 0; i < bulletList.Count; i++)
         {
@@ -44,7 +29,7 @@ public class BulletPoolManager : MonoBehaviour
                 return bulletList[i];
             }
         }
-        GameObject newShot = Instantiate(bullet);
+        GameObject newShot = GameObject.Instantiate(bullet);
         bulletList.Add(newShot);
         return newShot;
     }
