@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 1360969180}
   - component: {fileID: 1360969179}
   - component: {fileID: 1360969178}
+  - component: {fileID: 1360969186}
   - component: {fileID: 1360969184}
   - component: {fileID: 1360969183}
   - component: {fileID: 1360969182}
@@ -578,12 +579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 0
-  EnemyDamage: 0
+  EnemyHealth: 1
+  EnemyDamage: 2
   EnemySpeed: 0
-  EnemyAttackRange: 0
+  EnemyAttackRange: 3
+  playerObject: {fileID: 1967254983}
   EnemyAttackCooldownSpeed: 0
-  playerObject: {fileID: 0}
   EnemyType: 1
 --- !u!114 &1360969185
 MonoBehaviour:
@@ -602,6 +603,33 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 1780397538}
   bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
+--- !u!54 &1360969186
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360969177}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1436201108
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,3 +958,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 487826005c6db3047b23c17487994377, type: 3}
+--- !u!1 &1967254983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  m_PrefabInstance: {fileID: 221055677}
+  m_PrefabAsset: {fileID: 0}

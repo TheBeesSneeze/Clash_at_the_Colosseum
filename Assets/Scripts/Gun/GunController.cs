@@ -18,7 +18,7 @@ public class GunController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public ShootingMode shootingMode;
-    [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] public GameObject BulletPrefab;
     
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;

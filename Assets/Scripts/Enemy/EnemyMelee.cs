@@ -28,7 +28,7 @@ public class EnemyMelee : MonoBehaviour
     {
         stats = GetComponent<EnemyStats>();
         player = playerObject.GetComponent<PlayerBehaviour>();
-        timeBetweenAttacks = stats.EnemyAttackCooldownSpeed;
+        timeBetweenAttacks = stats.EnemyAttackRate;
         playerObject = stats.playerObject; 
         coolDown = 0f;
     }
