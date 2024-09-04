@@ -16,23 +16,29 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float DefaultHealth; 
+    [Header("Input")]
 
+    [Min(0.01f)]
+    public float MouseSensitivity;
+
+    [Header("Stats")]
+
+    [Min(0)]
+    public float DefaultHealth;
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
-    [Tooltip("How much simulated friction to prevent you from moving forward when stopping input")]
-    public float Friction = 0.175f;
-
-    [Tooltip("What percent of normal movement will get applied whilst moving in the air")]
-    public float AirMovementMultiplier = 0.5f;
-
     [Tooltip("The max target speed")]
     public float MaxSpeed = 20f;
+    [Tooltip("How much simulated friction to prevent you from moving forward when stopping input")][Min(0)]
+    public float Friction = 0.175f;
+    [Tooltip("What percent of normal movement will get applied whilst moving in the air")][Min(0)]
+    public float AirMovementMultiplier = 0.5f;
+    
 
-    [Tooltip("How much player regens every second.")]
+    [Tooltip("How much player regens every second.")][Min(0)]
     public int HealthRegen = 1;
 
-    [Tooltip("Seconds until player heals.")]
+    [Tooltip("Seconds until player heals.")][Min(0)]
     public int SecondsUntilHealing = 2;
 
     [Header("Jumps")]
