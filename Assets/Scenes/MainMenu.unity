@@ -454,6 +454,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1581961674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4903294385121249880, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+  m_PrefabInstance: {fileID: 1744148168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569380f42ffae8141a4437cc218c280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1697685636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2092881774504035227, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+  m_PrefabInstance: {fileID: 1744148168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd9b988f05920644a5233d94bd71570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1744148168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,6 +527,66 @@ PrefabInstance:
     - target: {fileID: 707115621645131708, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 997638362307802747, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1581961674}
+    - target: {fileID: 997638362307802747, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: sensitivityChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 997638362307802747, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenuScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043647751875867827, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1581961674}
+    - target: {fileID: 1043647751875867827, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: volumeChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043647751875867827, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenuScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092881774504035227, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: playSceneNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835542484109359081, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1581961674}
+    - target: {fileID: 4835542484109359081, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: inputSwitchClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835542484109359081, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenuScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263621782336927220, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1697685636}
+    - target: {fileID: 6263621782336927220, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: playClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874047023354230172, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1581961674}
+    - target: {fileID: 6874047023354230172, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: escPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874047023354230172, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenuScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8870093346803738185, guid: 32ad623dfc5300444a0851f5c998179a, type: 3}
       propertyPath: m_Name

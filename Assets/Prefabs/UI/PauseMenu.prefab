@@ -421,8 +421,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7921856069851891754}
   - {fileID: 4234950642075981012}
+  - {fileID: 7921856069851891754}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButtonsContainer: {fileID: 3756224303992182911}
   resumeButton: {fileID: 559653024084845324}
-  settingsButton: {fileID: 8319240246536819790}
+  settingsButton: {fileID: 3859843008625446587}
   mainMenuButton: {fileID: 5817483167541674124}
   settingsMenu: {fileID: 3859843008625446587}
   backButton: {fileID: 4539172833179646787}
@@ -656,6 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7921856069851891754}
+  - component: {fileID: 117492991713127665}
   m_Layer: 0
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -681,6 +682,25 @@ Transform:
   m_Father: {fileID: 7501830047332301168}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &117492991713127665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859843008625446587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569380f42ffae8141a4437cc218c280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentMenu: {fileID: 3756224303992182911}
+  buttonContainer: {fileID: 3859843008625446587}
+  backButton: {fileID: 4539172833179646787}
+  volumeSlider: {fileID: 6856212803596466659}
+  sensitivitySlider: {fileID: 1259341129359511969}
+  inputSwitch: {fileID: 0}
+  inputSwitchText: {fileID: 0}
 --- !u!1 &3977380964534547581
 GameObject:
   m_ObjectHideFlags: 0
