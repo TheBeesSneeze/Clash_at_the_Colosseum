@@ -24,7 +24,6 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        print("Damage Taken");
         currentHealth -= damage;
 
         if (currentHealth < damage) 
