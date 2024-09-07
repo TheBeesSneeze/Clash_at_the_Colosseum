@@ -163,10 +163,9 @@ public class GroundedEnemyMovement : MonoBehaviour
         }    
 
 
-        if (path == null)
-        {
-            return;
-        }
+        if (path == null) return;
+        
+        if (path.cell == null) return;
 
         Vector3 lastPoint = path.position;
 

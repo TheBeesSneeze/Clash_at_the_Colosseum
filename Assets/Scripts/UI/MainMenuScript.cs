@@ -9,22 +9,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class MainMenuScript : MonoBehaviour
 {
+
+    public GameObject buttonContianer; 
     public GameObject playButton;
-    public int playSceneNumber;
-    public GameObject settingsButton;
+    public GameObject settingsMenu;
     public GameObject statsButton;
     public GameObject helpButton;
+    public GameObject creditsButton;
     public GameObject quitButton;
+    public GameObject confirmExitButton;
+
+    public int playSceneNumber;
+    private void Start(){
+        InputEvents.Instance.PauseStarted.AddListener(escPressed);
+    }
+    public void escPressed()
+    {
+        if (settingsMenu.activeSelf){
+            settingsMenu.SetActive(false);
+            buttonContianer.SetActive(true);
+        } else if (confirmExitButton.activeSelf){
+            buttonContianer.SetActive(true);
+            confirmExitButton.SetActive(false);
+        } else {
+            buttonContianer.SetActive(false);
+            confirmExitButton.SetActive(true);
+        }
+    }
     public void playClicked()
     {
-        print("Play clicked");
+        print("Loading Game...");
         SceneManager.LoadScene(playSceneNumber);
+        print("Entered play scene");
     }
     public void settingsClicked()
     {
-        print("Settings clicked");
+        settingsMenu.SetActive(true);
+        buttonContianer.SetActive(false);
     }
     public void statsClicked()
     {
@@ -34,9 +58,18 @@ public class MainMenuScript : MonoBehaviour
     {
         print("Help clicked");
     }
+    public void creditsClicked()
+    {
+        print("Credits clicked");
+    }
     public void quitClicked()
     {
-        print("Quit CLicked");
+        confirmExitButton.SetActive(true);
+        buttonContianer.SetActive(false);
+    }
+    public void confirmExitClicked()
+    {
+        print("Exiting Game...");
         Application.Quit();
     }
 }
