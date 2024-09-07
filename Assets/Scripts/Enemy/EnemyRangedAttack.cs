@@ -18,6 +18,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private EnemyStats stats;
     private GunController gunController;
     private GameObject playerObject;
+    private float coolDown; 
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
@@ -29,20 +30,25 @@ public class EnemyRangedAttack : MonoBehaviour
         playerObject = stats.playerObject;
         fireRate = stats.EnemyAttackRate;
         slowFireRate = fireRate * 2;
-        nextFireTime = 0f; 
+        coolDown = 0f;
     }
 
     private void Update()
     {
         AttemptAttack();
+        coolDown -= Time.deltaTime;
     }
 
     private void AttemptAttack()
     {
-        float distanceFromPlayer = GetDistanceFromPlayer();
-        if(distanceFromPlayer <= stats.EnemyAttackRange) 
+        if (coolDown <= 0f)
         {
-            Attacking();
+            float distanceFromPlayer = GetDistanceFromPlayer();
+            if (distanceFromPlayer <= stats.EnemyAttackRange)
+            {
+                Attacking();
+                coolDown = fireRate;
+            }
         }
     }
 
@@ -56,22 +62,20 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
-        if(Time.deltaTime > nextFireTime)
-        {
-            nextFireTime += Time.deltaTime;
-            Vector3 destination = playerObject.transform.position;
-            destination += new Vector3(
-                Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
-                Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
-                Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset));
-            Vector3 direction = destination - gunController.bulletSpawnPoint.position;
-            var bullet = Instantiate(gunController.BulletPrefab, gunController.bulletSpawnPoint.position, Quaternion.identity );
-            bullet.transform.forward = direction.normalized;
-            var bulletObject = bullet.GetComponent<Bullet>();
-            bulletObject.damageAmount = gunController.shootingMode.BulletDamage;
-            bulletObject.bulletForce = gunController.shootingMode.BulletSpeed;
-            bulletObject.Initialize(gunController.bulletEffect1, gunController.bulletEffect2, direction);
-        }
+        nextFireTime += Time.deltaTime;
+        Vector3 destination = playerObject.transform.position;
+        destination += new Vector3(
+            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
+            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
+            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset));
+        Vector3 direction = destination - gunController.bulletSpawnPoint.position;
+        var bullet = Instantiate(gunController.BulletPrefab, gunController.bulletSpawnPoint.position, Quaternion.identity);
+        bullet.transform.forward = direction.normalized;
+        var bulletObject = bullet.GetComponent<Bullet>();
+        bulletObject.damageAmount = gunController.shootingMode.BulletDamage;
+        bulletObject.bulletForce = gunController.shootingMode.BulletSpeed;
+        bulletObject.Initialize(gunController.bulletEffect1, gunController.bulletEffect2, direction);
+
     }
 
 }

@@ -80,12 +80,13 @@ public class Bullet : MonoBehaviour
                     QueryTriggerInteraction.Ignore))
             {
                 
-                GameObject obj = null;
+                //GameObject obj = null;
                 
                 //AudioSource audio = obj.AddComponent<AudioSource>();
                 
                 if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
                 {
+                    print("enemy taking damage"); 
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
