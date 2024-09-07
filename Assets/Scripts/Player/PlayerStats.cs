@@ -18,8 +18,8 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Input")]
 
-    [Min(0.01f)]
-    public float MouseSensitivity;
+    //[Min(0.01f)]
+    //public float MouseSensitivity;
 
     [Header("Stats")]
 
