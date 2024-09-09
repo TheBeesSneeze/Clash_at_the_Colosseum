@@ -12,16 +12,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
-    public Button playButton;
-    public Button settingsMenu;
-    public Button statsButton;
-    public Button helpButton;
-    public Button creditsMenu;
-    public Button quitButton;
-    public Button confirmExitButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button settingsMenu;
+    [SerializeField] private Button statsButton;
+    [SerializeField] private Button helpButton;
+    [SerializeField] private Button creditsMenu;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Button confirmExitButton;
 
-    public int playSceneNumber;
-    private void Start(){
+    public string mainSceneName = "Gun Test";
+    private void Start()
+    {
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
     }
     public void escPressed()
@@ -45,7 +46,7 @@ public class MainMenu : MonoBehaviour
     public void playClicked()
     {
         Debug.Log("Loading Game...");
-        SceneManager.LoadScene(playSceneNumber);
+        SceneManager.LoadScene(mainSceneName);
         Debug.Log("Entered play scene");
     }
     public void settingsClicked()
