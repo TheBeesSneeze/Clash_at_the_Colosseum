@@ -15,19 +15,12 @@ public class MainMenuScript : MonoBehaviour
 
     public GameObject buttonContianer; 
     public GameObject playButton;
-    public GameObject settingsButton;
+    public GameObject settingsMenu;
     public GameObject statsButton;
     public GameObject helpButton;
+    public GameObject creditsButton;
     public GameObject quitButton;
-
-    public GameObject settingsMenu;
-    public GameObject backButton;
-    public GameObject volumeSlider;
-    public GameObject sensitivitySlider;
-    public GameObject inputSwitch;
-    public GameObject inputSwitchText;
-
-    public GameObject wantToQuitButton;
+    public GameObject confirmExitButton;
 
     public int playSceneNumber;
     private void Start(){
@@ -38,12 +31,12 @@ public class MainMenuScript : MonoBehaviour
         if (settingsMenu.activeSelf){
             settingsMenu.SetActive(false);
             buttonContianer.SetActive(true);
-        } else if (wantToQuitButton.activeSelf){
+        } else if (confirmExitButton.activeSelf){
             buttonContianer.SetActive(true);
-            wantToQuitButton.SetActive(false);
+            confirmExitButton.SetActive(false);
         } else {
             buttonContianer.SetActive(false);
-            wantToQuitButton.SetActive(true);
+            confirmExitButton.SetActive(true);
         }
     }
     public void playClicked()
@@ -65,35 +58,18 @@ public class MainMenuScript : MonoBehaviour
     {
         print("Help clicked");
     }
+    public void creditsClicked()
+    {
+        print("Credits clicked");
+    }
     public void quitClicked()
     {
+        confirmExitButton.SetActive(true);
         buttonContianer.SetActive(false);
-        wantToQuitButton.SetActive(true);
     }
-    public void wantToQuitClicked()
+    public void confirmExitClicked()
     {
         print("Exiting Game...");
         Application.Quit();
-    }
-    public void inputSwitchClicked()
-    {
-        Text inputbuttonText = inputSwitchText.GetComponent<Text>();
-        if (inputbuttonText.text == "Input: Keyboard"){
-            inputbuttonText.text = "Input: Controller";
-        } else {
-            inputbuttonText.text = "Input: Keyboard";
-        }
-    }
-    public void volumeChanged()
-    {
-        Slider slider = volumeSlider.GetComponent<Slider>();
-        float sliderValue = slider.value;
-        print("Volume: " + Mathf.Round(sliderValue * 100f) + "%");
-    }
-    public void sensitivityChanged()
-    {
-        Slider slider = sensitivitySlider.GetComponent<Slider>();
-        float sliderValue = slider.value;
-        print("Sensitivity: " + Mathf.Round(sliderValue * 100f) + "%");
     }
 }

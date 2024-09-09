@@ -10,29 +10,28 @@ namespace PathFinding
 {
     public class Cell : MonoBehaviour
     {
-        public bool Solid = false;
-        private List<Cell> _sideNeighbors = new List<Cell>();
+        [OnValueChanged("UpdateIfSolid")]
+        [SerializeField] public bool Solid = false;
+        [SerializeField] bool autoRenameCell = false;
+
         public List<Cell> SideNeighbors { get => _sideNeighbors; }
-
-        private List<Cell> _verticalNeighbors = new List<Cell>();
+        private List<Cell> _sideNeighbors = new List<Cell>();
         public List<Cell> VerticalNeighbors { get => _verticalNeighbors; }
+        private List<Cell> _verticalNeighbors = new List<Cell>();
 
-        public LayerMask _cellLM;
+        private LayerMask _cellLM;
 
         // should ve called in cellmanager MAYBE
         void Awake()
         {
             int empty = LayerMask.NameToLayer("Empty Cell");
             int fill = LayerMask.NameToLayer("Fill Cell");
-            gameObject.layer = Solid ? fill : empty;
+            UpdateIfSolid();
             _cellLM = new LayerMask();
             _cellLM |= (1 << empty);
             _cellLM |= (1 << fill);
 
             GetNeighbors();
-
-            GetComponent<Collider>().isTrigger = !Solid;
-            GetComponent<MeshRenderer>().enabled = Solid;
         }
 
         // Update is called once per frame
@@ -59,7 +58,15 @@ namespace PathFinding
                 GameManager.pathManager.PlayerCellUpdate(this);
             }
         }
+        private void UpdateIfSolid()
+        {
+            GetComponent<Collider>().isTrigger = !Solid;
+            GetComponent<MeshRenderer>().enabled = Solid;
+            gameObject.layer = Solid ? 0 : 6;
 
+            if (autoRenameCell && !Application.isPlaying)
+                gameObject.name = Solid ? "Solid Cell" : "Air Cell";
+        }
         public void GetNeighbors()
         {
             _sideNeighbors.Clear();
@@ -100,19 +107,18 @@ namespace PathFinding
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
-            if (Selection.activeGameObject != transform.gameObject)
-            {
+            UpdateIfSolid();
+
+            DrawSelfGizmos();
+
+            // Draw Neighbors
+            if (Selection.activeGameObject != this.transform.gameObject)
                 return;
-            }
 
-            Debug.Log("drawing");
-
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
-
-            Gizmos.color= Color.yellow;
+            GetNeighbors();
+            Gizmos.color = Color.yellow;
             for (int i = 0; i < _sideNeighbors.Count; i++)
             {
                 Cell c = _sideNeighbors[i];
@@ -120,11 +126,16 @@ namespace PathFinding
             }
         }
 
-        private void OnDrawGizmos()
+        private void DrawSelfGizmos()
         {
-            GetComponent<Collider>().isTrigger = !Solid;
-            GetComponent<MeshRenderer>().enabled = Solid;
-            gameObject.layer = Solid ? 0 : 6;
+            if (Selection.activeGameObject == null)
+                return;
+
+            if (Selection.activeGameObject.GetComponent<StageBuilderTool>() == null)
+                return;
+            
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         }
     }
 }

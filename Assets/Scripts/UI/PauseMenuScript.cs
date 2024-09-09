@@ -26,8 +26,13 @@ public class PauseMenuScript : MonoBehaviour
 
     public bool isPaused = false;
     public int mainMenuSceneNumber = 0;
-    private void Start(){
+    private void Start()
+    {
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
+        Slider slider = volumeSlider.GetComponent<Slider>();
+        slider.value = PlayerPrefs.GetFloat("volume", 1);
+        slider = sensitivitySlider.GetComponent<Slider>();
+        slider.value = PlayerPrefs.GetFloat("sensitivity", 1);
     }
     public void escPressed() {
         if (settingsMenu.activeSelf)
@@ -52,16 +57,16 @@ public class PauseMenuScript : MonoBehaviour
     public void mainMenuClicked() {
         SceneManager.LoadScene(mainMenuSceneNumber);
     }
-    public void VolumeChanged()
+    public void volumeChanged()
     {
         Slider slider = volumeSlider.GetComponent<Slider>();
+        PlayerPrefs.SetFloat("volume", slider.value);
         float sliderValue = slider.value;
-        print("Volume: " + Mathf.Round(sliderValue * 100f) + "%");
     }
     public void sensitivityChanged()
     {
         Slider slider = sensitivitySlider.GetComponent<Slider>();
+        PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
-        print("Sensitivity: " + Mathf.Round(sliderValue * 100f) + "%");
     }
 }
