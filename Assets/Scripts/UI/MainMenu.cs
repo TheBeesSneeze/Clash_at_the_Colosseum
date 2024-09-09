@@ -10,17 +10,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class MainMenuScript : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-
-    public GameObject buttonContianer; 
-    public GameObject playButton;
-    public GameObject settingsMenu;
-    public GameObject statsButton;
-    public GameObject helpButton;
-    public GameObject creditsMenu;
-    public GameObject quitButton;
-    public GameObject confirmExitButton;
+    public Button playButton;
+    public Button settingsMenu;
+    public Button statsButton;
+    public Button helpButton;
+    public Button creditsMenu;
+    public Button quitButton;
+    public Button confirmExitButton;
 
     public int playSceneNumber;
     private void Start(){
@@ -28,6 +26,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void escPressed()
     {
+        /*
         if (settingsMenu.activeSelf) {
             settingsMenu.SetActive(false);
             buttonContianer.SetActive(true);
@@ -41,39 +40,34 @@ public class MainMenuScript : MonoBehaviour
             buttonContianer.SetActive(false);
             confirmExitButton.SetActive(true);
         }
+        */
     }
     public void playClicked()
     {
-        print("Loading Game...");
+        Debug.Log("Loading Game...");
         SceneManager.LoadScene(playSceneNumber);
-        print("Entered play scene");
+        Debug.Log("Entered play scene");
     }
     public void settingsClicked()
     {
-        settingsMenu.SetActive(true);
-        buttonContianer.SetActive(false);
     }
     public void statsClicked()
     {
-        print("Stats clicked");
+        Debug.Log("Stats clicked");
     }
     public void helpClicked()
     {
-        print("Help clicked");
+        Debug.Log("Help clicked");
     }
     public void creditsClicked()
     {
-        creditsMenu.SetActive(true);
-        buttonContianer.SetActive(false);
     }
     public void quitClicked()
     {
-        confirmExitButton.SetActive(true);
-        buttonContianer.SetActive(false);
     }
     public void confirmExitClicked()
     {
-        print("Exiting Game...");
+        Debug.Log("Exiting Game...");
         Application.Quit();
     }
 }
