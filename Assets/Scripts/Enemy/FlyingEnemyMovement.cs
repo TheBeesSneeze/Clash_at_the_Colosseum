@@ -8,14 +8,15 @@ using UnityEngine;
 
 public class FlyingEnemyMovement : MonoBehaviour
 {
-    [SerializeField][Min(0)] private float _horizontalSpeed = 3;
-    [SerializeField][Min(0)] private float _verticalSpeed = 1;
-    [SerializeField][Min(0)] private float _heightAboveGround = 10;
-    [SerializeField][Min(0)] private float _stoppingDistanceToPlayer = 1;
+    private float _horizontalSpeed;
+    private float _verticalSpeed;
+    private float _heightAboveGround;
+    private float _stoppingDistanceToPlayer;
 
     private Transform _player;
     private int _groundMask;
     private Rigidbody rb;
+    private EnemyStats enemyStats;
 
 
     private void Start()
@@ -23,6 +24,10 @@ public class FlyingEnemyMovement : MonoBehaviour
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _groundMask = LayerMask.NameToLayer("Fill Cell");
         rb = GetComponent<Rigidbody>();
+        _horizontalSpeed = enemyStats.EnemyMovementSpeed;
+        _verticalSpeed = enemyStats.VerticalSpeed;
+        _heightAboveGround = enemyStats.HeightAboveGround;
+        _stoppingDistanceToPlayer = enemyStats.StopDistanceToPlayer;
     }
 
     private void Update()
