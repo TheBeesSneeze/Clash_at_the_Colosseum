@@ -15,11 +15,19 @@ using static AudioManager;
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int _airJumps=1;
+    [Header ("Jump Stats")]
+    [SerializeField] private int _airJumps = 1;
+    [Tooltip ("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
+    [SerializeField] private float jumpRaycastDistance;
+    public bool ConsistentJumps = true;
+
+    [Header ("Camera References")]
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
     [SerializeField] private Transform cameraFollowPoint;
+
+    //references
     private Vector2 input;
     private Rigidbody rb;
     private PlayerStats stats;
@@ -29,16 +37,26 @@ public class PlayerController : MonoBehaviour
     private float xMovement;
     private float yMovement;
 
-
-    public bool ConsistentJumps = true;
-
     private int airJumpCounter;
 
-    private float timeSinceLastFootstep = 0;
-    private AudioSource source;
+    //audio stuff
+    //private float timeSinceLastFootstep = 0;
+    //private AudioSource source;
 
-
-    [SerializeField]private float jumpRaycastDistance;
+    void Start()
+    {
+        groundLayer = LayerMask.NameToLayer("Ground");
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        stats = GetComponent<PlayerStats>();
+        //source = gameObject.AddComponent<AudioSource>();
+        //source.volume = 0.15f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        cameraHolder.transform.parent = null;
+        InputEvents.Instance.JumpStarted.AddListener(Jump);
+        airJumpCounter = stats.AirJumps;
+    }
 
     /// <summary>
     /// every frame while move is held
@@ -50,31 +68,33 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         UpdateCamera();
 
         input = InputEvents.Instance.InputDirection2D;
 
-        
-        FootStepSound();
+        //FootStepSound();
         IsGrounded();
     }
 
+    /// <summary>
+    /// returns true if player is on the ground
+    /// </summary>
+    /// <returns></returns> bool
     private bool IsGrounded()
     {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayer))
         {
-            Debug.DrawLine(transform.position, transform.position + (Vector3.down * jumpRaycastDistance), Color.blue);
             return true;
         }
         return false;
     }
 
     /// <summary>
-    /// footstep code
+    /// footstep code ----- AUDIO
     /// </summary>
+    /*
     private void FootStepSound()
     {
         if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
@@ -87,6 +107,7 @@ public class PlayerController : MonoBehaviour
             timeSinceLastFootstep = Time.time;
         }
     }
+    */
 
     private void DoMovement()
     {
@@ -100,10 +121,14 @@ public class PlayerController : MonoBehaviour
 
         float maxSpeed = stats.MaxSpeed;
 
-        if (input.x > 0 && xMag >  maxSpeed) input.x = 0;
-        if (input.x < 0 && xMag < -maxSpeed) input.x = 0;
-        if (input.y > 0 && yMag >  maxSpeed) input.y = 0;
-        if (input.y < 0 && yMag < -maxSpeed) input.y = 0;
+        if (input.x > 0 && xMag >  maxSpeed) 
+            input.x = 0;
+        if (input.x < 0 && xMag < -maxSpeed) 
+            input.x = 0;
+        if (input.y > 0 && yMag >  maxSpeed) 
+            input.y = 0;
+        if (input.y < 0 && yMag < -maxSpeed) 
+            input.y = 0;
 
 
         //Apply forces to move player
@@ -193,21 +218,5 @@ public class PlayerController : MonoBehaviour
         cameraHolder.localRotation = Quaternion.Euler(yMovement, xMovement, 0);
         cameraHolder.position = cameraFollowPoint.position;
         playerOrientationTracker.localRotation = Quaternion.Euler(0, xMovement, 0);
-    }
-
-    // Start is called every frame
-    void Start()
-    {
-        groundLayer = LayerMask.NameToLayer("Ground");
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        stats = GetComponent<PlayerStats>();
-        source = gameObject.AddComponent<AudioSource>();
-        source.volume = 0.15f;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        cameraHolder.transform.parent = null;
-        InputEvents.Instance.JumpStarted.AddListener(Jump);
-        airJumpCounter = stats.AirJumps;
     }
 }

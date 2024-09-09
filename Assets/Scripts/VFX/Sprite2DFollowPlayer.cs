@@ -2,14 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*****************************************************************************
+// File Name :         Sprite2DFollowPlayer.cs
+// Author :            Toby
+//
+// Brief Description : Four sprite script to visualize enemies
+*****************************************************************************/
+
 public class Sprite2DFollowPlayer : MonoBehaviour
 {
+    [Header ("Sprites")]
     [SerializeField] private Sprite _frontSprite;
     [SerializeField] private Sprite _leftSprite;
     [SerializeField] private Sprite _rightSprite;
     [SerializeField] private Sprite _backSprite;
 
+    [Header ("Base Enemy Transform")]
     [SerializeField] private Transform rotationReference;
+
     private Transform player;
     private SpriteRenderer _sprite;
 
@@ -22,11 +32,8 @@ public class Sprite2DFollowPlayer : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-       
-
         float angle = transform.eulerAngles.y-rotationReference.eulerAngles.y;
         angle = (angle + 360) % 360;
 

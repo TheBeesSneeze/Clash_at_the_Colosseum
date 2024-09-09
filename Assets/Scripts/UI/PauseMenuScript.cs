@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
+
     public GameObject pauseButtonsContainer;
     public GameObject resumeButton;
     public GameObject settingsButton;
