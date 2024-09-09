@@ -7,6 +7,8 @@
 
 note from toby: this is the most excessive piece of code ive ever seen i think 
 its so funny.
+
+shoutout kyle and oos, this script is so silly
 *****************************************************************************/
 using UnityEngine;
 
