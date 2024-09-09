@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 48008691}
   - component: {fileID: 48008690}
   - component: {fileID: 48008689}
+  - component: {fileID: 48008693}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -331,6 +332,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48008693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48008688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f920a2384b9c4d4f8ff940809804309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawnPoints:
+  - EnemyType: {fileID: 4605286496879608125, guid: 22899e0ff542bb44295bd6d5c2831227, type: 3}
+    EnemySpawnPoint: {fileID: 0}
+  - EnemyType: {fileID: 0}
+    EnemySpawnPoint: {fileID: 0}
+  - EnemyType: {fileID: 0}
+    EnemySpawnPoint: {fileID: 0}
+  - EnemyType: {fileID: 0}
+    EnemySpawnPoint: {fileID: 0}
 --- !u!1 &133367434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
