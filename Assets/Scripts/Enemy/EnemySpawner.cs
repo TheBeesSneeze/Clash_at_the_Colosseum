@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
         public GameObject EnemyType;
         public Transform EnemySpawnPoint;
     }
-
+    [Tooltip("Make array size the amount of spawn points you want")]
     [SerializeField] EnemySpawnPointEntry[] enemySpawnPoints;
 
     private void Update()
@@ -28,9 +28,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        if (!InputEvents.EnemySpawnPressed)
+            return;
         for(int i = 0; i < enemySpawnPoints.Length; ++i)
         {
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
+        InputEvents.EnemySpawnPressed = false;
     }
 }

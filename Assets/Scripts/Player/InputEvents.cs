@@ -22,7 +22,7 @@ public class InputEvents : Singleton<InputEvents>
 
     public static bool RespawnPressed, PausePressed;
 
-    private static bool EnemySpawnPressed;
+    public static bool EnemySpawnPressed;
 
     private PlayerInput playerInput;
     private InputAction Move, Shoot, Jump, Look, Sprint, Respawn, Secondary, Pause, SpawnEnemies;
