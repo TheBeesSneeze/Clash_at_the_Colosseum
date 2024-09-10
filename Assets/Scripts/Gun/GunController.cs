@@ -100,7 +100,6 @@ public class GunController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("setting active rn");
         bullet.transform.position = bulletSpawnPoint.position;
         bullet.transform.forward = dir.normalized;
         var bulletObj = bullet.GetComponent<Bullet>();

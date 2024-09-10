@@ -10,7 +10,6 @@ public class GrapplingHook : MonoBehaviour
     public LayerMask shootLayers;
     private SpringJoint joint;
     private float maxDist = 1000f;
-    private LineRenderer hookRenderer;
     private Transform cam;
 
     
@@ -39,12 +38,15 @@ public class GrapplingHook : MonoBehaviour
     [Tooltip("Force to send the player in the direction of the grapple.")]
     public float jointForceBoost = 20f;
 
-    [SerializeField] private Transform gunModel, gunFirePoint, gunFollowPoint, gunExitPoint;
+    [Header("Points")]
+    [SerializeField] private Transform gunModel;
+    [SerializeField] private Transform gunFirePoint,gunFollowPoint, gunExitPoint;
     private Rigidbody rb;
 
-    [Header("Snake town")]
-    [SerializeField] private Transform Head;
-    [SerializeField] private Material BodyMaterial;
+    [Header("VFX")]
+    [SerializeField] private Transform _grappleEnd;
+    [SerializeField] private Material _bodyMaterial;
+    [SerializeField] private LineRenderer _hookRenderer;
 
     [ReadOnly] public static bool isGrappling;
 
@@ -52,18 +54,16 @@ public class GrapplingHook : MonoBehaviour
     {
         InputEvents.Instance.GrappleStarted.AddListener(StartGrapple);
         InputEvents.Instance.GrappleCanceled.AddListener(StopGrapple);
-        hookRenderer = gameObject.AddComponent<LineRenderer>();
-        //hookRenderer.endWidth = 0.05f;
-        //hookRenderer.startWidth = 0.05f;
-        hookRenderer.positionCount = 2;
+        _hookRenderer.positionCount = 2;
         cam = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
 
         //snake
-        hookRenderer.material = BodyMaterial;
-        hookRenderer.startWidth = 1;
-        hookRenderer.endWidth = 1;
-        hookRenderer.textureMode = LineTextureMode.Tile;
+        if(_bodyMaterial!= null)
+            _hookRenderer.material = _bodyMaterial;
+        _hookRenderer.endWidth = 0.05f;
+        _hookRenderer.startWidth = 0.05f;
+        _hookRenderer.textureMode = LineTextureMode.Tile;
     }
 
     // Update is called once per frame
@@ -72,7 +72,7 @@ public class GrapplingHook : MonoBehaviour
 
         if (joint == null)
         {
-            hookRenderer.positionCount = 0;
+            _hookRenderer.positionCount = 0;
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunExitPoint.position, Time.deltaTime * 2.5f);
             gunModel.rotation =
                 Quaternion.RotateTowards(gunModel.rotation, gunExitPoint.rotation, Time.deltaTime * 2.5f);
@@ -82,14 +82,14 @@ public class GrapplingHook : MonoBehaviour
             gunModel.position = Vector3.MoveTowards(gunModel.position, gunFollowPoint.position, Time.deltaTime * 15f);
             gunModel.rotation =
                 Quaternion.RotateTowards(gunModel.rotation, gunFollowPoint.rotation, Time.deltaTime * 15f);
-            hookRenderer.positionCount = 2;
-            hookRenderer.SetPosition(0, gunFirePoint.position);
-            hookRenderer.SetPosition(1, hitPoint);
+            _hookRenderer.positionCount = 2;
+            _hookRenderer.SetPosition(0, gunFirePoint.position);
+            _hookRenderer.SetPosition(1, hitPoint);
 
-            if(Head != null) //so no head?
+            if(_grappleEnd != null) //so no head?
             {
-                Head.position = hitPoint;
-                Head.eulerAngles = gunModel.forward;
+                _grappleEnd.position = hitPoint;
+                _grappleEnd.eulerAngles = gunModel.forward;
             }
         }
     }
@@ -112,6 +112,7 @@ public class GrapplingHook : MonoBehaviour
 
     private void StartGrapple()
     {
+        Debug.Log("Grapple");
         if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, maxDist, shootLayers))
         {
             isGrappling = true;
