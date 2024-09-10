@@ -60,9 +60,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grapple",
+                    "name": "Spawn Enemies",
                     "type": "Button",
-                    "id": "5afd7b26-4aea-4380-9dbc-f608c1bfaf32",
+                    "id": "4cfd24c8-30e4-4c38-862d-a4e245610820",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -182,12 +182,12 @@
                 },
                 {
                     "name": "",
-                    "id": "3263ba94-f664-44c3-80e6-64c315d308d1",
-                    "path": "<Mouse>/rightButton",
+                    "id": "ec71e085-e95c-4099-a874-e1ac9b0da013",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grapple",
+                    "action": "Spawn Enemies",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

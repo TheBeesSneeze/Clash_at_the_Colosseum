@@ -24,6 +24,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _groundMask = LayerMask.NameToLayer("Fill Cell");
         rb = GetComponent<Rigidbody>();
+        enemyStats = GetComponent<EnemyStats>();
         _horizontalSpeed = enemyStats.EnemyMovementSpeed;
         _verticalSpeed = enemyStats.VerticalSpeed;
         _heightAboveGround = enemyStats.HeightAboveGround;
