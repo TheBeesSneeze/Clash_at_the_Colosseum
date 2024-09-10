@@ -13,20 +13,22 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    [Header("Declare ALL enemy stats here")]
-    [SerializeField] public float EnemyHealth;
-    [SerializeField] public float EnemyDamage;
-    [SerializeField] public float EnemySpeed;
-    [SerializeField] public float EnemyAttackRange;
-    [SerializeField] public float EnemyAttackCooldownSpeed;
+    [Header("Combat Variables")]
+    [SerializeField][Min(0)] public float EnemyHealth;
+    [SerializeField][Min(0)] public float EnemyDamage;
+    [SerializeField] public float EnemyAttackRate;
+    [SerializeField][Min(0)] public float EnemyAttackRange;
     [SerializeField] public GameObject playerObject;
-    
-    [SerializeField] public KindOfEnemy EnemyType;
 
-    public enum KindOfEnemy
-    {
-        BasicEnemy,
-        Flyer,
-        Tank
-    }
+    [Header("Movement Variables")]
+    [SerializeField][Min(0)] public float EnemyMovementSpeed;
+    [SerializeField][Min(0)] public float TurningSpeed;
+    [SerializeField][Min(0)] public float StopSpeed;
+    [SerializeField][Min(0)] public float StopDistanceToPlayer;
+    [SerializeField][Min(0)] public float SightDistance; 
+
+    [Header("Only Effect Flyers")]
+    [SerializeField][Min(0)] public float VerticalSpeed;
+    [SerializeField][Min(0)] public float HeightAboveGround;
+    
 }

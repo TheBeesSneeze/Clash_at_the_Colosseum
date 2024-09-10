@@ -1,10 +1,12 @@
-///
-/// Initializes other manager type classes
-/// Do not put any non-initalization methods here
-/// make a new manager class or something
-/// 
-/// Authors: Toby
-/// 
+/*******************************************************************************
+ * File Name :         GameManager.cs
+ * Author(s) :         Toby, Sky
+ *
+ * Brief Description : Initializes other manager type classes
+ * Do not put any non-initalization methods here  
+ * make a new manager class or something
+ * 
+ *****************************************************************************/
 
 using PathFinding;
 using System.Collections;
@@ -13,11 +15,12 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    //Manager references
     public static CellManager cellManager;
     public static PathManager pathManager;
     public static BulletPoolManager bulletPoolManager;
 
-    [Header("BulletPool")]
+    [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
 

@@ -27,9 +27,9 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
+        playerObject = stats.playerObject;
         player = playerObject.GetComponent<PlayerBehaviour>();
-        timeBetweenAttacks = stats.EnemyAttackCooldownSpeed;
-        playerObject = stats.playerObject; 
+        timeBetweenAttacks = stats.EnemyAttackRate;
         coolDown = 0f;
     }
     private void Update()
@@ -54,7 +54,7 @@ public class EnemyMelee : MonoBehaviour
 
     private float GetDistanceFromPlayer()
     {
-        var distance = (transform.position - playerObject.transform.position).normalized;
+        var distance = (transform.position - playerObject.transform.position);
         distance.y = 0f;
         float distanceFrom = distance.magnitude;
 
