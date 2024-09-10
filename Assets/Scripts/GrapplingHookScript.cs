@@ -35,8 +35,8 @@ public class GrapplingHookScript : MonoBehaviour
 
     void Start()
     {
-        InputEvents.Instance.SecondaryStarted.AddListener(StartGrapple);
-        InputEvents.Instance.SecondaryCanceled.AddListener(StopGrapple);
+        InputEvents.Instance.GrappleStarted.AddListener(StartGrapple);
+        InputEvents.Instance.GrappleCanceled.AddListener(StopGrapple);
         hookRenderer = gameObject.AddComponent<LineRenderer>();
         hookRenderer.endWidth = 0.05f;
         hookRenderer.startWidth = 0.05f;
@@ -46,9 +46,6 @@ public class GrapplingHookScript : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (PauseMenu.IsPaused)
-            return;
-
         if (joint == null)
         {
             hookRenderer.positionCount = 0;
@@ -87,7 +84,6 @@ public class GrapplingHookScript : MonoBehaviour
             rb.AddForce((hitPoint - transform.position).normalized * jointForceBoost, ForceMode.Impulse);
         }
     }
-
     private void StopGrapple()
     {
         if (joint)
