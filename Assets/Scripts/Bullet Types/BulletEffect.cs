@@ -13,7 +13,7 @@ using UnityEngine;
 
 public abstract class BulletEffect : ScriptableObject
 {
-    public Color TrailColor= Color.white;
+    public Color TrailColor = Color.white;
     public string UpgradeName;
     //this is the longest tooltip in the game
     [Tooltip("*IF* the bullet effect has a component that does damage, that damage is determined by multiplying the current shootmodes damage (per bullet) by this number")]
