@@ -8,14 +8,13 @@ using Utilities;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
-    [SerializeField] float _speed= 1;
-    [SerializeField] float _turningSpeed = 1;
-    [Tooltip("If enemy cant navigate to player, how fast is it gonna stop")]
-    [SerializeField] float _stoppingSpeed = 1;
-    [SerializeField] float _stopDistanceToPlayer= 1;
+    private float _speed;
+    private float _turningSpeed;
+    private float _stoppingSpeed;
+    float _stopDistanceToPlayer;
     bool _needsToSeePlayer = false; //TODO. DOESNT WORK
-    [Tooltip("Distance until enemy starts moving towards player")]
-    [SerializeField] float _sightDistance = 10; 
+    private float _sightDistance;
+    private EnemyStats _enemyStats;
 
     private Transform _player;
     public bool debug = true;
@@ -27,6 +26,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private int _playerLayer = 6;
     [ReadOnly][SerializeField] private Cell currentCell;
 
+
     private void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform; 
@@ -34,6 +34,12 @@ public class GroundedEnemyMovement : MonoBehaviour
         _playerLayer = LayerMask.NameToLayer("Player");
         rb = GetComponent<Rigidbody>();
         _collider=GetComponent<SphereCollider>();
+        _enemyStats = GetComponent<EnemyStats>();
+        _speed = _enemyStats.EnemyMovementSpeed;
+        _turningSpeed = _enemyStats.TurningSpeed;
+        _stoppingSpeed = _enemyStats.StopSpeed;
+        _stopDistanceToPlayer = _enemyStats.StopDistanceToPlayer;
+        _sightDistance = _enemyStats.SightDistance;
     }
 
     private void Update()
