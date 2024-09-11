@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c3ad9ae47497de4081f52bbb72fa101, type: 3}
-  m_Name: ElectricityBullet
+  m_Script: {fileID: 11500000, guid: bb3dceea4a5f14a4c8be05066ac64fb4, type: 3}
+  m_Name: Explosion Bullet
   m_EditorClassIdentifier: 
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
-  UpgradeName: 
-  DamageMultiplier: 1
-  ElectrocutionRange: 10
-  MaxEnemiesToZap: 3
+  UpgradeName: Dubious Detonation
+  DamageMultiplier: 0
+  ExplosionPrefab: {fileID: 0}

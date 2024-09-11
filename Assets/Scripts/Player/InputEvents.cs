@@ -18,12 +18,17 @@ public class InputEvents : Singleton<InputEvents>
     public Vector2 LookDelta => Look.ReadValue<Vector2>();
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
-    public static bool MovePressed, JumpPressed, ShootPressed, SprintPressed;
-    public static bool RespawnPressed, PausePressed;
+    public static bool MovePressed, JumpPressed, ShootPressed;
+
+    public static bool RespawnPressed, PausePressed, GrapplePressed;
+
     public static bool EnemySpawnPressed;
+
     private PlayerInput playerInput;
-    private InputAction Move, Shoot, Jump, Look, Sprint, Respawn, Secondary, Pause, SpawnEnemies;
+    private InputAction Move, Shoot, Jump, Look, Respawn, Grapple, Pause, SpawnEnemies;
+
     private Transform movementOrigin;
+
     private void Start()
     {
         movementOrigin = Camera.main.transform;
@@ -38,9 +43,8 @@ public class InputEvents : Singleton<InputEvents>
         Jump = map.FindAction("Jump");
         Shoot = map.FindAction("Shoot");
         Look = map.FindAction("Look");
-        Sprint = map.FindAction("Sprint");
         Respawn = map.FindAction("Respawn");
-        Secondary = map.FindAction("Secondary");
+        Grapple = map.FindAction("Grapple");
         Pause = map.FindAction("Pause");
         SpawnEnemies = map.FindAction("Spawn Enemies"); 
 
@@ -50,13 +54,14 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
         Pause.started += ctx => { PausePressed = true; PauseStarted.Invoke(); };
         SpawnEnemies.started += ctx => { EnemySpawnPressed = true; EnemySpawnStarted.Invoke(); };
+        Grapple.started += ctx => { GrapplePressed = true; GrappleStarted.Invoke(); };
 
         Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled += ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Sprint.canceled += ctx => SprintPressed = false;
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         SpawnEnemies.canceled += ctx => { EnemySpawnPressed = false; EnemySpawnCanceled.Invoke(); };
+        Grapple.canceled += ctx => { GrapplePressed = false; GrappleCanceled.Invoke(); };
     }
 
     void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
@@ -76,6 +81,7 @@ public class InputEvents : Singleton<InputEvents>
         if (MovePressed) MoveHeld.Invoke();
         if (JumpPressed) JumpHeld.Invoke();
         if (ShootPressed) ShootHeld.Invoke();
+        if (GrapplePressed) GrappleHeld.Invoke();
     }
 
     private void OnDisable()
@@ -84,18 +90,15 @@ public class InputEvents : Singleton<InputEvents>
         Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Sprint.started -= ctx => SprintPressed = true;
-        Respawn.started -= ctx => { RespawnPressed = true; RespawnStarted.Invoke(); };
-        Secondary.started -= ctx => GrappleStarted.Invoke();
-        Secondary.canceled -= ctx => GrappleCanceled.Invoke();
         Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
         SpawnEnemies.started -= ctx => { EnemySpawnPressed = true; EnemySpawnStarted.Invoke(); };
+        Grapple.started -= ctx => { GrapplePressed = true; GrappleStarted.Invoke(); };
 
         Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
         Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Sprint.canceled -= ctx => SprintPressed = false;
         Pause.canceled -= ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         SpawnEnemies.canceled -= ctx => { EnemySpawnPressed = false; EnemySpawnCanceled.Invoke(); };
+        Grapple.canceled -= ctx => { GrapplePressed = false; GrappleCanceled.Invoke(); };
     }
 }

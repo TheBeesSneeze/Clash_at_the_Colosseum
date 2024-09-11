@@ -97,6 +97,8 @@ public class Bullet : MonoBehaviour
                     {
                         _bulletEffect2.OnEnemyHit(enemy, damageAmount);
                     }
+                    ResetBullet();
+                    gameObject.SetActive(false);
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
                 {
