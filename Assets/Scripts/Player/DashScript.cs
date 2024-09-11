@@ -4,30 +4,31 @@ using UnityEngine;
 public class DashScript : MonoBehaviour
 {
     public float coolDownTime;
-    public float dashSpeed;
+    public GameObject facing;
     bool dashCooldown = false;
     Rigidbody rb;
-    Vector2 input;
     PlayerStats stats;
     void Start()
     {
         print("dash script is doing somthing");
-        InputEvents.Instance.SprintStarted.AddListener(startDash);
+        InputEvents.Instance.DashStarted.AddListener(startDash);
         rb = gameObject.GetComponent<Rigidbody>();
-        input = InputEvents.Instance.InputDirection2D;
+
         stats = GetComponent<PlayerStats>();
     }
     public void startDash() {
-        print("shift pressed");
+        print("Dash pressed while Dash cooldown is " + dashCooldown);
+        Vector3 direction = facing.GetComponent<Transform>().forward;
         if (!dashCooldown) {
-            rb.AddForce(Vector3.forward * (input.y * stats.DashSpeed * Time.deltaTime));
+            rb.AddForce(direction * stats.DashSpeed);
+            print("should have done something");
         }
         StartCoroutine(DashCoolDown());
     }
     IEnumerator DashCoolDown()
     {
         dashCooldown = true;
-        yield return new WaitForSeconds(coolDownTime);
+        yield return new WaitForSeconds(stats.DashCoolDown);
         dashCooldown = false;
     }
 }
