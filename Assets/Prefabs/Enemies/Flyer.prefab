@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1939992571173494461}
   - component: {fileID: 5820015479103233236}
   - component: {fileID: 7550726505777626834}
+  - component: {fileID: 8627847328928064834}
   m_Layer: 0
   m_Name: Harpy Draft 2
   m_TagString: Untagged
@@ -102,6 +103,22 @@ MonoBehaviour:
   _rightSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
   _backSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
   rotationReference: {fileID: 2418623821713463542}
+--- !u!114 &8627847328928064834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335499054426519827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3722bb7e6827d07488f4a84b86edb936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _yMin: -1
+  _yMax: 1
+  _speed: 1
+  _targetObject: {fileID: 1939992571173494461}
 --- !u!1 &1661017455119386389
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +133,6 @@ GameObject:
   - component: {fileID: 4206013513865029181}
   - component: {fileID: 2574494738450226700}
   - component: {fileID: 1340366527727773368}
-  - component: {fileID: 698974580348282519}
   - component: {fileID: 3214837819605227419}
   - component: {fileID: 2176917977402743002}
   m_Layer: 8
@@ -140,7 +156,7 @@ Transform:
   m_Children:
   - {fileID: 1939992571173494461}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7038011802220577291
 MeshFilter:
@@ -185,11 +201,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 1
   EnemyDamage: 1
-  EnemySpeed: 0
+  EnemyAttackRate: 5
   EnemyAttackRange: 5
   playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  EnemyAttackRate: 5
-  EnemyType: 1
+  EnemyMovementSpeed: 0
+  TurningSpeed: 0
+  StopSpeed: 0
+  StopDistanceToPlayer: 0
+  SightDistance: 0
+  VerticalSpeed: 0
+  HeightAboveGround: 0
 --- !u!114 &2574494738450226700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,23 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &698974580348282519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661017455119386389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0efeac330da4e4ab59168860396e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
-  BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
-  bulletSpawnPoint: {fileID: 2418623821713463542}
-  bulletEffect1: {fileID: 0}
-  bulletEffect2: {fileID: 0}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,10 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40982cbd68ec6c40bb5a2b79ec48d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalSpeed: 3
-  _verticalSpeed: 1
-  _heightAboveGround: 10
-  _stoppingDistanceToPlayer: 1
 --- !u!54 &2176917977402743002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -272,5 +272,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0

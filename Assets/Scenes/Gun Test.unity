@@ -338,10 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40982cbd68ec6c40bb5a2b79ec48d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalSpeed: 1
-  _verticalSpeed: 1
-  _heightAboveGround: 0
-  _stoppingDistanceToPlayer: 1
 --- !u!1001 &742912829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,10 +349,6 @@ PrefabInstance:
     - target: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
       propertyPath: m_Name
       value: Flyer
-      objectReference: {fileID: 0}
-    - target: {fileID: 2176917977402743002, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
-      propertyPath: m_Constraints
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2418623821713463542, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
       propertyPath: m_RootOrder

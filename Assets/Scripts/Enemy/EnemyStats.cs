@@ -30,5 +30,28 @@ public class EnemyStats : MonoBehaviour
     [Header("Only Effect Flyers")]
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
-    
+
+    /// <summary>
+    /// slows the enemy and starts the countdown timer
+    /// </summary>
+    /// <param name="slowedAmount"></param>
+    /// <param name="slowedTime"></param>
+    public void SlowEnemy(float slowedAmount, float slowedTime)
+    {
+        EnemyMovementSpeed -= slowedAmount;
+        StartCoroutine(SlowTimer(slowedAmount, slowedTime));
+    }
+
+    /// <summary>
+    /// counts down and resets enemy speed
+    /// probs not the best way to do this
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    public IEnumerator SlowTimer(float amount, float time)
+    {
+        yield return new WaitForSeconds(time);
+        EnemyMovementSpeed += amount;
+    }
 }
