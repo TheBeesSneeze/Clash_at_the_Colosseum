@@ -149,13 +149,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 1
-  EnemyDamage: 2
-  EnemySpeed: 1
+  EnemyHealth: 100
+  EnemyDamage: 10
+  EnemyAttackRate: 5
   EnemyAttackRange: 1
   playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  EnemyAttackRate: 5
-  EnemyType: 0
+  EnemyMovementSpeed: 0
+  TurningSpeed: 0
+  StopSpeed: 0
+  StopDistanceToPlayer: 0
+  SightDistance: 0
+  VerticalSpeed: 0
+  HeightAboveGround: 0
 --- !u!114 &6504214350786112077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,10 +197,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6408f4017e283e45b59c3153321886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _turningSpeed: 1
-  _stoppingSpeed: 1
-  _stopDistanceToPlayer: 1
-  _sightDistance: 10
   debug: 1
   currentCell: {fileID: 0}
