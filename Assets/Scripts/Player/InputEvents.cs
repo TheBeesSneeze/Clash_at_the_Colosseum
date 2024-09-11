@@ -19,16 +19,11 @@ public class InputEvents : Singleton<InputEvents>
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
     public static bool MovePressed, JumpPressed, ShootPressed, SprintPressed;
-
     public static bool RespawnPressed, PausePressed;
-
     public static bool EnemySpawnPressed;
-
     private PlayerInput playerInput;
     private InputAction Move, Shoot, Jump, Look, Sprint, Respawn, Secondary, Pause, SpawnEnemies;
-
     private Transform movementOrigin;
-
     private void Start()
     {
         movementOrigin = Camera.main.transform;
@@ -59,7 +54,7 @@ public class InputEvents : Singleton<InputEvents>
         Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled += ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        //Sprint.canceled += ctx => SprintPressed = false;
+        Sprint.canceled += ctx => SprintPressed = false;
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         SpawnEnemies.canceled += ctx => { EnemySpawnPressed = false; EnemySpawnCanceled.Invoke(); };
     }

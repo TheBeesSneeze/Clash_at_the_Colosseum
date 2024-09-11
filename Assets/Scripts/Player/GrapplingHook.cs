@@ -13,8 +13,6 @@ public class GrapplingHook : MonoBehaviour
     private LineRenderer hookRenderer;
     private Transform cam;
 
-    
-
     [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
     public float maxDistanceFromPointMultiplier = 0.8f;
 

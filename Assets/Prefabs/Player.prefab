@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 7911197565489766704}
   - component: {fileID: 18831259720661764}
   - component: {fileID: 2690957284186633973}
+  - component: {fileID: 7799641142716280536}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -254,6 +255,8 @@ MonoBehaviour:
   DefaultHealth: 5
   Speed: 100
   MaxSpeed: 20
+  DashSpeed: 40
+  DashCoolDown: 3
   Friction: 2
   AirMovementMultiplier: 0.5
   HealthRegen: 1
@@ -340,6 +343,20 @@ MonoBehaviour:
   gunExitPoint: {fileID: 9138300447882929290}
   Head: {fileID: 0}
   BodyMaterial: {fileID: 0}
+--- !u!114 &7799641142716280536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ba62cf03564944fad51642b011c919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownTime: 3
+  dashSpeed: 40
 --- !u!1 &5990531402579976525
 GameObject:
   m_ObjectHideFlags: 0

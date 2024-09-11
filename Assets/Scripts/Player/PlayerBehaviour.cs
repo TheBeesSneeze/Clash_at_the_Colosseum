@@ -42,7 +42,7 @@ public class PlayerBehaviour : CharacterType
         t = 1 - t;
         if(redVignette == null)
         {
-            Debug.LogWarning("no damage vignette");
+            //Debug.LogWarning("no damage vignette");
             return;
         }
         redVignette.color = new Color(redVignette.color.r, redVignette.color.g, redVignette.color.b, t * t);
