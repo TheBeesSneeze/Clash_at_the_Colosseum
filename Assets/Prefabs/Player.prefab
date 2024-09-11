@@ -254,6 +254,8 @@ MonoBehaviour:
   DefaultHealth: 5
   Speed: 100
   MaxSpeed: 20
+  DashSpeed: 40
+  DashCoolDown: 3
   Friction: 2
   AirMovementMultiplier: 0.5
   HealthRegen: 1
@@ -392,7 +394,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5990531402579976525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -444,7 +446,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
