@@ -18,12 +18,20 @@ public class FlyingEnemyMovement : MonoBehaviour
     private Rigidbody rb;
     private EnemyStats enemyStats;
 
-
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError(gameObject.name + " does not have a rigidbody");
+            Destroy(this);
+        }
+    }
     private void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _groundMask = LayerMask.NameToLayer("Fill Cell");
-        rb = GetComponent<Rigidbody>();
+        
         enemyStats = GetComponent<EnemyStats>();
         _horizontalSpeed = enemyStats.EnemyMovementSpeed;
         _verticalSpeed = enemyStats.VerticalSpeed;
