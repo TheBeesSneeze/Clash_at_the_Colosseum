@@ -18,7 +18,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject statsButton;
     public GameObject helpButton;
-    public GameObject creditsButton;
+    public GameObject creditsMenu;
     public GameObject quitButton;
     public GameObject confirmExitButton;
 
@@ -28,7 +28,10 @@ public class MainMenuScript : MonoBehaviour
     }
     public void escPressed()
     {
-        if (settingsMenu.activeSelf){
+        if (settingsMenu.activeSelf) {
+            settingsMenu.SetActive(false);
+            buttonContianer.SetActive(true);
+        } else if (creditsMenu.activeSelf) {
             settingsMenu.SetActive(false);
             buttonContianer.SetActive(true);
         } else if (confirmExitButton.activeSelf){
@@ -60,7 +63,8 @@ public class MainMenuScript : MonoBehaviour
     }
     public void creditsClicked()
     {
-        print("Credits clicked");
+        creditsMenu.SetActive(true);
+        buttonContianer.SetActive(false);
     }
     public void quitClicked()
     {

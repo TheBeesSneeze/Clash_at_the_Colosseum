@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*****************************************************************************
+// File Name :         VerticalOscillator.cs
+// Author :            Toby
+//
+// Brief Description : up and down and up and down and
+*****************************************************************************/
+
 public class VerticalOscillator : MonoBehaviour
 {
     [SerializeField] private float _yMin = -1;
