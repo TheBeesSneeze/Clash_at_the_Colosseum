@@ -5,6 +5,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,6 +42,7 @@ namespace mainMenu
 
         public void playClicked()
         {
+            _mainMenu.animator.SetTrigger("Gun Select");
             Debug.Log("play clicked");
         }
         public void statsClicked()

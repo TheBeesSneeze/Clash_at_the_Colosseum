@@ -10,14 +10,9 @@ namespace mainMenu
     {
         [SerializeField] private Vector2 direction;
         [SerializeField] private float speed;
-        private RawImage _image;
+        [SerializeField] private RawImage _image;
         private Vector2 uv;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            _image = GetComponent<RawImage>();
-        }
 
         // Update is called once per frame
         void Update()
