@@ -10,18 +10,14 @@ public class DashScript : MonoBehaviour
     PlayerStats stats;
     void Start()
     {
-        print("dash script is doing somthing");
         InputEvents.Instance.DashStarted.AddListener(startDash);
         rb = gameObject.GetComponent<Rigidbody>();
-
         stats = GetComponent<PlayerStats>();
     }
     public void startDash() {
-        print("Dash pressed while Dash cooldown is " + dashCooldown);
         Vector3 direction = facing.GetComponent<Transform>().forward;
         if (!dashCooldown) {
             rb.AddForce(direction * stats.DashSpeed);
-            print("should have done something");
         }
         StartCoroutine(DashCoolDown());
     }
