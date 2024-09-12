@@ -204,7 +204,7 @@ MonoBehaviour:
   EnemyAttackRate: 5
   EnemyAttackRange: 5
   playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  EnemyMovementSpeed: 0
+  enemyMovementSpeed: 0
   TurningSpeed: 0
   StopSpeed: 0
   StopDistanceToPlayer: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  damageColorTime: 2
+  spriteRenderer: {fileID: 5820015479103233236}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +272,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0

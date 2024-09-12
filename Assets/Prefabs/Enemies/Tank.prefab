@@ -139,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 701974086056608564}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3606393014328770787
 MeshFilter:
@@ -245,6 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0, b: 0, a: 0}
+  damageColorTime: 2
+  spriteRenderer: {fileID: 4770044433410946019}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
   m_ObjectHideFlags: 0

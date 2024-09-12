@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         EnemyTakeDamage
-* Author(s) :         Clare Grady
+* Author(s) :         Clare Grady, Sky
 * Creation Date :     8/31/2024
 *
 * Brief Description : 
@@ -15,16 +15,30 @@ public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;
     private float currentHealth;
+    [SerializeField] private Color damageColor;
+    [SerializeField] private float damageColorTime;
+    private float damagetime;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        currentHealth = stats.EnemyHealth; 
+        currentHealth = stats.EnemyHealth;
+    }
+    private void Update()
+    {
+        damagetime -= Time.deltaTime;
+        if (damagetime <= 0)
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        damagetime = damageColorTime;
+        spriteRenderer.color = damageColor;
 
         if (currentHealth < damage) 
         {

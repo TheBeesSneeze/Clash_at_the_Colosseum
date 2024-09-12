@@ -62,6 +62,10 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
+        if (gunController == null)
+        {
+            return;
+        }
         nextFireTime += Time.deltaTime;
         Vector3 destination = playerObject.transform.position;
         destination += new Vector3(
