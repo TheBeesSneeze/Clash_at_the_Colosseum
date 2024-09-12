@@ -32,29 +32,29 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        //InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
-        timeTillEnemiesSpawn -= Time.deltaTime;
+        InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
+       /* timeTillEnemiesSpawn -= Time.deltaTime;
         
         if(!hasSpawnedEnemies && timeTillEnemiesSpawn <= 0)
         {
             SpawnEnemies();
-        }
+        }*/
     }
 
     private void SpawnEnemies()
     {
-        /*if (!InputEvents.EnemySpawnPressed)
+        if (!InputEvents.EnemySpawnPressed)
             return;
         for(int i = 0; i < enemySpawnPoints.Length; ++i)
         {
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
         InputEvents.EnemySpawnPressed = false;
-        */
-        for(int i = 0; i < enemySpawnPoints.Length; i++)
+        
+        /*for(int i = 0; i < enemySpawnPoints.Length; i++)
         {
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
-        hasSpawnedEnemies=true;
+        hasSpawnedEnemies=true;*/
     }
 }
