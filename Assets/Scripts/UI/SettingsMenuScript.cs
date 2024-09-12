@@ -45,11 +45,13 @@ public class SettingsMenuScript : MonoBehaviour
         Slider slider = volumeSlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("volume", slider.value);
         float sliderValue = slider.value;
+        //set the in game volume
     }
     public void sensitivityChanged()
     {
         Slider slider = sensitivitySlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
+        // change the in game mouse sensitivity
     }
 }

@@ -34,9 +34,12 @@ public class PauseMenuScript : MonoBehaviour
             gameManager.isPaused = !gameManager.isPaused;
             if (gameManager.isPaused){
                 pauseButtonsContainer.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
             }else{
                 pauseButtonsContainer.SetActive(false);
+                Cursor.visible = false;
                 Time.timeScale = 1;
             }
         }
