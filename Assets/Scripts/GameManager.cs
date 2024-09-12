@@ -24,23 +24,22 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
 
+    public bool isPaused = false;
+
     void Start()
     {
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
     }
-
     private void InitializeCellManager()
     {
         cellManager = new CellManager();
     }
-
     private void InitializePathManager()
     {
         pathManager = new PathManager();
     }
-
     private void InitializeBulletPoolManager()
     {
         bulletPoolManager = new BulletPoolManager(amountToPool, bullet);
