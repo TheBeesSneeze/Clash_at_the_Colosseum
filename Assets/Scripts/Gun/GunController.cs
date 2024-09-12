@@ -23,8 +23,8 @@ public class GunController : MonoBehaviour
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
 
-    [ReadOnly] public BulletEffect bulletEffect1;
-    [ReadOnly] public BulletEffect bulletEffect2;
+    public BulletEffect bulletEffect1;
+    public BulletEffect bulletEffect2;
     private LayerMask scanMask;
 
     private float secondsSinceLastShoot;

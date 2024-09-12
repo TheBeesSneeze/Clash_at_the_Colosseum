@@ -1,6 +1,6 @@
 ﻿/*******************************************************************************
-* File Name :         DefaultNamespace.cs
-* Author(s) :         Alec
+* File Name :         SlowBullet.cs
+* Author(s) :         Sky
 * Creation Date :     
 *
 * Brief Description : 
@@ -13,15 +13,16 @@ namespace DefaultNamespace
     [CreateAssetMenu(fileName = "SlowBullet", menuName = "BulletEffects/SlowBullet")]
     public class SlowBullet : BulletEffect
     {
-        [field:SerializeField] public float SlowTime { get; private set; }= 2f;
+        [SerializeField] private float SlowBulletSpeed;
+        [SerializeField] private float EnemySlowedTime;
         public override void Initialize()
         {
         }
-        public override void OnEnemyHit(EnemyTakeDamage type, float damgae)
+        public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
-            Debug.LogWarning("old code. pls update");
-            //slow down the enemy some how
-            //type.ApplySlow(SlowTime);
+            EnemyStats stats = type.gameObject.GetComponent<EnemyStats>();
+            stats.SlowEnemy(SlowBulletSpeed, EnemySlowedTime);
+
         }
 
         public override void OnHitOther(Vector3 point, float damage)
