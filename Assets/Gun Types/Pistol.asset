@@ -16,7 +16,10 @@ MonoBehaviour:
   ShotsPerSecond: 1
   BulletsPerShot: 1
   BulletAccuracyOffset: 0.25
-  HoldFire: 1
+  CanHoldFire: 1
   BulletSpeed: 100
   BulletDamage: 42
   RecoilForce: 0.01
+  MenuSprite: {fileID: -401717556, guid: 9831f24c0a2883e4fa1238a74abbdfa8, type: 3}
+  GameplaySprite: {fileID: 0}
+  SelectHeaderColor: {r: 0.3740402, g: 0.735849, b: 0.27351367, a: 1}

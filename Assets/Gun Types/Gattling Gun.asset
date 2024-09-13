@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Gattling Gun
   m_EditorClassIdentifier: 
   GunName: Gattling
-  Crosshair: {fileID: 21300000, guid: a0a8cacbf9766ab4ca6449ed614f03a1, type: 3}
-  ModelPrefab: {fileID: 159363343589617200, guid: 1528fe736fa5c11478dafb37a373b377,
-    type: 3}
-  gunIcon: {fileID: 0}
-  RPM: 900
-  BulletsPerShot: 1
+  ShotsPerSecond: 10
+  BulletsPerShot: 3
   BulletAccuracyOffset: 0.75
-  HoldFire: 1
+  CanHoldFire: 1
   BulletSpeed: 100
-  BulletDamage: 27
+  BulletDamage: 0.5
   RecoilForce: 0.01
+  MenuSprite: {fileID: 0}
+  GameplaySprite: {fileID: 0}
+  SelectHeaderColor: {r: 0.8490566, g: 0.5488823, b: 0.21947306, a: 1}

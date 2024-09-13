@@ -33,6 +33,11 @@ public class ShootingMode : ScriptableObject
     [Tooltip("How much to push player back by. Setting negative pulls player forward")]
     public float RecoilForce;
 
+    [Header("Sprites")]
+    public Sprite MenuSprite;
+    public Sprite GameplaySprite;
+    public Color SelectHeaderColor=Color.white;
+
     [Button]
     public void CalculateDPS()
     {
