@@ -13,28 +13,26 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
-
     public GameObject pauseButtonsContainer;
     public GameObject resumeButton;
     public GameObject settingsMenu;
     public GameObject mainMenuButton;
     public GameObject backButton;
-
-
-    public bool isPaused = false;
+    
+    public GameManager gameManager;
     public int mainMenuSceneNumber = 0;
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
     }
     public void escPressed() {
-        if (settingsMenu.activeSelf)
-        {
+        if (settingsMenu.activeSelf){
             settingsMenu.SetActive(false);
             pauseButtonsContainer.SetActive(true);
         } else {
-            isPaused = !isPaused;
-            if (isPaused){
+            gameManager.isPaused = !gameManager.isPaused;
+            if (gameManager.isPaused){
                 pauseButtonsContainer.SetActive(true);
                 Time.timeScale = 0;
             }else{
