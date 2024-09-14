@@ -209,6 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b1f691ae613b1429d72a1d53cf3bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
+  bulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
+  bulletSpawnPoint: {fileID: 3007730471301732929}
+  bulletEffect1: {fileID: 0}
+  bulletEffect2: {fileID: 0}
 --- !u!114 &1426887766406785384
 MonoBehaviour:
   m_ObjectHideFlags: 0

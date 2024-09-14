@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   GunName: Sniper
-  Crosshair: {fileID: 21300000, guid: 995d3bbb6105cd541b85c931161feec5, type: 3}
-  ModelPrefab: {fileID: 5483999566083830392, guid: 411f3d40c58ed3c45adedf8b84153fc4,
-    type: 3}
-  gunIcon: {fileID: 0}
-  RPM: 90
+  ShotsPerSecond: 1
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
-  HoldFire: 0
+  CanHoldFire: 1
   BulletSpeed: 100
   BulletDamage: 160
   RecoilForce: 0.01
+  MenuSprite: {fileID: 21300000, guid: 020c71e803255d445ab8a6e54da91ec7, type: 3}
+  GameplaySprite: {fileID: 0}
+  SelectHeaderColor: {r: 0.4221431, g: 0.44222102, b: 0.9245283, a: 1}

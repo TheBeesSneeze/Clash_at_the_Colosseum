@@ -21,7 +21,6 @@ namespace mainMenu
         {
             start = GetComponent<RectTransform>().sizeDelta;
             startPos = GetComponent<RectTransform>().anchoredPosition;
-            Debug.Log(start);
         }
 
         public void OnPointerEnter(PointerEventData data)
