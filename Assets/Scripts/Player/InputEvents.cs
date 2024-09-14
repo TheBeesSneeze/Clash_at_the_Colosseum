@@ -15,7 +15,7 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public UnityEvent EnemySpawnStarted, EnemySpawnCanceled;
 
     // Input values and flags
-    public Vector2 LookDelta => Look.ReadValue<Vector2>();
+    public Vector2 LookDelta => Look.ReadValue<Vector2>() * PlayerPrefs.GetFloat("sensitivity", 1) * 100 * Time.deltaTime;
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
     public static bool MovePressed, JumpPressed, ShootPressed, RespawnPressed, DashPressed,
