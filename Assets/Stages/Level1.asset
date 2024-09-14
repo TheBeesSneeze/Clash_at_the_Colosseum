@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   StageLayout: {fileID: 4900000, guid: 51494c6afe75a904aa053cce4bde25bd, type: 3}
-  NumberOfEnemiesForLevel: 5
-  spawnPoints: []
+  NumberOfEnemiesForLevel: 2
+  spawnPoints:
+  - EnemyType: {fileID: 0}
+    EnemySpawnPoint: {fileID: 0}
+  - EnemyType: {fileID: 0}
+    EnemySpawnPoint: {fileID: 0}
   timeTillEnemiesSpawn: 15
