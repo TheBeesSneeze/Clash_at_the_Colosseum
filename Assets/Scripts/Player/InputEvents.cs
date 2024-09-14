@@ -12,7 +12,7 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public UnityEvent DashStarted, DashHeld, DashCanceled;
     [HideInInspector] public UnityEvent PauseStarted, PauseCanceled;
     [HideInInspector] public UnityEvent RestartStarted, RespawnStarted;
-    [HideInInspector] public UnityEvent EnemySpawnStarted, EnemySpawnCanceled; 
+    [HideInInspector] public UnityEvent EnemySpawnStarted, EnemySpawnCanceled;
 
     // Input values and flags
     public Vector2 LookDelta => Look.ReadValue<Vector2>();

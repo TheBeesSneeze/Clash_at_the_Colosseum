@@ -52,6 +52,5 @@ public class SettingsMenuScript : MonoBehaviour
         Slider slider = sensitivitySlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
-        // change the in game mouse sensitivity
     }
 }
