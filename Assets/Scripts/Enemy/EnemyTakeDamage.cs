@@ -19,11 +19,17 @@ public class EnemyTakeDamage : MonoBehaviour
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject stageManager;
 
+    private StageManager manager;
+
+    private bool isStillAlive;
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
         currentHealth = stats.EnemyHealth;
+        isStillAlive = true;
+        manager = stageManager.GetComponent<StageManager>();
     }
     private void Update()
     {
@@ -40,14 +46,16 @@ public class EnemyTakeDamage : MonoBehaviour
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
 
-        if (currentHealth < damage) 
+        if (currentHealth < damage && isStillAlive) 
         {
-            Die();        
+            Die();
+            manager.currentEnemies -= manager.currentEnemies;
         }
     }
 
     private void Die()
     {
+        isStillAlive = false;
         Destroy(gameObject);
     }
 

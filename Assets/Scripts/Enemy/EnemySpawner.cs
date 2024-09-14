@@ -5,6 +5,7 @@
 *
 * Brief Description : 
 * OMG yall its the system that spawns the enemeies  :O 
+* Note: code in comments is old button push spawn code
  *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
@@ -12,14 +13,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float timeTillEnemiesSpawn;
-    [Tooltip("Make array size the amount of spawn points you want")]
-    [SerializeField] EnemySpawnPointEntry[] enemySpawnPoints;
+    private StageManager stageManager;
 
     private bool hasSpawnedEnemies;
+    private float timeTillEnemiesSpawn;
+    private EnemySpawnPointEntry[] enemySpawnPoints;
+    private StageStats stageStats;
+
+    [HideInInspector] public bool changeStage;
 
     [System.Serializable]
-    private class EnemySpawnPointEntry
+    public class EnemySpawnPointEntry
     {
         public GameObject EnemyType;
         public Transform EnemySpawnPoint;
@@ -28,33 +32,45 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         hasSpawnedEnemies = false;
+        stageManager = GetComponent<StageManager>();
+        stageStats = stageManager.currentStage;
+        timeTillEnemiesSpawn = stageStats.timeTillEnemiesSpawn;
+        enemySpawnPoints = stageStats.spawnPoints;
     }
 
     private void Update()
     {
-        InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
-       /* timeTillEnemiesSpawn -= Time.deltaTime;
+        //InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
+        timeTillEnemiesSpawn -= Time.deltaTime;
         
         if(!hasSpawnedEnemies && timeTillEnemiesSpawn <= 0)
         {
             SpawnEnemies();
-        }*/
+        }
+
+        if (changeStage)
+        {
+            stageStats = stageManager.currentStage;
+            timeTillEnemiesSpawn = stageStats.timeTillEnemiesSpawn;
+            enemySpawnPoints = stageStats.spawnPoints;
+            hasSpawnedEnemies = false;
+        }
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
-        if (!InputEvents.EnemySpawnPressed)
+        /*if (!InputEvents.EnemySpawnPressed)
             return;
         for(int i = 0; i < enemySpawnPoints.Length; ++i)
         {
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
-        InputEvents.EnemySpawnPressed = false;
+        InputEvents.EnemySpawnPressed = false;*/
         
-        /*for(int i = 0; i < enemySpawnPoints.Length; i++)
+        for(int i = 0; i < enemySpawnPoints.Length; i++)
         {
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
-        hasSpawnedEnemies=true;*/
+        hasSpawnedEnemies=true;
     }
 }
