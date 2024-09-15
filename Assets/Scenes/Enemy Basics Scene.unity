@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4416135468900039448, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: Speed
       value: 1000
@@ -889,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 958869372014498895, guid: 014b9f23961802a49aeaa9f0f5bf8456, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712967758318412966, guid: 014b9f23961802a49aeaa9f0f5bf8456, type: 3}
+      propertyPath: timeTillEnemiesSpawn
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2712967758318412966, guid: 014b9f23961802a49aeaa9f0f5bf8456, type: 3}
       propertyPath: enemySpawnPoints.Array.data[0].EnemySpawnPoint

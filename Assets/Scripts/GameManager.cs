@@ -24,23 +24,23 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
 
+    public bool isPaused = false;
+    public float cursorSensitivity;
     void Start()
     {
+        cursorSensitivity = PlayerPrefs.GetFloat("sensitivity", 0);
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
     }
-
     private void InitializeCellManager()
     {
         cellManager = new CellManager();
     }
-
     private void InitializePathManager()
     {
         pathManager = new PathManager();
     }
-
     private void InitializeBulletPoolManager()
     {
         bulletPoolManager = new BulletPoolManager(amountToPool, bullet);

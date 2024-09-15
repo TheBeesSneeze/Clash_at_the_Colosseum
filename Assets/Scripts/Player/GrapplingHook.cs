@@ -12,8 +12,6 @@ public class GrapplingHook : MonoBehaviour
     private float maxDist = 1000f;
     private Transform cam;
 
-    
-
     [Tooltip("How much of the distance between the grapple hook and the player will be used.")]
     public float maxDistanceFromPointMultiplier = 0.8f;
 

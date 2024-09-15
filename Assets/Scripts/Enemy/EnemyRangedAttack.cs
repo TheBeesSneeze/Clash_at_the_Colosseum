@@ -16,17 +16,21 @@ using Random = UnityEngine.Random;
 public class EnemyRangedAttack : MonoBehaviour
 {
     private EnemyStats stats;
-    private GunController gunController;
     private GameObject playerObject;
     private float coolDown; 
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
 
+    [SerializeField] private ShootingMode shootingMode;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField]private BulletEffect bulletEffect1;
+    [SerializeField] private BulletEffect bulletEffect2;
+
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        gunController = GetComponent<GunController>(); 
         playerObject = stats.playerObject;
         fireRate = stats.EnemyAttackRate;
         slowFireRate = fireRate * 2;
@@ -62,19 +66,23 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
+        if (shootingMode == null)
+        {
+            return;
+        }
         nextFireTime += Time.deltaTime;
         Vector3 destination = playerObject.transform.position;
         destination += new Vector3(
-            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
-            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset),
-            Random.Range(-gunController.shootingMode.BulletAccuracyOffset, gunController.shootingMode.BulletAccuracyOffset));
-        Vector3 direction = destination - gunController.bulletSpawnPoint.position;
-        var bullet = Instantiate(gunController.BulletPrefab, gunController.bulletSpawnPoint.position, Quaternion.identity);
+            Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
+        Vector3 direction = destination - bulletSpawnPoint.position;
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.transform.forward = direction.normalized;
         var bulletObject = bullet.GetComponent<Bullet>();
-        bulletObject.damageAmount = gunController.shootingMode.BulletDamage;
-        bulletObject.bulletForce = gunController.shootingMode.BulletSpeed;
-        bulletObject.Initialize(gunController.bulletEffect1, gunController.bulletEffect2, direction);
+        bulletObject.damageAmount = shootingMode.BulletDamage;
+        bulletObject.bulletForce = shootingMode.BulletSpeed;
+        bulletObject.Initialize(bulletEffect1, bulletEffect2, direction);
 
     }
 

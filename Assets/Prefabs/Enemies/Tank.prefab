@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7182448991274702958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.099, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 1426887766406785384}
   - component: {fileID: 8266884244933607397}
   - component: {fileID: 2893096892758536757}
-  - component: {fileID: 6205514487239768244}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
@@ -140,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 701974086056608564}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3606393014328770787
 MeshFilter:
@@ -169,8 +168,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.42318368}
-  m_Center: {x: 0, y: 0, z: -0.0153723955}
+  m_Size: {x: 1, y: 1.2381835, z: 0.42318368}
+  m_Center: {x: 0, y: 0.11909175, z: -0.0153723955}
 --- !u!54 &934136319336592653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -210,6 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b1f691ae613b1429d72a1d53cf3bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
+  bulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
+  bulletSpawnPoint: {fileID: 3007730471301732929}
+  bulletEffect1: {fileID: 0}
+  bulletEffect2: {fileID: 0}
 --- !u!114 &1426887766406785384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,16 +226,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 300
+  EnemyHealth: 1
   EnemyDamage: 1
   EnemyAttackRate: 5
   EnemyAttackRange: 5
   playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  EnemyMovementSpeed: 0.5
-  TurningSpeed: 0.3
-  StopSpeed: 1
-  StopDistanceToPlayer: 2
-  SightDistance: 1
+  enemyMovementSpeed: 0
+  TurningSpeed: 0
+  StopSpeed: 0
+  StopDistanceToPlayer: 0
+  SightDistance: 0
   VerticalSpeed: 0
   HeightAboveGround: 0
 --- !u!114 &8266884244933607397
@@ -246,6 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0, b: 0, a: 0}
+  damageColorTime: 2
+  spriteRenderer: {fileID: 4770044433410946019}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,20 +267,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   currentCell: {fileID: 0}
---- !u!114 &6205514487239768244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996317265162831292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0efeac330da4e4ab59168860396e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
-  BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
-  bulletSpawnPoint: {fileID: 3007730471301732929}
-  bulletEffect1: {fileID: 0}
-  bulletEffect2: {fileID: 0}

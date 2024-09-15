@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 9034422542805967169}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5966151909648421834
 MeshFilter:
@@ -107,16 +107,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 100
-  EnemyDamage: 10
+  EnemyHealth: 1
+  EnemyDamage: 2
   EnemyAttackRate: 5
   EnemyAttackRange: 1
   playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  EnemyMovementSpeed: 1
-  TurningSpeed: 1
-  StopSpeed: 1
-  StopDistanceToPlayer: 1
-  SightDistance: 1
+  enemyMovementSpeed: 0
+  TurningSpeed: 0
+  StopSpeed: 0
+  StopDistanceToPlayer: 0
+  SightDistance: 0
   VerticalSpeed: 0
   HeightAboveGround: 0
 --- !u!114 &6504214350786112077
@@ -131,6 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageColor: {r: 1, g: 0, b: 0, a: 0}
+  damageColorTime: 2
+  spriteRenderer: {fileID: 8353514217853516538}
 --- !u!114 &6631860369869672511
 MonoBehaviour:
   m_ObjectHideFlags: 0
