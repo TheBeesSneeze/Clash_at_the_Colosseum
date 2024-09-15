@@ -59,7 +59,6 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        Debug.Log("pew");
         secondsSinceLastShoot = 0;
         //AudioManager.instance.Play("Shoot Default");
 

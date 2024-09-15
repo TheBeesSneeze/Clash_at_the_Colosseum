@@ -46,8 +46,6 @@ public class StageTransitionManager
         if (start == null || end == null)
             return;
 
-        Debug.Log(transitionPercent);
-
         StageElements startLayout = GetStageElements(start);
         StageElements endLayout = GetStageElements(end);
 
@@ -65,7 +63,7 @@ public class StageTransitionManager
         for (int i = 0; i < activeCells.Length; i++)
         {
             Transform cell = activeCells[i].transform;
-            cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
+            cell.localPosition = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
             cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
             cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
         }

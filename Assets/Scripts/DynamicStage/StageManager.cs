@@ -40,10 +40,13 @@ public class StageManager
             Debug.LogWarning("I think the players supposed to beat the game here");
             return;
         }
+
+        var pastStage = _stages[stageIndex];
         stageIndex++;
 
         currentStage = _stages[stageIndex];
 
+        StageTransitionManager.TransitionStage(pastStage.StageLayout, currentStage.StageLayout);
         //add the dynamic stage code here to actually change stage 
     }
 }

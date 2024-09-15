@@ -70,9 +70,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
         if(enemySpawnPoints == null)
             return;
 
-        Debug.Log(enemySpawnPoints.Length);
-        Debug.Log(StageManager.enemiesToSpawn);
-
         for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
         {
             GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length - 1)];

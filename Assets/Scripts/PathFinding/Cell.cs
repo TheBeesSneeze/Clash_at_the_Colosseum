@@ -40,7 +40,6 @@ namespace PathFinding
             if (Solid)
                 return;
 
-            Debug.Log("collide");
             if(other.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
                 GameManager.pathManager.PlayerCellUpdate(this);
