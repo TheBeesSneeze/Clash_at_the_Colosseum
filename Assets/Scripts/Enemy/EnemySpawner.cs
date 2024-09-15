@@ -11,48 +11,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
-    private StageManager stageManager;
-
     private bool hasSpawnedEnemies;
     private float timeTillEnemiesSpawn;
-    private EnemySpawnPointEntry[] enemySpawnPoints;
-    private StageStats stageStats;
+    private EnemySpawnPoint[] enemySpawnPoints;
 
-    [HideInInspector] public bool changeStage;
+    private static int _currentEnemiesAlive;
 
+    // Moved this to its own script
+    /*
     [System.Serializable]
     public class EnemySpawnPointEntry
     {
-        public GameObject EnemyType;
         public Transform EnemySpawnPoint;
     }
+    */
 
     private void Start()
     {
         hasSpawnedEnemies = false;
-        stageManager = GetComponent<StageManager>();
-        stageStats = stageManager.currentStage;
-        timeTillEnemiesSpawn = stageStats.timeTillEnemiesSpawn;
-        enemySpawnPoints = stageStats.spawnPoints;
+        timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
+        enemySpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
     }
 
     private void Update()
     {
         //InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
         timeTillEnemiesSpawn -= Time.deltaTime;
-        
-        if(!hasSpawnedEnemies && timeTillEnemiesSpawn <= 0)
+
+        if (timeTillEnemiesSpawn > 0)
+            return;
+
+        if(!hasSpawnedEnemies)
         {
             SpawnEnemies();
+            return;
         }
 
-        if (changeStage)
+        if (_currentEnemiesAlive <= 0)
         {
-            stageStats = stageManager.currentStage;
-            timeTillEnemiesSpawn = stageStats.timeTillEnemiesSpawn;
-            enemySpawnPoints = stageStats.spawnPoints;
+            StageManager.ChangeStage();
+            timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
             hasSpawnedEnemies = false;
         }
     }
@@ -66,11 +66,26 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
         }
         InputEvents.EnemySpawnPressed = false;*/
-        
-        for(int i = 0; i < enemySpawnPoints.Length; i++)
+
+        if(enemySpawnPoints == null)
+            return;
+
+        Debug.Log(enemySpawnPoints.Length);
+        Debug.Log(StageManager.enemiesToSpawn);
+
+        for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
         {
-            Instantiate(enemySpawnPoints[i].EnemyType, enemySpawnPoints[i].EnemySpawnPoint);
+            GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length - 1)];
+            GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
+            _currentEnemiesAlive++;
         }
         hasSpawnedEnemies=true;
     }
+
+    //make this a unity event
+    public static void OnEnemyDeath()
+    {
+        _currentEnemiesAlive--;
+    }
 }
+

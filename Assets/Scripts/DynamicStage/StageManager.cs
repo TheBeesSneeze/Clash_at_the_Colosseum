@@ -13,46 +13,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class StageManager
 {
-    [SerializeField] private StageStats[] stages;
-    private EnemySpawner enemySpawner;
-    private int stageIndex = 0;
-    
+    private static StageStats[] _stages;
+    private static int stageIndex = 0;
+    private static StageStats currentStage;
 
-    [HideInInspector] public int currentEnemies;
-    [HideInInspector] public StageStats currentStage;
+    public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
+    public static int enemiesToSpawn { get { return currentStage.NumberOfEnemiesForLevel; } }
+    public static float timeTillEnemiesSpawn { get { return currentStage.timeTillEnemiesSpawn; } }
 
-    private void Start()
+    public StageManager(StageStats[] stages)
     {
-        enemySpawner = GetComponent<EnemySpawner>();
-        currentEnemies = stages[stageIndex].NumberOfEnemiesForLevel;
-        currentStage = stages[stageIndex];
+        _stages = stages;
+        currentStage = _stages[stageIndex];
     }
 
-    private void Update()
+    /// <summary>
+    /// Called in enemy spawner
+    /// </summary>
+    public static void ChangeStage()
     {
-        CheckIfCanChangeStage();
-    }
-
-    private void CheckIfCanChangeStage()
-    {
-        if (currentEnemies <= 0)
+        Debug.Log("changing stage");
+        if(stageIndex+1 == _stages.Length) 
         {
-            ChangeStage();
+            Debug.LogWarning("I think the players supposed to beat the game here");
+            return;
         }
-    }
+        stageIndex++;
 
-    private void ChangeStage()
-    {
-        if(stageIndex < stages.Length-1) 
-        {
-            ++stageIndex;
-            currentStage = stages[stageIndex];
-        }
-
-        enemySpawner.changeStage = true;
-        currentEnemies = stages[stageIndex].NumberOfEnemiesForLevel;
+        currentStage = _stages[stageIndex];
 
         //add the dynamic stage code here to actually change stage 
     }

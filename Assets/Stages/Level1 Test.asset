@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5af10dc66757a54780e30ec4df9e17f, type: 3}
+  m_Name: Level1 Test
+  m_EditorClassIdentifier: 
+  StageLayout: {fileID: 4900000, guid: 4d42099c014b4eb4ab766c0d0438c469, type: 3}
+  NumberOfEnemiesForLevel: 2
+  EnemyPrefabs:
+  - {fileID: 7996317265162831292, guid: 64fe747179742714f88a72b6a3615aa2, type: 3}
+  timeTillEnemiesSpawn: 2

@@ -49,12 +49,13 @@ public class EnemyTakeDamage : MonoBehaviour
         if (currentHealth < damage && isStillAlive) 
         {
             Die();
-            manager.currentEnemies -= manager.currentEnemies;
+            
         }
     }
 
     private void Die()
     {
+        EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
         Destroy(gameObject);
     }

@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        groundLayer = LayerMask.NameToLayer("Ground");
+        groundLayer = LayerMask.NameToLayer("Default");
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();

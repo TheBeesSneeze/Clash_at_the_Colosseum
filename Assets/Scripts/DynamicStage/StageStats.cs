@@ -14,9 +14,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StageStats", menuName = "StageStats")]
 public class StageStats : ScriptableObject
 {
-    
     public TextAsset StageLayout;
     public int NumberOfEnemiesForLevel;
-    public EnemySpawner.EnemySpawnPointEntry[] spawnPoints;
+    public GameObject[] EnemyPrefabs;
     public float timeTillEnemiesSpawn;
 }

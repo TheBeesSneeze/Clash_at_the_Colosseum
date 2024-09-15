@@ -19,11 +19,17 @@ public class GameManager : Singleton<GameManager>
     public static CellManager cellManager;
     public static PathManager pathManager;
     public static BulletPoolManager bulletPoolManager;
+    public static EnemySpawner enemyManager;
+    public static StageManager stageManager;
+
+    [Header("Stage Manager")]
+    [SerializeField] private StageStats[] stages;
 
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
 
+    [Header("Move to different script")]
     public bool isPaused = false;
 
     void Start()
@@ -31,6 +37,8 @@ public class GameManager : Singleton<GameManager>
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
+        InitializeStageManager();
+        //InitializeEnemySpawnManager(); //not yet
     }
     private void InitializeCellManager()
     {
@@ -43,5 +51,15 @@ public class GameManager : Singleton<GameManager>
     private void InitializeBulletPoolManager()
     {
         bulletPoolManager = new BulletPoolManager(amountToPool, bullet);
+    }
+
+    private void InitializeEnemySpawnManager()
+    {
+        //enemyManager = new EnemySpawner();
+    }
+
+    private void InitializeStageManager()
+    {
+        stageManager = new StageManager(stages);
     }
 }
