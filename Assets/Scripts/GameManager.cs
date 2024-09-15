@@ -25,9 +25,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject bullet;
 
     public bool isPaused = false;
-    public float cursorSensitivity = PlayerPrefs.GetFloat("sensitivity", 0);
+    public float cursorSensitivity;
     void Start()
     {
+        cursorSensitivity = PlayerPrefs.GetFloat("sensitivity", 0);
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
