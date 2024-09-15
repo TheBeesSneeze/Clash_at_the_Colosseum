@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using NaughtyAttributes;
+using UnityEngine.SceneManagement;
 
 namespace Utilities
 {
@@ -21,31 +22,37 @@ namespace Utilities
             if (_startLayout == null || _endLayout == null)
                 return ;
 
-            Debug.Log(transitionPercent);
+            //TODO: how to lerp solidity???
 
-            //TODO: how to lerp solid???
+            StageElements startLayout = StageTransitionManager.GetStageElements(_startLayout);
+            StageElements endLayout = StageTransitionManager.GetStageElements(_endLayout);
 
-            StageElement[] startLayout = GetStageElements(_startLayout);
-            StageElement[] endLayout = GetStageElements(_endLayout);
-            Cell[] cells = GameObject.FindObjectsOfType<Cell>();
+            Cell[] activeCells = GameObject.FindObjectsOfType<Cell>();
+            EnemySpawnPoint[] activeSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
 
-            Assert.AreEqual(startLayout.Length, endLayout.Length);
-            Assert.AreEqual(cells.Length, startLayout.Length);
+            //Assert.AreEqual(stageElements.SceneName, SceneManager.GetActiveScene().name); // Yeah. we went there. deal with it.
+            if (startLayout.SceneName != endLayout.SceneName)
+                Debug.LogWarning("Stages were built in seperate unity scenes");
+            Assert.AreEqual(startLayout.elements.Length, endLayout.elements.Length);
+            Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
 
-            for (int i = 0; i < cells.Length; i++)
+            StageElement[] startCellData = startLayout.elements;
+            StageElement[] endCellData = endLayout.elements;
+            for (int i = 0; i < activeCells.Length; i++)
             {
-                Transform cell = cells[i].transform;
-                cell.position = Vector3.Lerp(startLayout[i].position, endLayout[i].position, transitionPercent);
-                cell.localScale = Vector3.Lerp(startLayout[i].localScale, endLayout[i].localScale, transitionPercent);
+                Transform cell = activeCells[i].transform;
+                cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
+                cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
+                cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
+            }
+
+            SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
+            SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
+            for (int i = 0; i < activeSpawnPoints.Length; i++)
+            {
+                activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
             }
         }
-
-        public static StageElement[] GetStageElements(TextAsset file)
-        {
-            Assert.IsTrue(file != null);
-            StageElements layout = JsonUtility.FromJson<StageElements>(file.text);
-            return layout.elements;
-        }    
 
         /// <summary>
         /// Instantly sets stage to match stageElements
@@ -58,17 +65,31 @@ namespace Utilities
                 return;
             }
 
-            StageElement[] stageElements = GetStageElements(stageToLoad);
+            StageElements stageElements = StageTransitionManager.GetStageElements(stageToLoad);
+            StageElement[] cellEmements = stageElements.elements;
+            SpawnPointElement[] spawnPointElements = stageElements.spawnPoints;
+
             Cell[] cells = GameObject.FindObjectsOfType<Cell>();
+            EnemySpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
 
-            Assert.AreEqual(stageElements.Length, cells.Length); // Yeah. we went there. deal with it.
+            //Assert.AreEqual(stageElements.SceneName, SceneManager.GetActiveScene().name); // Yeah. we went there. deal with it.
+            if (stageElements.SceneName != SceneManager.GetActiveScene().name)
+                Debug.LogWarning("Stages were built in seperate unity scenes");
+            Assert.AreEqual(cellEmements.Length, cells.Length); 
+            Assert.AreEqual(spawnPoints.Length, spawnPoints.Length); 
 
-            for (int i = 0; i < stageElements.Length; i++)
+            for (int i = 0; i < cellEmements.Length; i++)
             {
-                cells[i].Solid = stageElements[i].solid;
+                cells[i].Solid = cellEmements[i].sld;
                 Transform cell = cells[i].transform;
-                cell.position   = stageElements[i].position;
-                cell.localScale = stageElements[i].localScale;
+                cell.position   = cellEmements[i].p;
+                cell.localScale = cellEmements[i].ls;
+                cell.localRotation = cellEmements[i].lr;
+            }
+
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                spawnPoints[i].transform.position = spawnPointElements[i].pos;
             }
         }
 

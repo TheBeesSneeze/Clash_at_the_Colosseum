@@ -40,7 +40,6 @@ namespace PathFinding
             if (Solid)
                 return;
 
-            Debug.Log("collide");
             if(other.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
                 GameManager.pathManager.PlayerCellUpdate(this);
@@ -134,7 +133,7 @@ namespace PathFinding
             if (Selection.activeGameObject.GetComponent<StageBuilderTool>() == null)
                 return;
             
-            Gizmos.color = Color.white;
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         }
     }
