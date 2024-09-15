@@ -22,12 +22,10 @@ namespace Utilities
             if (_startLayout == null || _endLayout == null)
                 return ;
 
-            Debug.Log(transitionPercent);
-
             //TODO: how to lerp solidity???
 
-            StageElements startLayout = GetStageElements(_startLayout);
-            StageElements endLayout = GetStageElements(_endLayout);
+            StageElements startLayout = StageTransitionManager.GetStageElements(_startLayout);
+            StageElements endLayout = StageTransitionManager.GetStageElements(_endLayout);
 
             Cell[] activeCells = GameObject.FindObjectsOfType<Cell>();
             EnemySpawnPoint[] activeSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
@@ -52,14 +50,8 @@ namespace Utilities
             SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
             for (int i = 0; i < activeSpawnPoints.Length; i++)
             {
-                activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);}
-        }
-
-        public static StageElements GetStageElements(TextAsset file)
-        {
-            Assert.IsTrue(file != null);
-            StageElements layout = JsonUtility.FromJson<StageElements>(file.text);
-            return layout;
+                activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
+            }
         }
 
         /// <summary>
@@ -73,7 +65,7 @@ namespace Utilities
                 return;
             }
 
-            StageElements stageElements = GetStageElements(stageToLoad);
+            StageElements stageElements = StageTransitionManager.GetStageElements(stageToLoad);
             StageElement[] cellEmements = stageElements.elements;
             SpawnPointElement[] spawnPointElements = stageElements.spawnPoints;
 
