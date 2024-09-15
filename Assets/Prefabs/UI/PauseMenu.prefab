@@ -256,15 +256,15 @@ MonoBehaviour:
   m_FillRect: {fileID: 8448986350207304251}
   m_HandleRect: {fileID: 2795152443775147332}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.25
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5535550781621107184}
-        m_TargetAssemblyTypeName: PauseMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 117492991713127665}
+        m_TargetAssemblyTypeName: SettingsMenuScript, Assembly-CSharp
         m_MethodName: sensitivityChanged
         m_Mode: 1
         m_Arguments:
@@ -440,13 +440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButtonsContainer: {fileID: 3756224303992182911}
   resumeButton: {fileID: 559653024084845324}
-  settingsButton: {fileID: 3859843008625446587}
-  mainMenuButton: {fileID: 5817483167541674124}
   settingsMenu: {fileID: 3859843008625446587}
+  mainMenuButton: {fileID: 5817483167541674124}
   backButton: {fileID: 4539172833179646787}
-  volumeSlider: {fileID: 6856212803596466659}
-  sensitivitySlider: {fileID: 1259341129359511969}
-  isPaused: 0
   mainMenuSceneNumber: 0
 --- !u!1 &2268320448480934777
 GameObject:
@@ -860,8 +856,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5535550781621107184}
-        m_TargetAssemblyTypeName: PauseMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 117492991713127665}
+        m_TargetAssemblyTypeName: SettingsMenuScript, Assembly-CSharp
         m_MethodName: escPressed
         m_Mode: 1
         m_Arguments:
@@ -1363,8 +1359,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5535550781621107184}
-        m_TargetAssemblyTypeName: PauseMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 117492991713127665}
+        m_TargetAssemblyTypeName: SettingsMenuScript, Assembly-CSharp
         m_MethodName: volumeChanged
         m_Mode: 1
         m_Arguments:

@@ -19,11 +19,9 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject mainMenuButton;
     public GameObject backButton;
     
-    public GameManager gameManager;
     public int mainMenuSceneNumber = 0;
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
     }
     public void escPressed() {
@@ -31,12 +29,15 @@ public class PauseMenuScript : MonoBehaviour
             settingsMenu.SetActive(false);
             pauseButtonsContainer.SetActive(true);
         } else {
-            gameManager.isPaused = !gameManager.isPaused;
-            if (gameManager.isPaused){
+            GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
+            if (GameManager.Instance.isPaused){
                 pauseButtonsContainer.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
             }else{
                 pauseButtonsContainer.SetActive(false);
+                Cursor.visible = false;
                 Time.timeScale = 1;
             }
         }
