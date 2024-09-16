@@ -65,7 +65,6 @@ public class PlayerBehaviour : CharacterType
         
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
-        print(CurrentHealth);
     }
 
     public override void Die()

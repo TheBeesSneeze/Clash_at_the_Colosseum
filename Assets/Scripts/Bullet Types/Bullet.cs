@@ -86,7 +86,7 @@ public class Bullet : MonoBehaviour
                 
                 if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
                 {
-                    print("enemy taking damage"); 
+                    print("hit enemy");
                     enemy.TakeDamage(damageAmount);
                     if (_bulletEffect1 != null)
                     {
@@ -102,7 +102,7 @@ public class Bullet : MonoBehaviour
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
                 {
-                    print("Hitting Player");
+                    print("hit player");
                     player.TakeDamage(damageAmount);
                 }
                 //if hit something that isnt enemy
