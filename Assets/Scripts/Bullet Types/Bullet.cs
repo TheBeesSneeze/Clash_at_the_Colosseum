@@ -102,6 +102,7 @@ public class Bullet : MonoBehaviour
                 }
                 else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
                 {
+                    print("Hitting Player");
                     player.TakeDamage(damageAmount);
                 }
                 //if hit something that isnt enemy

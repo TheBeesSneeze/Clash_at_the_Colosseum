@@ -10,6 +10,7 @@
  *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,24 +22,28 @@ public class EnemyRangedAttack : MonoBehaviour
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
+    
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField]private BulletEffect bulletEffect1;
     [SerializeField] private BulletEffect bulletEffect2;
+    
 
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = stats.playerObject;
+        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         fireRate = stats.EnemyAttackRate;
         slowFireRate = fireRate * 2;
         coolDown = 0f;
+        
     }
 
     private void Update()
     {
+        
         AttemptAttack();
         coolDown -= Time.deltaTime;
     }

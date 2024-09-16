@@ -10,8 +10,10 @@
  * gun stats should be somewhere else
  *****************************************************************************/
 
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -35,7 +37,7 @@ public class PlayerStats : MonoBehaviour
     [Tooltip("What percent of normal movement will get applied whilst moving in the air")][Min(0)]
     public float AirMovementMultiplier = 0.5f;
     [Tooltip("How much player regens every second.")][Min(0)]
-    public int HealthRegen = 1;
+    public float HealthRegen = 0.25f;
     [Tooltip("Seconds until player heals.")][Min(0)]
     public int SecondsUntilHealing = 2;
     [Header("Jumps")]
