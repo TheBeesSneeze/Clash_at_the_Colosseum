@@ -107,6 +107,7 @@ namespace PathFinding
 
         private void OnDrawGizmos()
         {
+            GetComponent<MeshCollider>().convex = true;
             UpdateIfSolid();
 
             DrawSelfGizmos();
