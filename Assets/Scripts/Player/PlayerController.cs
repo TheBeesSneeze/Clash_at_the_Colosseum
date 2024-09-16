@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerStats stats;
     public Rigidbody RB => rb;
-    private int groundLayer;
+    private LayerMask groundLayers;
 
     private float xMovement;
     private float yMovement;
@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        groundLayer = LayerMask.NameToLayer("Default");
+        groundLayers |= (1 << LayerMask.GetMask("Default"));
+        groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayer))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayers))
         {
             return true;
         }
