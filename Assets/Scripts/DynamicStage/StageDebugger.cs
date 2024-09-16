@@ -22,6 +22,9 @@ namespace Utilities
             if (_startLayout == null || _endLayout == null)
                 return ;
 
+            StageTransitionManager.TransitionStagePercent(_startLayout, _endLayout,transitionPercent);
+
+            /*
             //TODO: how to lerp solidity???
 
             StageElements startLayout = StageTransitionManager.GetStageElements(_startLayout);
@@ -52,6 +55,7 @@ namespace Utilities
             {
                 activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
             }
+            */
         }
 
         /// <summary>
