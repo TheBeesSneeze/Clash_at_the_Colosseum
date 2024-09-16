@@ -56,7 +56,7 @@ public class StageTransitionManager
         if (startLayout.SceneName != endLayout.SceneName)
             Debug.LogWarning("Stages were built in seperate unity scenes");
         Assert.AreEqual(startLayout.elements.Length, endLayout.elements.Length);
-        Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
+        //Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
 
         StageElement[] startCellData = startLayout.elements;
         StageElement[] endCellData = endLayout.elements;

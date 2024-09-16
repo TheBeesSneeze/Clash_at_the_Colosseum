@@ -105,6 +105,7 @@ namespace PathFinding
             }
         }
 
+        /*
         private void OnDrawGizmos()
         {
             GetComponent<MeshCollider>().convex = true;
@@ -137,6 +138,8 @@ namespace PathFinding
             //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
             Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh);
         }
+        */
     }
+
 }
 

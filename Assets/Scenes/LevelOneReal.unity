@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2537,7 +2537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175296445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.7, y: 13.9, z: 294.228}
+  m_LocalPosition: {x: -70, y: 28.6, z: 269}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4493,7 +4493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211482235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.5, y: 12.2, z: 287.22}
+  m_LocalPosition: {x: -65.6, y: 22.2, z: 293.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17602,11 +17602,11 @@ PrefabInstance:
     - target: {fileID: 2336168834087680443, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: _endLayout
       value: 
-      objectReference: {fileID: 4900000, guid: c611b28fa00daff429c5f9fc9ae02de8, type: 3}
+      objectReference: {fileID: 4900000, guid: 5f733f3bfc1c6664383094dd50b6fc43, type: 3}
     - target: {fileID: 2336168834087680443, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: _startLayout
       value: 
-      objectReference: {fileID: 4900000, guid: f9c1169c940305d4cb62f6d20234ca34, type: 3}
+      objectReference: {fileID: 4900000, guid: 14b2a01d0388325488ee36e3dd15af7a, type: 3}
     - target: {fileID: 2336168834087680443, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: transitionPercent
       value: 0
@@ -17615,6 +17615,14 @@ PrefabInstance:
       propertyPath: _fileName
       value: LEVELONEREAL
       objectReference: {fileID: 0}
+    - target: {fileID: 3383984245829672010, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
+      propertyPath: stageToLoad
+      value: 
+      objectReference: {fileID: 4900000, guid: 5f733f3bfc1c6664383094dd50b6fc43, type: 3}
+    - target: {fileID: 3383984245829672010, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
+      propertyPath: defaultStage
+      value: 
+      objectReference: {fileID: 4900000, guid: 14b2a01d0388325488ee36e3dd15af7a, type: 3}
     - target: {fileID: 4500642133539895392, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: m_Name
       value: Stage Builder
@@ -23971,7 +23979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368312764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.79, y: 16.79, z: 281.95}
+  m_LocalPosition: {x: -82.5, y: 22.2, z: 293.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
