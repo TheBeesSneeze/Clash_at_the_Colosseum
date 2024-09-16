@@ -35,6 +35,15 @@ public class StageManager
 
         currentStage = _stages[stageIndex];
     }
+    
+    /// <summary>
+    /// for stage ui
+    /// </summary>
+    /// <returns></returns>
+    public static int ReturnStageIndex()
+    {
+        return stageIndex + 1;
+    }
 
     /// <summary>
     /// Called in enemy spawner

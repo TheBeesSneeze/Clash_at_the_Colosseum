@@ -38,6 +38,7 @@ public class PauseMenuScript : MonoBehaviour
             }else{
                 pauseButtonsContainer.SetActive(false);
                 Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
             }
         }

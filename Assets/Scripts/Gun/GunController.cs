@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
     public BulletEffect bulletEffect2;
     private LayerMask scanMask;
 
-    private float secondsSinceLastShoot;
+    [HideInInspector] public float secondsSinceLastShoot;
     private Rigidbody playerRB;
     private Camera playerCamera;
     private Animator animator;
