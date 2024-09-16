@@ -13,7 +13,8 @@ namespace mainMenu
 {
     public class HoverMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] public Vector2 offset;
+        [SerializeField] public Vector2 offsetPosition;
+        [SerializeField] public Vector2 offsetSize;
         private Vector2 start;
         private Vector2 startPos;
 
@@ -25,13 +26,14 @@ namespace mainMenu
 
         public void OnPointerEnter(PointerEventData data)
         {
-            GetComponent<RectTransform>().sizeDelta = start+offset;
-            GetComponent<RectTransform>().anchoredPosition += offset;
+            GetComponent<RectTransform>().sizeDelta = start + offsetSize;
+            //GetComponent<RectTransform>().anchoredPosition = startPos + offsetPosition;
         }
 
         public void OnPointerExit(PointerEventData data)
         {
             GetComponent<RectTransform>().sizeDelta = start;
+            //GetComponent<RectTransform>().anchoredPosition = startPos;
         }
     }
 }
