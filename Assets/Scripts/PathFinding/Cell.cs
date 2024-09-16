@@ -105,12 +105,17 @@ namespace PathFinding
             }
         }
 
+
         private void OnDrawGizmos()
         {
+            /*
             GetComponent<MeshCollider>().convex = true;
             UpdateIfSolid();
 
+
+
             DrawSelfGizmos();
+
 
             // Draw Neighbors
             if (Selection.activeGameObject != this.transform.gameObject)
@@ -123,10 +128,12 @@ namespace PathFinding
                 Cell c = _sideNeighbors[i];
                 Gizmos.DrawWireCube(c.transform.position, c.transform.lossyScale);
             }
+            */
         }
 
         private void DrawSelfGizmos()
         {
+            /*
             if (Selection.activeGameObject == null)
                 return;
 
@@ -136,7 +143,9 @@ namespace PathFinding
             Gizmos.color = Color.blue;
             //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
             Gizmos.DrawMesh(GetComponent<MeshFilter>().mesh);
+            */
         }
     }
+
 }
 
