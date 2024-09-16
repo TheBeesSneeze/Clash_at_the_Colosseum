@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 using NaughtyAttributes;
 using Utilities;
-using Unity.VisualScripting;
 
 namespace PathFinding
 {
@@ -40,7 +39,6 @@ namespace PathFinding
             if (Solid)
                 return;
 
-            Debug.Log("collide");
             if(other.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
                 GameManager.pathManager.PlayerCellUpdate(this);
@@ -109,6 +107,7 @@ namespace PathFinding
 
         private void OnDrawGizmos()
         {
+            GetComponent<MeshCollider>().convex = true;
             UpdateIfSolid();
 
             DrawSelfGizmos();
@@ -134,8 +133,9 @@ namespace PathFinding
             if (Selection.activeGameObject.GetComponent<StageBuilderTool>() == null)
                 return;
             
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
+            Gizmos.color = Color.blue;
+            //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
+            Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh);
         }
     }
 }

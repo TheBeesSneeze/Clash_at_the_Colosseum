@@ -3,15 +3,15 @@
  * Author(s) :         Toby, Sky
  *
  * Brief Description : Initializes other manager type classes
- * Do not put any non-initalization methods here  
+ * Do not put any non-initalization methods here (cough tyler cough isPaused),
  * make a new manager class or something
- * 
  *****************************************************************************/
 
 using PathFinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,19 +19,35 @@ public class GameManager : Singleton<GameManager>
     public static CellManager cellManager;
     public static PathManager pathManager;
     public static BulletPoolManager bulletPoolManager;
+    public static EnemySpawner enemyManager;
+    public static StageManager stageManager;
+    public static StageTransitionManager transitionManager;
+
+    [Header("Stage Manager")]
+    [SerializeField] private StageStats[] stages;
+
+    [Header("Stage Transition")]
+    [SerializeField] private float transitonSeconds = 1;
 
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
 
-    public bool isPaused = false;
-    public float cursorSensitivity;
+    
+
+    [Header("Move to different script")]
+    [ReadOnly] public bool isPaused = false;
+    [ReadOnly] public float cursorSensitivity;
+
     void Start()
     {
         cursorSensitivity = PlayerPrefs.GetFloat("sensitivity", 0);
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
+        InitializeStageTransitionManager();
+        InitializeStageManager();
+        //InitializeEnemySpawnManager(); //not yet
     }
     private void InitializeCellManager()
     {
@@ -44,5 +60,20 @@ public class GameManager : Singleton<GameManager>
     private void InitializeBulletPoolManager()
     {
         bulletPoolManager = new BulletPoolManager(amountToPool, bullet);
+    }
+
+    private void InitializeEnemySpawnManager()
+    {
+        //enemyManager = new EnemySpawner();
+    }
+
+    private void InitializeStageTransitionManager()
+    {
+        transitionManager = new StageTransitionManager(transitonSeconds);
+    }
+
+    private void InitializeStageManager()
+    {
+        stageManager = new StageManager(stages);
     }
 }

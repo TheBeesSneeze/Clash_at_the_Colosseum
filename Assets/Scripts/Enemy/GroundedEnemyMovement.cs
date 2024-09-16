@@ -19,7 +19,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private Transform _player;
     public bool debug = true;
     private Rigidbody rb;
-    private SphereCollider _collider;
+    private SphereCollider _collider; //im so sorry it needs to be a sphere
 
     private Path path;
     private int _emptyCellLayer = 6;
@@ -151,7 +151,6 @@ public class GroundedEnemyMovement : MonoBehaviour
             Cell c = hit.transform.GetComponent<Cell>();
             if (c!=null && !c.Solid)
             {
-                Debug.Log("cell mode");
                 currentCell = c;
                 return;
             }
