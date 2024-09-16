@@ -74,6 +74,10 @@ public class StageTransitionManager
         SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
         for (int i = 0; i < activeSpawnPoints.Length; i++)
         {
+            if(i>= startSpawnPoints.Length || i >= endSpawnPoints.Length)
+            {
+                continue;
+            }    
             activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
         }
     }
