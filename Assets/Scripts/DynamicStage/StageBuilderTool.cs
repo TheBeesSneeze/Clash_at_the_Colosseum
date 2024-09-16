@@ -121,9 +121,9 @@ namespace Utilities
         public bool sld; //solid
         public StageElement(Cell cell)
         {
-            p = cell.transform.localPosition;
+            p = cell.transform.position;
             ls = cell.transform.localScale;
-            lr = cell.transform.localRotation;
+            lr = cell.transform.rotation;
             sld = cell.Solid;
         }
     }
@@ -134,7 +134,7 @@ namespace Utilities
         public Vector3 pos;
         public SpawnPointElement(EnemySpawnPoint spawnPoint)
         {
-            pos = spawnPoint.transform.localPosition;
+            pos = spawnPoint.transform.position;
         }
     }
 

@@ -35,13 +35,13 @@ public class StageTransitionManager
             t = (Time.time - startTime) / _stageTransitonTime;
             t = Mathf.Min(1, t);
             
-            TransitionStage(start, end, t);
+            TransitionStagePercent(start, end, t);
 
             await Task.Yield();
         }
     }
 
-    private static void TransitionStage(TextAsset start, TextAsset end, float transitionPercent)
+    public static void TransitionStagePercent(TextAsset start, TextAsset end, float transitionPercent)
     {
         if (start == null || end == null)
             return;
@@ -63,15 +63,19 @@ public class StageTransitionManager
         for (int i = 0; i < activeCells.Length; i++)
         {
             Transform cell = activeCells[i].transform;
-            cell.localPosition = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
+            cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
             cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
-            cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
+            cell.rotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
         }
 
         SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
         SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
         for (int i = 0; i < activeSpawnPoints.Length; i++)
         {
+            if(i>= startSpawnPoints.Length || i >= endSpawnPoints.Length)
+            {
+                continue;
+            }    
             activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
         }
     }

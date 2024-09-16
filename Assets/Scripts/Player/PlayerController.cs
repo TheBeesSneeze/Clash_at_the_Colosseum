@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        groundLayers = new LayerMask();
         groundLayers |= (1 << LayerMask.GetMask("Default"));
         groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
         rb = GetComponent<Rigidbody>();
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance, ~groundLayers))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance*2, groundLayers))
         {
             return true;
         }
