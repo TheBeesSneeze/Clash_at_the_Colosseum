@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 using NaughtyAttributes;
 using Utilities;
-using Unity.VisualScripting;
 
 namespace PathFinding
 {
@@ -134,7 +133,8 @@ namespace PathFinding
                 return;
             
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(transform.position, transform.lossyScale);
+            //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
+            Gizmos.DrawMesh(GetComponent<MeshFilter>().mesh);
         }
     }
 }
