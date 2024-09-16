@@ -22,6 +22,9 @@ namespace Utilities
             if (_startLayout == null || _endLayout == null)
                 return ;
 
+            StageTransitionManager.TransitionStagePercent(_startLayout, _endLayout,transitionPercent);
+
+            /*
             //TODO: how to lerp solidity???
 
             StageElements startLayout = StageTransitionManager.GetStageElements(_startLayout);
@@ -43,7 +46,7 @@ namespace Utilities
                 Transform cell = activeCells[i].transform;
                 cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
                 cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
-                cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
+                cell.rotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
             }
 
             SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
@@ -52,6 +55,7 @@ namespace Utilities
             {
                 activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
             }
+            */
         }
 
         /// <summary>

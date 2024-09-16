@@ -26,6 +26,13 @@ public class StageManager
     public StageManager(StageStats[] stages)
     {
         _stages = stages;
+
+        if(_stages.Length == 0)
+        {
+            Debug.LogWarning("No stages in GameManager");
+            return;
+        }
+
         currentStage = _stages[stageIndex];
     }
 

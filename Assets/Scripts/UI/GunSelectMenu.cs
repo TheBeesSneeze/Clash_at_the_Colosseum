@@ -67,6 +67,7 @@ namespace mainMenu
 
         public void StartButtonPressed()
         {
+            SaveData.SelectedGun = _gunTypes[currentGunIndex];
             SceneManager.LoadScene(_sceneToLoad);
         }
 
