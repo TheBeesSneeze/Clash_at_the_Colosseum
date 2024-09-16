@@ -25,7 +25,7 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = stats.playerObject;
+        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         player = playerObject.GetComponent<PlayerBehaviour>();
         timeBetweenAttacks = stats.EnemyAttackRate;
         coolDown = 0f;

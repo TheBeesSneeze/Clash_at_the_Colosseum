@@ -137,7 +137,7 @@ Transform:
   - {fileID: 4129320510770929134}
   - {fileID: 9138300447882929290}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -258,7 +258,7 @@ MonoBehaviour:
   DashCoolDown: 3
   Friction: 2
   AirMovementMultiplier: 0.5
-  HealthRegen: 1
+  HealthRegen: 0.25
   SecondsUntilHealing: 2
   AirJumps: 1
   JumpHeight: 2.5
@@ -282,6 +282,9 @@ MonoBehaviour:
   playerCamera: {fileID: 5315044224774374552}
   playerOrientationTracker: {fileID: 7450907664879607023}
   cameraFollowPoint: {fileID: 7450907664879607023}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
