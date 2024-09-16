@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerStats stats;
     public Rigidbody RB => rb;
-    private LayerMask groundLayers;
+    [SerializeField] private LayerMask groundLayers;
 
     private float xMovement;
     private float yMovement;
@@ -45,9 +45,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        groundLayers = new LayerMask();
-        groundLayers |= (1 << LayerMask.GetMask("Default"));
-        groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
+        //groundLayers = new LayerMask();
+        //groundLayers |= (1 << LayerMask.GetMask("Default"));
+        //groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();
@@ -75,7 +75,6 @@ public class PlayerController : MonoBehaviour
         input = InputEvents.Instance.InputDirection2D;
 
         //FootStepSound();
-        IsGrounded();
     }
 
     /// <summary>
