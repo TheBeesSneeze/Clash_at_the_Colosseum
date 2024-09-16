@@ -34,6 +34,20 @@ public class GunController : MonoBehaviour
 
     private bool canShoot;
 
+    private void Start()
+    {
+        //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
+        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
+        playerRB = GetComponent<Rigidbody>();
+        playerCamera = Camera.main;
+        animator = GetComponent<Animator>();
+        shootingMode = SaveData.SelectedGun;
+        LoadShootingMode(shootingMode);
+        InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
+        scanMask |= (1 << LayerMask.GetMask("Default"));
+        scanMask |= (1 << LayerMask.GetMask("Enemy"));
+    }
+
     /// <summary>
     /// call this in from those little pickup guys
     /// </summary>
@@ -145,18 +159,7 @@ public class GunController : MonoBehaviour
         Debug.DrawLine(bulletSpawnPoint.position, destination, Color.red);
     }
 
-    private void Start()
-    {
-        //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
-        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
-        playerRB = GetComponent<Rigidbody>();
-        playerCamera = Camera.main;
-        animator = GetComponent<Animator>();
-        LoadShootingMode(shootingMode);
-        InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
-        scanMask |= (1 << LayerMask.GetMask("Default"));
-        scanMask |= (1 << LayerMask.GetMask("Enemy"));
-    }
+    
 
     
 }
