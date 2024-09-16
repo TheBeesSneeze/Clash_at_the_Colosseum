@@ -69,6 +69,10 @@ namespace Utilities
                 return;
             }
 
+            StageTransitionManager.TransitionStagePercent(stageToLoad, stageToLoad, 0);
+
+            /*
+
             StageElements stageElements = StageTransitionManager.GetStageElements(stageToLoad);
             StageElement[] cellEmements = stageElements.elements;
             SpawnPointElement[] spawnPointElements = stageElements.spawnPoints;
@@ -95,6 +99,7 @@ namespace Utilities
             {
                 spawnPoints[i].transform.position = spawnPointElements[i].pos;
             }
+            */
         }
 
 
