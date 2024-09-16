@@ -41,7 +41,8 @@ public class GunController : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
-        shootingMode = SaveData.SelectedGun;
+        if(SaveData.SelectedGun!= null)
+            shootingMode = SaveData.SelectedGun;
         LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
         scanMask |= (1 << LayerMask.GetMask("Default"));
