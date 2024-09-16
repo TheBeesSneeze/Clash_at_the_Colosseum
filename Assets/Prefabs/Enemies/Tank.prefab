@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92e9c0a29d697d540a49cb3ff306e806, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d68fb4ee47290b4f91f500635d83ffc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf975f4ba874ad4e809123178da0381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frontSprite: {fileID: 21300000, guid: 92e9c0a29d697d540a49cb3ff306e806, type: 3}
-  _leftSprite: {fileID: 21300000, guid: 92e9c0a29d697d540a49cb3ff306e806, type: 3}
-  _rightSprite: {fileID: 21300000, guid: 92e9c0a29d697d540a49cb3ff306e806, type: 3}
-  _backSprite: {fileID: 21300000, guid: 92e9c0a29d697d540a49cb3ff306e806, type: 3}
+  _frontSprite: {fileID: 21300000, guid: 3d68fb4ee47290b4f91f500635d83ffc, type: 3}
+  _leftSprite: {fileID: 21300000, guid: 3d68fb4ee47290b4f91f500635d83ffc, type: 3}
+  _rightSprite: {fileID: 21300000, guid: 3d68fb4ee47290b4f91f500635d83ffc, type: 3}
+  _backSprite: {fileID: 21300000, guid: 3d68fb4ee47290b4f91f500635d83ffc, type: 3}
   rotationReference: {fileID: 3007730471301732929}
 --- !u!1 &7996317265162831292
 GameObject:
@@ -253,7 +253,6 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 0}
   damageColorTime: 2
   spriteRenderer: {fileID: 4770044433410946019}
-  stageManager: {fileID: 0}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
   m_ObjectHideFlags: 0
