@@ -13,47 +13,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class StageManager
 {
-    [SerializeField] private StageStats[] stages;
-    private EnemySpawner enemySpawner;
-    private int stageIndex = 0;
-    
+    private static StageStats[] _stages;
+    private static int stageIndex = 0;
+    private static StageStats currentStage;
 
-    [HideInInspector] public int currentEnemies;
-    [HideInInspector] public StageStats currentStage;
+    public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
+    public static int enemiesToSpawn { get { return currentStage.NumberOfEnemiesForLevel; } }
+    public static float timeTillEnemiesSpawn { get { return currentStage.timeTillEnemiesSpawn; } }
 
-    private void Start()
+    public StageManager(StageStats[] stages)
     {
-        enemySpawner = GetComponent<EnemySpawner>();
-        currentEnemies = stages[stageIndex].NumberOfEnemiesForLevel;
-        currentStage = stages[stageIndex];
-    }
+        _stages = stages;
 
-    private void Update()
-    {
-        CheckIfCanChangeStage();
-    }
-
-    private void CheckIfCanChangeStage()
-    {
-        if (currentEnemies <= 0)
+        if(_stages.Length == 0)
         {
-            ChangeStage();
-        }
-    }
-
-    private void ChangeStage()
-    {
-        if(stageIndex < stages.Length-1) 
-        {
-            ++stageIndex;
-            currentStage = stages[stageIndex];
+            Debug.LogWarning("No stages in GameManager");
+            return;
         }
 
-        enemySpawner.changeStage = true;
-        currentEnemies = stages[stageIndex].NumberOfEnemiesForLevel;
+        currentStage = _stages[stageIndex];
+    }
 
+    /// <summary>
+    /// Called in enemy spawner
+    /// </summary>
+    public static void ChangeStage()
+    {
+        Debug.Log("changing stage");
+        if(stageIndex+1 == _stages.Length) 
+        {
+            Debug.LogWarning("I think the players supposed to beat the game here");
+            return;
+        }
+
+        var pastStage = _stages[stageIndex];
+        stageIndex++;
+
+        currentStage = _stages[stageIndex];
+
+        StageTransitionManager.TransitionStage(pastStage.StageLayout, currentStage.StageLayout);
         //add the dynamic stage code here to actually change stage 
     }
 }

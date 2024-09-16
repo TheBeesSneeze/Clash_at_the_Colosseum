@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3007730471301732929}
   - component: {fileID: 3606393014328770787}
-  - component: {fileID: 7325321510794388609}
+  - component: {fileID: -8544723543309438577}
   - component: {fileID: 934136319336592653}
   - component: {fileID: 460995224788324789}
   - component: {fileID: 1426887766406785384}
@@ -149,8 +149,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996317265162831292}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7325321510794388609
-BoxCollider:
+--- !u!135 &-8544723543309438577
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,8 +168,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.2381835, z: 0.42318368}
-  m_Center: {x: 0, y: 0.11909175, z: -0.0153723955}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &934136319336592653
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -253,6 +253,7 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 0}
   damageColorTime: 2
   spriteRenderer: {fileID: 4770044433410946019}
+  stageManager: {fileID: 0}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
   m_ObjectHideFlags: 0

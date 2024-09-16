@@ -137,7 +137,7 @@ Transform:
   - {fileID: 4129320510770929134}
   - {fileID: 9138300447882929290}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 5
-  Speed: 100
+  Speed: 150
   MaxSpeed: 20
   DashSpeed: 40
   DashCoolDown: 3
@@ -327,13 +327,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootLayers:
     serializedVersion: 2
-    m_Bits: 128
-  maxDistanceFromPointMultiplier: 0.8
-  minDistanceFromPointMultiplier: 0.25
-  jointSpring: 4.5
+    m_Bits: 129
+  maxDistanceFromPointMultiplier: 0.1
+  minDistanceFromPointMultiplier: 0.1
+  jointSpring: 11.86
   jointDamper: 7
   jumpingSpring: 9
-  jumpingDamper: 4
+  jumpingDamper: 0.77
   jointMassScale: 4.5
   jointForceBoost: 20
   gunModel: {fileID: 3880159941308313104}
