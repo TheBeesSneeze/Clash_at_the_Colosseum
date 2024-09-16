@@ -63,7 +63,7 @@ public class StageTransitionManager
         for (int i = 0; i < activeCells.Length; i++)
         {
             Transform cell = activeCells[i].transform;
-            cell.localPosition = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
+            cell.localPosition = Vector3.Lerp(startCellData[i].p, endCellData[i].p * 10, transitionPercent);
             cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
             cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
         }
