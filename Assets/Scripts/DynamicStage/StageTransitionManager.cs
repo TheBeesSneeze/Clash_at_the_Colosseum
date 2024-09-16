@@ -65,9 +65,9 @@ public class StageTransitionManager
             Transform cell = activeCells[i].transform;
             var lol = endCellData[i].p;
             lol.y *= 10;
-            cell.localPosition = Vector3.Lerp(startCellData[i].p, lol, transitionPercent);
+            cell.position = Vector3.Lerp(startCellData[i].p, lol, transitionPercent);
             cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
-            cell.localRotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
+            cell.rotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
         }
 
         SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
