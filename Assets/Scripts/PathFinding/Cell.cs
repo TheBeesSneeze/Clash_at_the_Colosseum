@@ -135,7 +135,7 @@ namespace PathFinding
             
             Gizmos.color = Color.blue;
             //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
-            Gizmos.DrawMesh(GetComponent<MeshFilter>().mesh);
+            Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh);
         }
     }
 }
