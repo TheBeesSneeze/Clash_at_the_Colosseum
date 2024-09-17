@@ -118,7 +118,7 @@ public class Bullet : MonoBehaviour
                     {
                         _bulletEffect2.OnHitOther(hit.point, damageAmount);
                     }
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
 
                 /*

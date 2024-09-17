@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7182448991274702958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.099, z: 0}
+  m_LocalPosition: {x: 0, y: 0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b1f691ae613b1429d72a1d53cf3bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   bulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   bulletSpawnPoint: {fileID: 3007730471301732929}
@@ -231,7 +230,6 @@ MonoBehaviour:
   EnemyDamage: 1
   EnemyAttackRate: 5
   EnemyAttackRange: 5
-  playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
   enemyMovementSpeed: 0
   TurningSpeed: 0
   StopSpeed: 0
