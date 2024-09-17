@@ -108,12 +108,11 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
 
         //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        GameObject bullet = BulletPoolManager.GetPooledObject();
+        GameObject bullet = BulletPoolManager.Instantiate(bulletSpawnPoint.position);
         if (bullet == null)
         {
             return;
         }
-        bullet.transform.position = bulletSpawnPoint.position;
         bullet.transform.forward = dir.normalized;
         var bulletObj = bullet.GetComponent<Bullet>();
         bulletObj.damageAmount = shootingMode.BulletDamage;

@@ -19,13 +19,14 @@ public class BulletPoolManager
         }
     }
 
-    public static GameObject GetPooledObject()
+    public static GameObject Instantiate(Vector3 position)
     {
         for (int i = 0; i < bulletList.Count; i++)
         {
             if (!bulletList[i].activeInHierarchy)
             {
                 bulletList[i].SetActive(true);
+                bulletList[i].transform.position = position;
                 return bulletList[i];
             }
         }
@@ -34,5 +35,14 @@ public class BulletPoolManager
         return newShot;
     }
 
+    public static void Destroy(GameObject bullet)
+    {
+        bullet.SetActive(false);
+    }
 
+    public void OnDisable()
+    {
+        Debug.Log("its disablin time");
+        bulletList = new List<GameObject>();
+    }
 }

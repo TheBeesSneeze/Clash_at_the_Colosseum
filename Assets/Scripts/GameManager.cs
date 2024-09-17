@@ -83,4 +83,9 @@ public class GameManager : Singleton<GameManager>
     {
         publicEvents = new PublicEvents();
     }
+
+    private void OnDisable()
+    {
+        bulletPoolManager.OnDisable();
+    }
 }

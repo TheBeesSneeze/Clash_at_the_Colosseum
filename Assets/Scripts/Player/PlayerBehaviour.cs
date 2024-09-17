@@ -75,6 +75,8 @@ public class PlayerBehaviour : CharacterType
     }
     public override void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
