@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using NaughtyAttributes;
 using Utilities;
@@ -104,8 +106,9 @@ namespace PathFinding
                 }
             }
         }
+#if UNITY_EDITOR
 
-        
+
         private void OnDrawGizmos()
         {
             if(gameObject.GetComponent<MeshCollider>() != null)
@@ -139,7 +142,8 @@ namespace PathFinding
             //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
             Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh);
         }
-        
+#endif
+
     }
 
 }

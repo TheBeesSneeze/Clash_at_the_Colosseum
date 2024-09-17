@@ -3299,7 +3299,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 85c558409f36ded4f866e079c754fc95, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.34
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4922,6 +4922,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -321
       objectReference: {fileID: 0}
+    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: GunTypes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c9e027354a58141408ec58a6101b45f9, type: 2}
     m_RemovedComponents:
     - {fileID: 7166871825656794846, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
     m_RemovedGameObjects: []
