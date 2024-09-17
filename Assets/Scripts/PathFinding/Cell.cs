@@ -108,7 +108,8 @@ namespace PathFinding
         
         private void OnDrawGizmos()
         {
-            GetComponent<MeshCollider>().convex = true;
+            if(gameObject.GetComponent<MeshCollider>() != null)
+                GetComponent<MeshCollider>().convex = true;
             UpdateIfSolid();
 
             DrawSelfGizmos();

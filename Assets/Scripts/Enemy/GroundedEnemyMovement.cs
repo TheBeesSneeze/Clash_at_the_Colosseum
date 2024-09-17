@@ -8,12 +8,12 @@ using Utilities;
 
 public class GroundedEnemyMovement : MonoBehaviour
 {
-    private float _speed;
-    private float _turningSpeed;
-    private float _stoppingSpeed;
-    float _stopDistanceToPlayer;
+    private float _speed=10;
+    private float _turningSpeed=1;
+    private float _stoppingSpeed=1;
+    float _stopDistanceToPlayer=1;
     bool _needsToSeePlayer = false; //TODO. DOESNT WORK
-    private float _sightDistance;
+    private float _sightDistance = 10;
     private EnemyStats _enemyStats;
 
     private Transform _player;
@@ -35,6 +35,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _collider=GetComponent<SphereCollider>();
         _enemyStats = GetComponent<EnemyStats>();
+
+        if (_enemyStats == null) return;
         _speed = _enemyStats.EnemyMovementSpeed;
         _turningSpeed = _enemyStats.TurningSpeed;
         _stoppingSpeed = _enemyStats.StopSpeed;
