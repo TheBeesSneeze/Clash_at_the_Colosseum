@@ -54,6 +54,7 @@ namespace mainMenu
         private void Start()
         {
             animator = GetComponent<Animator>();
+            animator.SetTrigger("Start Menu");
             startMenu = new StartMenu(this, _playButton, _statsButton, _settingsButton, _creditsButton, _quitButton);
             gunSelectMenu = new GunSelectMenu(this, mainSceneName, GunTypes, 
                 _leftButton, _rightButton, _startButton, 
