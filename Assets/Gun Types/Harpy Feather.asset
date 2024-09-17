@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Harpy Feather
   m_EditorClassIdentifier: 
   GunName: Harpy Feather
-  ShotsPerSecond: 1
-  BulletsPerShot: 1
+  ShotsPerSecond: 0.75
+  BulletsPerShot: 3
   BulletAccuracyOffset: 0
   CanHoldFire: 1
-  BulletSpeed: 8
-  BulletDamage: 25
+  BulletSpeed: 50
+  BulletDamage: 10
   RecoilForce: 0
   MenuSprite: {fileID: 0}
   GameplaySprite: {fileID: 0}
+  GameplayShootSprite: {fileID: 0}
+  GameplayCantShootSprite: {fileID: 0}
+  ShootSpriteSeconds: 0.1
   SelectHeaderColor: {r: 1, g: 1, b: 1, a: 1}
