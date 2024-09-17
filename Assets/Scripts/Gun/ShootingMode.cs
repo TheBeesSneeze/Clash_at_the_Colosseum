@@ -36,6 +36,9 @@ public class ShootingMode : ScriptableObject
     [Header("Sprites")]
     public Sprite MenuSprite;
     public Sprite GameplaySprite;
+    public Sprite GameplayShootSprite;
+    public Sprite GameplayCantShootSprite;
+    public float ShootSpriteSeconds = 0.1f;
     public Color SelectHeaderColor=Color.white;
 
     [Button]

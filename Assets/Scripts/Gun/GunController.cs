@@ -11,8 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using static AudioManager;
-using static Unity.VisualScripting.Member;
 
 public class GunController : MonoBehaviour
 {
@@ -75,12 +73,13 @@ public class GunController : MonoBehaviour
     private void Shoot()
     {
         secondsSinceLastShoot = 0;
-        //AudioManager.instance.Play("Shoot Default");
 
         for (int i = 0; i < shootingMode.BulletsPerShot; i++)
         {
             ShootBullet();
         }
+
+        PublicEvents.OnPlayerShoot.Invoke();
 
         //playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }

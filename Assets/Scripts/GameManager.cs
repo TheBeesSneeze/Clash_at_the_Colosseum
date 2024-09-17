@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     public static EnemySpawner enemyManager;
     public static StageManager stageManager;
     public static StageTransitionManager transitionManager;
+    public static PublicEvents publicEvents;
 
     [Header("Stage Manager")]
     [SerializeField] private StageStats[] stages;
@@ -48,6 +49,7 @@ public class GameManager : Singleton<GameManager>
         InitializeStageTransitionManager();
         InitializeStageManager();
         //InitializeEnemySpawnManager(); //not yet
+        InitializePublicEvents();
     }
     private void InitializeCellManager()
     {
@@ -75,5 +77,10 @@ public class GameManager : Singleton<GameManager>
     private void InitializeStageManager()
     {
         stageManager = new StageManager(stages);
+    }
+
+    private void InitializePublicEvents()
+    {
+        publicEvents = new PublicEvents();
     }
 }
