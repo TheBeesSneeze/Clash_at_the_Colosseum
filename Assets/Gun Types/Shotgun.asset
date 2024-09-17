@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  GunName: Shotgun
+  GunName: Crossbow
   ShotsPerSecond: 1
   BulletsPerShot: 12
   BulletAccuracyOffset: 1
   CanHoldFire: 1
   BulletSpeed: 100
-  BulletDamage: 20
+  BulletDamage: 0.5
   RecoilForce: 0.01
+  MenuSprite: {fileID: 21300000, guid: c3328ddedeb9072469b9ceca160e68ea, type: 3}
+  GameplaySprite: {fileID: 21300000, guid: 15e9561b3f55b8c428bd01b326b4f9ef, type: 3}
+  GameplayShootSprite: {fileID: 21300000, guid: 15e9561b3f55b8c428bd01b326b4f9ef, type: 3}
+  GameplayCantShootSprite: {fileID: 21300000, guid: b510af7a323e0b042ba9b57dc9b4f8b6, type: 3}
+  ShootSpriteSeconds: 0.1
+  SelectHeaderColor: {r: 0.7169812, g: 0.41117048, b: 0, a: 1}

@@ -182,17 +182,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 50
+  EnemyHealth: 1
   EnemyDamage: 1
   EnemyAttackRate: 5
   EnemyAttackRange: 5
-  enemyMovementSpeed: 3
-  TurningSpeed: 1
-  StopSpeed: 1
-  StopDistanceToPlayer: 1
-  SightDistance: 1
-  VerticalSpeed: 1
-  HeightAboveGround: 100
+  enemyMovementSpeed: 2
+  TurningSpeed: 0
+  StopSpeed: 0
+  StopDistanceToPlayer: 0
+  SightDistance: 0
+  VerticalSpeed: 0
+  HeightAboveGround: 0
 --- !u!114 &2574494738450226700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b1f691ae613b1429d72a1d53cf3bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingMode: {fileID: 11400000, guid: 0ea084b7ba9e5b84586e678a684cac15, type: 2}
+  shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   bulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   bulletSpawnPoint: {fileID: 2418623821713463542}
   bulletEffect1: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  damageColorTime: 0.5
+  damageColorTime: 2
   spriteRenderer: {fileID: 5820015479103233236}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
@@ -245,7 +245,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661017455119386389}
   serializedVersion: 4
-  m_Mass: 0.0000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

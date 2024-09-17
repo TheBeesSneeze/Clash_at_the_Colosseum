@@ -37,8 +37,9 @@ namespace PathFinding
 
             foreach (Cell cell in target.SideNeighbors)
             {
-                if(!cell.Solid)
-                    nextCells.Add(new Path( cell, startNode, navigator));
+                Path next = new Path(cell, startNode, navigator);
+                if (!cell.Solid && nextCells.IndexOf(next)== -1)
+                    nextCells.Add(next);
             }
             nextCells.Sort();
 

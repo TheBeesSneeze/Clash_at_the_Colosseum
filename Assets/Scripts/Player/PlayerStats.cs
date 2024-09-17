@@ -13,7 +13,6 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
