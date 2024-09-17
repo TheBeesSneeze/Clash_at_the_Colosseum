@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackupEnemyMovement : MonoBehaviour
 {
-    public LayerMask betterLayerMask;
+    private LayerMask betterLayerMask;
     private Transform player;
     private Rigidbody rb;
 
