@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         horizontalVelocity.y = 0;
         if(horizontalVelocity.magnitude < 0.01f)
         {
-            horizontalVelocity = Vector3.zero;
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }
     private void Jump()
