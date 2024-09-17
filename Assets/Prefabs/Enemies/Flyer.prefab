@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1939992571173494461}
   - component: {fileID: 5820015479103233236}
   - component: {fileID: 7550726505777626834}
-  - component: {fileID: 8627847328928064834}
   m_Layer: 0
   m_Name: Harpy Draft 2
   m_TagString: Untagged
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,27 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf975f4ba874ad4e809123178da0381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frontSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
-  _leftSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
-  _rightSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
-  _backSprite: {fileID: 21300000, guid: bea85cb4a93cd0f41a9c5f993f7a7f74, type: 3}
+  _frontSprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
+  _leftSprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
+  _rightSprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
+  _backSprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
   rotationReference: {fileID: 2418623821713463542}
---- !u!114 &8627847328928064834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335499054426519827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3722bb7e6827d07488f4a84b86edb936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _yMin: -1
-  _yMax: 1
-  _speed: 1
-  _targetObject: {fileID: 1939992571173494461}
 --- !u!1 &1661017455119386389
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,7 +66,13 @@ public class PlayerBehaviour : CharacterType
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "deathbox")
+        {
+            Die();
+        }
+    }
     public override void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

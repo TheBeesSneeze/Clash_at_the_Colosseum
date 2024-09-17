@@ -19,6 +19,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private static int _currentEnemiesAlive;
 
+    public static int ReturnEnemyCount()
+    {
+        return _currentEnemiesAlive;
+    }
+
     // Moved this to its own script
     /*
     [System.Serializable]
