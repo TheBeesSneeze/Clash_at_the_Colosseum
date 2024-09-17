@@ -257,7 +257,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2795152443775147332}
   m_Direction: 0
   m_MinValue: 0.1
-  m_MaxValue: 10
+  m_MaxValue: 4
   m_WholeNumbers: 0
   m_Value: 0.25
   m_OnValueChanged:
@@ -416,7 +416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2239711713903569036}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -424,7 +424,7 @@ Transform:
   - {fileID: 4234950642075981012}
   - {fileID: 7921856069851891754}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5535550781621107184
 MonoBehaviour:
@@ -443,7 +443,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 3859843008625446587}
   mainMenuButton: {fileID: 5817483167541674124}
   backButton: {fileID: 4539172833179646787}
-  mainMenuSceneNumber: 0
+  mainMenuSceneName: MainMenu
 --- !u!1 &2268320448480934777
 GameObject:
   m_ObjectHideFlags: 0

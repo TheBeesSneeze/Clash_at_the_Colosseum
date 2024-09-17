@@ -14,8 +14,10 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public UnityEvent RestartStarted, RespawnStarted;
     [HideInInspector] public UnityEvent EnemySpawnStarted, EnemySpawnCanceled;
 
+    private float _sensitivity=1;
+
     // Input values and flags
-    public Vector2 LookDelta => Look.ReadValue<Vector2>() * PlayerPrefs.GetFloat("sensitivity", 1) * 100 * Time.deltaTime;
+    public Vector2 LookDelta => Look.ReadValue<Vector2>() * _sensitivity;
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
     public static bool MovePressed, JumpPressed, ShootPressed, RespawnPressed, DashPressed,
@@ -31,6 +33,8 @@ public class InputEvents : Singleton<InputEvents>
         movementOrigin = Camera.main.transform;
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
+        PublicEvents.OnSettingsSliderChanged.AddListener(OnSettingsValueChanged);
     }
 
     void InitializeActions()
@@ -44,7 +48,8 @@ public class InputEvents : Singleton<InputEvents>
         Dash = map.FindAction("Dash");
         Grapple = map.FindAction("Grapple");
         Pause = map.FindAction("Pause");
-        SpawnEnemies = map.FindAction("Spawn Enemies"); 
+        SpawnEnemies = map.FindAction("Spawn Enemies");
+
 
         Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started += ctx => ActionStarted(ref JumpPressed, JumpStarted);
@@ -103,5 +108,10 @@ public class InputEvents : Singleton<InputEvents>
         Dash.canceled += ctx => ActionCanceled(ref DashPressed, DashCanceled);
         SpawnEnemies.canceled += ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnCanceled);
         Grapple.canceled += ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
+    }
+
+    private void OnSettingsValueChanged()
+    {
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
     }
 }

@@ -14,4 +14,5 @@ using UnityEngine.Events;
 public class PublicEvents
 {
     public static UnityEvent OnPlayerShoot = new UnityEvent();
+    public static UnityEvent OnSettingsSliderChanged = new UnityEvent();
 }

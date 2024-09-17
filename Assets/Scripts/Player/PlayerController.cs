@@ -141,22 +141,16 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime ));
         rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));
 
-        //makes sure that the player will stand still without sliding drift
-        print("X = " + rb.velocity.x);
-        print("y = " + rb.velocity.y);
-
         //sliding fix; stops the player from drifting and allows them to stay still
-        //SlidingFix();
+        SlidingFix();
         
     }
     private void SlidingFix() {
-        if (rb.velocity.x < 0.00000000001f && rb.velocity.x > -0.00000000001f)
+        Vector3 horizontalVelocity = rb.velocity;
+        horizontalVelocity.y = 0;
+        if(horizontalVelocity.magnitude < 0.01f)
         {
-            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.y);
-        }
-        if (rb.velocity.y < 0.00000000001f && rb.velocity.y > -0.00000000001f)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.y);
+            horizontalVelocity = Vector3.zero;
         }
     }
     private void Jump()
@@ -225,6 +219,9 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCamera()
     {
+        if (GameManager.Instance.isPaused)
+            return;
+
         var mouse = InputEvents.Instance.LookDelta;
         //float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
         //float mouseY = mouse.y * OptionInstance.sensitivity * Time.fixedDeltaTime;

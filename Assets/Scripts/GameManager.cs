@@ -38,11 +38,9 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Move to different script")]
     [ReadOnly] public bool isPaused = false;
-    [ReadOnly] public float cursorSensitivity;
 
     void Start()
     {
-        cursorSensitivity = PlayerPrefs.GetFloat("sensitivity", 0);
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();

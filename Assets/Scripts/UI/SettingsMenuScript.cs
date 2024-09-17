@@ -46,6 +46,7 @@ public class SettingsMenuScript : MonoBehaviour
         PlayerPrefs.SetFloat("volume", slider.value);
         float sliderValue = slider.value;
         print(slider.value);
+        PublicEvents.OnSettingsSliderChanged.Invoke();
     }
     public void sensitivityChanged()
     {
@@ -53,5 +54,6 @@ public class SettingsMenuScript : MonoBehaviour
         PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
         print(slider.value);
+        PublicEvents.OnSettingsSliderChanged.Invoke();
     }
 }

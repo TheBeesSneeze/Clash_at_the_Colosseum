@@ -28,20 +28,18 @@ public class PauseMenuScript : MonoBehaviour
         if (settingsMenu.activeSelf){
             settingsMenu.SetActive(false);
             pauseButtonsContainer.SetActive(true);
+            return;
         } else {
             GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-            if (GameManager.Instance.isPaused){
-                pauseButtonsContainer.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                Time.timeScale = 0;
-            }else{
-                pauseButtonsContainer.SetActive(false);
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                Time.timeScale = 1;
-            }
+
+            pauseButtonsContainer.SetActive(GameManager.Instance.isPaused);
         }
+
+        //sorry for weird refactor, i was getting a bug where the cursor wasnt hiding
+        Cursor.visible = GameManager.Instance.isPaused;
+        Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+        
     }
     public void SettingsClicked() {
         pauseButtonsContainer.SetActive(false);
