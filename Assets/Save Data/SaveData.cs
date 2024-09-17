@@ -11,4 +11,6 @@ using UnityEngine;
 public class SaveData : ScriptableObject
 {
     public static ShootingMode SelectedGun;
+
+
 }
