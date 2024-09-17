@@ -92,24 +92,6 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    /// <summary>
-    /// footstep code ----- AUDIO
-    /// </summary>
-    /*
-    private void FootStepSound()
-    {
-        if (Time.time - timeSinceLastFootstep >= Mathf.Max(1f - (rb.velocity.magnitude / 40.0f), 0.25f))
-        {
-            // Play a random footstep sound from the array
-
-            if (instance != null)
-                instance.PlayFromGroup("Footsteps");
-
-            timeSinceLastFootstep = Time.time;
-        }
-    }
-    */
-
     private void DoMovement()
     {
         rb.AddForce(Vector3.down * stats.GravityBoost, ForceMode.Acceleration);
