@@ -116,27 +116,49 @@ public class PlayerController : MonoBehaviour
 
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
-        float xMag = mag.x, yMag = mag.y;
+        float xMag = mag.x;
+        float yMag = mag.y;
 
         ApplyCounterMovement(input.x, input.y, mag);
 
         float maxSpeed = stats.MaxSpeed;
 
-        if (input.x > 0 && xMag >  maxSpeed) 
+        //checks to see if player has reahed max speed
+        if (input.x > 0 && xMag > maxSpeed) {
             input.x = 0;
-        if (input.x < 0 && xMag < -maxSpeed) 
+        }
+        if (input.x < 0 && xMag < -maxSpeed) {
             input.x = 0;
-        if (input.y > 0 && yMag >  maxSpeed) 
+        }
+        if (input.y > 0 && yMag > maxSpeed) {
             input.y = 0;
-        if (input.y < 0 && yMag < -maxSpeed) 
+        }
+        if (input.y < 0 && yMag < -maxSpeed) {
             input.y = 0;
-
+        }
 
         //Apply forces to move player
         rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime ));
         rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));
-    }
 
+        //makes sure that the player will stand still without sliding drift
+        print("X = " + rb.velocity.x);
+        print("y = " + rb.velocity.y);
+
+        //sliding fix; stops the player from drifting and allows them to stay still
+        //SlidingFix();
+        
+    }
+    private void SlidingFix() {
+        if (rb.velocity.x < 0.00000000001f && rb.velocity.x > -0.00000000001f)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.y);
+        }
+        if (rb.velocity.y < 0.00000000001f && rb.velocity.y > -0.00000000001f)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.y);
+        }
+    }
     private void Jump()
     {
         if (GrapplingHook.isGrappling)
@@ -172,16 +194,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Math.Abs(mag.x) > 0.01f && Math.Abs(x) < 0.05f || (mag.x < -0.01f && x > 0) || (mag.x > 0.01f && x < 0))
         {
-            rb.AddForce(
-                playerOrientationTracker.right * (stats.Speed * Time.deltaTime * -mag.x * stats.Friction));
+            rb.AddForce(playerOrientationTracker.right * (stats.Speed * Time.deltaTime * -mag.x * stats.Friction));
         }
-
         if (Math.Abs(mag.y) > 0.01f && Math.Abs(y) < 0.05f || (mag.y < -0.01f && y > 0) || (mag.y > 0.01f && y < 0))
         {
-            rb.AddForce(
-                playerOrientationTracker.forward * (stats.Speed * Time.deltaTime * -mag.y * stats.Friction));
+            rb.AddForce(playerOrientationTracker.forward * (stats.Speed * Time.deltaTime * -mag.y * stats.Friction));
         }
-
         if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > stats.MaxSpeed)
         {
             float verticalVelocity = rb.velocity.y;
