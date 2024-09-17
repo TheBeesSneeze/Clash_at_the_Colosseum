@@ -77,7 +77,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
         {
-            GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length - 1)];
+            GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length)];
             GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
             _currentEnemiesAlive++;
         }
