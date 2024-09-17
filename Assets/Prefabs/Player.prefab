@@ -256,7 +256,7 @@ MonoBehaviour:
   MaxSpeed: 20
   DashSpeed: 40
   DashCoolDown: 3
-  Friction: 2
+  Friction: 1
   AirMovementMultiplier: 0.5
   HealthRegen: 1
   SecondsUntilHealing: 2
@@ -282,6 +282,9 @@ MonoBehaviour:
   playerCamera: {fileID: 5315044224774374552}
   playerOrientationTracker: {fileID: 7450907664879607023}
   cameraFollowPoint: {fileID: 7450907664879607023}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
