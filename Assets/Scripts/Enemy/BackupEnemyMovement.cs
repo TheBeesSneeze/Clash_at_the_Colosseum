@@ -1,3 +1,7 @@
+///
+/// Delete this script later
+///
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
