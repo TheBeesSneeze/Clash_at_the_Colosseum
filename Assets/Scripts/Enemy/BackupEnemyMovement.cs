@@ -11,6 +11,7 @@ public class BackupEnemyMovement : MonoBehaviour
     private LayerMask betterLayerMask;
     private Transform player;
     private Rigidbody rb;
+    private EnemyStats stats;
 
     private Transform hitpos;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class BackupEnemyMovement : MonoBehaviour
         //betterLayerMask |= (1 << LayerMask.GetMask("Player"));
 
         player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+        stats = GetComponent<EnemyStats>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -32,7 +34,7 @@ public class BackupEnemyMovement : MonoBehaviour
 
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;
-        direction = direction.normalized * 5;
+        direction = direction.normalized * stats.EnemyMovementSpeed;
         direction.y = rb.velocity.y;
 
         rb.velocity = direction;
