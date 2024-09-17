@@ -17,7 +17,6 @@ public class ReloadBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(gunController.secondsSinceLastShoot);
         if (gunController.secondsSinceLastShoot > gunController.shootingMode.ShotsPerSecond)
         {
             group.alpha = 0;

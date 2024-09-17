@@ -19,7 +19,7 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject mainMenuButton;
     public GameObject backButton;
     
-    public int mainMenuSceneNumber = 0;
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
     private void Start()
     {
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
@@ -48,6 +48,6 @@ public class PauseMenuScript : MonoBehaviour
         settingsMenu.SetActive(true);
     }
     public void mainMenuClicked() {
-        SceneManager.LoadScene(mainMenuSceneNumber);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }
