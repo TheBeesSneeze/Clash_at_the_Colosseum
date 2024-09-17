@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794611ae47cb10d45bd0349766c9177d, type: 3}
-  m_Name: Harpy Feather
+  m_Name: Assualt Rifle 1
   m_EditorClassIdentifier: 
-  GunName: Harpy Feather
-  ShotsPerSecond: 0.75
-  BulletsPerShot: 3
-  BulletAccuracyOffset: 0
+  GunName: Snake Launcher
+  ShotsPerSecond: 1
+  BulletsPerShot: 1
+  BulletAccuracyOffset: 0.419
   CanHoldFire: 1
-  BulletSpeed: 50
-  BulletDamage: 5
-  RecoilForce: 0
+  BulletSpeed: 100
+  BulletDamage: 15
+  RecoilForce: 0.01
   MenuSprite: {fileID: 0}
   GameplaySprite: {fileID: 0}
   GameplayShootSprite: {fileID: 0}
