@@ -20,13 +20,15 @@ public class EnemyTakeDamage : MonoBehaviour
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+
+
     private bool isStillAlive;
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
         currentHealth = stats.EnemyHealth;
         isStillAlive = true;
-   }
+    }
     private void Update()
     {
         damagetime -= Time.deltaTime;
@@ -45,7 +47,12 @@ public class EnemyTakeDamage : MonoBehaviour
         if (currentHealth < damage && isStillAlive) 
         {
             Die();
-            
+
+            PublicEvents.OnEnemyDeath.Invoke();
+        }
+        else
+        {
+            PublicEvents.OnEnemyDamage.Invoke();
         }
     }
 
