@@ -53,7 +53,6 @@ public class EnemyMelee : MonoBehaviour
     private float GetDistanceFromPlayer()
     {
         var distance = (transform.position - playerObject.transform.position);
-        distance.y = 0f;
         float distanceFrom = distance.magnitude;
 
         return distanceFrom;
