@@ -21,13 +21,9 @@ namespace DefaultNamespace
         {
             
         }
-
         public override void OnHitOther(Vector3 point, float damage)
         {
-            Debug.LogWarning("old code. pls update");
-            GameObject explosion = Instantiate(ExplosionPrefab, point, ExplosionPrefab.transform.rotation);
-
-            //explosion.GetComponent<AttackType>().Damage = damage * DamageMultiplier;
+            //still does an explotion if it hits a wall
         }
     }
 }
