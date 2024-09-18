@@ -47,8 +47,6 @@ public class EnemyTakeDamage : MonoBehaviour
         if (currentHealth < damage && isStillAlive) 
         {
             Die();
-
-            PublicEvents.OnEnemyDeath.Invoke();
         }
         else
         {
@@ -60,7 +58,10 @@ public class EnemyTakeDamage : MonoBehaviour
     {
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
+
+        PublicEvents.OnEnemyDeath.Invoke();
         Destroy(gameObject);
+
     }
 
 }

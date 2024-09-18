@@ -1,64 +1,139 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class MyAudioManager : MonoBehaviour
 {
-    //sorry guys im cleaning this up later but right now i feel like puking
+
     private GunController gunController;
+    private PlayerBehaviour player;
+
     public SoundClip GunSound;
     public SoundClip EnemyDamageSound;
     public SoundClip PlayerDamageSound;
     public SoundClip EnemyDeathSound;
-    private PlayerBehaviour player;
+    public SoundClip PlayerDeathSound;
+    public SoundClip EnemyShootSound;
+    public SoundClip MeleeAttackSound;
+    public SoundClip GrappleSound;
+    public SoundClip DashSound;
+    public SoundClip UpgradeReceiveSound;
+    public SoundClip StageTransitionSound;
 
     void Start()
     {        
         PublicEvents.OnPlayerShoot.AddListener(OnGunShoot);
+        PublicEvents.OnPlayerDamage.AddListener(PlayerDamage);
         PublicEvents.OnEnemyDamage.AddListener(EnemyDamage);
         PublicEvents.OnEnemyDeath.AddListener(EnemyDeath);
-        PublicEvents.OnPlayerDamage.AddListener(PlayerDamage);
+        PublicEvents.OnPlayerDeath.AddListener(PlayerDeath);
+        PublicEvents.OnEnemyShoot.AddListener(EnemyShoot);
+        PublicEvents.OnMeleeEnemyAttack.AddListener(MeleeEnemyAttack);
+        PublicEvents.OnGrapple.AddListener(Grapple);
+        PublicEvents.OnDash.AddListener(Dash);
+        PublicEvents.OnUpgradeReceived.AddListener(UpgradeReceived);
+        PublicEvents.OnStageTransition.AddListener(StageTransition);
 
 
         gunController = GameObject.FindObjectOfType<GunController>();
         player = GameObject.FindObjectOfType<PlayerBehaviour>();
     }
+    //snake, trident, bow sound
     private void OnGunShoot()
     {
         GunSound.PlaySound();
     }
 
+    //enemy damage
     private void EnemyDamage()
     {
         EnemyDamageSound.PlaySound();
     }
 
+    //player damage
     private void PlayerDamage()
     {
         PlayerDamageSound.PlaySound();
     }
+    //enemy death
     private void EnemyDeath()
     {
         EnemyDeathSound.PlaySound();
 
     }
+
+    //player death
+    private void PlayerDeath()
+    {
+        PlayerDeathSound.PlaySound();
+    }
+
+    //ranged, tank enemy shooting
+
+    private void EnemyShoot()
+    {
+        EnemyShootSound.PlaySound();
+    }
+
+    //melee enemy attack 
+    private void MeleeEnemyAttack()
+    {
+        MeleeAttackSound.PlaySound();
+    }
+    
+    //grappling hook
+    private void Grapple()
+    {
+        GrappleSound.PlaySound();
+    }
+
+    //dash
+    private void Dash()
+    {
+        DashSound.PlaySound();
+    }
+
+    //upgrade receive
+    private void UpgradeReceived()
+    {
+        UpgradeReceiveSound.PlaySound();
+    }
+
+    //stage transition
+    private void StageTransition()
+    {
+        StageTransitionSound.PlaySound();
+    }
+
+    //cooldown sound ---------------------------------------------
+    //boss sound ------------------------------------
 }
 
 [System.Serializable]
 public class SoundClip
 {
     [Range(0f, 1f)]
-    public float Volume;
+    public float Volume = 1;
     public AudioClip sound;
+
+    [Button]
     public void PlaySound()
     {
-        AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume);
+        if (sound != null)
+        {
+            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume);
+        }
 
     }
+
+    //figure this out laters
     public void PlaySound(Vector3 transform)
     {
-        AudioSource.PlayClipAtPoint(sound, transform, Volume);
-
+        if (sound != null)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform, Volume);
+        }
     }
 }
 
