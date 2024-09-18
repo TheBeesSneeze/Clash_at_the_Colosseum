@@ -111,7 +111,8 @@ namespace PathFinding
 
         private void OnDrawGizmos()
         {
-            if(gameObject.GetComponent<MeshCollider>() != null)
+
+            if (gameObject.GetComponent<MeshCollider>() != null)
                 GetComponent<MeshCollider>().convex = true;
             UpdateIfSolid();
 
@@ -126,7 +127,8 @@ namespace PathFinding
             for (int i = 0; i < _sideNeighbors.Count; i++)
             {
                 Cell c = _sideNeighbors[i];
-                Gizmos.DrawWireCube(c.transform.position, c.transform.lossyScale);
+                //Gizmos.DrawWireCube(c.transform.position, c.transform.lossyScale);
+                Gizmos.DrawWireMesh(c.GetComponent<MeshFilter>().sharedMesh,c.transform.position, transform.rotation, transform.lossyScale);
             }
         }
 
@@ -139,8 +141,11 @@ namespace PathFinding
                 return;
             
             Gizmos.color = Color.blue;
-            //Gizmos.DrawWireCube(transform.position, transform.lossyScale);
-            Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh);
+
+            if(GetComponent<MeshFilter>() != null)
+                Gizmos.DrawWireMesh(GetComponent<MeshFilter>().sharedMesh, transform.position, transform.rotation, transform.lossyScale);
+            else
+                Gizmos.DrawWireCube(transform.position, transform.lossyScale);
         }
 #endif
 
