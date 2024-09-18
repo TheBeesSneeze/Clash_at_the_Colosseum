@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         ElectricityBullet.cs
-* Author(s) :         Toby Schamberger
+* Author(s) :         Toby Schamberger, Clare Grady
 * Creation Date :     3/30/2024
 *
 * Brief Description : zaps nearby enemies
@@ -20,11 +20,8 @@ namespace DefaultNamespace
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
 
-        private int _onlyEnemiesMask;
-
         public override void Initialize()
         {
-            _onlyEnemiesMask = LayerMask.NameToLayer("Enemy");
             throw new System.NotImplementedException();
         }
 
@@ -37,10 +34,12 @@ namespace DefaultNamespace
 
             damage = damage * DamageMultiplier;
 
-            for(int i=0; i< MaxEnemiesToZap && i<closeEnemies.Length; i++)
+            Vector3 originEnemy = type.transform.position;
+
+            for(int i=0; i<closeEnemies.Length; i++)
             {
                 Debug.Log("electrocuting");
-                Electrocute(closeEnemies[i], damage, type.transform.position);
+                Electrocute(closeEnemies[i], 0, originEnemy);
             }
         }
 
@@ -48,8 +47,9 @@ namespace DefaultNamespace
 
         private void Electrocute(EnemyTakeDamage enemy, float damage, Vector3 origin)
         {
-            enemy.TakeDamage(damage);
             Visualize(origin, enemy.transform.position);
+            enemy.TakeDamage(damage);
+            Debug.Log("I've been electrocuted");
         }
 
         private void Visualize(Vector3 origin, Vector3 target)
@@ -70,28 +70,21 @@ namespace DefaultNamespace
             //wouldve been easier to read
             //sorry if this breaks and u gotta do shit to it later
 
-            RaycastHit[] hit;
-            hit = Physics.SphereCastAll(enemy.transform.position, MaxEnemiesToZap, Vector3.up, 0, _onlyEnemiesMask);
+            Collider[] hitColliders = Physics.OverlapSphere(enemy.transform.position, 3, LayerMask.GetMask("Enemy"));
+            Debug.Log(hitColliders.Length);
+            
+            int l = Mathf.Max(0, hitColliders.Length - 1);
+            int length = Mathf.Min(l, MaxEnemiesToZap);
+            
+            EnemyTakeDamage[] enemies = new EnemyTakeDamage[length];
 
-            int l = Mathf.Max(0, hit.Length - 1);
-            EnemyTakeDamage[] enemies = new EnemyTakeDamage[l];
-
-            int offset = 0;
-            for (int i = 0; i < hit.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                EnemyTakeDamage e = hit[i].transform.GetComponent<EnemyTakeDamage>();
-
-                if (e == enemy)
-                {
-                    offset = -1;
-                    continue;
-                }
-
-                enemies[i + offset] = e;
+                EnemyTakeDamage e = hitColliders[i].transform.GetComponent<EnemyTakeDamage>();
             }
+            Debug.Log(enemies.Length);
 
             return enemies;
-
         }
     }
 }
