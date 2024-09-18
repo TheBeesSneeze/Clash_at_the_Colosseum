@@ -15,18 +15,11 @@ namespace DefaultNamespace
     [CreateAssetMenu(fileName = "Card")]
     public class ExplosionBullet : BulletEffect
     {
-        
-        public GameObject ExplosionPrefab;
-
-        public override void Initialize()
-        {
-        }
+        [SerializeField] private float explotionRadius = 1;
+        public override void Initialize(){}
         public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
-            Debug.LogWarning("old code. pls update");
-            GameObject explosion = Instantiate(ExplosionPrefab, type.transform.position, ExplosionPrefab.transform.rotation);
-
-            //explosion.GetComponent<AttackType>().Damage = damage * DamageMultiplier;
+            
         }
 
         public override void OnHitOther(Vector3 point, float damage)
