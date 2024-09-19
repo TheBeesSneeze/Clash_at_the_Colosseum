@@ -18,6 +18,8 @@ public class DashScript : MonoBehaviour
         Vector3 direction = facing.GetComponent<Transform>().forward;
         if (!dashCooldown) {
             rb.AddForce(direction * stats.DashSpeed);
+
+            PublicEvents.OnDash.Invoke();
         }
         StartCoroutine(DashCoolDown());
     }
