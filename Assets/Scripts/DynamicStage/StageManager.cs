@@ -63,6 +63,10 @@ public class StageManager
         currentStage = _stages[stageIndex];
 
         StageTransitionManager.TransitionStage(pastStage.StageLayout, currentStage.StageLayout);
+
+
+        PublicEvents.OnStageTransition.Invoke();
+
         //add the dynamic stage code here to actually change stage 
     }
 }

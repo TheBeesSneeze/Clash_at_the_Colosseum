@@ -89,6 +89,8 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.bulletForce = shootingMode.BulletSpeed;
         bulletObject.Initialize(bulletEffect1, bulletEffect2, direction);
 
+        PublicEvents.OnEnemyShoot.Invoke();
+
     }
 
 }
