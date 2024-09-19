@@ -157,11 +157,15 @@ namespace PathFinding
 
         private void OnDrawGizmos()
         {
-            if(Selection.activeGameObject.GetComponent<StageBuilderTool>() != null)
+            if(Selection.activeGameObject != null)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(_center, PathPosition);
+                if (Selection.activeGameObject.GetComponent<StageBuilderTool>() != null)
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawLine(_center, PathPosition);
+                }
             }
+            
             
             if (gameObject.GetComponent<MeshCollider>() != null)
                 GetComponent<MeshCollider>().convex = true;
