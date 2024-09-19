@@ -49,7 +49,7 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
