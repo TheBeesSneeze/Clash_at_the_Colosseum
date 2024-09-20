@@ -124,7 +124,8 @@ public class Bullet : MonoBehaviour
             _bulletEffect2.OnEnemyHit(enemy, damageAmount);
         }
 
-        BulletPoolManager.Destroy(this);
+        if(DestroyOnEntityHit())
+            BulletPoolManager.Destroy(this);
     }
 
     private void OnPlayerHit(PlayerBehaviour player)
@@ -132,7 +133,8 @@ public class Bullet : MonoBehaviour
 
         player.TakeDamage(damageAmount);
 
-        BulletPoolManager.Destroy(this);
+        if (DestroyOnEntityHit())
+            BulletPoolManager.Destroy(this);
     }
 
     private void OnHitSurface(Vector3 point)
@@ -147,7 +149,8 @@ public class Bullet : MonoBehaviour
             _bulletEffect2.OnHitOther(point, damageAmount);
         }
         
-        BulletPoolManager.Destroy(this);
+        if(DestroyOnSurfaceHit())
+            BulletPoolManager.Destroy(this);
 
     }
 
@@ -163,6 +166,24 @@ public class Bullet : MonoBehaviour
         if (_bulletEffect2 != null)
         {
             if (!_bulletEffect2.DestroyBulletOnEntityContact)
+                destroy = false;
+        }
+
+        return destroy;
+    }
+
+    private bool DestroyOnSurfaceHit()
+    {
+        bool destroy = true;
+
+        if (_bulletEffect1 != null)
+        {
+            if (!_bulletEffect1.DestroyBulletOnSurfaceContact)
+                destroy = false;
+        }
+        if (_bulletEffect2 != null)
+        {
+            if (!_bulletEffect2.DestroyBulletOnSurfaceContact)
                 destroy = false;
         }
 

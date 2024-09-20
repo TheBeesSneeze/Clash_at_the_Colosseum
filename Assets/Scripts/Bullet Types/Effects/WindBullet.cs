@@ -8,7 +8,10 @@ public class WindBullet : BulletEffect
 {
     public float KnockBackForce = 10f;
     public float PlayerKnockBackForce = 10f;
-    public override void Initialize(){}
+    public override void Initialize()
+    {
+        _playerGunController.GetComponent<Rigidbody>().AddForce(-_parentBullet.transform.forward * PlayerKnockBackForce, ForceMode.Impulse);
+    }
     public override void OnEnemyHit(EnemyTakeDamage enemy, float damage)
     {
         Vector3 knockbackDirection = enemy.transform.position - GameObject.FindObjectOfType<PlayerController>().gameObject.transform.position;
@@ -16,7 +19,6 @@ public class WindBullet : BulletEffect
         {
             enemy.GetComponent<Rigidbody>().AddForce(knockbackDirection.normalized * KnockBackForce, ForceMode.Impulse);
         }
-        //PlayerController.Instance.enemy.GetComponent<Rigidbody>().AddForce(-knockbackDirection.normalized * PlayerKnockBackForce, ForceMode.Impulse);
     }
     public override void OnHitOther(Vector3 point, float damage){}
 }

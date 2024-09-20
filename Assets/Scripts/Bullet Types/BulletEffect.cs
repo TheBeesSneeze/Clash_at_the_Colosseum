@@ -31,8 +31,8 @@ public abstract class BulletEffect : ScriptableObject
     public Color bodyColor=Color.white;
     public Color secondaryColor=Color.white;
 
-    private Bullet _parentBullet;
-    private GunController _playerGunController;
+    protected Bullet _parentBullet;
+    protected GunController _playerGunController;
 
     /// <summary>
     /// Really trying hard to come up with a better name for this one. uhhh come back to me
