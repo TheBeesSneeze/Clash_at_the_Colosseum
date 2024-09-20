@@ -6,7 +6,7 @@
 * Brief Description : 
 * For RANGED Enemies ONLY
 * Checks if player is in the attack range 
-* If is shoot bullet
+* If is shoot enemyBullet
  *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +25,6 @@ public class EnemyRangedAttack : MonoBehaviour
     
 
     [SerializeField] private ShootingMode shootingMode;
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField]private BulletEffect bulletEffect1;
     [SerializeField] private BulletEffect bulletEffect2;
@@ -82,12 +81,14 @@ public class EnemyRangedAttack : MonoBehaviour
             Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 direction = destination - bulletSpawnPoint.position;
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        var bullet = BulletPoolManager.InstantiateEnemyBullet(bulletSpawnPoint.position);
         bullet.transform.forward = direction.normalized;
         var bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
         bulletObject.bulletForce = shootingMode.BulletSpeed;
         bulletObject.Initialize(bulletEffect1, bulletEffect2, direction);
+
+        PublicEvents.OnEnemyShoot.Invoke();
 
     }
 

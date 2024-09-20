@@ -85,7 +85,7 @@ public class GunController : MonoBehaviour
     }
 
     /// <summary>
-    /// direction is (get this) the direction the bullet goes
+    /// direction is (get this) the direction the enemyBullet goes
     /// </summary>
     private void ShootBullet()
     {
@@ -107,7 +107,7 @@ public class GunController : MonoBehaviour
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 dir = destination - bulletSpawnPoint.position;
 
-        //var bullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        //var enemyBullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         GameObject bullet = BulletPoolManager.Instantiate(bulletSpawnPoint.position);
         if (bullet == null)
         {

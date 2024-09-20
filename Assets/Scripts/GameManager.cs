@@ -13,8 +13,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    [Header("Game Settings")]
+    public BulletEffect[] BulletEffects;
+
     //Manager references
     public static CellManager cellManager;
     public static PathManager pathManager;
@@ -33,14 +38,18 @@ public class GameManager : Singleton<GameManager>
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
-
-    
+    [SerializeField] private GameObject enemyBullet;
 
     [Header("Move to different script")]
     [ReadOnly] public bool isPaused = false;
 
-    void Start()
+    void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+
         InitializeCellManager();
         InitializePathManager();
         InitializeBulletPoolManager();
@@ -59,7 +68,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void InitializeBulletPoolManager()
     {
-        bulletPoolManager = new BulletPoolManager(amountToPool, bullet);
+        bulletPoolManager = new BulletPoolManager(amountToPool, bullet, enemyBullet);
     }
 
     private void InitializeEnemySpawnManager()
