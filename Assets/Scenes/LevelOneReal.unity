@@ -34074,6 +34074,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Solid: 1
   autoRenameCell: 0
+--- !u!1 &1996538371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8574478487850517060, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  m_PrefabInstance: {fileID: 4230366616968681771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1999380066
 Mesh:
   m_ObjectHideFlags: 0
@@ -36005,7 +36010,7 @@ PrefabInstance:
     - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: bulletEffect1
       value: 
-      objectReference: {fileID: 11400000, guid: d17d2bb708d5eb847bee124c80774bf8, type: 2}
+      objectReference: {fileID: 11400000, guid: cc1100b5625a2534da4e041ff4e37414, type: 2}
     - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: groundLayers.m_Bits
       value: 129
@@ -36013,6 +36018,14 @@ PrefabInstance:
     - target: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964920643477375803, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: facing
+      value: 
+      objectReference: {fileID: 1996538371}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: DashSpeed
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: HealthRegen
@@ -36189,6 +36202,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: enemyBullet
+      value: 
+      objectReference: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -36345,37 +36362,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 165da82ba6d13fb48bd2de370bf8e68f, type: 3}
   EnemyDamageSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
   PlayerDamageSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 685fa23bcc6026545993bce993c5e17b, type: 3}
   EnemyDeathSound:
     Volume: 1
     sound: {fileID: 0}
   PlayerDeathSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 669159055fff48d4384c67fcb6580105, type: 3}
   EnemyShootSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
   MeleeAttackSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: f53bb791b307f494aa2f9a30173f12de, type: 3}
   GrappleSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
   DashSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 6a195b654c54f7c4ab009cdd13a92514, type: 3}
   UpgradeReceiveSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: d7af78ee66a6be84dab240a7f91adcbb, type: 3}
   StageTransitionSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 8476fb5141b345b4a9d0c5223a56a0b1, type: 3}
 --- !u!1001 &8614991836347203601
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,7 +45,6 @@ public class SettingsMenuScript : MonoBehaviour
         Slider slider = volumeSlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("volume", slider.value);
         float sliderValue = slider.value;
-        print(slider.value);
         PublicEvents.OnSettingsSliderChanged.Invoke();
     }
     public void sensitivityChanged()
@@ -53,7 +52,6 @@ public class SettingsMenuScript : MonoBehaviour
         Slider slider = sensitivitySlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
-        print(slider.value);
         PublicEvents.OnSettingsSliderChanged.Invoke();
     }
 }
