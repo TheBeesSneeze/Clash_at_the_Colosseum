@@ -47,7 +47,6 @@ public class BackupEnemyMovement : MonoBehaviour
         //float distance = direction.magnitude;
         if(Physics.Raycast(transform.position, direction, out hit, 100, betterLayerMask))
         {
-            //Debug.Log(hit.transform.gameObject.name);
             hitpos = hit.transform;
             if(hit.transform.GetComponent<PlayerBehaviour>() != null)
             {

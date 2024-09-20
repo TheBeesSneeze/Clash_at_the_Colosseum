@@ -142,9 +142,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (instance != null)
-            instance.Play("Jump");
-
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
 
         if (IsGrounded())

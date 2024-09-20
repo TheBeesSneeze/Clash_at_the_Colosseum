@@ -89,5 +89,10 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         _currentEnemiesAlive--;
     }
+
+    private void OnDisable()
+    {
+        _currentEnemiesAlive = 0;
+    }
 }
 

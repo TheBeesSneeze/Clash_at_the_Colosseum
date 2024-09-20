@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 7911197565489766704}
   - component: {fileID: 18831259720661764}
   - component: {fileID: 2690957284186633973}
+  - component: {fileID: 5964920643477375803}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -284,7 +285,7 @@ MonoBehaviour:
   cameraFollowPoint: {fileID: 7450907664879607023}
   groundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +317,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
+  secondsSinceLastShoot: 0
 --- !u!114 &2690957284186633973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +348,20 @@ MonoBehaviour:
   _grappleEnd: {fileID: 0}
   _bodyMaterial: {fileID: 2100000, guid: 6e468e0072104de49af51f58b5fd94ea, type: 2}
   _hookRenderer: {fileID: 2432049269265537686}
+--- !u!114 &5964920643477375803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199585334150164854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ba62cf03564944fad51642b011c919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownTime: 2
+  facing: {fileID: 3199585334150164854}
 --- !u!1 &5990531402579976525
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using static AudioManager;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -19,14 +20,16 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float despawnTime = 5f;
     [SerializeField] private LayerMask hitLayers;
-    //[SerializeField] private float impactEffectPrefabDespawnTime = 0.2f;
+    [SerializeField] private bool DealPlayerDamage = true;
+    [SerializeField] private bool DealEnemyDamage = true;
 
     [HideInInspector] public BulletEffect _bulletEffect1;
     [HideInInspector] public BulletEffect _bulletEffect2;
 
     private Rigidbody rb;
     private Vector3 lastPosition;
-    private float lastTime;
+    private float timeActive;
+    private GunController gunController;
 
     [HideInInspector] public float damageAmount = 10f;
     [HideInInspector] public float bulletForce = 200f;
@@ -34,6 +37,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        gunController = GameObject.FindObjectOfType<GunController>();
     }
 
     /// <summary>
@@ -47,24 +51,21 @@ public class Bullet : MonoBehaviour
         _bulletEffect1 = bulletEffect1;
         _bulletEffect2 = bulletEffect2;
 
-
-        //GetComponent<TrailRenderer>().enabled = true;
-
-        /*
-        GetComponent<TrailRenderer>().startColor = GetBulletColor();
-        GetComponent<TrailRenderer>().endColor = GetBulletColor();
-
-        GetComponent<Material>().color = GetBulletColor();
-        */
+        if (_bulletEffect1 != null)
+        {
+            _bulletEffect1.DefaultInitialize(this, gunController);
+        }
 
         SetColorGradient();
     }
 
     public void ResetBullet()
     {
+
+        lastPosition = transform.position;
         _bulletEffect1 = null;
         _bulletEffect2 = null;
-        lastTime = 0;
+        timeActive = 0;
     }
 
     private void FixedUpdate()
@@ -72,86 +73,106 @@ public class Bullet : MonoBehaviour
         if (!gameObject.activeInHierarchy)
             return;
 
-        if (lastTime < despawnTime)
-        { 
-            lastTime += Time.fixedDeltaTime;
-            Debug.DrawRay(lastPosition, transform.forward);
-            if (Physics.Raycast(lastPosition, transform.forward, out RaycastHit hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
-                    QueryTriggerInteraction.Ignore))
-            {
-                
-                //GameObject obj = null;
-                
-                //AudioSource audio = obj.AddComponent<AudioSource>();
-                
-                if (hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
-                {
-                    print("hit enemy");
-                    enemy.TakeDamage(damageAmount);
-                    if (_bulletEffect1 != null)
-                    {
-                        _bulletEffect1.OnEnemyHit(enemy, damageAmount);
-                    }
-
-                    if (_bulletEffect2 != null)
-                    {
-                        _bulletEffect2.OnEnemyHit(enemy, damageAmount);
-                    }
-                    ResetBullet();
-                    gameObject.SetActive(false);
-                }
-                else if (hit.collider.TryGetComponent(out PlayerBehaviour player))
-                {
-                    print("hit player");
-                    player.TakeDamage(damageAmount);
-                }
-                //if hit something that isnt enemy
-                else
-                {
-                    //Debug.Log("hit other");
-                    if (_bulletEffect1 != null)
-                    {
-                        _bulletEffect1.OnHitOther(hit.point, damageAmount);
-                    }
-
-                    if (_bulletEffect2 != null)
-                    {
-                        _bulletEffect2.OnHitOther(hit.point, damageAmount);
-                    }
-                    gameObject.SetActive(false);
-                }
-
-                /*
-                if (instance != null)
-                {
-                    audio.spatialBlend = 1;
-                    audio.maxDistance = 50;
-                    audio.volume = 0.4f;
-                    audio.rolloffMode = AudioRolloffMode.Linear;
-                    AssignGroupToAudioSource(audio, "SFX");
-                    audio.Play();
-                }*/
-
-                ResetBullet();
-                gameObject.SetActive(false);
-
-
-            }
-
-            lastPosition = transform.position;
-        }
-        else
+        if (timeActive >= despawnTime)
         {
-            ResetBullet();
-            gameObject.SetActive(false);
+            BulletPoolManager.Destroy(this);
+            return;
         }
+        timeActive += Time.fixedDeltaTime;
+        Debug.DrawRay(lastPosition, transform.forward);
+
+        RaycastHit hit;
+        if (!Physics.Raycast(lastPosition, transform.forward, out hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
+            QueryTriggerInteraction.Ignore))
+        {
+            lastPosition = transform.position;
+            return;
+        }
+        Debug.Log("hit");
+
+        if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
+        {
+            print("hit enemy");
+            OnEnemyHit(enemy);
+            return;
+        }
+        if (DealPlayerDamage && hit.collider.TryGetComponent(out PlayerBehaviour player))
+        {
+            print("hit player");
+            OnPlayerHit(player);
+            return;
+        }
+        //if hit something that isnt enemy
+        
+        Debug.Log("hit other");
+        OnHitSurface(hit.point);
+
+
+
     }
 
+    private void OnEnemyHit(EnemyTakeDamage enemy)
+    {
+        enemy.TakeDamage(damageAmount);
+        if (_bulletEffect1 != null)
+        {
+            _bulletEffect1.OnEnemyHit(enemy, damageAmount);
+        }
+
+        if (_bulletEffect2 != null)
+        {
+            _bulletEffect2.OnEnemyHit(enemy, damageAmount);
+        }
+
+        BulletPoolManager.Destroy(this);
+    }
+
+    private void OnPlayerHit(PlayerBehaviour player)
+    {
+
+        player.TakeDamage(damageAmount);
+
+        BulletPoolManager.Destroy(this);
+    }
+
+    private void OnHitSurface(Vector3 point)
+    {
+        if (_bulletEffect1 != null)
+        {
+            _bulletEffect1.OnHitOther(point, damageAmount);
+        }
+
+        if (_bulletEffect2 != null)
+        {
+            _bulletEffect2.OnHitOther(point, damageAmount);
+        }
+        
+        BulletPoolManager.Destroy(this);
+
+    }
+
+    private bool DestroyOnEntityHit()
+    {
+        bool destroy = true;
+
+        if (_bulletEffect1 != null)
+        {
+            if (!_bulletEffect1.DestroyBulletOnEntityContact)
+                destroy = false;
+        }
+        if (_bulletEffect2 != null)
+        {
+            if (!_bulletEffect2.DestroyBulletOnEntityContact)
+                destroy = false;
+        }
+
+        return destroy;
+    }
 
     /// <summary>
     /// this code does not work
     /// </summary>
-    private void SetColorGradient()
+    private void SetColorGradient() //or does it???
     {
         TrailRenderer tr = GetComponent<TrailRenderer>();
         tr.enabled = true;
@@ -170,7 +191,7 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
-    /// averages the colors from both bullet effects.
+    /// averages the colors from both enemyBullet effects.
     /// returns white if no upgrades are loaded
     /// </summary>
     /// <returns></returns>

@@ -130,6 +130,9 @@ public class GrapplingHook : MonoBehaviour
             joint.damper = jointDamper;
             joint.massScale = jointMassScale;
             rb.AddForce((hitPoint - transform.position).normalized * jointForceBoost, ForceMode.Impulse);
+
+
+            PublicEvents.OnGrapple.Invoke();
         }
     }
 

@@ -5,11 +5,14 @@ using UnityEngine;
 public class BulletPoolManager
 {
     private static List<GameObject> bulletList = new List<GameObject>();
-    private static GameObject bullet;
+    private static List<GameObject> enemyBulletList = new List<GameObject>();
+    private static GameObject enemyBullet;
+    private static GameObject playerBullet;
 
-    public BulletPoolManager(int amountPooled, GameObject bulletPrefab)
+    public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab)
     {
-        bullet = bulletPrefab;
+        playerBullet = bulletPrefab;
+        enemyBullet = enemyBulletPrefab;
 
         for (int i = 0; i < amountPooled; i++)
         {
@@ -30,14 +33,31 @@ public class BulletPoolManager
                 return bulletList[i];
             }
         }
-        GameObject newShot = GameObject.Instantiate(bullet);
+        GameObject newShot = GameObject.Instantiate(playerBullet);
         bulletList.Add(newShot);
         return newShot;
     }
 
-    public static void Destroy(GameObject bullet)
+    public static GameObject InstantiateEnemyBullet(Vector3 position)
     {
-        bullet.SetActive(false);
+        for (int i = 0; i < enemyBulletList.Count; i++)
+        {
+            if (!enemyBulletList[i].activeInHierarchy)
+            {
+                enemyBulletList[i].SetActive(true);
+                enemyBulletList[i].transform.position = position;
+                return enemyBulletList[i];
+            }
+        }
+        GameObject newShot = GameObject.Instantiate(enemyBullet);
+        bulletList.Add(newShot);
+        return newShot;
+    }
+
+    public static void Destroy(Bullet bullet)
+    {
+        bullet.ResetBullet();
+        bullet.gameObject.SetActive(false);
     }
 
     public void OnDisable()

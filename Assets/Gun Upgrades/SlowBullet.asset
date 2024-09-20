@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: SlowBullet
   m_EditorClassIdentifier: 
   TrailColor: {r: 0.51139194, g: 0.5313878, b: 0.6415094, a: 1}
-  UpgradeName: Boreas' Blessing
   DamageMultiplier: 0
+  DestroyBulletOnSurfaceContact: 1
+  DestroyBulletOnEntityContact: 1
+  UpgradeName: Boreas' Blessing
+  UpgradeIcon: {fileID: 0}
+  bodyColor: {r: 0.35283017, g: 1, b: 0.96955156, a: 1}
+  secondaryColor: {r: 0.35557136, g: 0.68058825, b: 0.8301887, a: 1}
   SlowBulletSpeed: 0
   EnemySlowedTime: 0
