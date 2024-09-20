@@ -27,7 +27,6 @@ namespace DefaultNamespace
 
         public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
-            Debug.Log("electricity hit");
             EnemyTakeDamage[] closeEnemies = GetEnemiesInRange(type);
 
             if (closeEnemies.Length == 0) return;
@@ -36,10 +35,9 @@ namespace DefaultNamespace
 
             Vector3 originEnemy = type.transform.position;
 
-            for(int i=0; i<closeEnemies.Length; i++)
+            for(int i=0; i<closeEnemies.Length; ++i)
             {
-                Debug.Log("electrocuting");
-                Electrocute(closeEnemies[i], 0, originEnemy);
+                Electrocute(closeEnemies[i], damage, originEnemy);
             }
         }
 
@@ -47,15 +45,17 @@ namespace DefaultNamespace
 
         private void Electrocute(EnemyTakeDamage enemy, float damage, Vector3 origin)
         {
-            Visualize(origin, enemy.transform.position);
-            enemy.TakeDamage(damage);
-            Debug.Log("I've been electrocuted");
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Visualize(origin, enemy.transform.position);
+            }
+            
         }
 
         private void Visualize(Vector3 origin, Vector3 target)
         {
-            Debug.LogWarning("electricity visualization not done yet");
-            Debug.DrawLine(origin, target, Color.yellow, 0.5f);
+            Debug.DrawLine(origin, target, Color.yellow, 2.5f);
         }
 
         /// <summary>
@@ -71,18 +71,21 @@ namespace DefaultNamespace
             //sorry if this breaks and u gotta do shit to it later
 
             Collider[] hitColliders = Physics.OverlapSphere(enemy.transform.position, 3, LayerMask.GetMask("Enemy"));
-            Debug.Log(hitColliders.Length);
             
-            int l = Mathf.Max(0, hitColliders.Length - 1);
+            int l = Mathf.Max(0, hitColliders.Length);
             int length = Mathf.Min(l, MaxEnemiesToZap);
             
             EnemyTakeDamage[] enemies = new EnemyTakeDamage[length];
 
             for (int i = 0; i < length; i++)
             {
-                EnemyTakeDamage e = hitColliders[i].transform.GetComponent<EnemyTakeDamage>();
+                Debug.Log(hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>());
+                if (hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>() != null)
+                {
+                    EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
+                    enemies[i] = e;
+                }
             }
-            Debug.Log(enemies.Length);
 
             return enemies;
         }
