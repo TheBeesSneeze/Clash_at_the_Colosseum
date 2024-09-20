@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-public class MyAudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
 
     private GunController gunController;
