@@ -108,7 +108,7 @@ public class Bullet : MonoBehaviour
                 //if hit something that isnt enemy
                 else
                 {
-                    Debug.Log("hit other");
+                    //Debug.Log("hit other");
                     if (_bulletEffect1 != null)
                     {
                         _bulletEffect1.OnHitOther(hit.point, damageAmount);
