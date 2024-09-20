@@ -15,20 +15,23 @@ namespace DefaultNamespace
     public class ExplosionBullet : BulletEffect
     {
         [SerializeField] private float explotionRadius = 1;
-        private LayerMask enemyLayer = LayerMask.GetMask("Enemy");
-
+        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] private GameObject explosion;
 
         public override void Initialize(){}
         public override void OnEnemyHit(EnemyTakeDamage enemy, float damage)
         {
             Ray enemyOrgin = new Ray(enemy.transform.position, enemy.transform.forward);
             RaycastHit[] hits = Physics.SphereCastAll(enemyOrgin, explotionRadius, 0, enemyLayer);
-            Gizmos.DrawWireSphere(enemy.transform.position, explotionRadius);
-            Debug.Log(hits.Length);
-            foreach (RaycastHit hit in hits) {
-                Debug.Log(hit.collider.gameObject.name);
+            Instantiate(explosion, enemy.transform.position, Quaternion.identity);
+            Debug.Log(hits.Length + " enemies hit");
+            for (int i = 1; i < hits.Length; i++) {
+                hits[i].collider.gameObject.GetComponent<EnemyTakeDamage>().TakeDamage(damage);
+                Debug.Log(hits[i].collider.gameObject.name + " took " + damage + " damage");
             }
         }
+        //corutine is tempory and should be removed when we add an animation
+
         public override void OnHitOther(Vector3 point, float damage)
         {
             //still does an explotion if it hits a wall
