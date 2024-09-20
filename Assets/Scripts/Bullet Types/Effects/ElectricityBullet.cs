@@ -19,6 +19,7 @@ namespace DefaultNamespace
     {
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
+        
 
         public override void Initialize()
         {
