@@ -34074,6 +34074,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Solid: 1
   autoRenameCell: 0
+--- !u!1 &1996538371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8574478487850517060, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  m_PrefabInstance: {fileID: 4230366616968681771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1999380066
 Mesh:
   m_ObjectHideFlags: 0
@@ -36013,6 +36018,14 @@ PrefabInstance:
     - target: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964920643477375803, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: facing
+      value: 
+      objectReference: {fileID: 1996538371}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: DashSpeed
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: HealthRegen
