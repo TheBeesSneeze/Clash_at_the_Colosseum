@@ -88,12 +88,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyHealth: 100
-  EnemyDamage: 50
+  EnemyDamage: 40
   EnemyAttackRate: 5
   EnemyAttackRange: 1.3
-  enemyMovementSpeed: 1
-  TurningSpeed: 1
-  StopSpeed: 1
+  enemyMovementSpeed: 7
+  TurningSpeed: 3
+  StopSpeed: 5
   StopDistanceToPlayer: 1
   SightDistance: 1
   VerticalSpeed: 0

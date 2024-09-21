@@ -36027,17 +36027,41 @@ PrefabInstance:
       propertyPath: facing
       value: 
       objectReference: {fileID: 1996538371}
+    - target: {fileID: 5964920643477375803, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: coolDownTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: Friction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: DashSpeed
-      value: 4000
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: JumpHeight
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: HealthRegen
-      value: 0.25
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: DashCoolDown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: GravityBoost
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: DefaultHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: AirMovementMultiplier
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7911197565489766704, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: redVignette

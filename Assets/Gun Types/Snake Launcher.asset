@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Snake Launcher
   m_EditorClassIdentifier: 
   GunName: Snake Launcher
-  ShotsPerSecond: 2
+  ShotsPerSecond: 3
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
   CanHoldFire: 1
   BulletSpeed: 80
-  BulletDamage: 50
+  BulletDamage: 25
   RecoilForce: 0.01
   MenuSprite: {fileID: -401717556, guid: 9831f24c0a2883e4fa1238a74abbdfa8, type: 3}
   GameplaySprite: {fileID: 665087582, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}

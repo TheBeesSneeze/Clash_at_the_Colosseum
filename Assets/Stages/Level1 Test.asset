@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Level1 Test
   m_EditorClassIdentifier: 
   StageLayout: {fileID: 4900000, guid: 942c4355218b91b4d81b4fb64bd279f4, type: 3}
-  NumberOfEnemiesForLevel: 9
+  NumberOfEnemiesForLevel: 8
   EnemyPrefabs:
   - {fileID: 4605286496879608125, guid: 22899e0ff542bb44295bd6d5c2831227, type: 3}
   - {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
   timeTillEnemiesSpawn: 2
+  BulletEffectOnClear: 0
