@@ -19,6 +19,8 @@ public class UpgradeSelectUI : MonoBehaviour
     [SerializeField] private Image selectButtonImage;
     [SerializeField] private Color notSelectedTint;
 
+    //private float 
+
     private List<BulletEffect> bulletEffectPool;
     private GunController _gunController;
     private BulletEffect selectedEffect;
@@ -109,6 +111,18 @@ public class UpgradeSelectUI : MonoBehaviour
         upgradeButton1.button.colors = cb1;
     }
 
+    private void LoadUpgradeEffectOnClick(BulletEffect effect)
+    {
+        selectButton.interactable = true;
+        selectButtonImage.color = effect.secondaryColor;
+        selectedEffect = effect;
+    }
+
+    private IEnumerator UpgradeButtonAnimation()
+    {
+
+    }
+
     private void OnSelectClick()
     {
         Debug.LogWarning("change this code later. we're going to make bullet effects a list later anyways. im so lazy i dont really wanna make it good if its gonna be replaced eventually");
@@ -117,12 +131,6 @@ public class UpgradeSelectUI : MonoBehaviour
         StageManager.ChangeStage();
     }
 
-    private void LoadUpgradeEffectOnClick(BulletEffect effect)
-    {
-        selectButton.interactable = true;
-        selectButtonImage.color = effect.secondaryColor;
-        selectedEffect = effect;
-    }
 
     private void SetUpgradeEffects()
     {

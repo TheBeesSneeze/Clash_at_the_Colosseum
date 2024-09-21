@@ -14,11 +14,12 @@ public class GunGameplaySprite : MonoBehaviour
         gunController = GameObject.FindObjectOfType<GunController>();
 
         PublicEvents.OnPlayerShoot.AddListener(OnGunShoot);
+        LoadSprite(gunController.shootingMode.GameplaySprite);
     }
 
     private void OnGunShoot()
     {
-        gunImage.sprite = gunController.shootingMode.GameplayShootSprite;
+        LoadSprite(gunController.shootingMode.GameplayShootSprite);
         time = 0;
     }
 
@@ -27,14 +28,21 @@ public class GunGameplaySprite : MonoBehaviour
         time += Time.deltaTime;
         if(time < gunController.shootingMode.ShootSpriteSeconds)
         {
-            gunImage.sprite = gunController.shootingMode.GameplayShootSprite;
+            LoadSprite(gunController.shootingMode.GameplayShootSprite);
             return;
         }
         if(gunController.secondsSinceLastShoot < gunController.shootingMode.ShotsPerSecond)
         {
-            gunImage.sprite = gunController.shootingMode.GameplayCantShootSprite;
+            LoadSprite(gunController.shootingMode.GameplayCantShootSprite);
             return;
         }
-        gunImage.sprite = gunController.shootingMode.GameplaySprite;
+        LoadSprite(gunController.shootingMode.GameplaySprite);
+    }
+
+    private void LoadSprite(Sprite sprite)
+    {
+        if (sprite == null) return;
+
+        gunImage.sprite = sprite;
     }
 }
