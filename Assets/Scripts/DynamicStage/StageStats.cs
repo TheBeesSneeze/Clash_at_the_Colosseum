@@ -18,4 +18,5 @@ public class StageStats : ScriptableObject
     public int NumberOfEnemiesForLevel;
     public GameObject[] EnemyPrefabs;
     public float timeTillEnemiesSpawn;
+    public bool BulletEffectOnClear;
 }

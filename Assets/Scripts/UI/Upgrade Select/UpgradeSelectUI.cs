@@ -34,7 +34,7 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.onClick.AddListener(OnSelectClick);
     }
 
-    private void OpenMenu()
+    public void OpenMenu()
     {
         EnableMenu();
         selectButton.interactable = false;
@@ -104,6 +104,7 @@ public class UpgradeSelectUI : MonoBehaviour
         Debug.LogWarning("change this code later. we're going to make bullet effects a list later anyways. im so lazy i dont really wanna make it good if its gonna be replaced eventually");
         _gunController.bulletEffect1 = selectedEffect; //yeah it shouldnt JUST be enemyBullet effect 1
         DisableMenu();
+        StageManager.ChangeStage();
     }
 
     private void LoadUpgradeEffectOnClick(BulletEffect effect)
