@@ -44,6 +44,9 @@ public class EnemyMelee : MonoBehaviour
             if (distanceToPlayer <= stats.EnemyAttackRange)
             {
                 player.TakeDamage(stats.EnemyDamage);
+
+                PublicEvents.OnMeleeEnemyAttack.Invoke();
+
                 coolDown = timeBetweenAttacks; 
             }
         }

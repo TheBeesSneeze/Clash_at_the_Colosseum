@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 438952814939047255}
   - component: {fileID: 6670010424615105723}
+  - component: {fileID: -3221912983751877588}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,4 +50,48 @@ MonoBehaviour:
   amountToPool: 5
   bullet: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   isPaused: 0
-  cursorSensitivity: 0
+--- !u!114 &-3221912983751877588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317d577ec20ea3e40b61d1da733c1c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 165da82ba6d13fb48bd2de370bf8e68f, type: 3}
+  EnemyDamageSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
+  PlayerDamageSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 685fa23bcc6026545993bce993c5e17b, type: 3}
+  EnemyDeathSound:
+    Volume: 1
+    sound: {fileID: 0}
+  PlayerDeathSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 669159055fff48d4384c67fcb6580105, type: 3}
+  EnemyShootSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
+  MeleeAttackSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: f53bb791b307f494aa2f9a30173f12de, type: 3}
+  GrappleSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
+  DashSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 6a195b654c54f7c4ab009cdd13a92514, type: 3}
+  UpgradeReceiveSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: d7af78ee66a6be84dab240a7f91adcbb, type: 3}
+  StageTransitionSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 8476fb5141b345b4a9d0c5223a56a0b1, type: 3}

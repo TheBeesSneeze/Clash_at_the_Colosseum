@@ -135,7 +135,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         Vector3 radius = _collider.radius * transform.lossyScale / 2.1f;
         if (Physics.BoxCast(transform.position, radius, direction, out RaycastHit hit, Quaternion.identity, distance, layer))
         {
-            DebugUtilities.DrawBoxCastBox(transform.position, radius, Quaternion.identity, direction, distance, Color.magenta);
+            DebugUtilities.DrawBoxCastBox(transform.position, radius,  direction, Quaternion.identity, distance, Color.magenta);
             return false;
         }
         return true;

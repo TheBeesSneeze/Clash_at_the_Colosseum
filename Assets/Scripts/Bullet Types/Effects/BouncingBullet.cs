@@ -13,7 +13,6 @@ namespace DefaultNamespace
         {
 
         }
-
         public override void OnHitOther(Vector3 point, float damage)
         {
 

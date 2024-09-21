@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5198754101040669050}
   - component: {fileID: 1388419814164784260}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Enemy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,6 +161,8 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 897
+  DealPlayerDamage: 1
+  DealEnemyDamage: 1
   _bulletEffect1: {fileID: 0}
   _bulletEffect2: {fileID: 0}
   damageAmount: 10
