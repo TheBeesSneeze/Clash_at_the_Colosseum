@@ -122,6 +122,7 @@ public class UpgradeSelectUI : MonoBehaviour
         selectedEffect = effect;
     }
 
+
     private void OnSelectClick()
     {
         Debug.LogWarning("change this code later. we're going to make bullet effects a list later anyways. im so lazy i dont really wanna make it good if its gonna be replaced eventually");

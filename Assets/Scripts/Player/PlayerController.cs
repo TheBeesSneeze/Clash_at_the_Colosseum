@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        UpdateCameraPosition();
+        
 
 
         if (GameManager.Instance.isPaused) return;
@@ -80,13 +80,13 @@ public class PlayerController : MonoBehaviour
 
 
         DoMovement();
-
-        UpdateCameraRotation();
     }
 
     private void Update()
     {
+        UpdateCameraPosition();
 
+        UpdateCameraRotation();
         input = InputEvents.Instance.InputDirection2D;
 
         //FootStepSound();
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCameraRotation()
     {
-        //if (GameManager.Instance.isPaused) return;
+       if (GameManager.Instance.isPaused) return;
 
         var mouse = InputEvents.Instance.LookDelta;
         //float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
