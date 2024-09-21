@@ -55,7 +55,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         //Debug.DrawRay(transform.position, Vector3.down * _heightAboveGround, Color.red);
 
         //Go Up
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _heightAboveGround, ~_groundMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _heightAboveGround, _groundMask))
         {
             Debug.DrawLine(transform.position, hit.point, Color.red);
             return hit.point.y + _heightAboveGround;
