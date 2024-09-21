@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         ElectricityBullet.cs
-* Author(s) :         Toby Schamberger
+* Author(s) :         Toby Schamberger, Clare Grady
 * Creation Date :     3/30/2024
 *
 * Brief Description : zaps nearby enemies
@@ -19,28 +19,26 @@ namespace DefaultNamespace
     {
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
-
-        private int _onlyEnemiesMask;
+        
 
         public override void Initialize()
         {
-            _onlyEnemiesMask = LayerMask.NameToLayer("Enemy");
             throw new System.NotImplementedException();
         }
 
         public override void OnEnemyHit(EnemyTakeDamage type, float damage)
         {
-            Debug.Log("electricity hit");
             EnemyTakeDamage[] closeEnemies = GetEnemiesInRange(type);
 
             if (closeEnemies.Length == 0) return;
 
             damage = damage * DamageMultiplier;
 
-            for(int i=0; i< MaxEnemiesToZap && i<closeEnemies.Length; i++)
+            Vector3 originEnemy = type.transform.position;
+
+            for(int i=0; i<closeEnemies.Length; ++i)
             {
-                Debug.Log("electrocuting");
-                Electrocute(closeEnemies[i], damage, type.transform.position);
+                Electrocute(closeEnemies[i], damage, originEnemy);
             }
         }
 
@@ -48,14 +46,17 @@ namespace DefaultNamespace
 
         private void Electrocute(EnemyTakeDamage enemy, float damage, Vector3 origin)
         {
-            enemy.TakeDamage(damage);
-            Visualize(origin, enemy.transform.position);
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Visualize(origin, enemy.transform.position);
+            }
+            
         }
 
         private void Visualize(Vector3 origin, Vector3 target)
         {
-            Debug.LogWarning("electricity visualization not done yet");
-            Debug.DrawLine(origin, target, Color.yellow, 0.5f);
+            Debug.DrawLine(origin, target, Color.yellow, 2.5f);
         }
 
         /// <summary>
@@ -70,28 +71,24 @@ namespace DefaultNamespace
             //wouldve been easier to read
             //sorry if this breaks and u gotta do shit to it later
 
-            RaycastHit[] hit;
-            hit = Physics.SphereCastAll(enemy.transform.position, MaxEnemiesToZap, Vector3.up, 0, _onlyEnemiesMask);
+            Collider[] hitColliders = Physics.OverlapSphere(enemy.transform.position, 3, LayerMask.GetMask("Enemy"));
+            
+            int l = Mathf.Max(0, hitColliders.Length);
+            int length = Mathf.Min(l, MaxEnemiesToZap);
+            
+            EnemyTakeDamage[] enemies = new EnemyTakeDamage[length];
 
-            int l = Mathf.Max(0, hit.Length - 1);
-            EnemyTakeDamage[] enemies = new EnemyTakeDamage[l];
-
-            int offset = 0;
-            for (int i = 0; i < hit.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                EnemyTakeDamage e = hit[i].transform.GetComponent<EnemyTakeDamage>();
-
-                if (e == enemy)
+                Debug.Log(hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>());
+                if (hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>() != null)
                 {
-                    offset = -1;
-                    continue;
+                    EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
+                    enemies[i] = e;
                 }
-
-                enemies[i + offset] = e;
             }
 
             return enemies;
-
         }
     }
 }
