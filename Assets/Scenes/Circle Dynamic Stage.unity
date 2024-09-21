@@ -2684,7 +2684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: DefaultHealth
-      value: 5000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7911197565489766704, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: redVignette
@@ -7753,6 +7753,10 @@ PrefabInstance:
     - target: {fileID: 2976534097483293561, guid: a8c0c910b126b7a41bdab0f6231dff48, type: 3}
       propertyPath: m_Name
       value: RedVignette
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843216206175901052, guid: a8c0c910b126b7a41bdab0f6231dff48, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
