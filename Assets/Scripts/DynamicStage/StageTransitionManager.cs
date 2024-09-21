@@ -17,9 +17,11 @@ public class StageTransitionManager
     private static Cell[] allCells;
     private static EnemySpawnPoint[] allSpawnPoints;
     private static float _stageTransitonTime;
-    public StageTransitionManager(float stageTransitionTime)
+    private static float _stageTransitionDelay;
+    public StageTransitionManager(float stageTransitionTime, float stageTransitionDelay)
     {
         _stageTransitonTime = stageTransitionTime;
+        _stageTransitionDelay = stageTransitionDelay;
 
         allCells = GameObject.FindObjectsOfType<Cell>();
         allSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
@@ -28,6 +30,8 @@ public class StageTransitionManager
 
     public async static void TransitionStage(TextAsset start, TextAsset end)
     {
+        await Task.Delay((int)(_stageTransitionDelay * 1000));
+
         float startTime = Time.time;
         float t = 0;
         while (t < 1)

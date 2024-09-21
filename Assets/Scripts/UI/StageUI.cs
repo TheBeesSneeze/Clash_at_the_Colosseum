@@ -13,6 +13,6 @@ public class StageUI : MonoBehaviour
     }
     public void StageUIChanger()
     {
-        text.text = "Stage " + StageManager.ReturnStageIndex().ToString();
+        text.text = "Stage " + StageManager.GetStageIndex().ToString();
     }
 }

@@ -106,9 +106,6 @@ public class Bullet : MonoBehaviour
         
         Debug.Log("hit other");
         OnHitSurface(hit.point);
-
-
-
     }
 
     private void OnEnemyHit(EnemyTakeDamage enemy)

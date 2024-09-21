@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         StageManager
-* Author(s) :         Clare Grady
+* Author(s) :         Clare Grady, Toby Schamberger
 * Creation Date :     9/14/2024
 *
 * Brief Description : 
@@ -18,6 +18,7 @@ public class StageManager
     private static StageStats[] _stages;
     private static int stageIndex = 0;
     private static StageStats currentStage;
+    private static UpgradeSelectUI _upgradeSelectUI;
 
     public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
     public static int enemiesToSpawn { get { return currentStage.NumberOfEnemiesForLevel; } }
@@ -34,15 +35,21 @@ public class StageManager
         }
 
         currentStage = _stages[stageIndex];
+        _upgradeSelectUI = GameObject.FindObjectOfType<UpgradeSelectUI>();
     }
     
     /// <summary>
     /// for stage ui
     /// </summary>
     /// <returns></returns>
-    public static int ReturnStageIndex()
+    public static int GetStageIndex()
     {
         return stageIndex + 1;
+    }
+
+    public static void OnStageEnd()
+    {
+        _upgradeSelectUI.OpenMenu();
     }
 
     /// <summary>

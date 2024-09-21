@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Stage Transition")]
     [SerializeField] private float transitonSeconds = 1;
+    [SerializeField] private float transitonDelay = 1;
 
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeStageTransitionManager()
     {
-        transitionManager = new StageTransitionManager(transitonSeconds);
+        transitionManager = new StageTransitionManager(transitonSeconds, transitonDelay);
     }
 
     private void InitializeStageManager()

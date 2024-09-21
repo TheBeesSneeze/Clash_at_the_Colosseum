@@ -56,7 +56,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         if (_currentEnemiesAlive <= 0)
         {
-            StageManager.ChangeStage();
+            //StageManager.ChangeStage();
+            StageManager.OnStageEnd();
             timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
             hasSpawnedEnemies = false;
         }
