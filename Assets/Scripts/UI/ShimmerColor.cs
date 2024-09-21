@@ -16,7 +16,6 @@ public class ShimmerColor : MonoBehaviour
         if (!target.interactable) return;
 
         float t = (Mathf.Cos(Time.unscaledTime * ((Mathf.PI)/2))+1)/2;
-        Debug.Log(t);
 
         ColorBlock cb = target.colors;
         cb.normalColor = Color.Lerp(normalColor1, normalColor2 , t);

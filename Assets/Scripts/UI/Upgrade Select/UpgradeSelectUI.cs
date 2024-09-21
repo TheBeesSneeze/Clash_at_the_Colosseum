@@ -72,6 +72,7 @@ public class UpgradeSelectUI : MonoBehaviour
         group.alpha = 0;
         group.interactable = false;
         group.blocksRaycasts = false;
+        selectButton.interactable = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
