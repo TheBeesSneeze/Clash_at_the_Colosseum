@@ -2702,6 +2702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: shootingMode
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f9d35de19066e34aab1b3cf648f7fcc, type: 2}
     - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: groundLayers.m_Bits
       value: 1
@@ -11619,6 +11623,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2369399926063980410, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11738,7 +11762,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5004843794881409669, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 2038248267}
   m_SourcePrefab: {fileID: 100100000, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
 --- !u!1 &1457713391
 GameObject:
@@ -14627,6 +14654,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
+--- !u!1 &2038248260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5004843794881409669, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+  m_PrefabInstance: {fileID: 1448966878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2038248267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038248260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7be77777bd8fad4ea20b1f172a8b3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2127322286}
+  normalColor1: {r: 1, g: 1, b: 1, a: 1}
+  normalColor2: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+  transitionSeconds: 0.5
 --- !u!1 &2065911771
 GameObject:
   m_ObjectHideFlags: 0
@@ -14927,6 +14975,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2127322286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+  m_PrefabInstance: {fileID: 1448966878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2135203338
 MonoBehaviour:
   m_ObjectHideFlags: 0
