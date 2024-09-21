@@ -41,8 +41,10 @@ public class EnemyMelee : MonoBehaviour
         if (coolDown <= 0f)
         {
             float distanceToPlayer = GetDistanceFromPlayer();
+            
             if (distanceToPlayer <= stats.EnemyAttackRange)
             {
+                Debug.Log("Attacking Player");
                 player.TakeDamage(stats.EnemyDamage);
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();

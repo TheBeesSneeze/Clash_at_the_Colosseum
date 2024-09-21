@@ -19,7 +19,7 @@ namespace DefaultNamespace
     {
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
-        
+        [SerializeField] LineRenderer line;
 
         public override void Initialize()
         {
@@ -49,14 +49,16 @@ namespace DefaultNamespace
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
-                Visualize(origin, enemy.transform.position);
+                Visualize(origin, enemy.transform.position, enemy);
             }
             
         }
 
-        private void Visualize(Vector3 origin, Vector3 target)
+        private void Visualize(Vector3 origin, Vector3 target, EnemyTakeDamage enemy)
         {
-            Debug.DrawLine(origin, target, Color.yellow, 2.5f);
+            //Debug.DrawLine(origin, target, Color.yellow, 2.5f);
+            LineControl lineControl = line.GetComponent<LineControl>();
+            lineControl.Spawn(origin, target, enemy);
         }
 
         /// <summary>
