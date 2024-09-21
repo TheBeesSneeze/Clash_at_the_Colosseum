@@ -25,5 +25,6 @@ public class PublicEvents
     public static UnityEvent OnDash = new UnityEvent();
     public static UnityEvent OnUpgradeReceived = new UnityEvent(); //@TODO
     public static UnityEvent OnStageTransition = new UnityEvent();
+    public static UnityEvent OnStageTransitionFinish = new UnityEvent();
 
 }

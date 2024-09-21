@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Move to different script")]
     [ReadOnly] public bool isPaused = false;
+    [ReadOnly] public bool pausedForUI = false;
 
     void Awake()
     {
