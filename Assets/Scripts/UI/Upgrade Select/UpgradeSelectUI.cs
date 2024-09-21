@@ -118,10 +118,6 @@ public class UpgradeSelectUI : MonoBehaviour
         selectedEffect = effect;
     }
 
-    private IEnumerator UpgradeButtonAnimation()
-    {
-
-    }
 
     private void OnSelectClick()
     {

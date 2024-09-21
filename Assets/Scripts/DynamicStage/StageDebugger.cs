@@ -20,7 +20,9 @@ namespace Utilities
 
         public void TransitionStages()
         {
+#if UNITY_EDITOR
             if (UnityEditor.EditorApplication.isPlaying) return;
+#endif
 
             if (_startLayout == null || _endLayout == null)
                 return ;
