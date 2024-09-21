@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using NaughtyAttributes;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 namespace Utilities
 {
@@ -19,6 +20,8 @@ namespace Utilities
 
         public void TransitionStages()
         {
+            if (UnityEditor.EditorApplication.isPlaying) return;
+
             if (_startLayout == null || _endLayout == null)
                 return ;
 

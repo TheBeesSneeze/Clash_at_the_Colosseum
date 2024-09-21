@@ -43,6 +43,8 @@ public class StageTransitionManager
 
             await Task.Yield();
         }
+        Debug.Log("invoking");
+        PublicEvents.OnStageTransitionFinish.Invoke();
     }
 
     public static void TransitionStagePercent(TextAsset start, TextAsset end, float transitionPercent)

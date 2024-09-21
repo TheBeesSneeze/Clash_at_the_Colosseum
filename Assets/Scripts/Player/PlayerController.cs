@@ -65,12 +65,27 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        UpdateCameraPosition();
+
+
+        if (GameManager.Instance.isPaused) return;
+
+        ApplyGravity();
+
+        //sliding fix; stops the player from drifting and allows them to stay still
+        if (IsGrounded())
+            SlidingFix();
+
+        if (GameManager.Instance.pausedForUI) return;
+
+
         DoMovement();
+
+        UpdateCameraRotation();
     }
 
     private void Update()
     {
-        UpdateCamera();
 
         input = InputEvents.Instance.InputDirection2D;
 
@@ -92,9 +107,13 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    private void DoMovement()
+    private void ApplyGravity()
     {
         rb.AddForce(Vector3.down * stats.GravityBoost, ForceMode.Acceleration);
+    }
+
+    private void DoMovement()
+    {
 
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -123,8 +142,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime ));
         rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));
 
-        //sliding fix; stops the player from drifting and allows them to stay still
-        SlidingFix();
+        
         
     }
     private void SlidingFix() {
@@ -196,10 +214,14 @@ public class PlayerController : MonoBehaviour
         return new Vector2(xMag, yMag);
     }
 
-    private void UpdateCamera()
+    private void UpdateCameraPosition()
     {
-        if (GameManager.Instance.isPaused)
-            return;
+        cameraHolder.position = cameraFollowPoint.position;
+    }
+
+    private void UpdateCameraRotation()
+    {
+        //if (GameManager.Instance.isPaused) return;
 
         var mouse = InputEvents.Instance.LookDelta;
         //float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
@@ -211,7 +233,6 @@ public class PlayerController : MonoBehaviour
         yMovement -= mouseY;
         yMovement = Mathf.Clamp(yMovement, -90f, 90f);
         cameraHolder.localRotation = Quaternion.Euler(yMovement, xMovement, 0);
-        cameraHolder.position = cameraFollowPoint.position;
         playerOrientationTracker.localRotation = Quaternion.Euler(0, xMovement, 0);
     }
 }

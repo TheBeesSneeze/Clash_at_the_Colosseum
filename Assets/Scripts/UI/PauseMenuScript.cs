@@ -25,6 +25,10 @@ public class PauseMenuScript : MonoBehaviour
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
     }
     public void escPressed() {
+
+        if (GameManager.Instance.pausedForUI)
+            return;
+
         if (settingsMenu.activeSelf){
             settingsMenu.SetActive(false);
             pauseButtonsContainer.SetActive(true);

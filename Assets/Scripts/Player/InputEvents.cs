@@ -69,21 +69,24 @@ public class InputEvents : Singleton<InputEvents>
     }
     void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
     {
-        if (!GameManager.Instance.isPaused) {
-            pressedFlag = true;
-            actionEvent?.Invoke();
-        }
+        if (GameManager.Instance.isPaused) return;
+        if (GameManager.Instance.pausedForUI) return;
+        pressedFlag = true;
+        actionEvent?.Invoke();
     }
     void ActionCanceled(ref bool pressedFlag, UnityEvent actionEvent)
     {
-        if (!GameManager.Instance.isPaused) {
-            pressedFlag = false;
-            actionEvent?.Invoke();
-        }
+        if (GameManager.Instance.isPaused) return;
+        if (GameManager.Instance.pausedForUI) return;
+
+
+        pressedFlag = false;
+        actionEvent?.Invoke();
     }
     private void Update()
     {
         if (GameManager.Instance.isPaused) return;
+        if (GameManager.Instance.pausedForUI) return;
 
         if (MovePressed) MoveHeld.Invoke();
         if (JumpPressed) JumpHeld.Invoke();
