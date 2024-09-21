@@ -18,7 +18,7 @@ namespace mainMenu
     public class MainMenuInitializer : MonoBehaviour
     {
         [Header("Variables")]
-        public string mainSceneName = "Gun Test";
+        [SerializeField] public string mainSceneName = "Circle Dynamic Stage";
 
         [Header("Groups")]
         [SerializeField] private CanvasGroup startGroup;
