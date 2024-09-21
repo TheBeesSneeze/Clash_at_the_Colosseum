@@ -7,7 +7,7 @@ public class LineControl : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] LineRenderer lineRenderer;
-    private float waitTimeWeWant =5f;
+    private float waitTimeWeWant =.5f;
     private float currentWait;
 
     private void Start()
@@ -29,7 +29,7 @@ public class LineControl : MonoBehaviour
         lineRender.SetPosition(0, origin);
         lineRender.SetPosition(1, destination);
         lineRender.enabled = true;
-        Instantiate(lineRender, enemy.transform.position, Quaternion.identity);
+        Instantiate(lineRender);
         
     }
 
