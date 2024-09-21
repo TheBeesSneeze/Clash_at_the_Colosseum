@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2176917977402743002, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
       propertyPath: m_Constraints
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2418623821713463542, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
       propertyPath: m_RootOrder
@@ -205,6 +205,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4206013513865029181, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
       propertyPath: EnemyHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206013513865029181, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
+      propertyPath: HeightAboveGround
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -600,6 +604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: enemyBullet
+      value: 
+      objectReference: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
