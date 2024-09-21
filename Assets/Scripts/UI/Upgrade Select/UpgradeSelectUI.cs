@@ -1,4 +1,9 @@
 
+///
+/// Toby
+/// TODO:
+/// animate the select button
+///
 
 using System.Collections;
 using System.Collections.Generic;
@@ -18,8 +23,6 @@ public class UpgradeSelectUI : MonoBehaviour
     [SerializeField] private Button selectButton;
     [SerializeField] private Image selectButtonImage;
     [SerializeField] private Color notSelectedTint;
-
-    //private float 
 
     private List<BulletEffect> bulletEffectPool;
     private GunController _gunController;
@@ -116,11 +119,6 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.interactable = true;
         selectButtonImage.color = effect.secondaryColor;
         selectedEffect = effect;
-    }
-
-    private IEnumerator UpgradeButtonAnimation()
-    {
-
     }
 
     private void OnSelectClick()
