@@ -4788,9 +4788,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
