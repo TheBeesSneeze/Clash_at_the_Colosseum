@@ -4855,9 +4855,33 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4752552197139474147, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 4752552197139474147, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752552197139474147, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 4752552197139474147, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_characterSpacing
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752552197139474147, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260060102001137827, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
       propertyPath: scanlines
@@ -4885,7 +4909,8 @@ PrefabInstance:
       objectReference: {fileID: 1954195102}
     m_RemovedComponents:
     - {fileID: 3690070546218017050, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 856138577099510609, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
