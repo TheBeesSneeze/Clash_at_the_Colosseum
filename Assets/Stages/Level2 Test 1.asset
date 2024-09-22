@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5af10dc66757a54780e30ec4df9e17f, type: 3}
   m_Name: Level2 Test 1
   m_EditorClassIdentifier: 
-  StageLayout: {fileID: 4900000, guid: f56340de07ce05f4892d35c2841f7c83, type: 3}
-  NumberOfEnemiesForLevel: 12
+  StageLayout: {fileID: 4900000, guid: d7b96da1619331c40a3c55ffb61899be, type: 3}
+  NumberOfEnemiesForLevel: 20
   EnemyPrefabs:
   - {fileID: 7996317265162831292, guid: 64fe747179742714f88a72b6a3615aa2, type: 3}
   - {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
   timeTillEnemiesSpawn: 3
+  BulletEffectOnClear: 0

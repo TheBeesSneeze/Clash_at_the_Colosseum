@@ -33,8 +33,9 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
         fireRate = stats.EnemyAttackRate;
+        print(fireRate);
         slowFireRate = fireRate * 2;
         coolDown = 0f;
         
@@ -42,20 +43,22 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void Update()
     {
-        
         AttemptAttack();
         coolDown -= Time.deltaTime;
+        
     }
 
     private void AttemptAttack()
     {
         if (coolDown <= 0f)
         {
+            print("attemptt attack with cool down");
             float distanceFromPlayer = GetDistanceFromPlayer();
+            print(distanceFromPlayer);
             if (distanceFromPlayer <= stats.EnemyAttackRange)
             {
                 Attacking();
-                coolDown = fireRate;
+                coolDown = stats.EnemyAttackRate;
             }
         }
     }
