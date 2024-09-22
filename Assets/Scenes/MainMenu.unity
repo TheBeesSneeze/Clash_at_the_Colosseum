@@ -1544,37 +1544,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557852160}
   m_CullTransparentMesh: 1
---- !u!224 &577328962 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4982050732582011829, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &608103278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &608103285
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608103278}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 008dd546d1ace40439e8bd0b23430eb6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &688731806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,17 +2056,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833457692}
   m_CullTransparentMesh: 1
---- !u!114 &915200392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6242355436259633786, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &974514656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,11 +4322,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884950510}
   m_CullTransparentMesh: 1
---- !u!224 &1954195102 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3182284217817204928, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1957956315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4639,22 +4592,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976743817}
   m_CullTransparentMesh: 1
---- !u!114 &2015210536 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 82421627885209704, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!225 &2021124696 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 8648686392579064324, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-  m_PrefabInstance: {fileID: 366078744584829045}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2028447595
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,44 +4788,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3690070546218017050, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: scanlines
-      value: 
-      objectReference: {fileID: 2015210536}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: background
-      value: 
-      objectReference: {fileID: 915200392}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: titleImage
-      value: 
-      objectReference: {fileID: 577328962}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: arrowsHolder
-      value: 
-      objectReference: {fileID: 2021124696}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: mainSceneName
-      value: Circle Dynamic Stage
-      objectReference: {fileID: 0}
-    - target: {fileID: 9124151036693325724, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: startButtonsHolder
-      value: 
-      objectReference: {fileID: 1954195102}
-    m_RemovedComponents:
-    - {fileID: 3690070546218017050, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 608103285}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}

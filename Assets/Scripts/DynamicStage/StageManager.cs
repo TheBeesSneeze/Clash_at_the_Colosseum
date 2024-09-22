@@ -27,6 +27,7 @@ public class StageManager
 
     public StageManager(StageStats[] stages)
     {
+        stageIndex = 0;
         _stages = stages;
 
         if(_stages.Length == 0)

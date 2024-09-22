@@ -65,9 +65,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        
-
-
         if (GameManager.Instance.isPaused) return;
 
         ApplyGravity();
@@ -84,6 +81,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.isPaused) return;
+        if (GameManager.Instance.pausedForUI) return;
         UpdateCameraPosition();
 
         UpdateCameraRotation();
