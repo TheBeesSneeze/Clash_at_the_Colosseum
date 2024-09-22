@@ -26,8 +26,8 @@ namespace DefaultNamespace
             Instantiate(explosion, enemy.transform.position, Quaternion.identity);
             Debug.Log(hits.Length + " enemies hit");
             for (int i = 1; i < hits.Length; i++) {
-                hits[i].collider.gameObject.GetComponent<EnemyTakeDamage>().TakeDamage(damage);
-                Debug.Log(hits[i].collider.gameObject.name + " took " + damage + " damage");
+                hits[i].collider.gameObject.GetComponent<EnemyTakeDamage>().TakeDamage(damage*DamageMultiplier);
+                Debug.Log(hits[i].collider.gameObject.name + " took " + (damage*DamageMultiplier) + " damage");
             }
         }
         //corutine is tempory and should be removed when we add an animation
