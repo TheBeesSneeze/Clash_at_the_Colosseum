@@ -17,7 +17,10 @@ public class BulletPoolManager
         for (int i = 0; i < amountPooled; i++)
         {
             GameObject shot = GameObject.Instantiate(bulletPrefab);
+            GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
             bulletList.Add(shot);
+            enemyBulletList.Add(enemyShot);
+            enemyShot.SetActive(false);
             shot.SetActive(false);
         }
     }
@@ -50,7 +53,7 @@ public class BulletPoolManager
             }
         }
         GameObject newShot = GameObject.Instantiate(enemyBullet);
-        bulletList.Add(newShot);
+        enemyBulletList.Add(newShot);
         return newShot;
     }
 
