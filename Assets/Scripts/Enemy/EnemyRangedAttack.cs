@@ -33,7 +33,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = stats.playerObject;
+        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         fireRate = stats.EnemyAttackRate;
         print(fireRate);
         slowFireRate = fireRate * 2;
@@ -87,7 +87,7 @@ public class EnemyRangedAttack : MonoBehaviour
             Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 direction = destination - bulletSpawnPoint.position;
-        var bullet = BulletPoolManager.InstantiateEnemyBullet(bulletSpawnPoint.position);
+        var bullet = BulletPoolManager.InstantiateEnemyBullet(transform.position);
         bullet.transform.forward = direction.normalized;
         var bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;

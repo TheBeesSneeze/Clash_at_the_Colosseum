@@ -62,7 +62,7 @@ public class PlayerBehaviour : CharacterType
 
     public override void TakeDamage(float damage)
     {
-        
+        Debug.Log("take damage." + damage);
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
         print(CurrentHealth);
