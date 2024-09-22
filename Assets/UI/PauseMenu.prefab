@@ -402,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7501830047332301168}
   - component: {fileID: 5535550781621107184}
+  - component: {fileID: 2720372557890832273}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -424,7 +425,7 @@ Transform:
   - {fileID: 4234950642075981012}
   - {fileID: 7921856069851891754}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5535550781621107184
 MonoBehaviour:
@@ -444,6 +445,18 @@ MonoBehaviour:
   mainMenuButton: {fileID: 5817483167541674124}
   backButton: {fileID: 4539172833179646787}
   mainMenuSceneName: MainMenu
+--- !u!225 &2720372557890832273
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239711713903569036}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2268320448480934777
 GameObject:
   m_ObjectHideFlags: 0
