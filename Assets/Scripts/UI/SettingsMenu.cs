@@ -7,8 +7,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsMenuScript : MonoBehaviour
+public class SettingsMenu : MonoBehaviour
 {
+    //moved to pause menu, for now
+    /*
     public GameObject ParentMenu;
     public GameObject buttonContainer;
     public GameObject backButton;
@@ -45,13 +47,14 @@ public class SettingsMenuScript : MonoBehaviour
         Slider slider = volumeSlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("volume", slider.value);
         float sliderValue = slider.value;
-        PublicEvents.OnSettingsSliderChanged.Invoke();
+        PublicEvents.OnSensitivitySliderChanged.Invoke();
     }
     public void sensitivityChanged()
     {
         Slider slider = sensitivitySlider.GetComponent<Slider>();
         PlayerPrefs.SetFloat("sensitivity", slider.value);
         float sliderValue = slider.value;
-        PublicEvents.OnSettingsSliderChanged.Invoke();
+        PublicEvents.OnSensitivitySliderChanged.Invoke();
     }
+    */
 }

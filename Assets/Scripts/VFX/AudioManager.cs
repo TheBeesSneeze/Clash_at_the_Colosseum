@@ -21,8 +21,12 @@ public class AudioManager : MonoBehaviour
     public SoundClip UpgradeReceiveSound;
     public SoundClip StageTransitionSound;
 
+    public static float masterVolume=1;
+
     void Start()
-    {        
+    {
+        masterVolume = PlayerPrefs.GetFloat("volume", 1);
+
         PublicEvents.OnPlayerShoot.AddListener(OnGunShoot);
         PublicEvents.OnPlayerDamage.AddListener(PlayerDamage);
         PublicEvents.OnEnemyDamage.AddListener(EnemyDamage);
@@ -122,7 +126,7 @@ public class SoundClip
     {
         if (sound != null)
         {
-            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume);
+            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume * AudioManager.masterVolume);
         }
 
     }
@@ -132,7 +136,7 @@ public class SoundClip
     {
         if (sound != null)
         {
-            AudioSource.PlayClipAtPoint(sound, transform, Volume);
+            AudioSource.PlayClipAtPoint(sound, transform, Volume * AudioManager.masterVolume);
         }
     }
 }

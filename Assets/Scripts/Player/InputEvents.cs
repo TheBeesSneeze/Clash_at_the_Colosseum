@@ -34,7 +34,7 @@ public class InputEvents : Singleton<InputEvents>
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
         _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
-        PublicEvents.OnSettingsSliderChanged.AddListener(OnSettingsValueChanged);
+        PublicEvents.OnSensitivitySliderChanged.AddListener(OnSettingsValueChanged);
     }
 
     void InitializeActions()
