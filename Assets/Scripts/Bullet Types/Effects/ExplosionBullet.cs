@@ -16,11 +16,11 @@ namespace DefaultNamespace
     {
         [SerializeField] private float enemyHitExplotionRadius = 1;
         [SerializeField] private float surfaceHitExplosionRadius = 0.5f;
-        private LayerMask enemyLayer;
+        [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private GameObject explosionPrefab;
 
         public override void Initialize(){
-            enemyLayer = LayerMask.NameToLayer("Enemy");
+           // enemyLayer = LayerMask.NameToLayer("Enemy");
         }
         public override void OnEnemyHit(EnemyTakeDamage enemy, float damage)
         {

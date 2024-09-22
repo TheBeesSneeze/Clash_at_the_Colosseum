@@ -22,4 +22,7 @@ MonoBehaviour:
   secondaryColor: {r: 1, g: 0.5305271, b: 0.37169808, a: 1}
   enemyHitExplotionRadius: 5
   surfaceHitExplosionRadius: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   explosionPrefab: {fileID: 7213380324865138197, guid: 95c7ef7f95ac12d43927ef44af8149b2, type: 3}
