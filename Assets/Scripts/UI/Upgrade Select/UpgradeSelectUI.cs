@@ -1,10 +1,17 @@
 
+///
+/// Toby
+/// TODO:
+/// animate the select button
+///
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+
 
 public class UpgradeSelectUI : MonoBehaviour
 {
@@ -20,6 +27,7 @@ public class UpgradeSelectUI : MonoBehaviour
     private List<BulletEffect> bulletEffectPool;
     private GunController _gunController;
     private BulletEffect selectedEffect;
+    private bool open = true;
 
     private void Start()
     {
@@ -27,18 +35,25 @@ public class UpgradeSelectUI : MonoBehaviour
         bulletEffectPool = new List<BulletEffect>(GameManager.Instance.BulletEffects);
 
         DisableMenu();
-        OpenMenu();
 
         upgradeButton1.button.onClick.AddListener(OnUpgradeButton1Clicked);
         upgradeButton2.button.onClick.AddListener(OnUpgradeButton2Clicked);
         selectButton.onClick.AddListener(OnSelectClick);
     }
 
-    public void OpenMenu()
+    public async void OpenMenu(float delaySeconds = 2.5f)
     {
+        if (open) return;
+        open = true;
+        await Task.Delay((int)(delaySeconds * 1000));
+
+        GameManager.Instance.pausedForUI = true;
         EnableMenu();
         selectButton.interactable = false;
+        Time.timeScale = 0f;
 
+
+        Debug.Log("opening menu");
         SetUpgradeEffects();
     }
 
@@ -50,7 +65,6 @@ public class UpgradeSelectUI : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0.1f;
     }
 
     private void DisableMenu()
@@ -58,11 +72,13 @@ public class UpgradeSelectUI : MonoBehaviour
         group.alpha = 0;
         group.interactable = false;
         group.blocksRaycasts = false;
+        selectButton.interactable = false;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GameManager.Instance.isPaused = true;
-        Time.timeScale = 1f;
+        GameManager.Instance.pausedForUI = false;
+        Time.timeScale = 1;
+        open = false;
     }
 
     private void OnUpgradeButton1Clicked()
@@ -99,6 +115,14 @@ public class UpgradeSelectUI : MonoBehaviour
         upgradeButton1.button.colors = cb1;
     }
 
+    private void LoadUpgradeEffectOnClick(BulletEffect effect)
+    {
+        selectButton.interactable = true;
+        selectButtonImage.color = effect.secondaryColor;
+        selectedEffect = effect;
+    }
+
+
     private void OnSelectClick()
     {
         Debug.LogWarning("change this code later. we're going to make bullet effects a list later anyways. im so lazy i dont really wanna make it good if its gonna be replaced eventually");
@@ -107,12 +131,6 @@ public class UpgradeSelectUI : MonoBehaviour
         StageManager.ChangeStage();
     }
 
-    private void LoadUpgradeEffectOnClick(BulletEffect effect)
-    {
-        selectButton.interactable = true;
-        selectButtonImage.color = effect.secondaryColor;
-        selectedEffect = effect;
-    }
 
     private void SetUpgradeEffects()
     {
@@ -129,8 +147,6 @@ public class UpgradeSelectUI : MonoBehaviour
             index2 = Random.Range(0, count);
         }
         while(index1 == index2);
-
-        Debug.Log(index1 + "," + index2);
 
         upgradeButton1.LoadBulletEffect(bulletEffectPool[index1]);
         upgradeButton2.LoadBulletEffect(bulletEffectPool[index2]);

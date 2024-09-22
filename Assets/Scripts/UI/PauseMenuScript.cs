@@ -20,11 +20,16 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject backButton;
     
     [SerializeField] private string mainMenuSceneName = "MainMenu";
+
     private void Start()
     {
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
     }
     public void escPressed() {
+
+        if (GameManager.Instance.pausedForUI)
+            return;
+
         if (settingsMenu.activeSelf){
             settingsMenu.SetActive(false);
             pauseButtonsContainer.SetActive(true);

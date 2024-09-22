@@ -44,6 +44,7 @@ namespace mainMenu
         {
             _mainMenu.animator.SetTrigger("Gun Select");
             Debug.Log("play clicked");
+            //_mainMenu.Start_toGunSelect();
         }
         public void statsClicked()
         {

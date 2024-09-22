@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using NaughtyAttributes;
 using UnityEngine.SceneManagement;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 namespace Utilities
 {
     public class StageDebugger : MonoBehaviour
@@ -19,43 +21,14 @@ namespace Utilities
 
         public void TransitionStages()
         {
+#if UNITY_EDITOR
+            if (UnityEditor.EditorApplication.isPlaying) return;
+#endif
+
             if (_startLayout == null || _endLayout == null)
                 return ;
 
             StageTransitionManager.TransitionStagePercent(_startLayout, _endLayout,transitionPercent);
-
-            /*
-            //TODO: how to lerp solidity???
-
-            StageElements startLayout = StageTransitionManager.GetStageElements(_startLayout);
-            StageElements endLayout = StageTransitionManager.GetStageElements(_endLayout);
-
-            Cell[] activeCells = GameObject.FindObjectsOfType<Cell>();
-            EnemySpawnPoint[] activeSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
-
-            //Assert.AreEqual(stageElements.SceneName, SceneManager.GetActiveScene().name); // Yeah. we went there. deal with it.
-            if (startLayout.SceneName != endLayout.SceneName)
-                Debug.LogWarning("Stages were built in seperate unity scenes");
-            Assert.AreEqual(startLayout.elements.Length, endLayout.elements.Length);
-            Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
-
-            StageElement[] startCellData = startLayout.elements;
-            StageElement[] endCellData = endLayout.elements;
-            for (int i = 0; i < activeCells.Length; i++)
-            {
-                Transform cell = activeCells[i].transform;
-                cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
-                cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
-                cell.rotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
-            }
-
-            SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
-            SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
-            for (int i = 0; i < activeSpawnPoints.Length; i++)
-            {
-                activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
-            }
-            */
         }
 
         /// <summary>

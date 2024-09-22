@@ -56,13 +56,10 @@ public class GunController : MonoBehaviour
         if(shootMode == null)
         {
             Debug.LogError("empty shooting mode");
-            Application.Quit();
+            Application.Quit(); // this is so extreme lol i love this
         }
 
         shootingMode = shootMode;
-
-        //change color
-        //Gun.GetChild(0).GetComponent<Renderer>().material.color = shootMode.GunColor;
 
         canShoot = true;
     }

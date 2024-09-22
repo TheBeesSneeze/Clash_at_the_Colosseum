@@ -38,10 +38,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
         hasSpawnedEnemies = false;
         timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
         enemySpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
+        PublicEvents.OnStageTransitionFinish.AddListener(OnStageChangeFinish);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.pausedForUI) return;
+
         //InputEvents.Instance.EnemySpawnStarted.AddListener(SpawnEnemies);
         timeTillEnemiesSpawn -= Time.deltaTime;
 
@@ -54,13 +57,16 @@ public class EnemySpawner : Singleton<EnemySpawner>
             return;
         }
 
-        if (_currentEnemiesAlive <= 0)
-        {
-            //StageManager.ChangeStage();
-            StageManager.OnStageEnd();
-            timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
-            hasSpawnedEnemies = false;
-        }
+        
+    }
+
+    /// <summary>
+    /// Called in StageTransitionManager
+    /// </summary>
+    public void OnStageChangeFinish()
+    {
+        timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
+        hasSpawnedEnemies = false;
     }
 
     public void SpawnEnemies()
@@ -89,6 +95,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public static void OnEnemyDeath()
     {
         _currentEnemiesAlive--;
+
+        if (_currentEnemiesAlive <= 0)
+        {
+            //StageManager.ChangeStage();
+            StageManager.OnStageEnd();
+        }
     }
 
     private void OnDisable()

@@ -12,6 +12,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager
 {
@@ -44,11 +45,18 @@ public class StageManager
     /// <returns></returns>
     public static int GetStageIndex()
     {
-        return stageIndex + 1;
+        return stageIndex;
     }
 
     public static void OnStageEnd()
     {
+        if (stageIndex + 1 == _stages.Length)
+        {
+            Debug.LogWarning("I think the players supposed to beat the game here");
+            SceneManager.LoadScene("WinScreen");
+            return;
+        }
+
         _upgradeSelectUI.OpenMenu();
     }
 
@@ -61,6 +69,7 @@ public class StageManager
         if(stageIndex+1 == _stages.Length) 
         {
             Debug.LogWarning("I think the players supposed to beat the game here");
+            SceneManager.LoadScene("WinScreen");
             return;
         }
 
