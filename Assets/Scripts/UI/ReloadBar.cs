@@ -29,7 +29,7 @@ public class ReloadBar : MonoBehaviour
     }
     public void BarRefill()
     {
-        reloadBar.value = Mathf.Lerp(0, 1, gunController.secondsSinceLastShoot / gunController.shootingMode.ShotsPerSecond);
+        reloadBar.value = Mathf.Lerp(0, 1, gunController.secondsSinceLastShoot / (1/gunController.shootingMode.ShotsPerSecond));
 
 
     }
