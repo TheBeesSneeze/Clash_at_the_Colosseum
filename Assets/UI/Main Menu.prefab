@@ -235,14 +235,14 @@ RectTransform:
   - {fileID: 7291807857766792473}
   - {fileID: 8378398960000498369}
   - {fileID: 8788870392147032890}
-  m_Father: {fileID: 7791124271384046989}
+  m_Father: {fileID: 3182284217817204928}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -430}
-  m_SizeDelta: {x: 746.0049, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 35, y: 50}
+  m_SizeDelta: {x: 746.0049, y: 580}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &761838931727236863
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -655,9 +655,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4982050732582011829}
-  - {fileID: 4392643229870338499}
+  m_Children: []
   m_Father: {fileID: 3182284217817204928}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1703,6 +1701,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4982050732582011829}
+  - {fileID: 4392643229870338499}
   - {fileID: 7791124271384046989}
   m_Father: {fileID: 8748823183109873127}
   m_RootOrder: -1
@@ -2187,7 +2187,7 @@ RectTransform:
   - {fileID: 8748823183109873127}
   - {fileID: 2895819762732927245}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2953,12 +2953,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7791124271384046989}
+  m_Father: {fileID: 3182284217817204928}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 35, y: 0}
   m_SizeDelta: {x: 1826, y: 400}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5089548402261251359
