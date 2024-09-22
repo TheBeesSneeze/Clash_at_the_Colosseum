@@ -17,11 +17,11 @@ public class ReloadBar : MonoBehaviour
 
     private void Update()
     {
-        if (gunController.secondsSinceLastShoot > gunController.shootingMode.ShotsPerSecond)
+        if (gunController.secondsSinceLastShoot > 1 / gunController.shootingMode.ShotsPerSecond)
         {
             group.alpha = 0;
         }
-        if (gunController.secondsSinceLastShoot < gunController.shootingMode.ShotsPerSecond)
+        if (gunController.secondsSinceLastShoot < 1 / gunController.shootingMode.ShotsPerSecond)
         {
             group.alpha = 1;
             BarRefill();
