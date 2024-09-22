@@ -239,7 +239,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &7151011196388326143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,18 +252,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61a536cc3df2b44a92ab1b65b6fc3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultHealth: 5
+  DefaultHealth: 100
   Speed: 150
   MaxSpeed: 20
   DashSpeed: 40
   DashCoolDown: 3
   Friction: 1
-  AirMovementMultiplier: 0.5
-  HealthRegen: 0.25
+  AirMovementMultiplier: 0.25
+  HealthRegen: 1
   SecondsUntilHealing: 2
   AirJumps: 1
-  JumpHeight: 2.5
-  GravityBoost: 10
+  JumpHeight: 2
+  GravityBoost: 15
 --- !u!114 &2558676147345522402
 MonoBehaviour:
   m_ObjectHideFlags: 0

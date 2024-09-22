@@ -59,6 +59,8 @@ namespace mainMenu
         }
         public void quitClicked()
         {
+            Debug.Log("Exiting Game...");
+            Application.Quit();
         }
         public void confirmExitClicked()
         {
