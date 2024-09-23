@@ -156,7 +156,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661017455119386389}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
   enemyMovementSpeed: 5
   TurningSpeed: 1
   StopSpeed: 1
-  StopDistanceToPlayer: 5
-  SightDistance: 1
+  StopDistanceToPlayer: 6
+  SightDistance: 2
   VerticalSpeed: 5
   HeightAboveGround: 10
 --- !u!114 &2574494738450226700
