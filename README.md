@@ -21,3 +21,7 @@ OTHER
 Perfect DOS VGA 437 (FONT) - Zeh Fernando 
 
 Skybox Series Free (Mega Sun) - Avionx
+
+Upgrade Sound Effect (Arcade UI 3) - floraphonic
+
+Stone Slide Sound Effect - Remix Channel
