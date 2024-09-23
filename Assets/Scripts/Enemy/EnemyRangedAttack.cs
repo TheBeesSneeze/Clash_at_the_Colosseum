@@ -86,7 +86,7 @@ public class EnemyRangedAttack : MonoBehaviour
             Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
-        Vector3 direction = destination - bulletSpawnPoint.position;
+        Vector3 direction = destination - transform.position;
         var bullet = BulletPoolManager.InstantiateEnemyBullet(transform.position);
         bullet.transform.forward = direction.normalized;
         var bulletObject = bullet.GetComponent<Bullet>();

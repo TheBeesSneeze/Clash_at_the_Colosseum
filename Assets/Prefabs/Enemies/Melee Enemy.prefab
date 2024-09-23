@@ -91,8 +91,7 @@ MonoBehaviour:
   EnemyDamage: 40
   EnemyAttackRate: 5
   EnemyAttackRange: 1.5
-  playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-  enemyMovementSpeed: 7
+  enemyMovementSpeed: 5
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1
@@ -112,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  damageColorTime: 1
+  damageColorTime: 0.5
   spriteRenderer: {fileID: 8353514217853516538}
 --- !u!114 &6631860369869672511
 MonoBehaviour:
