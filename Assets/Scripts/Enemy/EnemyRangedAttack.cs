@@ -65,6 +65,10 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private float GetDistanceFromPlayer()
     {
+        if (playerObject == null)
+        {
+            playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
+        }
         var distance = (transform.position - playerObject.transform.position).normalized;
         distance.y = 0f;
         float distanceFrom = distance.magnitude;
@@ -73,6 +77,12 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
+        Debug.Log("attack god damnit");
+        if (playerObject == null)
+        {
+            playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
+        }
+        
         if (shootingMode == null)
         {
             return;
