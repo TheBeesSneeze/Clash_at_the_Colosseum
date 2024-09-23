@@ -25,8 +25,10 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
-        player = playerObject.GetComponent<PlayerBehaviour>();
+       // playerObject = stats.playerObject;
+        //player = playerObject.GetComponent<PlayerBehaviour>();
+        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+        playerObject = player.gameObject;
         timeBetweenAttacks = stats.EnemyAttackRate;
         coolDown = 0f;
     }
@@ -43,8 +45,7 @@ public class EnemyMelee : MonoBehaviour
             float distanceToPlayer = GetDistanceFromPlayer();
             
             if (distanceToPlayer <= stats.EnemyAttackRange)
-            {
-                Debug.Log("Attacking Player");
+            { 
                 player.TakeDamage(stats.EnemyDamage);
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();
@@ -57,11 +58,10 @@ public class EnemyMelee : MonoBehaviour
 
     private float GetDistanceFromPlayer()
     {
-        var distance = (transform.position - playerObject.transform.position);
-        float distanceFrom = distance.magnitude;
+        //var distance = (transform.position - playerObject.transform.position);
+        //float distanceFrom = distance.magnitude;
+        float distanceFrom = Vector3.Distance(transform.position, player.transform.position);
 
         return distanceFrom;
     }
-
-   
 }

@@ -23,7 +23,7 @@ namespace DefaultNamespace
 
         public override void Initialize()
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public override void OnEnemyHit(EnemyTakeDamage type, float damage)

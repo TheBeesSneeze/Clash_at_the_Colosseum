@@ -90,8 +90,9 @@ MonoBehaviour:
   EnemyHealth: 100
   EnemyDamage: 40
   EnemyAttackRate: 5
-  EnemyAttackRange: 1.3
-  enemyMovementSpeed: 4
+  EnemyAttackRange: 1.5
+  playerObject: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  enemyMovementSpeed: 7
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1

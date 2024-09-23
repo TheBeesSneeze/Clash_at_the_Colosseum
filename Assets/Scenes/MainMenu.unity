@@ -3410,13 +3410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569380f42ffae8141a4437cc218c280e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentMenu: {fileID: 194697487}
-  buttonContainer: {fileID: 1224389637}
-  backButton: {fileID: 184181234}
-  volumeSlider: {fileID: 2028447595}
-  sensitivitySlider: {fileID: 1704305388}
-  inputSwitch: {fileID: 1491269350}
-  inputSwitchText: {fileID: 537522257}
 --- !u!4 &1581961675
 Transform:
   m_ObjectHideFlags: 0
@@ -4788,32 +4781,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 2555268442763214371, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5483633930225586967, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 6300628618783855171, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
-      propertyPath: m_hasFontAssetChanged
+    - target: {fileID: 8260060102001137827, guid: 7ff5b611e50151642a4df9f6f4c75760, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
