@@ -89,7 +89,7 @@ public class StageTransitionManager
 
         DecorElement[] startDecor = startLayout.decorObjects;
         DecorElement[] endDecor = endLayout.decorObjects;
-        for (int i = 0; i < activeCells.Length; i++)
+        for (int i = 0; i < activeDecor.Length; i++)
         {
             Transform deco = activeDecor[i].transform;
             deco.position = Vector3.Lerp(startDecor[i].pos, endDecor[i].pos, transitionPercent);

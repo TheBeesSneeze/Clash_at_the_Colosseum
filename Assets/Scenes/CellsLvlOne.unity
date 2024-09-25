@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404134ab3412895459b7151eb3da7426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: 0
+  enemyToSpawn: 2
 --- !u!1001 &177672571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1847,7 +1847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656026234462430360, guid: f0ae4a578e9951043b66475e0fed22c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 1656026234462430360, guid: f0ae4a578e9951043b66475e0fed22c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3403,7 +3403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404134ab3412895459b7151eb3da7426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: 0
+  enemyToSpawn: 2
 --- !u!43 &214380010
 Mesh:
   m_ObjectHideFlags: 0
@@ -11338,7 +11338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404134ab3412895459b7151eb3da7426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: 0
+  enemyToSpawn: 2
 --- !u!43 &1419798552
 Mesh:
   m_ObjectHideFlags: 0
@@ -14268,7 +14268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404134ab3412895459b7151eb3da7426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: 0
+  enemyToSpawn: 2
 --- !u!43 &1900985785
 Mesh:
   m_ObjectHideFlags: 0
@@ -17090,6 +17090,10 @@ PrefabInstance:
     - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9143056015356992349, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y
