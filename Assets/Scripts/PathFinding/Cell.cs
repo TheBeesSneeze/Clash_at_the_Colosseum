@@ -12,8 +12,9 @@ namespace PathFinding
 {
     public class Cell : MonoBehaviour
     {
+        public bool Slope = false;
         [OnValueChanged("UpdateIfSolid")]
-        [SerializeField] public bool Solid = false;
+        private bool Solid = false;
         [SerializeField] bool autoRenameCell = false;
 
         private float segmentSize = 0.5f;
@@ -39,8 +40,6 @@ namespace PathFinding
             int empty = LayerMask.NameToLayer("Empty Cell");
             int fill = 
             _cellLM = LayerMask.GetMask(new String[] { "FilL Cell", "Default" });
-            //_cellLM |= (1 << LayerMask.NameToLayer("Default"));
-            //_cellLM |= (1 << LayerMask.NameToLayer("Fill Cell"));
 
             GetNeighbors();
         }
@@ -62,7 +61,6 @@ namespace PathFinding
             if (Solid)
                 return;
             
-            Debug.Log("collide");
             if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
             {
                 GameManager.pathManager.PlayerCellUpdate(this);
@@ -168,14 +166,13 @@ namespace PathFinding
             
             
             if (gameObject.GetComponent<MeshCollider>() != null)
-                GetComponent<MeshCollider>().convex = true;
+                GetComponent<MeshCollider>().convex = false;
 
             DebugDrawNeighbors();
         }
 
         public void DebugDrawNeighbors()
         {
-
             for (int i = 0; i < _sideNeighbors.Count; i++)
             {
                 Cell c = _sideNeighbors[i];
@@ -184,8 +181,6 @@ namespace PathFinding
                 Gizmos.color = Color.blue;
                 Gizmos.DrawLine(PathPosition, c.PathPosition);
             }
-
-            
         }
 
         

@@ -52,11 +52,12 @@ public class StageTransitionManager
         if (start == null || end == null)
             return;
 
-        StageElements startLayout = GetStageElements(start);
-        StageElements endLayout = GetStageElements(end);
+        StageLayout startLayout = GetStageElements(start);
+        StageLayout endLayout = GetStageElements(end);
 
         Cell[] activeCells = GameObject.FindObjectsOfType<Cell>();
         EnemySpawnPoint[] activeSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
+        Decor[] activeDecor = GameObject.FindObjectsOfType<Decor>();
 
         //Assert.AreEqual(stageElements.SceneName, SceneManager.GetActiveScene().name); // Yeah. we went there. deal with it.
         if (startLayout.SceneName != endLayout.SceneName)
@@ -64,14 +65,14 @@ public class StageTransitionManager
         Assert.AreEqual(startLayout.elements.Length, endLayout.elements.Length);
         //Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
 
-        StageElement[] startCellData = startLayout.elements;
-        StageElement[] endCellData = endLayout.elements;
+        CellObject[] startCellData = startLayout.elements;
+        CellObject[] endCellData = endLayout.elements;
         for (int i = 0; i < activeCells.Length; i++)
         {
             Transform cell = activeCells[i].transform;
-            cell.position = Vector3.Lerp(startCellData[i].p, endCellData[i].p, transitionPercent);
-            cell.localScale = Vector3.Lerp(startCellData[i].ls, endCellData[i].ls, transitionPercent);
-            cell.rotation = Quaternion.Lerp(startCellData[i].lr, endCellData[i].lr, transitionPercent);
+            cell.position = Vector3.Lerp(startCellData[i].pos, endCellData[i].pos, transitionPercent);
+            cell.localScale = Vector3.Lerp(startCellData[i].locScale, endCellData[i].locScale, transitionPercent);
+            cell.rotation = Quaternion.Lerp(startCellData[i].rot, endCellData[i].rot, transitionPercent);
         }
 
         SpawnPointElement[] startSpawnPoints = startLayout.spawnPoints;
@@ -83,13 +84,24 @@ public class StageTransitionManager
                 continue;
             }    
             activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
+            activeSpawnPoints[i].enemyToSpawn = (Mathf.Round(transitionPercent) == 0) ? (EnemySpawn)startSpawnPoints[i].enemyIndex : (EnemySpawn)endSpawnPoints[i].enemyIndex;
+        }
+
+        DecorElement[] startDecor = startLayout.decorObjects;
+        DecorElement[] endDecor = endLayout.decorObjects;
+        for (int i = 0; i < activeCells.Length; i++)
+        {
+            Transform deco = activeDecor[i].transform;
+            deco.position = Vector3.Lerp(startDecor[i].pos, endDecor[i].pos, transitionPercent);
+            deco.localScale = Vector3.Lerp(startDecor[i].locScale, endDecor[i].locScale, transitionPercent);
+            deco.rotation = Quaternion.Lerp(startDecor[i].rot, endDecor[i].rot, transitionPercent);
         }
     }
 
-    public static StageElements GetStageElements(TextAsset file)
+    public static StageLayout GetStageElements(TextAsset file)
     {
         Assert.IsTrue(file != null);
-        StageElements layout = JsonUtility.FromJson<StageElements>(file.text);
+        StageLayout layout = JsonUtility.FromJson<StageLayout>(file.text);
         return layout;
     }
 }

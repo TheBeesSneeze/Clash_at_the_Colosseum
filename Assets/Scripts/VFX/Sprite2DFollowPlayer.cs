@@ -16,6 +16,9 @@ public class Sprite2DFollowPlayer : MonoBehaviour
     [SerializeField] private Sprite _leftSprite;
     [SerializeField] private Sprite _rightSprite;
     [SerializeField] private Sprite _backSprite;
+    [SerializeField] private Sprite closeToPlayerSprite;
+
+    [SerializeField] private float playerSpriteChangeDistance;
 
     [Header ("Base Enemy Transform")]
     [SerializeField] private Transform rotationReference;
@@ -36,6 +39,15 @@ public class Sprite2DFollowPlayer : MonoBehaviour
     {
         float angle = transform.eulerAngles.y-rotationReference.eulerAngles.y;
         angle = (angle + 360) % 360;
+
+        if(Vector3.Distance(player.transform.position, transform.position) < playerSpriteChangeDistance)
+        {
+            if (closeToPlayerSprite != null)
+            {
+                _sprite.sprite = closeToPlayerSprite;
+                return;
+            }
+        }
 
         //Update sprites
         if (angle < 45 || angle > 315)
