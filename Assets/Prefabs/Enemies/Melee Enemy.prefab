@@ -91,7 +91,7 @@ MonoBehaviour:
   EnemyDamage: 40
   EnemyAttackRate: 5
   EnemyAttackRange: 1.5
-  enemyMovementSpeed: 5
+  enemyMovementSpeed: 3.5
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1
@@ -273,4 +273,6 @@ MonoBehaviour:
   _leftSprite: {fileID: 21300000, guid: 828614ea6b4ab5a41b81c96193f3be89, type: 3}
   _rightSprite: {fileID: 21300000, guid: adbd19d53a15ec0408d5b133c38682bb, type: 3}
   _backSprite: {fileID: 21300000, guid: 5456780f4bf78fa4fb53cf3a25b671b8, type: 3}
+  closeToPlayerSprite: {fileID: 0}
+  playerSpriteChangeDistance: 0
   rotationReference: {fileID: 7795032412208802762}
