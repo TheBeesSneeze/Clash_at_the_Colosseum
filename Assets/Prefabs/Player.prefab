@@ -253,13 +253,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 100
-  Speed: 150
-  MaxSpeed: 20
-  DashSpeed: 40
+  Speed: 200
+  MaxSpeed: 700
+  DashSpeed: 800
   DashCoolDown: 3
   Friction: 1
   AirMovementMultiplier: 0.25
-  HealthRegen: 1
+  HealthRegen: 15
   SecondsUntilHealing: 2
   AirJumps: 1
   JumpHeight: 2

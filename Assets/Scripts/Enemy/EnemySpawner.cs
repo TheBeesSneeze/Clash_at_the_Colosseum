@@ -13,6 +13,8 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
+    [SerializeField] private EnemyPrefab[] enemyPreabs;
+    public Dictionary<EnemySpawn, GameObject> _enemyPrefabs = new Dictionary<EnemySpawn, GameObject>();
     private bool hasSpawnedEnemies;
     private float timeTillEnemiesSpawn;
     private EnemySpawnPoint[] enemySpawnPoints;
@@ -39,6 +41,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         timeTillEnemiesSpawn = StageManager.timeTillEnemiesSpawn;
         enemySpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
         PublicEvents.OnStageTransitionFinish.AddListener(OnStageChangeFinish);
+        SetDictionary();
     }
 
     private void Update()
@@ -58,6 +61,14 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
 
         
+    }
+
+    private void SetDictionary()
+    {
+        foreach(EnemyPrefab enemy in enemyPreabs)
+        {
+            _enemyPrefabs[enemy.enemyTag] = enemy.prefab;
+        }
     }
 
     /// <summary>
@@ -84,9 +95,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
         {
-            GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length)];
-            GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
-            _currentEnemiesAlive++;
+            if (_enemyPrefabs.TryGetValue(enemySpawnPoints[i].enemyToSpawn, out GameObject enemyType))
+            {
+                GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
+                _currentEnemiesAlive++;
+            }
         }
         hasSpawnedEnemies=true;
     }
@@ -107,5 +120,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         _currentEnemiesAlive = 0;
     }
+}
+
+[System.Serializable]
+public class EnemyPrefab
+{
+    [Tooltip("Its not actually a tag")]
+    public EnemySpawn enemyTag;
+    public GameObject prefab;
 }
 

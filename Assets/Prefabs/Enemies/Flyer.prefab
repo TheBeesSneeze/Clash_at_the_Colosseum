@@ -101,6 +101,8 @@ MonoBehaviour:
   _leftSprite: {fileID: 21300000, guid: a620b393630e57e40be3a611fb5f7063, type: 3}
   _rightSprite: {fileID: 21300000, guid: 21a1f3d8c9642834bb1cd91a1f18bc65, type: 3}
   _backSprite: {fileID: 21300000, guid: 73512ca63532daa4d88bb48c9329121a, type: 3}
+  closeToPlayerSprite: {fileID: 0}
+  playerSpriteChangeDistance: 0
   rotationReference: {fileID: 2418623821713463542}
 --- !u!1 &1661017455119386389
 GameObject:
@@ -182,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 75
+  EnemyHealth: 125
   EnemyDamage: 1
   EnemyAttackRate: 5
   EnemyAttackRange: 5

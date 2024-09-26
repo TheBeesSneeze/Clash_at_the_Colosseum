@@ -46,8 +46,8 @@ namespace Utilities
 
             /*
 
-            StageElements stageElements = StageTransitionManager.GetStageElements(stageToLoad);
-            StageElement[] cellEmements = stageElements.elements;
+            StageLayout stageElements = StageTransitionManager.GetStageElements(stageToLoad);
+            CellObject[] cellEmements = stageElements.elements;
             SpawnPointElement[] spawnPointElements = stageElements.spawnPoints;
 
             Cell[] cells = GameObject.FindObjectsOfType<Cell>();
@@ -61,11 +61,11 @@ namespace Utilities
 
             for (int i = 0; i < cellEmements.Length; i++)
             {
-                cells[i].Solid = cellEmements[i].sld;
+                cells[i].Solid = cellEmements[i].slope;
                 Transform cell = cells[i].transform;
-                cell.position   = cellEmements[i].p;
-                cell.localScale = cellEmements[i].ls;
-                cell.localRotation = cellEmements[i].lr;
+                cell.position   = cellEmements[i].pos;
+                cell.localScale = cellEmements[i].locScale;
+                cell.localRotation = cellEmements[i].rot;
             }
 
             for (int i = 0; i < spawnPoints.Length; i++)
