@@ -20,8 +20,8 @@ MonoBehaviour:
   UpgradeIcon: {fileID: -203969728, guid: f1bcea4c2f7dc5e439f6979c7bfacbd6, type: 3}
   bodyColor: {r: 1, g: 0.6901917, b: 0.2679245, a: 1}
   secondaryColor: {r: 1, g: 0.5305271, b: 0.37169808, a: 1}
-  enemyHitExplotionRadius: 5
-  surfaceHitExplosionRadius: 3
+  enemyHitExplotionRadius: 2
+  surfaceHitExplosionRadius: 1.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
