@@ -95,10 +95,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
         {
-            GameObject enemyType = _enemyPrefabs[enemySpawnPoints[i].enemyToSpawn];
-            //GameObject enemyType = StageManager.enemyPool[Random.Range(0, StageManager.enemyPool.Length)];
-            GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
-            _currentEnemiesAlive++;
+            if (_enemyPrefabs.TryGetValue(enemySpawnPoints[i].enemyToSpawn, out GameObject enemyType))
+            {
+                GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
+                _currentEnemiesAlive++;
+            }
         }
         hasSpawnedEnemies=true;
     }

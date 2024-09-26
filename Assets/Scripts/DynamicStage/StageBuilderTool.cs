@@ -157,6 +157,7 @@ namespace Utilities
         public Vector3 locScale; //localScale
         public Quaternion rot; //localRotation
         public bool solid;
+        public bool visible;
         public float other1;
         public float other2;
         public DecorElement(Decor decor)
@@ -165,6 +166,7 @@ namespace Utilities
             locScale = decor.transform.localScale;
             rot = decor.transform.rotation;
             solid = decor.Solid;
+            visible = decor.Visible;
             other1 = 0;
             other2 = 0;
         }

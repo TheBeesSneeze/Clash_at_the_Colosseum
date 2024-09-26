@@ -29,4 +29,4 @@ public class EnemySpawnPoint : MonoBehaviour
 }
 
 
-public enum EnemySpawn { GroundedMelee, FlyingRanged, GroundedRanged }
+public enum EnemySpawn { None, GroundedMelee, FlyingRanged, GroundedRanged }

@@ -5,4 +5,5 @@ using UnityEngine;
 public class Decor : MonoBehaviour
 {
     public bool Solid;
+    public bool Visible;
 }
