@@ -57,14 +57,14 @@ namespace Utilities
             EnemySpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
             Debug.Log("Found " + spawnPoints.Length + " enemy spawn points in " + SceneManager.GetActiveScene().name);
 
-            StageElements stageElements = new StageElements();
+            StageLayout stageElements = new StageLayout();
             stageElements.SceneName = SceneManager.GetActiveScene().name;
-            stageElements.elements = new StageElement[cells.Length];
+            stageElements.elements = new CellObject[cells.Length];
             stageElements.spawnPoints = new SpawnPointElement[spawnPoints.Length];
 
             for (int i = 0; i<cells.Length; i++)
             {
-                stageElements.elements[i] = new StageElement(cells[i]);
+                stageElements.elements[i] = new CellObject(cells[i]);
             }
 
             for (int i = 0; i < spawnPoints.Length; i++)
@@ -105,37 +105,70 @@ namespace Utilities
     }
 
     [Serializable]
-    public class StageElements
+    public class StageLayout
     {
         public string SceneName;
-        public StageElement[] elements;
+        public CellObject[] elements;
         public SpawnPointElement[] spawnPoints;
+        public DecorElement[] decorObjects;
     }
 
     [Serializable]
-    public class StageElement
+    public class CellObject
     {
-        public Vector3 p; //position
-        public Vector3 ls; //localScale
-        public Quaternion lr; //localRotation
-        public bool sld; //solid
-        public StageElement(Cell cell)
+        public Vector3 pos; //position
+        public Vector3 locScale; //localScale
+        public Quaternion rot; //localRotation
+        public bool slope; //solid
+        public float other1;
+        public float other2;
+        public CellObject(Cell cell)
         {
-            p = cell.transform.position;
-            ls = cell.transform.localScale;
-            lr = cell.transform.rotation;
-            sld = cell.Solid;
+            pos = cell.transform.position;
+            locScale = cell.transform.localScale;
+            rot = cell.transform.rotation;
+            slope = cell.Slope;
+            other1 = 0;
+            other2 = 0;
         }
     }
+
 
     [Serializable]
     public class SpawnPointElement
     {
         public Vector3 pos;
+        public int enemyIndex = 0;
+        public float other1;
+        public float other2;
         public SpawnPointElement(EnemySpawnPoint spawnPoint)
         {
             pos = spawnPoint.transform.position;
+            enemyIndex = (int)spawnPoint.enemyToSpawn;
+            other1 = 0;
+            other2 = 0;
         }
     }
 
+    [Serializable]
+    public class DecorElement
+    {
+        public Vector3 pos; //position
+        public Vector3 locScale; //localScale
+        public Quaternion rot; //localRotation
+        public bool solid;
+        public bool visible;
+        public float other1;
+        public float other2;
+        public DecorElement(Decor decor)
+        {
+            pos = decor.transform.position;
+            locScale = decor.transform.localScale;
+            rot = decor.transform.rotation;
+            solid = decor.Solid;
+            visible = decor.Visible;
+            other1 = 0;
+            other2 = 0;
+        }
+    }
 }

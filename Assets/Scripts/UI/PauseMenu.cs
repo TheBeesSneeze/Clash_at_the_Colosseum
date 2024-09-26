@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File Name :         PauseMenuToggle.cs
- * Author(s) :         Tyler
+ * Author(s) :         Tyler, Toby S
  * Creation Date :     9/3/2024
  *
  * Brief Description : Listens for the ESC key to be pressed and then brings 
@@ -31,6 +31,9 @@ public class PauseMenu : MonoBehaviour
         restartGameButton.onClick.AddListener(RestartGame);
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
+
+        volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.5f);
 
         TogglePauseUI(false);
     }

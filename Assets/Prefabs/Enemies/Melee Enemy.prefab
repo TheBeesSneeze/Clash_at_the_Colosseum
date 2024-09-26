@@ -91,7 +91,7 @@ MonoBehaviour:
   EnemyDamage: 40
   EnemyAttackRate: 5
   EnemyAttackRange: 1.5
-  enemyMovementSpeed: 3
+  enemyMovementSpeed: 5
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  damageColorTime: 1
+  damageColorTime: 0.5
   spriteRenderer: {fileID: 8353514217853516538}
 --- !u!114 &6631860369869672511
 MonoBehaviour:
@@ -146,7 +146,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605286496879608125}
-  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

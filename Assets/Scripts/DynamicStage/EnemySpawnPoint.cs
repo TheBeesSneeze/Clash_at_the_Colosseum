@@ -8,11 +8,12 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
+    public EnemySpawn enemyToSpawn;
     public void OnDrawGizmos()
     {
+        Gizmos.DrawIcon(transform.position, enemyToSpawn.ToString(), true);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x);
-        
     }
     public void OnDrawGizmosSelected()
     {
@@ -26,3 +27,6 @@ public class EnemySpawnPoint : MonoBehaviour
             Gizmos.DrawRay(transform.position, Vector3.down * 100);
     }
 }
+
+
+public enum EnemySpawn { None, GroundedMelee, FlyingRanged, GroundedRanged }

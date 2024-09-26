@@ -151,7 +151,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
             Cell c = hit.transform.GetComponent<Cell>();
-            if (c!=null && !c.Solid)
+            if (c!=null /*&& !c.Solid*/)
             {
                 currentCell = c;
                 return;

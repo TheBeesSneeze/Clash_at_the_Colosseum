@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1426887766406785384}
   - component: {fileID: 8266884244933607397}
   - component: {fileID: 2893096892758536757}
+  - component: {fileID: 1772592795821290474}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
@@ -233,7 +234,7 @@ MonoBehaviour:
   TurningSpeed: 1
   StopSpeed: 2
   StopDistanceToPlayer: 5
-  SightDistance: 3
+  SightDistance: 15
   VerticalSpeed: 0
   HeightAboveGround: 0
 --- !u!114 &8266884244933607397
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  damageColorTime: 1
+  damageColorTime: 0.5
   spriteRenderer: {fileID: 4770044433410946019}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
@@ -265,3 +266,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   currentCell: {fileID: 0}
+--- !u!114 &1772592795821290474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996317265162831292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d298c58fd6474d4fb729a834b937b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

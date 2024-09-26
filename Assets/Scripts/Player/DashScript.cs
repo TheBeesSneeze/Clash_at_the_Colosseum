@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DashScript : MonoBehaviour
 {
-    public float coolDownTime;
     public GameObject facing;
     bool dashCooldown = false;
     Rigidbody rb;
