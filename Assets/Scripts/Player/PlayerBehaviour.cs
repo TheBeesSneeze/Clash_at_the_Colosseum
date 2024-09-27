@@ -21,8 +21,11 @@ public class PlayerBehaviour : CharacterType
 {
     private PlayerStats stats;
     [SerializeField] private Image redVignette;
-    
+    [SerializeField] private HealthBar healthBar;
+
     private float secondsSinceLastTookDamage;
+
+    
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,6 +36,7 @@ public class PlayerBehaviour : CharacterType
             Debug.LogWarning("no damage vignette");
             return;
         }
+        healthBar.SetMaxHealth(stats.DefaultHealth);
     }
 
     public void Update()
@@ -51,6 +55,7 @@ public class PlayerBehaviour : CharacterType
             return;
         }
         redVignette.color = new Color(redVignette.color.r, redVignette.color.g, redVignette.color.b, t * t);
+
     }
 
     public void SetStats()
@@ -58,6 +63,7 @@ public class PlayerBehaviour : CharacterType
         stats = GetComponent<PlayerStats>();
 
         CurrentHealth = stats.DefaultHealth;
+        healthBar = FindObjectOfType<HealthBar>();
     }
 
     public override void TakeDamage(float damage)
@@ -66,6 +72,7 @@ public class PlayerBehaviour : CharacterType
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
         print(CurrentHealth);
+        healthBar.SetHealth(CurrentHealth);
     }
     public override void Die()
     {
