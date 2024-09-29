@@ -77,9 +77,6 @@ public class PlayerController : MonoBehaviour
 
         ApplyGravity();
 
-        //sliding fix; stops the player from drifting and allows them to stay still
-        if (IsGrounded())
-            SlidingFix();
 
         if (GameManager.Instance.pausedForUI) return;
 
@@ -177,7 +174,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
     }
-    private void SlidingFix() {
+    /*private void SlidingFix() {
         Vector3 horizontalVelocity = rb.velocity;
         horizontalVelocity.y = 0;
         if(horizontalVelocity.magnitude < 0.01f)
@@ -185,6 +182,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }
+    */
     private void Jump()
     {
         if (GrapplingHook.isGrappling)
