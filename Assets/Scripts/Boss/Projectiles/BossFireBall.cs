@@ -73,7 +73,7 @@ public class BossFireBall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hello!");
+     
         if(other.TryGetComponent(out PlayerBehaviour player))
         {
             player.TakeDamage(collisionDamage);

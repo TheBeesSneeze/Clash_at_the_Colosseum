@@ -319,10 +319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb162d33eaec40840a56c9b781c2db4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionDamage: 60
   maxHeight: 15
   defaultTime: 10
-  explosionPrefab: {fileID: 0}
-  visual: {fileID: 0}
+  explosionPrefab: {fileID: 7275771511854018987, guid: a5d69fcaf7295d24b8e2e60afa053573, type: 3}
+  visual: {fileID: 6958268074427625960}
 --- !u!1 &3130074421420473557
 GameObject:
   m_ObjectHideFlags: 0
