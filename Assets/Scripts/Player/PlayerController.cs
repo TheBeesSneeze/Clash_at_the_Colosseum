@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _airJumps = 1;
     [Tooltip ("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
     [SerializeField] private float jumpRaycastDistance;
+    [SerializeField] private float airDrag;
     public bool ConsistentJumps = true;
 
     [Header ("Camera References")]
@@ -34,8 +35,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody RB => rb;
     [SerializeField] private LayerMask groundLayers;
 
+    [Header ("Movement")]
+    [SerializeField] private float groundDrag;
     private float xMovement;
     private float yMovement;
+    private float horizontalInput;
+    private float verticalInput;
+    private Vector3 movementDirection;
+    
 
     private int airJumpCounter;
 
@@ -49,6 +56,7 @@ public class PlayerController : MonoBehaviour
         //groundLayers |= (1 << LayerMask.GetMask("Default"));
         //groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
         rb.useGravity = false;
         stats = GetComponent<PlayerStats>();
         //source = gameObject.AddComponent<AudioSource>();
@@ -69,9 +77,6 @@ public class PlayerController : MonoBehaviour
 
         ApplyGravity();
 
-        //sliding fix; stops the player from drifting and allows them to stay still
-        if (IsGrounded())
-            SlidingFix();
 
         if (GameManager.Instance.pausedForUI) return;
 
@@ -87,7 +92,18 @@ public class PlayerController : MonoBehaviour
 
         UpdateCameraRotation();
         input = InputEvents.Instance.InputDirection2D;
+        horizontalInput = input.x;
+        verticalInput = input.y;
 
+        SpeedControl();
+        if(IsGrounded())
+        {
+            rb.drag = groundDrag;
+        }
+        else
+        {
+            rb.drag = airDrag;
+        }
         //FootStepSound();
     }
 
@@ -119,7 +135,10 @@ public class PlayerController : MonoBehaviour
         float xMag = mag.x;
         float yMag = mag.y;
 
-        ApplyCounterMovement(input.x, input.y, mag);
+        movementDirection = playerOrientationTracker.forward * verticalInput + playerOrientationTracker.right *horizontalInput;
+
+        rb.AddForce(movementDirection.normalized * stats.Speed, ForceMode.Force);
+        /*ApplyCounterMovement(input.x, input.y, mag);
 
         float maxSpeed = stats.MaxSpeed;
 
@@ -139,12 +158,23 @@ public class PlayerController : MonoBehaviour
 
         //Apply forces to move player
         rb.AddForce(playerOrientationTracker.forward * (input.y * stats.Speed * Time.deltaTime ));
-        rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));
+        rb.AddForce(playerOrientationTracker.right * (input.x * stats.Speed * Time.deltaTime ));*/
 
-        
-        
+
     }
-    private void SlidingFix() {
+
+    private void SpeedControl()
+    {
+        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        //limit velocity as needed
+        if(flatVelocity.magnitude > stats.Speed)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * stats.Speed;
+            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
+        }
+    }
+    /*private void SlidingFix() {
         Vector3 horizontalVelocity = rb.velocity;
         horizontalVelocity.y = 0;
         if(horizontalVelocity.magnitude < 0.01f)
@@ -152,6 +182,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
     }
+    */
     private void Jump()
     {
         if (GrapplingHook.isGrappling)
@@ -180,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ApplyCounterMovement(float x, float y, Vector2 mag)
+    /*private void ApplyCounterMovement(float x, float y, Vector2 mag)
     {
         if (Math.Abs(mag.x) > 0.01f && Math.Abs(x) < 0.05f || (mag.x < -0.01f && x > 0) || (mag.x > 0.01f && x < 0))
         {
@@ -196,7 +227,7 @@ public class PlayerController : MonoBehaviour
             Vector3 n = rb.velocity.normalized * stats.MaxSpeed;
             rb.velocity = new Vector3(n.x, verticalVelocity, n.z);
         }
-    }
+    }*/
 
     public Vector2 FindVelRelativeToLook()
     {
