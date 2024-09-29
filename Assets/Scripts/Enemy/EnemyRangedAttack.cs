@@ -37,7 +37,7 @@ public class EnemyRangedAttack : MonoBehaviour
         fireRate = stats.EnemyAttackRate;
         print(fireRate);
         slowFireRate = fireRate * 2;
-        coolDown = 0f;
+        coolDown = stats.EnemyAttackRate;
         
     }
 
