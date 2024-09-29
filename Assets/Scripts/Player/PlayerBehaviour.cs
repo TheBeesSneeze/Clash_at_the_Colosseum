@@ -86,7 +86,7 @@ public class PlayerBehaviour : CharacterType
 
     public Vector3 GetGroundPosition()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, ~groundmask))
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, groundmask))
         {
             return hit.point;
         }

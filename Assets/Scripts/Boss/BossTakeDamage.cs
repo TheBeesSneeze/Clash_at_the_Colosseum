@@ -11,54 +11,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossTakeDamage : MonoBehaviour
+public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats stats;
-    private float currentHealth;
-    [SerializeField] private Color damageColor;
-    [SerializeField] private float damageColorTime;
-    private float damagetime;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
-    private bool isStillAlive;
-
-    private void Start()
+    protected override void Start()
     {
         stats = GetComponent<BossStats>();
         currentHealth = stats.BossHealth;
-        isStillAlive = true;
-    }
-    private void Update()
-    {
-        damagetime -= Time.deltaTime;
-        if (damagetime <= 0)
-        {
-            spriteRenderer.color = Color.white;
-        }
     }
 
-    public void TakeDamage(float damage)
+    public override void Die()
     {
-        currentHealth -= damage;
-        damagetime = damageColorTime;
-        spriteRenderer.color = damageColor;
-
-        if (currentHealth < damage && isStillAlive)
-        {
-            Die();
-        }
-        else
-        {
-            //sounds?????
-           // PublicEvents.OnBossDamage.Invoke();
-        }
-    }
-
-    public void Die()
-    {
-        //animator reference for death animation
+        Debug.Log("boss is dead yahoo");
         Destroy(gameObject);
-
     }
-
 }

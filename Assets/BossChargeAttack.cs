@@ -13,7 +13,6 @@ public class BossChargeAttack : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         animator.SetBool("Charge", false);
     }
 
@@ -21,5 +20,11 @@ public class BossChargeAttack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+        if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
+        {
+            animator.SetBool("HalfHealth", true);
+            return;
+        }
+        animator.SetBool("Charge", false);
     }
 }

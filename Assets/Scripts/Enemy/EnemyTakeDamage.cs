@@ -14,7 +14,7 @@ using UnityEngine;
 public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;
-    private float currentHealth;
+    [HideInInspector] public float currentHealth;
     [SerializeField] private Color damageColor;
     [SerializeField] private float damageColorTime;
     private float damagetime;
@@ -23,7 +23,7 @@ public class EnemyTakeDamage : MonoBehaviour
 
 
     private bool isStillAlive;
-    private void Start()
+    protected virtual void Start()
     {
         stats = GetComponent<EnemyStats>();
         currentHealth = stats.EnemyHealth;
@@ -43,7 +43,7 @@ public class EnemyTakeDamage : MonoBehaviour
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
-
+        Debug.Log(currentHealth);
         if (currentHealth < damage && isStillAlive) 
         {
             Die();
@@ -54,7 +54,7 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
