@@ -253,8 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 100
-  Speed: 200
-  MaxSpeed: 700
+  Speed: 25
   DashSpeed: 800
   DashCoolDown: 3
   Friction: 1
@@ -262,7 +261,7 @@ MonoBehaviour:
   HealthRegen: 15
   SecondsUntilHealing: 2
   AirJumps: 1
-  JumpHeight: 2
+  JumpHeight: 5
   GravityBoost: 15
 --- !u!114 &2558676147345522402
 MonoBehaviour:
@@ -278,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _airJumps: 1
   jumpRaycastDistance: 1
+  airDrag: 1
   ConsistentJumps: 1
   cameraHolder: {fileID: 3447060050390161073}
   playerCamera: {fileID: 5315044224774374552}
@@ -286,6 +286,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
+  groundDrag: 5
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 1
   redVignette: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &18831259720661764
 MonoBehaviour:
   m_ObjectHideFlags: 0
