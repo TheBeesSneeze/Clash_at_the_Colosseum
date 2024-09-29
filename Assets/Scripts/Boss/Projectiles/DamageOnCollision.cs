@@ -9,17 +9,35 @@ public class DamageOnCollision : MonoBehaviour
     [SerializeField] private float dps=1;
     [SerializeField] private bool damagePlayer=true;
     [SerializeField] private bool damageEnemies=true;
-    private List<Transform> collisions;
+    [SerializeField] private bool ApplyDamageOverTime = true;
+    private List<Transform> collisions = new List<Transform>();
     //private float cooldown;
+
+
 
     public void OnTriggerEnter(Collider other)
     {
-        collisions.Add(other.transform);
+        if (ApplyDamageOverTime)
+        {
+            collisions.Add(other.transform);
+            return;
+        }
+
+        if (damagePlayer && other.TryGetComponent(out PlayerBehaviour behaviour))
+        {
+            behaviour.TakeDamage(dps);
+        }
+
+        if (damageEnemies && other.TryGetComponent(out EnemyTakeDamage enemy))
+        {
+            enemy.TakeDamage(dps);
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        collisions.Remove(other.transform);
+        if(ApplyDamageOverTime)
+            collisions.Remove(other.transform);
     }
 
     public void OnCollisionEnter(Collision collision)
