@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class DestroyObjectAfterSeconds : MonoBehaviour
 {
-    public void Destroy(float seconds=1)
+    [SerializeField] private float Seconds=1;
+
+    public void OnDestroy()
+    {
+        StartCoroutine(ExplosionVisual(Seconds));
+    }
+    public void Destroy(float seconds)
     {
         StartCoroutine(ExplosionVisual(seconds));
     }
