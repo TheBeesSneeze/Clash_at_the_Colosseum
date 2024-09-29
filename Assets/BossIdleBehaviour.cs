@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossIdleBehaviour : StateMachineBehaviour
 {
     private int nextState;
+    private BossController controller;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -14,9 +15,15 @@ public class BossIdleBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log(nextState);
 
-        if (nextState == 1)
+       /* if (controller.Stats.BossHealth == controller.Stats.BossHealth / 2)
+        {
+            animator.SetBool("HalfHealth", true);
+            return;
+        }
+       */
+
+         if (nextState == 1)
         {
             animator.SetBool("AOE", true);
         }
