@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 218a16e4a41585f48bab3fad7b1c92fd, type: 3}
-    - time: 1.5
-      value: {fileID: 21300000, guid: 218a16e4a41585f48bab3fad7b1c92fd, type: 3}
+      value: {fileID: 21300000, guid: ac6d2f217e5feab469ef570df28c2386, type: 3}
+    - time: 1
+      value: {fileID: 21300000, guid: ac6d2f217e5feab469ef570df28c2386, type: 3}
     attribute: m_Sprite
-    path: 
+    path: HydraCATC
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 1692810645
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -46,14 +46,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 218a16e4a41585f48bab3fad7b1c92fd, type: 3}
-    - {fileID: 21300000, guid: 218a16e4a41585f48bab3fad7b1c92fd, type: 3}
+    - {fileID: 21300000, guid: ac6d2f217e5feab469ef570df28c2386, type: 3}
+    - {fileID: 21300000, guid: ac6d2f217e5feab469ef570df28c2386, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5166667
+    m_StopTime: 1.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
