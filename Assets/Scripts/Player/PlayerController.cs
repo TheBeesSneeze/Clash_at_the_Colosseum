@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _airJumps = 1;
     [Tooltip ("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
     [SerializeField] private float jumpRaycastDistance;
-    [SerializeField] private float airDrag;
     public bool ConsistentJumps = true;
 
     [Header ("Camera References")]
@@ -37,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     [Header ("Movement")]
     [SerializeField] private float groundDrag;
+    [SerializeField] private float airDrag;
     private float xMovement;
     private float yMovement;
     private float horizontalInput;
@@ -167,8 +167,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        //limit velocity as needed
-        if(flatVelocity.magnitude > stats.Speed)
+        //limit velocity as needed\
+        if(flatVelocity.magnitude > stats.MaxSpeed)
         {
             Vector3 limitedVelocity = flatVelocity.normalized * stats.Speed;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);

@@ -30,12 +30,11 @@ public class GunController : MonoBehaviour
     private Camera playerCamera;
     private Animator animator;
 
-    private bool canShoot;
+    private bool shootHeld;
 
     private void Start()
     {
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
-        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
@@ -43,6 +42,7 @@ public class GunController : MonoBehaviour
             shootingMode = SaveData.SelectedGun;
         LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
+        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         scanMask |= (1 << LayerMask.GetMask("Default"));
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
     }
@@ -61,7 +61,7 @@ public class GunController : MonoBehaviour
 
         shootingMode = shootMode;
 
-        canShoot = true;
+        shootHeld = true;
     }
 
     /// <summary>
@@ -123,12 +123,10 @@ public class GunController : MonoBehaviour
         DebugTarget();
         secondsSinceLastShoot += Time.deltaTime;
 
-        if (!canShoot) return;
         if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
-        if (!shootingMode.CanHoldFire)
-            canShoot = false;
+        if (!shootingMode.CanHoldFire) return;
 
         //shootin time
         Shoot();
@@ -136,8 +134,9 @@ public class GunController : MonoBehaviour
 
     private void OnShootStart()
     {
-        canShoot = true;
+        Shoot();
     }
+
 
     private void DebugTarget()
     {
