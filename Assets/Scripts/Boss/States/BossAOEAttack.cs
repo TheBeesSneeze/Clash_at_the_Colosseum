@@ -5,31 +5,33 @@ using UnityEngine;
 public class BossAOEAttack : StateMachineBehaviour
 {
     public GameObject Fireball;
-    public void LaunchFireball()
+    public void LaunchFireball(Transform animator)
     {
-        Instantiate(Fireball);
+        GameObject fireball = Instantiate(Fireball, animator.position, Quaternion.identity);
+        BossFireBall fb = fireball.GetComponent<BossFireBall>();
+        fb.Launch(animator.transform.position, BossController.playerBehaviour.GetGroundPosition());
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        LaunchFireball();
+        LaunchFireball(animator.transform);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("AOE", false);
-    }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
 
         if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
         {
             animator.SetBool("HalfHealth", true);
             return;
         }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
         animator.SetBool("AOE", false);
     }
 }

@@ -364,7 +364,7 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 980, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 246994734279110360}
-    m_Position: {x: 220, y: 710, z: 0}
+    m_Position: {x: 230, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2636840987034232204}
     m_Position: {x: 360, y: 840, z: 0}
@@ -708,9 +708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30080ed92f031b4bbf39d3fe413130c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchForce: 0
-  launchForceHeight: 0
-  box: {fileID: 0}
+  launchForce: 300
+  launchForceHeight: 400
+  box: {fileID: 1236622279385702515, guid: 721aeeed805b6a443b429958aad2f522, type: 3}
 --- !u!1102 &4548548848363530848
 AnimatorState:
   serializedVersion: 6

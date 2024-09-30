@@ -8,13 +8,14 @@ public class DestroyObjectAfterSeconds : MonoBehaviour
 
     public void OnDestroy()
     {
-        StartCoroutine(ExplosionVisual(Seconds));
+       StopAllCoroutines();
     }
+    
     public void Destroy(float seconds)
     {
-        StartCoroutine(ExplosionVisual(seconds));
+        StartCoroutine(DestroyObject(seconds));
     }
-    IEnumerator ExplosionVisual(float seconds)
+    IEnumerator DestroyObject(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);

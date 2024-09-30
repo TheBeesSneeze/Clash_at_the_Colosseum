@@ -12,14 +12,6 @@ public class BossFireBall : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Transform visual;
 
-    private void Start()
-    {
-        PlayerBehaviour p = GameObject.FindObjectOfType<PlayerBehaviour>();
-        Launch(transform.position, p.GetGroundPosition());
-
-        Debug.Log(p.GetGroundPosition());
-        Debug.Log(p.transform.position);    
-    }
 
     public void Launch(Vector3 startPosition, Vector3 endPosition)
     {

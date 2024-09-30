@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7752871166327915377}
   - component: {fileID: 6012836519064408219}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866896189771025912}
   - component: {fileID: 723876699698685469}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall_3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8694463982691968497}
   - component: {fileID: 4663966100823847758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6785012167302068716}
   - component: {fileID: 1700886683096713084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 5010358746772583516}
   - component: {fileID: -149849139835284078}
   - component: {fileID: -5449257371836468607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Magma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,9 +443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31920dad7ac696e49afe5206ace1557b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 35
+  dps: 1
   damagePlayer: 1
   damageEnemies: 1
+  ApplyDamageOverTime: 1
 --- !u!1 &8981905911060012919
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6177468325893720594}
   - component: {fileID: 3849010140796752553}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBall_3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,11 +14,18 @@ using UnityEngine;
 public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats stats;
+    private BossShieldUp bossShieldUp;
     protected override void Start()
     {
         stats = GetComponent<BossStats>();
         currentHealth = stats.BossHealth;
     }
+    public override void TakeDamage(float damage)
+    {
+        if (!BossController.Invincible)
+            base.TakeDamage(damage);
+    }
+
 
     public override void Die()
     {

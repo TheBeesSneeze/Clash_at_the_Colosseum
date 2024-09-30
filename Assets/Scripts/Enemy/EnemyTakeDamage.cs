@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class EnemyTakeDamage : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class EnemyTakeDamage : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         damagetime = damageColorTime;
