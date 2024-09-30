@@ -65,6 +65,16 @@ public class GunController : MonoBehaviour
 
     public void AddBulletEffect(BulletEffect bulletEffect)
     {
+        if (bulletEffects == null)
+        {
+            bulletEffects = new List<BulletEffect>();
+        }
+        if(bulletEffect == null)
+        {
+            Debug.LogError("what the fuck bro");
+            Application.Quit();
+            return;
+        }
         bulletEffects.Add(bulletEffect);
     }
 
