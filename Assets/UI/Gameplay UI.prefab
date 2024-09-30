@@ -206,7 +206,7 @@ RectTransform:
   - {fileID: 6999826032046887002}
   - {fileID: 1715851634814555987}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -284,6 +284,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4764649902187602851}
     m_Modifications:
+    - target: {fileID: 1168213214437298720, guid: 5c0eea954094df84d8e847f32d8679a7, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 1168213214437298720, guid: 5c0eea954094df84d8e847f32d8679a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
     - target: {fileID: 3729865278103628647, guid: 5c0eea954094df84d8e847f32d8679a7, type: 3}
       propertyPath: m_Name
       value: Enemy Counter
@@ -396,15 +404,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 150123486507082332, guid: 186f59c8db2287e4f9b4ad373dc8c34d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 16.730001
       objectReference: {fileID: 0}
     - target: {fileID: 957344473888065372, guid: 186f59c8db2287e4f9b4ad373dc8c34d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1153560432478101520, guid: 186f59c8db2287e4f9b4ad373dc8c34d, type: 3}
       propertyPath: m_Name
       value: Reload Meter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153560432478101520, guid: 186f59c8db2287e4f9b4ad373dc8c34d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5240704186918658517, guid: 186f59c8db2287e4f9b4ad373dc8c34d, type: 3}
       propertyPath: m_Pivot.x
@@ -508,6 +520,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4764649902187602851}
     m_Modifications:
+    - target: {fileID: 5501047972211203170, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+    - target: {fileID: 5501047972211203170, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
     - target: {fileID: 5961662349391443569, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -574,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5961662349391443569, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.19
+      value: 4.25
       objectReference: {fileID: 0}
     - target: {fileID: 5961662349391443569, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
       propertyPath: m_AnchoredPosition.y
