@@ -92,7 +92,6 @@ public class Bullet : MonoBehaviour
             lastPosition = transform.position;
             return;
         }
-        Debug.Log("hit");
 
         if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
         {
@@ -108,7 +107,6 @@ public class Bullet : MonoBehaviour
         }
         //if hit something that isnt enemy
         
-        Debug.Log("hit other");
         OnHitSurface(hit.point);
     }
 

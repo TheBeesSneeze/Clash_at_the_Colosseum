@@ -36,7 +36,6 @@ public class EnemyRangedAttack : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         fireRate = stats.EnemyAttackRate;
-        print(fireRate);
         slowFireRate = fireRate * 2;
         coolDown = stats.EnemyAttackRate;
         canMultiShoot = stats.canConsecutiveShoot;

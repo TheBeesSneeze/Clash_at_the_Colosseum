@@ -27,7 +27,11 @@ public class GunGameplaySprite : MonoBehaviour
 
     private void OnGunShoot()
     {
-        index = 0;
+        index = 1; //weird ass code btw bro. just going to say it.
+        gunState = GunState.shooting;
+        _time = 0;
+
+        LoadSprite(gunAnimation.sprites[0]); 
     }
 
     private void Update()
@@ -67,7 +71,7 @@ public class GunGameplaySprite : MonoBehaviour
         if (_time < gunAnimation.SecondsBetweenFrames)
             return;
 
-        LoadSprite(gunAnimation.sprites[0]);
+        LoadSprite(gunAnimation.sprites[index]);
         _time = 0;
         index++;
 
