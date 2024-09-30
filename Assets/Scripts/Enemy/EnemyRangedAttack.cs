@@ -45,7 +45,6 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         AttemptAttack();
         coolDown -= Time.deltaTime;
-        
     }
 
     private void AttemptAttack()
@@ -76,7 +75,7 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
-        Debug.Log("attack god damnit");
+        //Debug.Log("attack god damnit");
         if (playerObject == null)
         {
             playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;

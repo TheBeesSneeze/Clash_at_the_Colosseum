@@ -15,7 +15,10 @@ namespace PathFinding
         public Path GetPathToPlayer(Cell navigator)
         {
             if (CellManager.PlayerCell == null)
+            {
+                Debug.LogWarning("no playercell");
                 return null;
+            }
 
             return Navigate(navigator, CellManager.PlayerCell);
         }
@@ -25,6 +28,12 @@ namespace PathFinding
         // or if start cant navigate to end
         public Path Navigate(Cell navigator, Cell target)
         {
+            if (target == null || navigator == null)
+            {
+                Debug.LogWarning("null moment");
+                return null;
+            }
+
             List<Path> nextCells = new List<Path>();
             List<Cell> exploredCells = new List<Cell>();
             Path startNode = new Path(target, navigator);

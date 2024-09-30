@@ -24,14 +24,14 @@ namespace PathFinding
         {
             this.cell = cell;
             _distanceToStart = 0;
-            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.transform.position, target.transform.position) * 10);
+            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
         }
 
         public Path(Cell cell, Path lastPath, Cell target)
         {
             this.cell = cell;
-            _distanceToStart = Mathf.RoundToInt(lastPath.DistanceToStart + Vector3.Distance(this.cell.transform.position, lastPath.position) * 10);
-            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.transform.position, target.transform.position) * 10);
+            _distanceToStart = Mathf.RoundToInt(lastPath.DistanceToStart + Vector3.Distance(this.cell.PathPosition, lastPath.position) * 10);
+            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
             nextPath = lastPath;
         }
 

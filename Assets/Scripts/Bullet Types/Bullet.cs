@@ -118,7 +118,6 @@ public class Bullet : MonoBehaviour
         }
         //if hit something that isnt enemy
         
-        Debug.Log("hit other");
         OnHitSurface(hit.point);
     }
 
@@ -186,7 +185,7 @@ public class Bullet : MonoBehaviour
     /// </summary>
     private void SetColorGradient() //or does it???
     {
-        Debug.Log("todo: color gradient");
+        //Debug.Log("todo: color gradient");
         /*
         TrailRenderer tr = GetComponent<TrailRenderer>();
         tr.enabled = true;

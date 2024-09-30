@@ -11,7 +11,6 @@ public class GroundedEnemyMovement : MonoBehaviour
 {
     private float _turningSpeed = 1;
     private float _stoppingSpeed = 1;
-    float _stopDistanceToPlayer = 1;
     bool _needsToSeePlayer = false; //TODO. DOESNT WORK
     private float _sightDistance = 10;
     private EnemyStats _enemyStats;
@@ -39,17 +38,18 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (_enemyStats == null) return;
         _turningSpeed = _enemyStats.TurningSpeed;
         _stoppingSpeed = _enemyStats.StopSpeed;
-        _stopDistanceToPlayer = _enemyStats.StopDistanceToPlayer;
         _sightDistance = _enemyStats.SightDistance;
     }
 
     private void Update()
     {
-        Cell c = UpdateCurrentCell();
+        currentCell = UpdateCurrentCell();
 
-        if(c == null)
+        if (currentCell == null)
+        {
+            Debug.LogWarning("no cell!");
             return;
-
+        }
         path = GameManager.pathManager.GetPathToPlayer(currentCell);
 
         if (path == null ) return;
@@ -84,8 +84,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (_needsToSeePlayer && !HasClearViewToPoint(_player.transform.position, _playerLayer))
             return false;
 
-        if (Vector3.Distance(transform.position, _player.transform.position) < _stopDistanceToPlayer)
-            return false;
+        //if (Vector3.Distance(transform.position, _player.transform.position) < _enemyStats.StopDistanceToPlayer)
+        //    return false;
 
         float distance = Vector3.Distance(new Vector3(path.position.x, 0, path.position.z), new Vector3(transform.position.x, 0, transform.position.z));
         //float avgPathSize = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.z) / 2;
@@ -150,9 +150,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private Cell UpdateCurrentCell()
     {
         //Ray r = new Ray(transform.position - (Vector3.up * transform.lossyScale.y), Vector3.up );
-        Ray r = new Ray(transform.position, Vector3.down );
-        RaycastHit[] hits = Physics.RaycastAll(r,5 * transform.lossyScale.y, ~groundlm);
-        Debug.DrawRay(r.origin, r.direction, Color.white);
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down,5 * transform.lossyScale.y, ~groundlm);
         foreach (RaycastHit hit in hits)
         {
             if(hit.transform.TryGetComponent<Cell>( out Cell c))
@@ -165,32 +163,26 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!debug) return;
-
-        if (currentCell != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(currentCell.transform.position, currentCell.transform.lossyScale*1.1f);
-        }    
-
+        if (!debug) return; 
 
         if (path == null) return;
         
         if (path.cell == null) return;
 
-        Vector3 lastPoint = path.position;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireMesh(path.cell.GetComponent<MeshFilter>().mesh, path.cell.transform.position+Vector3.up, path.cell.transform.rotation, path.cell.transform.lossyScale);
+
+        Vector3 lastPoint = path.position+Vector3.up;
 
         Path parth = path; //this is my worst variable name yet
         while (parth != null)
         {
-            //Debug.Log(parth.cell.gameObject.name);
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(parth.cell.transform.position, parth.cell.transform.lossyScale);
+            //Gizmos.color = Color.yellow;
+            //Gizmos.DrawWireCube(parth.position, parth.position+Vector3.up);
 
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(lastPoint, parth.cell.transform.position);
-            lastPoint = parth.cell.transform.position;
+            Gizmos.DrawLine(lastPoint, parth.position + Vector3.up);
+            lastPoint = parth.position + Vector3.up;
 
             parth = parth.nextPath;
         }
