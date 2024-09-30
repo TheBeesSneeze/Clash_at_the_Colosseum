@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8694463982691968497}
   - component: {fileID: 4663966100823847758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5010358746772583516}
   - component: {fileID: -149849139835284078}
   - component: {fileID: -5449257371836468607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Venom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,3 +190,4 @@ MonoBehaviour:
   dps: 5
   damagePlayer: 0
   damageEnemies: 1
+  ApplyDamageOverTime: 1
