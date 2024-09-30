@@ -253,8 +253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 100
-  Speed: 25
-  DashSpeed: 800
+  Speed: 12
+  MaxSpeed: 20
+  DashSpeed: 2000
   DashCoolDown: 3
   Friction: 1
   AirMovementMultiplier: 0.25
@@ -277,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _airJumps: 1
   jumpRaycastDistance: 1
-  airDrag: 1
   ConsistentJumps: 1
   cameraHolder: {fileID: 3447060050390161073}
   playerCamera: {fileID: 5315044224774374552}
@@ -287,6 +287,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   groundDrag: 5
+  airDrag: 1
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,8 +318,6 @@ MonoBehaviour:
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   bulletSpawnPoint: {fileID: 3274248623167992823}
-  bulletEffect1: {fileID: 0}
-  bulletEffect2: {fileID: 0}
   secondsSinceLastShoot: 0
 --- !u!114 &2690957284186633973
 MonoBehaviour:
