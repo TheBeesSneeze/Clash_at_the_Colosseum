@@ -125,8 +125,7 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void OnSelectClick()
     {
-        Debug.LogWarning("change this code later. we're going to make bullet effects a list later anyways. im so lazy i dont really wanna make it good if its gonna be replaced eventually");
-        _gunController.bulletEffect1 = selectedEffect; //yeah it shouldnt JUST be enemyBullet effect 1
+        _gunController.AddBulletEffect (selectedEffect); 
         DisableMenu();
         StageManager.ChangeStage();
     }
