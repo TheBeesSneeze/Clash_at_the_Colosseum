@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using static AudioManager;
+using static UnityEngine.EventSystems.EventTrigger;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
@@ -23,8 +24,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private bool DealPlayerDamage = true;
     [SerializeField] private bool DealEnemyDamage = true;
 
-    [HideInInspector] public BulletEffect _bulletEffect1;
-    [HideInInspector] public BulletEffect _bulletEffect2;
+    [HideInInspector] public List<BulletEffect> bulletEffects = new List<BulletEffect>();
 
     private Rigidbody rb;
     private Vector3 lastPosition;
@@ -43,17 +43,33 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize(BulletEffect bulletEffect1, BulletEffect bulletEffect2, Vector3 dir)
+    public void Initialize(Vector3 dir)
     {
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
-        _bulletEffect1 = bulletEffect1;
-        _bulletEffect2 = bulletEffect2;
+        bulletEffects= new List<BulletEffect>();
 
-        if (_bulletEffect1 != null)
+        SetColorGradient();
+    }
+
+    public void Initialize(List<BulletEffect> effects, Vector3 dir)
+    {
+        rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
+        lastPosition = transform.position;
+
+        if (effects == null) return;
+        if (effects.Count <= 0)return;
+
+        bulletEffects = effects;
+        for (int i = 0; i < bulletEffects.Count; i++)
         {
-            _bulletEffect1.DefaultInitialize(this, gunController);
+
+            if (bulletEffects[i] != null)
+            {
+                bulletEffects[i].DefaultInitialize(this, gunController);
+            }
+
         }
 
         SetColorGradient();
@@ -63,8 +79,7 @@ public class Bullet : MonoBehaviour
     {
 
         lastPosition = transform.position;
-        _bulletEffect1 = null;
-        _bulletEffect2 = null;
+        bulletEffects.Clear();
         timeActive = 0;
     }
 
@@ -111,14 +126,9 @@ public class Bullet : MonoBehaviour
     private void OnEnemyHit(EnemyTakeDamage enemy)
     {
         enemy.TakeDamage(damageAmount);
-        if (_bulletEffect1 != null)
+        foreach(BulletEffect effect in bulletEffects)
         {
-            _bulletEffect1.OnEnemyHit(enemy, damageAmount);
-        }
-
-        if (_bulletEffect2 != null)
-        {
-            _bulletEffect2.OnEnemyHit(enemy, damageAmount);
+            effect.OnEnemyHit(enemy, damageAmount);
         }
 
         if(DestroyOnEntityHit())
@@ -136,17 +146,12 @@ public class Bullet : MonoBehaviour
 
     private void OnHitSurface(Vector3 point)
     {
-        if (_bulletEffect1 != null)
+        for (int i=0; i< bulletEffects.Count; i++)
         {
-            _bulletEffect1.OnHitOther(point, damageAmount);
+            bulletEffects[i].OnHitOther(point, damageAmount);
         }
 
-        if (_bulletEffect2 != null)
-        {
-            _bulletEffect2.OnHitOther(point, damageAmount);
-        }
-        
-        if(DestroyOnSurfaceHit())
+        if (DestroyOnSurfaceHit())
             BulletPoolManager.Destroy(this);
 
     }
@@ -155,14 +160,9 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        if (_bulletEffect1 != null)
+        foreach (BulletEffect effect in bulletEffects)
         {
-            if (!_bulletEffect1.DestroyBulletOnEntityContact)
-                destroy = false;
-        }
-        if (_bulletEffect2 != null)
-        {
-            if (!_bulletEffect2.DestroyBulletOnEntityContact)
+            if (!effect.DestroyBulletOnEntityContact)
                 destroy = false;
         }
 
@@ -173,14 +173,9 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        if (_bulletEffect1 != null)
+        foreach (BulletEffect effect in bulletEffects)
         {
-            if (!_bulletEffect1.DestroyBulletOnSurfaceContact)
-                destroy = false;
-        }
-        if (_bulletEffect2 != null)
-        {
-            if (!_bulletEffect2.DestroyBulletOnSurfaceContact)
+            if (!effect.DestroyBulletOnSurfaceContact)
                 destroy = false;
         }
 
@@ -192,6 +187,8 @@ public class Bullet : MonoBehaviour
     /// </summary>
     private void SetColorGradient() //or does it???
     {
+        Debug.Log("todo: color gradient");
+        /*
         TrailRenderer tr = GetComponent<TrailRenderer>();
         tr.enabled = true;
 
@@ -206,6 +203,7 @@ public class Bullet : MonoBehaviour
         {
             tr.endColor = _bulletEffect2.TrailColor;
         }
+        */
     }
 
     /// <summary>
@@ -215,6 +213,8 @@ public class Bullet : MonoBehaviour
     /// <returns></returns>
     private Color GetBulletColor()
     {
+        return Color.white;
+        /*
         if (_bulletEffect1 == null && _bulletEffect2 == null)
         {
             return Color.white;
@@ -232,6 +232,7 @@ public class Bullet : MonoBehaviour
 
         //weird way of averaging them but colors get weird when you add their parts to numbers above 1
         return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
+        */
     }
 
 }
