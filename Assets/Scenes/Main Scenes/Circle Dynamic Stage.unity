@@ -878,48 +878,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 609278582237078092, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1205035687100372810, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1942551753012301918, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1942551753012301918, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2298338478744924746, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2298338478744924746, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3078159752946743344, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
@@ -1157,38 +1121,6 @@ PrefabInstance:
     - target: {fileID: 7833158468835574519, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_Name
       value: Gameplay UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7833158468835574519, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052612451468919481, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
-    - target: {fileID: 8154631281397033130, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170818157980978525, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y

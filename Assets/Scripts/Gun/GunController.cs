@@ -21,8 +21,7 @@ public class GunController : MonoBehaviour
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
 
-    public BulletEffect bulletEffect1;
-    public BulletEffect bulletEffect2;
+    private List<BulletEffect> bulletEffects;
     private LayerMask scanMask;
 
     [HideInInspector] public float secondsSinceLastShoot;
@@ -62,6 +61,11 @@ public class GunController : MonoBehaviour
         shootingMode = shootMode;
 
         shootHeld = true;
+    }
+
+    public void AddBulletEffect(BulletEffect bulletEffect)
+    {
+        bulletEffects.Add(bulletEffect);
     }
 
     /// <summary>
@@ -115,7 +119,7 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = shootingMode.BulletDamage;
         bulletObj.bulletForce = shootingMode.BulletSpeed;
         bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+        bulletObj.Initialize(bulletEffects, dir);
     }
     
     private void Update()
