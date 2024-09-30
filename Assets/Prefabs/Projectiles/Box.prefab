@@ -116,7 +116,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236622279385702515}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dps: 40
   damagePlayer: 1
-  damageEnemies: 1
+  damageEnemies: 0
   ApplyDamageOverTime: 0
 --- !u!114 &-47340426851827857
 MonoBehaviour:
@@ -163,4 +163,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92daf38c92b9a2145a5ace8c169d4681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Seconds: 3
+  Seconds: 6
+  DestroyAtStart: 1

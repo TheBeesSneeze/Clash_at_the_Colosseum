@@ -17,7 +17,7 @@ public class BossChargeAttack : StateMachineBehaviour
         direction = direction.normalized;
         direction *= launchForce;
         direction.y = launchForceHeight;
-        boxRB.AddForce(direction);
+        boxRB.AddForce(direction, ForceMode.Impulse);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

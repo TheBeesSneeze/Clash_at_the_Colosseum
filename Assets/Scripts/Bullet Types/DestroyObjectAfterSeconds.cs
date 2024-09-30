@@ -5,13 +5,19 @@ using UnityEngine;
 public class DestroyObjectAfterSeconds : MonoBehaviour
 {
     [SerializeField] private float Seconds=1;
+    [SerializeField] private bool DestroyAtStart=false;
 
     public void OnDestroy()
     {
        StopAllCoroutines();
     }
-    
-    public void Destroy(float seconds)
+
+    public void Start()
+    {
+        DestroyTimer(Seconds);
+    }
+
+    public void DestroyTimer(float seconds)
     {
         StartCoroutine(DestroyObject(seconds));
     }
