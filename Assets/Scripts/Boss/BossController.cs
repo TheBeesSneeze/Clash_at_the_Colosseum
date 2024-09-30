@@ -15,6 +15,6 @@ public class BossController : Singleton<BossController>
         Stats = GetComponent<BossStats>();
         Player = GameObject.FindObjectOfType<PlayerController>().transform;
         bossTakeDamage = GetComponent<BossTakeDamage>();
-        playerBehaviour = GetComponent<PlayerBehaviour>();
+        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
     }
 }

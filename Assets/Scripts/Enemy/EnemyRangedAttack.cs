@@ -76,7 +76,6 @@ public class EnemyRangedAttack : MonoBehaviour
     
     private void Attacking()
     {
-        Debug.Log("attack god damnit");
         if (playerObject == null)
         {
             playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
