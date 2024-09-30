@@ -6,12 +6,12 @@ using TMPro;
 using NaughtyAttributes;
 using Utilities;
 
+[RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
 {
-    private float _speed=10;
-    private float _turningSpeed=1;
-    private float _stoppingSpeed=1;
-    float _stopDistanceToPlayer=1;
+    private float _turningSpeed = 1;
+    private float _stoppingSpeed = 1;
+    float _stopDistanceToPlayer = 1;
     bool _needsToSeePlayer = false; //TODO. DOESNT WORK
     private float _sightDistance = 10;
     private EnemyStats _enemyStats;
@@ -22,22 +22,21 @@ public class GroundedEnemyMovement : MonoBehaviour
     private SphereCollider _collider; //im so sorry it needs to be a sphere
 
     private Path path;
-    private int _emptyCellLayer = 6;
     private int _playerLayer = 6;
+    private LayerMask groundlm;
     [ReadOnly][SerializeField] private Cell currentCell;
 
 
     private void Start()
     {
-        _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform; 
-        _emptyCellLayer = LayerMask.NameToLayer("Fill Cell");
+        _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _playerLayer = LayerMask.NameToLayer("Player");
+        groundlm = LayerMask.NameToLayer("Default");
         rb = GetComponent<Rigidbody>();
-        _collider=GetComponent<SphereCollider>();
+        _collider = GetComponent<SphereCollider>();
         _enemyStats = GetComponent<EnemyStats>();
 
         if (_enemyStats == null) return;
-        _speed = _enemyStats.EnemyMovementSpeed;
         _turningSpeed = _enemyStats.TurningSpeed;
         _stoppingSpeed = _enemyStats.StopSpeed;
         _stopDistanceToPlayer = _enemyStats.StopDistanceToPlayer;
@@ -46,8 +45,9 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        UpdateCurrentCell();
-        if (currentCell == null)
+        Cell c = UpdateCurrentCell();
+
+        if(c == null)
             return;
 
         path = GameManager.pathManager.GetPathToPlayer(currentCell);
@@ -58,6 +58,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         bool navigating = NavigateToPlayer();
         if (!navigating)
         {
+            Debug.LogWarning("enemy stopping");
             float y = rb.velocity.y;
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, y, 0), Time.deltaTime*_stoppingSpeed);
         }
@@ -86,10 +87,10 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, _player.transform.position) < _stopDistanceToPlayer)
             return false;
 
-        float distance = Vector3.Distance(path.position, transform.position);
-        float avgPathSize = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.z) / 2;
+        float distance = Vector3.Distance(new Vector3(path.position.x, 0, path.position.z), new Vector3(transform.position.x, 0, transform.position.z));
+        //float avgPathSize = (path.cell.transform.lossyScale.x + path.cell.transform.lossyScale.z) / 2;
 
-        if (distance < avgPathSize * 0.05f)
+        if (distance < 0.1f)
             path = path.nextPath;
 
         path = path.nextPath;
@@ -97,8 +98,9 @@ public class GroundedEnemyMovement : MonoBehaviour
         Vector3 targetPosition = getTargetPosition();
         Vector3 direction = targetPosition - transform.position;
         Debug.DrawLine(transform.position, targetPosition, Color.blue);
-        direction = direction.normalized * _speed;
-        rb.velocity = Vector3.Lerp( rb.velocity, direction, _speed * Time.deltaTime);
+        direction = direction.normalized * _enemyStats.MoveSpeed;
+        //rb.velocity = Vector3.Lerp( rb.velocity, direction, _enemyStats.MoveSpeed * Time.deltaTime);
+        rb.velocity = Vector3.Lerp( rb.velocity, direction, 0.5f );
 
         return true;
     }
@@ -108,6 +110,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (path == null)
             return _player.position;
 
+        /*
         if (path.nextPath != null)
         {
             Vector3 avgPosition = (path.nextPath.position + path.position) / 2;
@@ -118,6 +121,7 @@ public class GroundedEnemyMovement : MonoBehaviour
                 return avgPosition;
             }
         }
+        */
 
         //DebugUtilities.DrawBox(path.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
         return path.position;
@@ -129,7 +133,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         return HasClearViewToPoint(point, layer, distance);
     }
 
-    private bool HasClearViewToPoint(Vector3 point, int layer, float distance )
+    private bool HasClearViewToPoint(Vector3 point, int layer, float distance)
     {
         Vector3 direction = point - transform.position;
         Vector3 radius = _collider.radius * transform.lossyScale / 2.1f;
@@ -143,20 +147,20 @@ public class GroundedEnemyMovement : MonoBehaviour
 
 
 
-    private void UpdateCurrentCell()
+    private Cell UpdateCurrentCell()
     {
-        Ray r = new Ray(transform.position - (Vector3.up * transform.lossyScale.y), Vector3.up );
-        RaycastHit[] hits = Physics.RaycastAll(r,2 * transform.lossyScale.y);
+        //Ray r = new Ray(transform.position - (Vector3.up * transform.lossyScale.y), Vector3.up );
+        Ray r = new Ray(transform.position, Vector3.down );
+        RaycastHit[] hits = Physics.RaycastAll(r,5 * transform.lossyScale.y, ~groundlm);
         Debug.DrawRay(r.origin, r.direction, Color.white);
         foreach (RaycastHit hit in hits)
         {
-            Cell c = hit.transform.GetComponent<Cell>();
-            if (c!=null /*&& !c.Solid*/)
+            if(hit.transform.TryGetComponent<Cell>( out Cell c))
             {
-                currentCell = c;
-                return;
+                return c;
             }
         }
+        return null;
     }
 
     private void OnDrawGizmos()

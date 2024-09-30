@@ -33,7 +33,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         _groundMask = LayerMask.GetMask(new string[] { "Fill Cell", "Default" });
         
         enemyStats = GetComponent<EnemyStats>();
-        _horizontalSpeed = enemyStats.EnemyMovementSpeed;
+        _horizontalSpeed = enemyStats.MoveSpeed;
         _verticalSpeed = enemyStats.VerticalSpeed;
         _heightAboveGround = enemyStats.HeightAboveGround;
         _stoppingDistanceToPlayer = enemyStats.StopDistanceToPlayer;

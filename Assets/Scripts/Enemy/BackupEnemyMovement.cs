@@ -34,7 +34,7 @@ public class BackupEnemyMovement : MonoBehaviour
 
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;
-        direction = direction.normalized * stats.EnemyMovementSpeed;
+        direction = direction.normalized * stats.MoveSpeed;
         direction.y = rb.velocity.y;
 
         rb.velocity = direction;

@@ -11,19 +11,13 @@ namespace PathFinding
     public class PathManager
     {
         //public GameObject player;
-        private Cell playerCell;
-
-        public void PlayerCellUpdate(Cell cell)
-        {
-           playerCell = cell;
-        }
 
         public Path GetPathToPlayer(Cell navigator)
         {
-            if (playerCell == null)
+            if (CellManager.PlayerCell == null)
                 return null;
 
-            return Navigate(navigator, playerCell);
+            return Navigate(navigator, CellManager.PlayerCell);
         }
 
         //doesnt account for if start / end are right next to each other

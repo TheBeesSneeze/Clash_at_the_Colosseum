@@ -21,7 +21,7 @@ public class StageManager
     private static StageStats currentStage;
     private static UpgradeSelectUI _upgradeSelectUI;
 
-    public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
+    //public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
     public static int enemiesToSpawn { get { return currentStage.NumberOfEnemiesForLevel; } }
     public static float timeTillEnemiesSpawn { get { return currentStage.timeTillEnemiesSpawn; } }
 

@@ -108,4 +108,8 @@ public class EnemyRangedAttack : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        Destroy(this);
+    }
 }

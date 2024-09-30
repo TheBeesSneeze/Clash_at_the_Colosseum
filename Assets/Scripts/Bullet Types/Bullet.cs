@@ -88,7 +88,6 @@ public class Bullet : MonoBehaviour
             lastPosition = transform.position;
             return;
         }
-        Debug.Log("hit");
 
         if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
         {
