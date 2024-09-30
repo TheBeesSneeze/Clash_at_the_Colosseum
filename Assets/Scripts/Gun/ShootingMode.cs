@@ -35,9 +35,9 @@ public class ShootingMode : ScriptableObject
 
     [Header("Sprites")]
     public Sprite MenuSprite;
-    public Sprite GameplaySprite;
-    public Sprite GameplayShootSprite;
-    public Sprite GameplayCantShootSprite;
+    public GunSprite GameplaySprite;
+    public GunAnimation GameplayShootSprite;
+    public GunSprite GameplayCantShootSprite;
     public float ShootSpriteSeconds = 0.1f;
     public Color SelectHeaderColor=Color.white;
 
@@ -51,3 +51,22 @@ public class ShootingMode : ScriptableObject
             Debug.Log(ShotsPerSecond * BulletDamage * BulletsPerShot + " DPS across all bullets");
     }
 }
+
+[System.Serializable]
+public class GunSprite
+{
+    [SerializeField] private Sprite baseSprite;
+    [Header("Effects")]
+    [SerializeField] private Sprite bombSprite;
+    [SerializeField] private Sprite lightningSprite;
+    [SerializeField] private Sprite iceSprite;
+    //[SerializeField] private Sprite venomSprite;
+    //[SerializeField] private Sprite moreSnakes;
+    [SerializeField] private Sprite windSprite;
+}
+
+public class GunAnimation: GunSprite
+{
+    public GunSprite[] sprites;
+}
+
