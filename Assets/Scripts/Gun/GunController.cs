@@ -21,7 +21,7 @@ public class GunController : MonoBehaviour
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
 
-    private List<BulletEffect> bulletEffects;
+    public List<BulletEffect> bulletEffects;
     private LayerMask scanMask;
 
     [HideInInspector] public float secondsSinceLastShoot;
@@ -57,12 +57,9 @@ public class GunController : MonoBehaviour
             Debug.LogError("empty shooting mode");
             Application.Quit(); // this is so extreme lol i love this
         }
-
         shootingMode = shootMode;
-
         shootHeld = true;
     }
-
     public void AddBulletEffect(BulletEffect bulletEffect)
     {
         if (bulletEffects == null)
@@ -77,7 +74,6 @@ public class GunController : MonoBehaviour
         }
         bulletEffects.Add(bulletEffect);
     }
-
     /// <summary>
     /// shoots all the bullets. calls the ShootBullet function
     /// </summary>
