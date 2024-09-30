@@ -25,8 +25,8 @@ public class PlayerStats : MonoBehaviour
     public float DefaultHealth;
     [Tooltip ("Movement speed. legs.")]
     public float Speed;
-    [Tooltip("The max target speed")]
-    public float MaxSpeed = 20f;
+    [Tooltip("Movement speed. legs.")]
+    public float MaxSpeed;
     [Tooltip("The speed of the players dash")]
     public float DashSpeed = 40f;
     [Tooltip("The cool down time in seconds for the player dash")]

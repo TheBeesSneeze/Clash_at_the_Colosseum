@@ -58,7 +58,10 @@ public class StageManager
             return;
         }
 
-        _upgradeSelectUI.OpenMenu();
+        if (currentStage.BulletEffectOnClear)
+            _upgradeSelectUI.OpenMenu();
+        else
+            ChangeStage();
     }
 
     /// <summary>

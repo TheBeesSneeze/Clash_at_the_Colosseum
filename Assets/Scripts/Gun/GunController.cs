@@ -21,8 +21,7 @@ public class GunController : MonoBehaviour
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
 
-    public BulletEffect bulletEffect1;
-    public BulletEffect bulletEffect2;
+    private List<BulletEffect> bulletEffects;
     private LayerMask scanMask;
 
     [HideInInspector] public float secondsSinceLastShoot;
@@ -30,12 +29,11 @@ public class GunController : MonoBehaviour
     private Camera playerCamera;
     private Animator animator;
 
-    private bool canShoot;
+    private bool shootHeld;
 
     private void Start()
     {
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
-        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
@@ -43,6 +41,7 @@ public class GunController : MonoBehaviour
             shootingMode = SaveData.SelectedGun;
         LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
+        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         scanMask |= (1 << LayerMask.GetMask("Default"));
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
     }
@@ -61,7 +60,12 @@ public class GunController : MonoBehaviour
 
         shootingMode = shootMode;
 
-        canShoot = true;
+        shootHeld = true;
+    }
+
+    public void AddBulletEffect(BulletEffect bulletEffect)
+    {
+        bulletEffects.Add(bulletEffect);
     }
 
     /// <summary>
@@ -115,7 +119,7 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = shootingMode.BulletDamage;
         bulletObj.bulletForce = shootingMode.BulletSpeed;
         bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        bulletObj.Initialize(bulletEffect1, bulletEffect2, dir);
+        bulletObj.Initialize(bulletEffects, dir);
     }
     
     private void Update()
@@ -123,12 +127,10 @@ public class GunController : MonoBehaviour
         DebugTarget();
         secondsSinceLastShoot += Time.deltaTime;
 
-        if (!canShoot) return;
         if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
-        if (!shootingMode.CanHoldFire)
-            canShoot = false;
+        if (!shootingMode.CanHoldFire) return;
 
         //shootin time
         Shoot();
@@ -136,8 +138,9 @@ public class GunController : MonoBehaviour
 
     private void OnShootStart()
     {
-        canShoot = true;
+        Shoot();
     }
+
 
     private void DebugTarget()
     {

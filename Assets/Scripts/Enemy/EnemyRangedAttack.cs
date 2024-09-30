@@ -37,7 +37,7 @@ public class EnemyRangedAttack : MonoBehaviour
         fireRate = stats.EnemyAttackRate;
         print(fireRate);
         slowFireRate = fireRate * 2;
-        coolDown = 0f;
+        coolDown = stats.EnemyAttackRate;
         
     }
 
@@ -102,7 +102,7 @@ public class EnemyRangedAttack : MonoBehaviour
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
         bulletObject.bulletForce = shootingMode.BulletSpeed;
-        bulletObject.Initialize(bulletEffect1, bulletEffect2, direction);
+        bulletObject.Initialize(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
 
