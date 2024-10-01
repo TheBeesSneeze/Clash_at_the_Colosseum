@@ -5,6 +5,7 @@ using PathFinding;
 using TMPro;
 using NaughtyAttributes;
 using Utilities;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
@@ -149,8 +150,15 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private Cell UpdateCurrentCell()
     {
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, ~groundlm))
+        {
+            if (hit.transform.TryGetComponent<Cell>(out Cell c))
+                return c;
+        }
+        return null;
+        /*
         //Ray r = new Ray(transform.position - (Vector3.up * transform.lossyScale.y), Vector3.up );
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down,5 * transform.lossyScale.y, ~groundlm);
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down,5 * transform.lossyScale.y);
         foreach (RaycastHit hit in hits)
         {
             if(hit.transform.TryGetComponent<Cell>( out Cell c))
@@ -159,15 +167,28 @@ public class GroundedEnemyMovement : MonoBehaviour
             }
         }
         return null;
+        */
     }
 
     private void OnDrawGizmos()
     {
-        if (!debug) return; 
+        if (!debug) return;
 
-        if (path == null) return;
-        
-        if (path.cell == null) return;
+        if (path == null)
+        {
+            Debug.LogWarning("no path");
+            return;
+        }
+        if (path.nextPath == null)
+            return;
+
+        //path.DrawPath();
+
+        Debug.DrawLine(path.position + Vector3.up, path.nextPath.position + Vector3.up, Color.red);
+        Debug.Log(path.position);
+        Debug.Log(path.nextPath.position);
+
+        return;
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireMesh(path.cell.GetComponent<MeshFilter>().mesh, path.cell.transform.position+Vector3.up, path.cell.transform.rotation, path.cell.transform.lossyScale);

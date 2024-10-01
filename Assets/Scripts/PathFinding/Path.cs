@@ -49,5 +49,16 @@ namespace PathFinding
 
             return 0;
         }
+
+        /// <summary>
+        /// Debug
+        /// </summary>
+        public void DrawPath()
+        {
+            if (nextPath == null)
+                return;
+
+            nextPath.DrawPath();
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace PathFinding
                 float difference = pathpos.y - neighbor.PathPosition.y;
 
                 //if(difference < 1 && difference > -1)
-                if(difference < 2 && difference > -2)
+                //if(difference < 2 && difference > -2)
                     _sideNeighbors.Add(neighbor);
             }
         }

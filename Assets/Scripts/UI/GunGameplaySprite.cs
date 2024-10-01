@@ -81,7 +81,6 @@ public class GunGameplaySprite : MonoBehaviour
             index = 0;
         }
 
-        Debug.Log("shooting animation");
     }
 
     private void LoadSprite(GunSprite sprite)
