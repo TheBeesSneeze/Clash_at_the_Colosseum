@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[0]
@@ -706,6 +706,14 @@ PrefabInstance:
       propertyPath: stages.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: BulletEffects.Array.size
       value: 4
@@ -1229,11 +1237,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
     - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: airDrag
-      value: 1
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: _airJumps
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: groundDrag
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2558676147345522402, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: groundLayers.m_Bits
@@ -1249,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: Speed
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: AirJumps
@@ -1265,11 +1277,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: DashSpeed
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: JumpHeight
-      value: 4
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: DashCoolDown
@@ -1305,7 +1317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9054523835055469481, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.69
+      value: 16.42
       objectReference: {fileID: 0}
     - target: {fileID: 9054523835055469481, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1460,7 +1472,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &509861295
 MonoBehaviour:
@@ -6543,7 +6555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7265976807975827577, guid: fbc1db42631cefc49970980d01efa186, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7265976807975827577, guid: fbc1db42631cefc49970980d01efa186, type: 3}
       propertyPath: m_LocalPosition.x

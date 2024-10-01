@@ -44,8 +44,7 @@ public class PlayerBehaviour : CharacterType
     {
         if (secondsSinceLastTookDamage >= stats.SecondsUntilHealing)
         {
-            CurrentHealth += stats.HealthRegen * Time.deltaTime;
-            CurrentHealth = Mathf.Min(CurrentHealth, stats.DefaultHealth);
+            RegenHealth();
         }
         secondsSinceLastTookDamage += Time.deltaTime;
         
@@ -59,6 +58,13 @@ public class PlayerBehaviour : CharacterType
 
     }
 
+    private void RegenHealth()
+    {
+        CurrentHealth += stats.HealthRegen * Time.deltaTime;
+        CurrentHealth = Mathf.Min (CurrentHealth, stats.DefaultHealth);
+        healthBar.SetHealth(CurrentHealth);
+    }
+
     public void SetStats()
     {
         stats = GetComponent<PlayerStats>();
@@ -66,7 +72,7 @@ public class PlayerBehaviour : CharacterType
         CurrentHealth = stats.DefaultHealth;
         healthBar = FindObjectOfType<HealthBar>();
     }
-
+    
     public override void TakeDamage(float damage)
     {
         Debug.Log("take damage." + damage);

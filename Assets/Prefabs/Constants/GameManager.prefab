@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 438952814939047255}
   - component: {fileID: 6670010424615105723}
   - component: {fileID: -3221912983751877588}
+  - component: {fileID: 6405318079182177319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -99,3 +100,15 @@ MonoBehaviour:
   StageTransitionSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 8476fb5141b345b4a9d0c5223a56a0b1, type: 3}
+--- !u!114 &6405318079182177319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62fe2aca10468f428175f6d2871fc98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
