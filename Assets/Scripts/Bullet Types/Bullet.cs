@@ -24,8 +24,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] private bool DealPlayerDamage = true;
     [SerializeField] private bool DealEnemyDamage = true;
 
-    [HideInInspector] public List<BulletEffect> bulletEffects = new List<BulletEffect>();
-
     private Rigidbody rb;
     private Vector3 lastPosition;
     private float timeActive;
@@ -48,7 +46,6 @@ public class Bullet : MonoBehaviour
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
 
-        bulletEffects= new List<BulletEffect>();
 
         SetColorGradient();
     }
@@ -61,15 +58,9 @@ public class Bullet : MonoBehaviour
         if (effects == null) return;
         if (effects.Count <= 0)return;
 
-        bulletEffects = effects;
-        for (int i = 0; i < bulletEffects.Count; i++)
+        for (int i = 0; i < gunController.bulletEffects.Count; i++)
         {
-
-            if (bulletEffects[i] != null)
-            {
-                bulletEffects[i].DefaultInitialize(this, gunController);
-            }
-
+            gunController.bulletEffects[i].DefaultInitialize(this, gunController);
         }
 
         SetColorGradient();
@@ -77,9 +68,7 @@ public class Bullet : MonoBehaviour
 
     public void ResetBullet()
     {
-
         lastPosition = transform.position;
-        bulletEffects.Clear();
         timeActive = 0;
     }
 
@@ -103,7 +92,6 @@ public class Bullet : MonoBehaviour
             lastPosition = transform.position;
             return;
         }
-        Debug.Log("hit");
 
         if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
         {
@@ -119,14 +107,13 @@ public class Bullet : MonoBehaviour
         }
         //if hit something that isnt enemy
         
-        Debug.Log("hit other");
         OnHitSurface(hit.point);
     }
 
     private void OnEnemyHit(EnemyTakeDamage enemy)
     {
         enemy.TakeDamage(damageAmount);
-        foreach(BulletEffect effect in bulletEffects)
+        foreach(BulletEffect effect in gunController.bulletEffects)
         {
             effect.OnEnemyHit(enemy, damageAmount);
         }
@@ -146,9 +133,9 @@ public class Bullet : MonoBehaviour
 
     private void OnHitSurface(Vector3 point)
     {
-        for (int i=0; i< bulletEffects.Count; i++)
+        for (int i=0; i< gunController.bulletEffects.Count; i++)
         {
-            bulletEffects[i].OnHitOther(point, damageAmount);
+            gunController.bulletEffects[i].OnHitOther(point, damageAmount);
         }
 
         if (DestroyOnSurfaceHit())
@@ -160,7 +147,7 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        foreach (BulletEffect effect in bulletEffects)
+        foreach (BulletEffect effect in gunController.bulletEffects)
         {
             if (!effect.DestroyBulletOnEntityContact)
                 destroy = false;
@@ -173,7 +160,7 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        foreach (BulletEffect effect in bulletEffects)
+        foreach (BulletEffect effect in gunController.bulletEffects)
         {
             if (!effect.DestroyBulletOnSurfaceContact)
                 destroy = false;
