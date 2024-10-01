@@ -22,10 +22,13 @@ public class BossAOEAttack : StateMachineBehaviour
     {
         animator.SetBool("AOE", false);
 
-        if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
+        if (!animator.GetBool("HalfHealth"))
         {
-            animator.SetBool("HalfHealth", true);
-            return;
+            if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
+            {
+                animator.SetBool("HalfHealth", true);
+                return;
+            }
         }
     }
 
