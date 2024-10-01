@@ -22,7 +22,8 @@ public class EnemyRangedAttack : MonoBehaviour
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
-    
+    private bool canMultiShoot;
+    private int shotsFired;
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -35,9 +36,10 @@ public class EnemyRangedAttack : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         fireRate = stats.EnemyAttackRate;
-        print(fireRate);
         slowFireRate = fireRate * 2;
         coolDown = stats.EnemyAttackRate;
+        canMultiShoot = stats.canConsecutiveShoot;
+        shotsFired = 0;
         
     }
 
@@ -57,7 +59,6 @@ public class EnemyRangedAttack : MonoBehaviour
             if (distanceFromPlayer <= stats.EnemyAttackRange)
             {
                 Attacking();
-                coolDown = stats.EnemyAttackRate;
             }
         }
     }
@@ -89,6 +90,31 @@ public class EnemyRangedAttack : MonoBehaviour
         {
             return;
         }
+
+        if(canMultiShoot)
+        {
+            if(shotsFired < stats.numberOfConsecutiveShots)
+            {
+                Fire();
+                ++shotsFired;
+                coolDown = stats.timeBetweenContinousShots;
+            }
+            else
+            {
+                shotsFired = 0;
+                coolDown = fireRate;
+            }
+        }
+        else
+        {
+            Fire();
+            coolDown = fireRate;
+        }
+        
+    }
+
+    private void Fire()
+    {
         nextFireTime += Time.deltaTime;
         Vector3 destination = playerObject.transform.position;
         destination += new Vector3(
@@ -104,7 +130,5 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.Initialize(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
-
     }
-
 }

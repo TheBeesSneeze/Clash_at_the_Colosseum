@@ -18,6 +18,11 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float EnemyDamage;
     [SerializeField] public float EnemyAttackRate;
     [SerializeField][Min(0)] public float EnemyAttackRange;
+
+    [Header("Continous Shots Variables")]
+    [SerializeField] public bool canConsecutiveShoot = false;
+    [SerializeField][Min(0)] public int numberOfConsecutiveShots;
+    [SerializeField][Min(0)] public float timeBetweenContinousShots;
     //[SerializeField] public GameObject playerObject;
 
     [Header("Movement Variables")]
