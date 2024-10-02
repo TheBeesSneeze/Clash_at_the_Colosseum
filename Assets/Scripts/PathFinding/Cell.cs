@@ -18,6 +18,10 @@ namespace PathFinding
         private bool Solid = false;
         [SerializeField] bool autoRenameCell = false;
 
+        [Header("Boss Phase 3:")]
+        [Tooltip("On boss phase 3, seconds until stage piece falls. -1 to not fall")]
+        [SerializeField] float boss3PieceFallTime = -1;
+
         private float segmentSize = 0.5f;
 
         public List<Cell> SideNeighbors { get => _sideNeighbors; }
@@ -43,6 +47,20 @@ namespace PathFinding
             _cellLM = LayerMask.GetMask(new String[] { "FilL Cell", "Default" });
 
             GetNeighbors();
+            PublicEvents.OnStageTransitionFinish.AddListener(GetNeighbors);
+        }
+
+        private void Start()
+        {
+            OnBossPhase3Start();
+        }
+
+        private void OnBossPhase3Start()
+        {
+            if (boss3PieceFallTime < 0)
+                return;
+
+
         }
 
         // Update is called once per frame
@@ -84,24 +102,6 @@ namespace PathFinding
                     {
                         _verticalNeighbors.Add(neighbor);
                     }
-
-                    /*
-                    RaycastHit[] neighbors = raycastSideNeighbor(new Vector3(x, 0, y));
-
-                    foreach(RaycastHit hit in neighbors)
-                    {
-                        Cell neighbor = hit.transform.gameObject.GetComponent<Cell>();
-
-                        if (neighbor == null)
-                            continue;
-
-                        if ( !_sideNeighbors.Contains(neighbor))
-                        {
-                            _sideNeighbors.Add(neighbor);
-                        }
-                    }
-                    */
-
                 }
             }
         }
@@ -164,6 +164,25 @@ namespace PathFinding
             }
         }
 
+
+        private IEnumerator StageFall()
+        {
+            float timeElapsed = 0;
+            Vector3 startPos = transform.position;
+            Vector3 endpos = new Vector3(transform.position.x, transform.position.y-CellManager.cellFallDistance, transform.position.z);
+            while(timeElapsed < CellManager.cellFallTime)
+            {
+                float t = timeElapsed / CellManager.cellFallTime;
+                t = t * t;
+
+                transform.position = Vector3.Lerp (startPos, endpos, t);    
+
+                yield return null;
+                timeElapsed += Time.deltaTime;
+            }
+            Debug.Log("Destroying "+gameObject.name);
+            Destroy(gameObject);
+        }
         
 #endif
 

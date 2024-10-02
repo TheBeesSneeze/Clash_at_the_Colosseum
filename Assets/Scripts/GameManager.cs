@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public static StageTransitionManager transitionManager;
     public static PublicEvents publicEvents;
 
+    [Header("Cell Manager")]
+    public float CellFallTime = 10;
+    public float CellFallDistance = 25;
+
     [Header("Stage Manager")]
     [SerializeField] private StageStats[] stages;
 
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeCellManager()
     {
-        cellManager = new CellManager();
+        cellManager = new CellManager(CellFallTime, CellFallDistance);
     }
     private void InitializePathManager()
     {
