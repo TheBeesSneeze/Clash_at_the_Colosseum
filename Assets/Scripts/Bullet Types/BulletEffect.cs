@@ -27,6 +27,7 @@ public abstract class BulletEffect : ScriptableObject
 
     [Header("UI")]
     public string UpgradeName;
+    public string UpgradeDescription;
     public Sprite UpgradeIcon;
     public Color bodyColor=Color.white;
     public Color secondaryColor=Color.white;

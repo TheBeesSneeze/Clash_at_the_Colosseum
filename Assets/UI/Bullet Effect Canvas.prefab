@@ -659,7 +659,7 @@ RectTransform:
   m_Children:
   - {fileID: 4231173262742585282}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -706,12 +706,14 @@ MonoBehaviour:
     _button: {fileID: 2749542680863117104}
     headerImage: {fileID: 8793413344902214971}
     upgradeText: {fileID: 6544502039659109056}
+    upgradeDescription: {fileID: 2104444732389729157}
     bodyImage: {fileID: 1915555157362071262}
     effectIcon: {fileID: 1717813712503532151}
   upgradeButton2:
     _button: {fileID: 7230993266434282218}
     headerImage: {fileID: 4069435785961728225}
     upgradeText: {fileID: 1775347881962817306}
+    upgradeDescription: {fileID: 6865049087651724895}
     bodyImage: {fileID: 6405415906585496324}
     effectIcon: {fileID: 6171927000098338733}
   selectButton: {fileID: 1697374110006197240}
@@ -1244,6 +1246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2308129964608876612, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3145558414650675448, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
       propertyPath: m_Name
       value: Option 2
@@ -1300,6 +1306,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6865049087651724895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7750017378152011961, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
+  m_PrefabInstance: {fileID: 3803319003863279334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7230993266434282218 stripped
@@ -1437,6 +1454,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2308129964608876612, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3145558414650675448, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
       propertyPath: m_Name
       value: Option 1
@@ -1466,6 +1487,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2104444732389729157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7750017378152011961, guid: a80b71e641b7cac4e81e0232ede5a1ec, type: 3}
+  m_PrefabInstance: {fileID: 8555127266102934332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2749542680863117104 stripped
