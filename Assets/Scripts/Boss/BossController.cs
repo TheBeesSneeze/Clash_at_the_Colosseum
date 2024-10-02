@@ -9,6 +9,7 @@ public class BossController : Singleton<BossController>
     [HideInInspector] public static PlayerBehaviour playerBehaviour;
     [HideInInspector] public static BossTakeDamage bossTakeDamage;
     [HideInInspector] public static bool Invincible = false;
+    [HideInInspector] public static EnemySpawner enemySpawner;
 
     private void Start()
     {
@@ -16,5 +17,14 @@ public class BossController : Singleton<BossController>
         Player = GameObject.FindObjectOfType<PlayerController>().transform;
         bossTakeDamage = GetComponent<BossTakeDamage>();
         playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
+        enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
+        PublicEvents.OnPlayerDeath.AddListener(OnPlayerDeath);
+    }
+
+    private void OnPlayerDeath()
+    {
+        Invincible = false;
+
+        bossTakeDamage.currentHealth = Stats.BossHealth;
     }
 }

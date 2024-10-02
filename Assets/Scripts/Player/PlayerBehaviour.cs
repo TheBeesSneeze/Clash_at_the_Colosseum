@@ -80,7 +80,6 @@ public class PlayerBehaviour : CharacterType
         Debug.Log("take damage." + damage);
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
-        print(CurrentHealth);
         healthBar.SetHealth(CurrentHealth);
     }
     public override void Die()

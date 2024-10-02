@@ -890,7 +890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f920a2384b9c4d4f8ff940809804309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPreabs: []
+  enemyPrefabs:
+  - enemyTag: 2
+    prefab: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
 --- !u!114 &368722440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5613838154649009403, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5613838154649009403, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1242,7 +1244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5613838154649009403, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5613838154649009403, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1418,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1426,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9041830433306863313, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8530,7 +8532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383984245829672010, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: _fileName
-      value: LevelTwo
+      value: BossTest
       objectReference: {fileID: 0}
     - target: {fileID: 3383984245829672010, guid: 6021c8efd4b58be408042fc1c19dfdf3, type: 3}
       propertyPath: stageToLoad

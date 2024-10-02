@@ -14,7 +14,6 @@ using UnityEngine;
 public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats stats;
-    private BossShieldUp bossShieldUp;
     protected override void Start()
     {
         stats = GetComponent<BossStats>();

@@ -41,7 +41,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3324358431079801367}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -679295556326772839}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -99,11 +100,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.5
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.5
-  m_HasExitTime: 0
-  m_HasFixedDuration: 0
+  m_ExitTime: 0.1
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -377,7 +378,7 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 980, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 246994734279110360}
-    m_Position: {x: 230, y: 720, z: 0}
+    m_Position: {x: 200, y: 730, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2636840987034232204}
     m_Position: {x: 360, y: 840, z: 0}
@@ -438,6 +439,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-679295556326772839
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73355ba1cfcf109449830597fba44298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPlacements:
+  - {fileID: 4900000, guid: 6a61c83b94a9bdc46b633dc88361bc9e, type: 3}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -595,9 +610,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1
-  m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_TransitionDuration: 1.0000001
+  m_TransitionOffset: 0.0044188215
+  m_ExitTime: 0.1
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -640,6 +655,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b869e52468deb0c4da0b1ae32dcc9aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletHellTarget: {fileID: 0}
+  bulletSpread: 0
+  bulletHellSpeed: 0
+  shootingMode: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  numberOfBullets: 0
+  intervalBetweenShots: 0
 --- !u!1102 &2790914023364641230
 AnimatorState:
   serializedVersion: 6
@@ -1055,7 +1077,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.5
   m_TransitionOffset: 0
-  m_ExitTime: 0.5
+  m_ExitTime: 0.2
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
