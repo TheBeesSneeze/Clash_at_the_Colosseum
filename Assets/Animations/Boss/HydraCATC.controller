@@ -68,7 +68,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 4698927620488273059}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -384,7 +385,7 @@ AnimatorStateMachine:
     m_Position: {x: 360, y: 840, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8463086309446454022}
-    m_Position: {x: 500, y: 750, z: 0}
+    m_Position: {x: 490, y: 760, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1094585053008677873}
     m_Position: {x: 640, y: 850, z: 0}
@@ -393,7 +394,7 @@ AnimatorStateMachine:
     m_Position: {x: 640, y: 980, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -712129390322308283}
-    m_Position: {x: 480, y: 1100, z: 0}
+    m_Position: {x: 470, y: 1120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4548548848363530848}
     m_Position: {x: 780, y: 1100, z: 0}
@@ -656,12 +657,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHellTarget: {fileID: 0}
-  bulletSpread: 0
-  bulletHellSpeed: 0
-  shootingMode: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  numberOfBullets: 0
-  intervalBetweenShots: 0
+  bulletSpread: 50
+  bulletHellSpeed: 7
+  shootingMode: {fileID: 11400000, guid: 0ae6a140712751b488d84609a5af14b5, type: 2}
+  bulletPrefab: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
+  numberOfBullets: 50
+  intervalBetweenShots: 0.5
 --- !u!1102 &2790914023364641230
 AnimatorState:
   serializedVersion: 6
@@ -788,6 +789,18 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &4698927620488273059
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489bfcbab2174444a9f9933cc9f30a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &4833832895274393500
 AnimatorState:
   serializedVersion: 6
