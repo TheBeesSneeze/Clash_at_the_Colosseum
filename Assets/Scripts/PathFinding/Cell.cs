@@ -20,7 +20,7 @@ namespace PathFinding
 
         [Header("Boss Phase 3:")]
         [Tooltip("On boss phase 3, seconds until stage piece falls. -1 to not fall")]
-        [SerializeField] float boss3PieceFallTime = -1;
+        [SerializeField] float boss3PieceFallDelay = -1;
 
         private float segmentSize = 0.5f;
 
@@ -57,10 +57,10 @@ namespace PathFinding
 
         private void OnBossPhase3Start()
         {
-            if (boss3PieceFallTime < 0)
+            if (boss3PieceFallDelay < 0)
                 return;
 
-
+            StartCoroutine(StageFall());
         }
 
         // Update is called once per frame
@@ -167,13 +167,16 @@ namespace PathFinding
 
         private IEnumerator StageFall()
         {
+            yield return new WaitForSeconds(boss3PieceFallDelay);
             float timeElapsed = 0;
             Vector3 startPos = transform.position;
             Vector3 endpos = new Vector3(transform.position.x, transform.position.y-CellManager.cellFallDistance, transform.position.z);
             while(timeElapsed < CellManager.cellFallTime)
             {
                 float t = timeElapsed / CellManager.cellFallTime;
-                t = t * t;
+                t = Mathf.Pow(t, 5);
+
+                Debug.Log(t);
 
                 transform.position = Vector3.Lerp (startPos, endpos, t);    
 

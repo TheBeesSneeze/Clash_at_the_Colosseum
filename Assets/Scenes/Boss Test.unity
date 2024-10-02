@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &37203929
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 3
 --- !u!64 &58360043
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -254,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &60861265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -290,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &69417565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -348,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &88622540
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -384,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &90807520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -420,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &135690381
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -501,6 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &171696197
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -582,6 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &207573151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -663,6 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &243234288
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -699,6 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 11
 --- !u!64 &282789706
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -735,6 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &299397593
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -907,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 1
 --- !u!64 &368722441
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -943,6 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &380780400
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1656,6 +1670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &509861296
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1737,6 +1752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &541867746
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3545,7 +3561,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4c3aad94d006c39489e992d2fe1d2f3c, type: 2}
     - target: {fileID: 3281742421755177798, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.00024
       objectReference: {fileID: 0}
     - target: {fileID: 3281742421755177798, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
       propertyPath: m_LocalScale.y
@@ -3557,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3281742421755177798, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3281742421755177798, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5414,6 +5430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &542968564
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5450,6 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &542968566
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5508,6 +5526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &608467882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5544,6 +5563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &614528961
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5580,6 +5600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &618589447
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5616,6 +5637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &620377054
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5697,6 +5719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &630839199
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5733,6 +5756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &634567102
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5769,6 +5793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &687865566
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5827,6 +5852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &697656304
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5908,6 +5934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &753431653
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5944,6 +5971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &780526191
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5980,6 +6008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &842430723
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6145,6 +6174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &976211702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6181,6 +6211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 2
 --- !u!64 &996015872
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6517,6 +6548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1105456922
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6575,6 +6607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1116882449
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6611,6 +6644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1123583083
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6647,6 +6681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 10
 --- !u!64 &1141132690
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6728,6 +6763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 15
 --- !u!64 &1224386857
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6764,6 +6800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1264461939
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6800,6 +6837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1332669589
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6836,6 +6874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1334201898
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6872,6 +6911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 5
 --- !u!64 &1353470344
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6908,6 +6948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1373741764
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6944,6 +6985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 14
 --- !u!64 &1373802711
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6980,6 +7022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1387142058
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7216,6 +7259,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1495201136405190306, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1697374110006197240, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
       propertyPath: m_Interactable
       value: 1
@@ -7300,6 +7347,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6247043618543012728, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7004486134616028144, guid: 9cf4c45db1db26e489ddadd6a609432a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -7382,6 +7433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1464224624
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7463,6 +7515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1495138026
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7499,6 +7552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1518104783
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7535,6 +7589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1525756438
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7571,6 +7626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1534454832
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7607,6 +7663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1554080997
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7755,6 +7812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1638900499
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7969,6 +8027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1696883787
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8005,6 +8064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1743325567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8041,6 +8101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1775836926
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8077,6 +8138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1799717127
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8113,6 +8175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1811054552
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8149,6 +8212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1844337518
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8185,6 +8249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1881552247
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8221,6 +8286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1883135551
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8351,6 +8417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1910990172
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8387,6 +8454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1915661000
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8474,6 +8542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &1989582984
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8510,6 +8579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &2015370732
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8697,6 +8767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: 0
 --- !u!64 &2077039148
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8766,6 +8837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slope: 0
   autoRenameCell: 0
+  boss3PieceFallDelay: -1
 --- !u!64 &2135203339
 MeshCollider:
   m_ObjectHideFlags: 0
