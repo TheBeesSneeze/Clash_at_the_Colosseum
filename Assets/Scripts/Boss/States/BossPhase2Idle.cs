@@ -14,9 +14,15 @@ public class BossPhase2Idle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (BossController.bossTakeDamage.currentHealth <= 0)
+        {
+            animator.SetBool("BossDeath", true);
+            return;
+        }
+
         if (nextState == 1)
         {
-            animator.SetBool("AOE2", true);
+            animator.SetBool("AOE", true);
         }
         else if (nextState == 2)
         {

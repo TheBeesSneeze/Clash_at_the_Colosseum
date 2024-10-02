@@ -26,6 +26,13 @@ public class BossBulletHellAttack : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        if (BossController.bossTakeDamage.currentHealth <= 0)
+        {
+            animator.SetBool("BossDeath", true);
+            return;
+        }
+
         secondsSinceLastShot += Time.deltaTime;
 
         if (shotsFired >= numberOfBullets)

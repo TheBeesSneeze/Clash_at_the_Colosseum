@@ -30,6 +30,12 @@ public class BossAOEAttack : StateMachineBehaviour
                 return;
             }
         }
+
+        if (BossController.bossTakeDamage.currentHealth <= 0)
+        {
+            animator.SetBool("BossDeath", true);
+            return;
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
