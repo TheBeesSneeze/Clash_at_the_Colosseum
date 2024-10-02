@@ -15,6 +15,7 @@ public class BulletEffectButton
     [SerializeField] private Button _button;
     [SerializeField] private Image headerImage;
     [SerializeField] private TMP_Text upgradeText;
+    [SerializeField] private TMP_Text upgradeDescription;
     [SerializeField] private Image bodyImage;
     [SerializeField] private Image effectIcon;
 
@@ -31,6 +32,7 @@ public class BulletEffectButton
 
         headerImage.color = bulletEffect.secondaryColor;
         upgradeText.text = bulletEffect.UpgradeName;
+        upgradeDescription.text = bulletEffect.UpgradeDescription;
         bodyImage.color = bulletEffect.bodyColor;
         effectIcon.sprite = bulletEffect.UpgradeIcon;
     }

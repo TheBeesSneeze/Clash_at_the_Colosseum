@@ -11,18 +11,18 @@ namespace PathFinding
         public static Cell PlayerCell;
         private int groundMask;
 
+        public static float cellFallTime=10;
+        public static float cellFallDistance=10;
+
         // Start is called before the first frame update
-        public CellManager()
+        public CellManager(float _cellFallTime, float _cellFallDistance)
         {
             _allCells = GameObject.FindObjectsOfType<Cell>();
             _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
             groundMask = LayerMask.NameToLayer("Default");
+            cellFallDistance = _cellFallTime;   
         }
 
-        public static void UpdateCellNeighbors()
-        {
-
-        }
 
         //called in gamemanager
         public void Update()

@@ -96,21 +96,21 @@ public class InputEvents : Singleton<InputEvents>
     private void OnDisable()
     {
         // Unsubscribe from all action events to prevent memory leaks
-        Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
-        Jump.started += ctx => ActionStarted(ref JumpPressed, JumpStarted);
-        Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Pause.started += ctx => ActionCanceled(ref PausePressed, PauseStarted);
-        Dash.started += ctx => ActionCanceled(ref DashPressed, DashStarted);
-        SpawnEnemies.started += ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnStarted);
-        Grapple.started += ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
+        Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
+        Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
+        Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
+        Pause.started -= ctx => ActionCanceled(ref PausePressed, PauseStarted);
+        Dash.started -= ctx => ActionCanceled(ref DashPressed, DashStarted);
+        SpawnEnemies.started -= ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnStarted);
+        Grapple.started -= ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
 
-        Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
-        Jump.canceled += ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
-        Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Pause.canceled += ctx => ActionCanceled(ref PausePressed, PauseCanceled);
-        Dash.canceled += ctx => ActionCanceled(ref DashPressed, DashCanceled);
-        SpawnEnemies.canceled += ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnCanceled);
-        Grapple.canceled += ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
+        Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
+        Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
+        Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
+        Pause.canceled -= ctx => ActionCanceled(ref PausePressed, PauseCanceled);
+        Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
+        SpawnEnemies.canceled -= ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnCanceled);
+        Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
 
     private void OnSettingsValueChanged()
