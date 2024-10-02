@@ -39,7 +39,9 @@ public class GameManager : MonoBehaviour
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private GameObject basicEnemyBullet;
+    [SerializeField] private GameObject harpyEnemyBullet;
+    [SerializeField] private GameObject cyclopsEnemyBullet;
 
     [Header("Move to different script")]
     [ReadOnly] public bool isPaused = false;
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeBulletPoolManager()
     {
-        bulletPoolManager = new BulletPoolManager(amountToPool, bullet, enemyBullet);
+        bulletPoolManager = new BulletPoolManager(amountToPool, bullet, basicEnemyBullet, harpyEnemyBullet, cyclopsEnemyBullet);
     }
 
     private void InitializeEnemySpawnManager()

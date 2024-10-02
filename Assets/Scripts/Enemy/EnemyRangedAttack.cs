@@ -121,7 +121,9 @@ public class EnemyRangedAttack : MonoBehaviour
             Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 direction = destination - transform.position;
-        GameObject bullet = BulletPoolManager.InstantiateEnemyBullet(transform.position);
+
+        GameObject bullet = InstantiateBullet(stats.bulletType);
+
         bullet.transform.forward = direction.normalized;
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
@@ -129,6 +131,27 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.Initialize(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
+    }
+
+    private GameObject InstantiateBullet(EnemyStats.RangedBulletType type)
+    {
+        GameObject bullet; 
+        if(type == EnemyStats.RangedBulletType.Cyclops)
+        {
+            bullet = BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
+            return bullet;
+        }
+        else if(type == EnemyStats.RangedBulletType.Harpy)
+        {
+            bullet = BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
+            return bullet;
+        }
+        else
+        {
+            bullet = BulletPoolManager.InstantiateBasicEnemyBullet(transform.position);
+            return bullet;
+        }
+
     }
 
     private void OnDisable()
