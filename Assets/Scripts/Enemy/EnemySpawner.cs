@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
-    [SerializeField] private EnemyPrefab[] enemyPreabs;
+    [SerializeField] private EnemyPrefab[] enemyPrefabs;
     public Dictionary<EnemySpawn, GameObject> _enemyPrefabs = new Dictionary<EnemySpawn, GameObject>();
     private bool hasSpawnedEnemies;
     private float timeTillEnemiesSpawn;
@@ -65,7 +65,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     private void SetDictionary()
     {
-        foreach(EnemyPrefab enemy in enemyPreabs)
+        foreach(EnemyPrefab enemy in enemyPrefabs)
         {
             _enemyPrefabs[enemy.enemyTag] = enemy.prefab;
         }
@@ -108,6 +108,9 @@ public class EnemySpawner : Singleton<EnemySpawner>
     //make this a unity event
     public static void OnEnemyDeath()
     {
+        Debug.Log("boss active"+BossController.bossActive);
+        if(BossController.bossActive) return;
+
         _currentEnemiesAlive--;
 
         if (_currentEnemiesAlive <= 0)

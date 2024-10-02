@@ -33,7 +33,7 @@ namespace DefaultNamespace
             }
             GameObject explosion = Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * enemyHitExplotionRadius * 2;
-            explosion.GetComponent<DestroyObjectAfterSeconds>().Destroy(0.3f);
+            explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
         }
         public override void OnHitOther(Vector3 point, float damage)
         {
@@ -45,7 +45,7 @@ namespace DefaultNamespace
             }
             GameObject explosion = Instantiate(explosionPrefab, point, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * surfaceHitExplosionRadius * 2;
-            explosion.GetComponent<DestroyObjectAfterSeconds>().Destroy(0.3f);
+            explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
         }
     }
 }

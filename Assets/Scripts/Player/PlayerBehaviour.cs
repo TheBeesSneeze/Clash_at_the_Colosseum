@@ -24,11 +24,13 @@ public class PlayerBehaviour : CharacterType
     [SerializeField] private HealthBar healthBar;
 
     private float secondsSinceLastTookDamage;
+    private LayerMask groundmask;
 
     
     // Start is called before the first frame update
     protected override void Start()
     {
+        groundmask = LayerMask.GetMask(new string[] { "Fill Cell", "Default" });
         SetStats();
 
         if (redVignette == null)
@@ -78,7 +80,6 @@ public class PlayerBehaviour : CharacterType
         Debug.Log("take damage." + damage);
         base.TakeDamage(damage);
         secondsSinceLastTookDamage = 0;
-        print(CurrentHealth);
         healthBar.SetHealth(CurrentHealth);
     }
     public override void Die()
@@ -87,5 +88,14 @@ public class PlayerBehaviour : CharacterType
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public Vector3 GetGroundPosition()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, groundmask))
+        {
+            return hit.point;
+        }
+        return transform.position;
     }
 }

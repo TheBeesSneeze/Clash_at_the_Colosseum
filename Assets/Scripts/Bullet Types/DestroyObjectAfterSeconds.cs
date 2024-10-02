@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class DestroyObjectAfterSeconds : MonoBehaviour
 {
-    public void Destroy(float seconds=1)
+    [SerializeField] private float Seconds=1;
+    [SerializeField] private bool DestroyAtStart=false;
+
+    public void OnDestroy()
     {
-        StartCoroutine(ExplosionVisual(seconds));
+       StopAllCoroutines();
     }
-    IEnumerator ExplosionVisual(float seconds)
+
+    public void Start()
+    {
+        DestroyTimer(Seconds);
+    }
+
+    public void DestroyTimer(float seconds)
+    {
+        StartCoroutine(DestroyObject(seconds));
+    }
+    IEnumerator DestroyObject(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);

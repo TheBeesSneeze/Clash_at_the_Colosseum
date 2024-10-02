@@ -28,6 +28,12 @@ public class StageTransitionManager
 
     }
 
+    public async static void TransitionStage(TextAsset end)
+    {
+        TransitionStagePercent(end, end, 1);
+        PublicEvents.OnStageTransitionFinish.Invoke();
+    }
+
     public async static void TransitionStage(TextAsset start, TextAsset end)
     {
         await Task.Delay((int)(_stageTransitionDelay * 1000));
