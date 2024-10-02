@@ -7,6 +7,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using Utilities;
 using System;
+using Unity.VisualScripting;
 
 namespace PathFinding
 {
@@ -45,69 +46,25 @@ namespace PathFinding
         }
 
         // Update is called once per frame
-        void OnTriggerEnter(Collider other)
-        {
-            if (Solid)
-                return;
-
-            if(other.gameObject.GetComponent<PlayerBehaviour>() != null)
-            {
-                GameManager.pathManager.PlayerCellUpdate(this);
-            }
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (Solid)
-                return;
-            
-            if (collision.gameObject.GetComponent<PlayerBehaviour>() != null)
-            {
-                GameManager.pathManager.PlayerCellUpdate(this);
-            }
-        }
-        
         public void GetNeighbors()
         {
+            _verticalNeighbors.Clear();
             _sideNeighbors.Clear();
             raycastSideNeighbors();
 
-            /*
-            boxcastSideNeighbor(new Vector3(1, 0,0));
-            boxcastSideNeighbor(new Vector3(-1,0,0));
-            boxcastSideNeighbor(new Vector3(0,0, 1));
-            boxcastSideNeighbor(new Vector3(0,0,-1)); 
-            */
-            //raycastVerticalNeighbor(new Vector3(0, 1, 0));
-            //raycastVerticalNeighbor(new Vector3(0, -1, 0));
-        }
+            Vector3 pathpos = PathPosition;
 
-        private Cell raycastSideNeighbor(Vector3 direction, float distance = 0.1f)
-        {
-
-            direction = new Vector3(_collider.bounds.extents.x * direction.x, 0, _collider.bounds.extents.z * direction.z);
-            distance = direction.magnitude;
-            RaycastHit hit;
-            float yScale = transform.lossyScale.y;
-            Vector3 boxSize = new Vector3(0.1f, yScale, 0.1f);
-            if(Physics.BoxCast(_collider.bounds.center, boxSize, direction, out hit, Quaternion.identity))
+            foreach(Cell neighbor in _verticalNeighbors)
             {
-                Cell c = hit.transform.GetComponent<Cell>();
-                return c;
-            }
-            return null;
+                float difference = pathpos.y - neighbor.PathPosition.y;
 
-            /*
-            direction = new Vector3( _collider.bounds.extents.x * direction.x, 0, _collider.bounds.extents.z * direction.z);
-            distance = direction.magnitude;
-            RaycastHit[] hits;
-            float yScale = transform.lossyScale.y;
-            Vector3 boxSize = new Vector3(0.1f, yScale, 0.1f);
-            hits = Physics.BoxCastAll(_collider.bounds.center, boxSize,direction, Quaternion.identity);
-            return hits;
-            */
+                //if(difference < 1 && difference > -1)
+                //if(difference < 2 && difference > -2)
+                    _sideNeighbors.Add(neighbor);
+            }
         }
 
+        
 
 
         private void raycastSideNeighbors()
@@ -123,9 +80,9 @@ namespace PathFinding
                     if (neighbor == null)
                         continue;
 
-                    if (!_sideNeighbors.Contains(neighbor))
+                    if (!_verticalNeighbors.Contains(neighbor))
                     {
-                        _sideNeighbors.Add(neighbor);
+                        _verticalNeighbors.Add(neighbor);
                     }
 
                     /*
@@ -149,7 +106,24 @@ namespace PathFinding
             }
         }
 
-        
+        private Cell raycastSideNeighbor(Vector3 direction, float distance = 0.1f)
+        {
+
+            direction = new Vector3(_collider.bounds.extents.x * direction.x, 0, _collider.bounds.extents.z * direction.z);
+            distance = direction.magnitude;
+            RaycastHit hit;
+            float yScale = transform.lossyScale.y;
+            Vector3 boxSize = new Vector3(0.1f, yScale, 0.1f);
+            if (Physics.BoxCast(_collider.bounds.center, boxSize, direction, out hit, Quaternion.identity))
+            {
+                Cell c = hit.transform.GetComponent<Cell>();
+                return c;
+            }
+            return null;
+        }
+
+
+
 #if UNITY_EDITOR
 
 
@@ -178,7 +152,14 @@ namespace PathFinding
                 Cell c = _sideNeighbors[i];
                 //Gizmos.DrawWireCube(c.transform.position, c.transform.lossyScale);
                 //Gizmos.DrawWireMesh(c.GetComponent<MeshFilter>().sharedMesh, c.transform.position, transform.rotation, transform.lossyScale);
-                Gizmos.color = Color.blue;
+
+                float difference = PathPosition.y - c.PathPosition.y;
+
+                if (difference > -1)
+                    Gizmos.color = Color.blue;
+                else
+                    Gizmos.color = Color.cyan;
+                    
                 Gizmos.DrawLine(PathPosition, c.PathPosition);
             }
         }

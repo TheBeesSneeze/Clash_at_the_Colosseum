@@ -16,7 +16,7 @@ public class StageStats : ScriptableObject
 {
     public TextAsset StageLayout;
     public int NumberOfEnemiesForLevel;
-    public GameObject[] EnemyPrefabs;
+    //public GameObject[] EnemyPrefabs;
     public float timeTillEnemiesSpawn;
-    public bool BulletEffectOnClear;
+    public bool BulletEffectOnClear=true;
 }
