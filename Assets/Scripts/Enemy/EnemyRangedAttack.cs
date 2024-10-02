@@ -47,7 +47,6 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         AttemptAttack();
         coolDown -= Time.deltaTime;
-        
     }
 
     private void AttemptAttack()
@@ -130,5 +129,10 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.Initialize(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        Destroy(this);
     }
 }

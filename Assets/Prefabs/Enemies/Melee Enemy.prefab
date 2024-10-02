@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6631860369869672511}
   - component: {fileID: 220553809436584676}
   - component: {fileID: 5260031247862540590}
-  - component: {fileID: -8360566441614287206}
   m_Layer: 8
   m_Name: Melee Enemy
   m_TagString: Untagged
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605286496879608125}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6408f4017e283e45b59c3153321886e, type: 3}
   m_Name: 
@@ -160,18 +159,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.90581363
   m_Center: {x: 0, y: 0, z: 0.043817222}
---- !u!114 &-8360566441614287206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605286496879608125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d298c58fd6474d4fb729a834b937b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8760789773571948285
 GameObject:
   m_ObjectHideFlags: 0

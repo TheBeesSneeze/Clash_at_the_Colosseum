@@ -11,19 +11,16 @@ namespace PathFinding
     public class PathManager
     {
         //public GameObject player;
-        private Cell playerCell;
-
-        public void PlayerCellUpdate(Cell cell)
-        {
-           playerCell = cell;
-        }
 
         public Path GetPathToPlayer(Cell navigator)
         {
-            if (playerCell == null)
+            if (CellManager.PlayerCell == null)
+            {
+                Debug.LogWarning("no playercell");
                 return null;
+            }
 
-            return Navigate(navigator, playerCell);
+            return Navigate(navigator, CellManager.PlayerCell);
         }
 
         //doesnt account for if start / end are right next to each other
@@ -31,6 +28,12 @@ namespace PathFinding
         // or if start cant navigate to end
         public Path Navigate(Cell navigator, Cell target)
         {
+            if (target == null || navigator == null)
+            {
+                Debug.LogWarning("null moment");
+                return null;
+            }
+
             List<Path> nextCells = new List<Path>();
             List<Cell> exploredCells = new List<Cell>();
             Path startNode = new Path(target, navigator);

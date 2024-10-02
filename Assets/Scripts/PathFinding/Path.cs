@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace PathFinding
@@ -8,7 +9,7 @@ namespace PathFinding
     [System.Serializable]
     public class Path : IComparable<Path>
     {
-        public Vector3 position { get =>  cell.transform.position; } 
+        public Vector3 position { get =>  cell.PathPosition; } 
         public int Cost { get => (_distanceToStart + _distanceToTarget); }
 
         public Cell cell;
@@ -24,14 +25,14 @@ namespace PathFinding
         {
             this.cell = cell;
             _distanceToStart = 0;
-            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.transform.position, target.transform.position) * 10);
+            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
         }
 
         public Path(Cell cell, Path lastPath, Cell target)
         {
             this.cell = cell;
-            _distanceToStart = Mathf.RoundToInt(lastPath.DistanceToStart + Vector3.Distance(this.cell.transform.position, lastPath.position) * 10);
-            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.transform.position, target.transform.position) * 10);
+            _distanceToStart = Mathf.RoundToInt(lastPath.DistanceToStart + Vector3.Distance(this.cell.PathPosition, lastPath.position) * 10);
+            _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
             nextPath = lastPath;
         }
 
@@ -48,6 +49,19 @@ namespace PathFinding
                 return -1;
 
             return 0;
+        }
+
+        /// <summary>
+        /// Debug
+        /// </summary>
+        public void DrawPath()
+        {
+            if (nextPath == null)
+                return;
+
+            Debug.DrawLine(position + Vector3.up, nextPath.position + Vector3.up, Color.red);
+
+            nextPath.DrawPath();
         }
     }
 }

@@ -38,7 +38,8 @@ public class PlayerBehaviour : CharacterType
             Debug.LogWarning("no damage vignette");
             return;
         }
-        healthBar.SetMaxHealth(stats.DefaultHealth);
+        if(healthBar != null)
+            healthBar.SetMaxHealth(stats.DefaultHealth);
     }
 
     public void Update()
