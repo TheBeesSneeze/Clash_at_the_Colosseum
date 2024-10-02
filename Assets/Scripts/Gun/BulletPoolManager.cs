@@ -5,21 +5,25 @@ using UnityEngine;
 public class BulletPoolManager
 {
     private static List<GameObject> bulletList = new List<GameObject>();
-    private static List<GameObject> enemyBulletList = new List<GameObject>();
-    private static GameObject enemyBullet;
+    private static List<GameObject> basicEnemyBulletList = new List<GameObject>();
+    private static GameObject basicEnemyBullet;
+    private static GameObject harpyEnemyBullet;
+    private static GameObject cyclopsEnemyBullet;
     private static GameObject playerBullet;
 
-    public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab)
+    public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab, GameObject harypyBulletPrefab, GameObject cyclopsBulletPrefab)
     {
         playerBullet = bulletPrefab;
-        enemyBullet = enemyBulletPrefab;
+        basicEnemyBullet = enemyBulletPrefab;
+        harpyEnemyBullet = harypyBulletPrefab;
+        cyclopsEnemyBullet = cyclopsBulletPrefab;
 
         for (int i = 0; i < amountPooled; i++)
         {
             GameObject shot = GameObject.Instantiate(bulletPrefab);
             GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
             bulletList.Add(shot);
-            enemyBulletList.Add(enemyShot);
+            basicEnemyBulletList.Add(enemyShot);
             enemyShot.SetActive(false);
             shot.SetActive(false);
         }
@@ -43,17 +47,17 @@ public class BulletPoolManager
 
     public static GameObject InstantiateEnemyBullet(Vector3 position)
     {
-        for (int i = 0; i < enemyBulletList.Count; i++)
+        for (int i = 0; i < basicEnemyBulletList.Count; i++)
         {
-            if (!enemyBulletList[i].activeInHierarchy)
+            if (!basicEnemyBulletList[i].activeInHierarchy)
             {
-                enemyBulletList[i].SetActive(true);
-                enemyBulletList[i].transform.position = position;
-                return enemyBulletList[i];
+                basicEnemyBulletList[i].SetActive(true);
+                basicEnemyBulletList[i].transform.position = position;
+                return basicEnemyBulletList[i];
             }
         }
-        GameObject newShot = GameObject.Instantiate(enemyBullet);
-        enemyBulletList.Add(newShot);
+        GameObject newShot = GameObject.Instantiate(basicEnemyBullet);
+        basicEnemyBulletList.Add(newShot);
         return newShot;
     }
 
