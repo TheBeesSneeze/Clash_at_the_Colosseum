@@ -13,11 +13,11 @@ using UnityEngine;
 
 public class BossTakeDamage : EnemyTakeDamage
 {
-    private BossStats stats;
+    private BossStats bstats;
     protected override void Start()
     {
-        stats = GetComponent<BossStats>();
-        currentHealth = stats.BossHealth;
+        bstats = GetComponent<BossStats>();
+        currentHealth = bstats.BossHealth;
     }
     public override void TakeDamage(float damage)
     {

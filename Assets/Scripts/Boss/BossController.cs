@@ -1,3 +1,7 @@
+///
+/// Sky
+///
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +14,7 @@ public class BossController : Singleton<BossController>
     [HideInInspector] public static BossTakeDamage bossTakeDamage;
     [HideInInspector] public static bool Invincible = false;
     [HideInInspector] public static EnemySpawner enemySpawner;
+    [HideInInspector] public static bool bossActive= false;
 
     private void Start()
     {
@@ -21,10 +26,24 @@ public class BossController : Singleton<BossController>
         PublicEvents.OnPlayerDeath.AddListener(OnPlayerDeath);
     }
 
+
     private void OnPlayerDeath()
     {
         Invincible = false;
 
         bossTakeDamage.currentHealth = Stats.BossHealth;
+        bossActive = false;
     }
+
+    private void OnEnable()
+    {
+
+        bossActive = true;
+    }
+
+    private void OnDisable()
+    {
+        bossActive = false;
+    }
+
 }

@@ -38,6 +38,7 @@ public class StageManager
 
         currentStage = _stages[stageIndex];
         _upgradeSelectUI = GameObject.FindObjectOfType<UpgradeSelectUI>();
+        StageTransitionManager.TransitionStage(currentStage.StageLayout);
     }
     
     /// <summary>
