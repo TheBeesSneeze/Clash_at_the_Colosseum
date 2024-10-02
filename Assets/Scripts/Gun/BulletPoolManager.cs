@@ -5,23 +5,35 @@ using UnityEngine;
 public class BulletPoolManager
 {
     private static List<GameObject> bulletList = new List<GameObject>();
-    private static List<GameObject> enemyBulletList = new List<GameObject>();
-    private static GameObject enemyBullet;
+    private static List<GameObject> basicEnemyBulletList = new List<GameObject>();
+    private static List<GameObject> harpyEnemyBulletList = new List<GameObject>();
+    private static List<GameObject> cyclopsEnemyBulletList = new List<GameObject>();
+    private static GameObject basicEnemyBullet;
+    private static GameObject harpyEnemyBullet;
+    private static GameObject cyclopsEnemyBullet;
     private static GameObject playerBullet;
 
-    public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab)
+    public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab, GameObject harypyBulletPrefab, GameObject cyclopsBulletPrefab)
     {
         playerBullet = bulletPrefab;
-        enemyBullet = enemyBulletPrefab;
+        basicEnemyBullet = enemyBulletPrefab;
+        harpyEnemyBullet = harypyBulletPrefab;
+        cyclopsEnemyBullet = cyclopsBulletPrefab;
 
         for (int i = 0; i < amountPooled; i++)
         {
             GameObject shot = GameObject.Instantiate(bulletPrefab);
             GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
+            GameObject harpyShot = GameObject.Instantiate(harypyBulletPrefab);
+            GameObject cyclopsShot = GameObject.Instantiate(cyclopsBulletPrefab);
             bulletList.Add(shot);
-            enemyBulletList.Add(enemyShot);
+            basicEnemyBulletList.Add(enemyShot);
+            harpyEnemyBulletList.Add(harpyShot);
+            cyclopsEnemyBulletList.Add(cyclopsShot);
             enemyShot.SetActive(false);
             shot.SetActive(false);
+            cyclopsShot.SetActive(false);
+            harpyShot.SetActive(false);
         }
     }
 
@@ -41,19 +53,49 @@ public class BulletPoolManager
         return newShot;
     }
 
-    public static GameObject InstantiateEnemyBullet(Vector3 position)
+    public static GameObject InstantiateBasicEnemyBullet(Vector3 position)
     {
-        for (int i = 0; i < enemyBulletList.Count; i++)
+        for (int i = 0; i < basicEnemyBulletList.Count; i++)
         {
-            if (!enemyBulletList[i].activeInHierarchy)
+            if (!basicEnemyBulletList[i].activeInHierarchy)
             {
-                enemyBulletList[i].SetActive(true);
-                enemyBulletList[i].transform.position = position;
-                return enemyBulletList[i];
+                basicEnemyBulletList[i].SetActive(true);
+                basicEnemyBulletList[i].transform.position = position;
+                return basicEnemyBulletList[i];
             }
         }
-        GameObject newShot = GameObject.Instantiate(enemyBullet);
-        enemyBulletList.Add(newShot);
+        GameObject newShot = GameObject.Instantiate(basicEnemyBullet);
+        basicEnemyBulletList.Add(newShot);
+        return newShot;
+    }
+    public static GameObject InstantiateHarpyEnemyBullet(Vector3 position)
+    {
+        for (int i = 0; i < harpyEnemyBulletList.Count; i++)
+        {
+            if (!harpyEnemyBulletList[i].activeInHierarchy)
+            {
+                harpyEnemyBulletList[i].SetActive(true);
+                harpyEnemyBulletList[i].transform.position = position;
+                return harpyEnemyBulletList[i];
+            }
+        }
+        GameObject newShot = GameObject.Instantiate(harpyEnemyBullet);
+        harpyEnemyBulletList.Add(newShot);
+        return newShot;
+    }
+    public static GameObject InstantiateCyclopsEnemyBullet(Vector3 position)
+    {
+        for (int i = 0; i < cyclopsEnemyBulletList.Count; i++)
+        {
+            if (!cyclopsEnemyBulletList[i].activeInHierarchy)
+            {
+                cyclopsEnemyBulletList[i].SetActive(true);
+                cyclopsEnemyBulletList[i].transform.position = position;
+                return cyclopsEnemyBulletList[i];
+            }
+        }
+        GameObject newShot = GameObject.Instantiate(cyclopsEnemyBullet);
+        cyclopsEnemyBulletList.Add(newShot);
         return newShot;
     }
 

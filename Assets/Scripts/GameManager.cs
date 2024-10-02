@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public static StageTransitionManager transitionManager;
     public static PublicEvents publicEvents;
 
+    [Header("Cell Manager")]
+    public float CellFallTime = 10;
+    public float CellFallDistance = 25;
+
     [Header("Stage Manager")]
     [SerializeField] private StageStats[] stages;
 
@@ -39,7 +43,9 @@ public class GameManager : MonoBehaviour
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private GameObject basicEnemyBullet;
+    [SerializeField] private GameObject harpyEnemyBullet;
+    [SerializeField] private GameObject cyclopsEnemyBullet;
 
     [Header("Move to different script")]
     [ReadOnly] public bool isPaused = false;
@@ -62,7 +68,7 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeCellManager()
     {
-        cellManager = new CellManager();
+        cellManager = new CellManager(CellFallTime, CellFallDistance);
     }
     private void InitializePathManager()
     {
@@ -70,7 +76,7 @@ public class GameManager : MonoBehaviour
     }
     private void InitializeBulletPoolManager()
     {
-        bulletPoolManager = new BulletPoolManager(amountToPool, bullet, enemyBullet);
+        bulletPoolManager = new BulletPoolManager(amountToPool, bullet, basicEnemyBullet, harpyEnemyBullet, cyclopsEnemyBullet);
     }
 
     private void InitializeEnemySpawnManager()

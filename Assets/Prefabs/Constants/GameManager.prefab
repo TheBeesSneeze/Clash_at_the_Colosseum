@@ -52,7 +52,9 @@ MonoBehaviour:
   transitonDelay: 1
   amountToPool: 5
   bullet: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
-  enemyBullet: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
+  basicEnemyBullet: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
+  harpyEnemyBullet: {fileID: 5939144570409094839, guid: c8ebc61181de1dd4a9cb58681487a175, type: 3}
+  cyclopsEnemyBullet: {fileID: 5939144570409094839, guid: e6ff837cdb7a59b4fb8a2383e7975b23, type: 3}
   isPaused: 0
   pausedForUI: 0
 --- !u!114 &-3221912983751877588
