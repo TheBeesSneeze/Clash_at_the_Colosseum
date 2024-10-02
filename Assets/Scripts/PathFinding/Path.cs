@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace PathFinding
@@ -8,7 +9,7 @@ namespace PathFinding
     [System.Serializable]
     public class Path : IComparable<Path>
     {
-        public Vector3 position { get =>  cell.transform.position; } 
+        public Vector3 position { get =>  cell.PathPosition; } 
         public int Cost { get => (_distanceToStart + _distanceToTarget); }
 
         public Cell cell;
@@ -57,6 +58,8 @@ namespace PathFinding
         {
             if (nextPath == null)
                 return;
+
+            Debug.DrawLine(position + Vector3.up, nextPath.position + Vector3.up, Color.red);
 
             nextPath.DrawPath();
         }

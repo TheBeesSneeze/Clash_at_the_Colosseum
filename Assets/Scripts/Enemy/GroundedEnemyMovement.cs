@@ -182,9 +182,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (path.nextPath == null)
             return;
 
-        //path.DrawPath();
+        path.DrawPath();
 
-        Debug.DrawLine(path.position + Vector3.up, path.nextPath.position + Vector3.up, Color.red);
         Debug.Log(path.position);
         Debug.Log(path.nextPath.position);
 
