@@ -18,6 +18,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float EnemyDamage;
     [SerializeField] public float EnemyAttackRate;
     [SerializeField][Min(0)] public float EnemyAttackRange;
+    [SerializeField] public RangedBulletType bulletType = RangedBulletType.Basic;
 
     [Header("Continous Shots Variables")]
     [SerializeField] public bool canConsecutiveShoot = false;
@@ -44,6 +45,13 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
 
+
+    public enum RangedBulletType
+    {
+        Basic,
+        Harpy,
+        Cyclops
+    }
     #region affectors
 
     //updating countdown timer
