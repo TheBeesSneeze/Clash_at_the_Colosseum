@@ -188,6 +188,10 @@ MonoBehaviour:
   EnemyDamage: 1
   EnemyAttackRate: 5
   EnemyAttackRange: 5
+  bulletType: 1
+  canConsecutiveShoot: 0
+  numberOfConsecutiveShots: 0
+  timeBetweenContinousShots: 0
   enemyMovementSpeed: 5
   TurningSpeed: 1
   StopSpeed: 1
