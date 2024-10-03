@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         //groundLayers = new LayerMask();
         //groundLayers |= (1 << LayerMask.GetMask("Default"));
         //groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.useGravity = false;
