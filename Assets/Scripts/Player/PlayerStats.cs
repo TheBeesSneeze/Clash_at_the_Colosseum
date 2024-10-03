@@ -45,6 +45,8 @@ public class PlayerStats : MonoBehaviour
     public int AirJumps = 1;
     [Tooltip("How high the player jumps")]
     public float JumpHeight = 2.5f;
+    [Tooltip("Second Jump Height")]
+    public float SecondJumpHeight = 2.5f;
     [Tooltip("How much gravity to apply to the player. Normal gravity is not used.")]
     public float GravityBoost = 10f;
 }

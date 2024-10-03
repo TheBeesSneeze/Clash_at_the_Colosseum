@@ -48,7 +48,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         if (currentCell == null)
         {
-            Debug.LogWarning("no cell!");
+            //Debug.LogWarning("no cell!");
             return;
         }
         path = GameManager.pathManager.GetPathToPlayer(currentCell);

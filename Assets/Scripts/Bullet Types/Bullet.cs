@@ -45,8 +45,6 @@ public class Bullet : MonoBehaviour
     {
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
-
-
         SetColorGradient();
     }
 

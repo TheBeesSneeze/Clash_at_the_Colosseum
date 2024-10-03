@@ -16,10 +16,10 @@ using static AudioManager;
 public class PlayerController : MonoBehaviour
 {
     [Header ("Jump Stats")]
-    [SerializeField] private int _airJumps = 1;
     [Tooltip ("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
     [SerializeField] private float jumpRaycastDistance;
     public bool ConsistentJumps = true;
+    
 
     [Header ("Camera References")]
     [SerializeField] private Transform cameraHolder;
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         //groundLayers = new LayerMask();
         //groundLayers |= (1 << LayerMask.GetMask("Default"));
         //groundLayers |= (1 << LayerMask.GetMask("Fill Cell"));
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.useGravity = false;
@@ -197,15 +198,16 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(
                 Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
 
-            airJumpCounter = _airJumps;
+            airJumpCounter = stats.AirJumps;
 
             return;
         }
 
         if(airJumpCounter > 0)
         {
+            
             rb.AddForce(
-                Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
+                Vector3.up * (Mathf.Sqrt(2 * stats.SecondJumpHeight * (grav*2))), ForceMode.Impulse);
 
             airJumpCounter--;
         }
