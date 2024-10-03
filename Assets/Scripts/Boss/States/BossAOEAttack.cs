@@ -34,6 +34,7 @@ public class BossAOEAttack : StateMachineBehaviour
         if (BossController.bossTakeDamage.currentHealth <= 0)
         {
             animator.SetBool("BossDeath", true);
+            BossController.Invincible = true;
             return;
         }
     }

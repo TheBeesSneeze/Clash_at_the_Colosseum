@@ -529,43 +529,55 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Ranged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AOE
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HalfHealth
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BossHealth
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EnemiesDead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BulletHell
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
+  - m_Name: BossDeath
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Test
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -723,13 +735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b869e52468deb0c4da0b1ae32dcc9aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletHellTarget: {fileID: 320545183975170761, guid: c0288cd0161c72d44940b0ac562a5024, type: 3}
-  bulletSpread: 50
-  bulletHellSpeed: 7
-  shootingMode: {fileID: 11400000, guid: 0ae6a140712751b488d84609a5af14b5, type: 2}
-  bulletPrefab: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
-  numberOfBullets: 50
-  intervalBetweenShots: 0.5
+  amountOfBoxes: 3
+  launchForce: 300
+  launchForceHeight: 40
+  phase2Box: {fileID: 1236622279385702515, guid: 721aeeed805b6a443b429958aad2f522, type: 3}
+  target1: {fileID: 6553401905325345620, guid: c0288cd0161c72d44940b0ac562a5024, type: 3}
+  target2: {fileID: 6553401905325345620, guid: a5c5b301978d36a4192430f71f7b6e77, type: 3}
 --- !u!1102 &2790914023364641230
 AnimatorState:
   serializedVersion: 6

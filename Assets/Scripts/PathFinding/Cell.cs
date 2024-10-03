@@ -176,7 +176,6 @@ namespace PathFinding
                 float t = timeElapsed / CellManager.cellFallTime;
                 t = Mathf.Pow(t, 5);
 
-                Debug.Log(t);
 
                 transform.position = Vector3.Lerp (startPos, endpos, t);    
 
