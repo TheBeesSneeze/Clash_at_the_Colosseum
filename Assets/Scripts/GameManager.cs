@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Stage Manager")]
+    [SerializeField] private StageStats[] stages;
+
+    [Header("Stage Transition")]
+    [SerializeField] private float transitonSeconds = 1;
+    [SerializeField] private float transitonDelay = 1;
+
     [Header("Game Settings")]
     public BulletEffect[] BulletEffects;
 
@@ -33,12 +40,6 @@ public class GameManager : MonoBehaviour
     public float CellFallTime = 10;
     public float CellFallDistance = 25;
 
-    [Header("Stage Manager")]
-    [SerializeField] private StageStats[] stages;
-
-    [Header("Stage Transition")]
-    [SerializeField] private float transitonSeconds = 1;
-    [SerializeField] private float transitonDelay = 1;
 
     [Header("Bullet Pooling")]
     [SerializeField] private int amountToPool;

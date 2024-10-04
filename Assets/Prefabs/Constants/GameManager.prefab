@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6670010424615105723}
   - component: {fileID: -3221912983751877588}
   - component: {fileID: 6405318079182177319}
+  - component: {fileID: 2573591770749130960}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6670010424615105723
 MonoBehaviour:
@@ -46,8 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6ef034ddd573445893f399613c9c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletEffects: []
-  stages: []
+  BulletEffects:
+  - {fileID: 11400000, guid: 794ef94bb661be949a92e6c550c80db2, type: 2}
+  - {fileID: 11400000, guid: cc1100b5625a2534da4e041ff4e37414, type: 2}
+  - {fileID: 11400000, guid: 130a27b9b1defdc4987cc18301bf8e27, type: 2}
+  - {fileID: 11400000, guid: d17d2bb708d5eb847bee124c80774bf8, type: 2}
+  CellFallTime: 10
+  CellFallDistance: 25
+  stages:
+  - {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
+  - {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
+  - {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
+  - {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
   transitonSeconds: 5
   transitonDelay: 1
   amountToPool: 5
@@ -70,10 +81,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunSound:
-    Volume: 1
+    Volume: 0.529
     sound: {fileID: 8300000, guid: 165da82ba6d13fb48bd2de370bf8e68f, type: 3}
   EnemyDamageSound:
-    Volume: 1
+    Volume: 0.769
     sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
   PlayerDamageSound:
     Volume: 1
@@ -85,13 +96,13 @@ MonoBehaviour:
     Volume: 1
     sound: {fileID: 8300000, guid: 669159055fff48d4384c67fcb6580105, type: 3}
   EnemyShootSound:
-    Volume: 1
+    Volume: 0.947
     sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
   MeleeAttackSound:
     Volume: 1
     sound: {fileID: 8300000, guid: f53bb791b307f494aa2f9a30173f12de, type: 3}
   GrappleSound:
-    Volume: 1
+    Volume: 0.836
     sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
   DashSound:
     Volume: 1
@@ -114,3 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62fe2aca10468f428175f6d2871fc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2573591770749130960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f920a2384b9c4d4f8ff940809804309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - enemyTag: 3
+    prefab: {fileID: 7996317265162831292, guid: 64fe747179742714f88a72b6a3615aa2, type: 3}
+  - enemyTag: 1
+    prefab: {fileID: 4605286496879608125, guid: 22899e0ff542bb44295bd6d5c2831227, type: 3}
+  - enemyTag: 2
+    prefab: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
