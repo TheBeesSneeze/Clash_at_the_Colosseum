@@ -12,6 +12,7 @@ using NaughtyAttributes;
 using PathFinding;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 namespace Utilities
 {
@@ -21,19 +22,19 @@ namespace Utilities
         [InfoBox("This tool will only record the position/scale/Solidity of GameObjects with the Cell component")]
         #region Import
         [Header("Import Settings")]
-        public TextAsset defaultStage;
-        public TextAsset stageToLoad;
+        public TextAsset StageA;
+        public TextAsset StageB;
 
-        [Button("Load Default Stage")]
-        public void LoadDefaultStage()
+        [Button("Load Stage A")]
+        public void LoadStageA()
         {
-            StageDebugger.LoadStage(defaultStage);
+            StageDebugger.LoadStage(StageA);
         }
 
-        [Button("Import Stage File")]
-        public void ImportJson()
+        [Button("Load Stage B")]
+        public void LoadStageB()
         {
-            StageDebugger.LoadStage(stageToLoad);
+            StageDebugger.LoadStage(StageB);
         }
 
         #endregion
@@ -45,32 +46,10 @@ namespace Utilities
         [SerializeField] private string _fileName = "Stage Layout.txt";
         [SerializeField] private string _fileType = "JSON";
 
-        [Button]
-        ///
-        /// Create new file with all the cell information
-        /// 
+        [Button("Export stage as new file")]
         public void ExportStageFile()
         {
-            Cell[] cells = GameObject.FindObjectsOfType<Cell>();
-            Debug.Log("Found " + cells.Length + " cells in " + SceneManager.GetActiveScene().name);
-            
-            EnemySpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
-            Debug.Log("Found " + spawnPoints.Length + " enemy spawn points in " + SceneManager.GetActiveScene().name);
-
-            StageLayout stageElements = new StageLayout();
-            stageElements.SceneName = SceneManager.GetActiveScene().name;
-            stageElements.elements = new CellObject[cells.Length];
-            stageElements.spawnPoints = new SpawnPointElement[spawnPoints.Length];
-
-            for (int i = 0; i<cells.Length; i++)
-            {
-                stageElements.elements[i] = new CellObject(cells[i]);
-            }
-
-            for (int i = 0; i < spawnPoints.Length; i++)
-            {
-                stageElements.spawnPoints[i] = new SpawnPointElement(spawnPoints[i]);
-            }
+            StageLayout stageElements = GetStageLayout();
 
             string path = GetNewPath();
             var textFile = File.CreateText(path);
@@ -80,6 +59,64 @@ namespace Utilities
 
             textFile.Close();
             Debug.Log("Created new text file at " + path+"\nIt may take a few seconds for the file to appear in the inspector.");
+        }
+
+        [Button("Update Stage A")]
+        public void UpdateStageA()
+        {
+            if (StageA == null)
+                return;
+
+            OverrideStageFile(StageA);
+        }
+
+        [Button("Update Stage B")]
+        public void UpdateStageB()
+        {
+            if (StageB == null)
+                return;
+
+            OverrideStageFile(StageB);
+        }
+
+        private void OverrideStageFile(TextAsset oldFile)
+        {
+            StageLayout stageElements = GetStageLayout();
+
+            string path = AssetDatabase.GetAssetPath(oldFile);
+            var textFile = File.CreateText(path);
+
+            string elemString = JsonUtility.ToJson(stageElements);
+            textFile.WriteLine(elemString);
+
+            textFile.Close();
+            Debug.Log(oldFile.name+" has been overwritten at " + path);
+        }
+
+        private StageLayout GetStageLayout()
+        {
+            Cell[] cells = GameObject.FindObjectsOfType<Cell>();
+            Debug.Log("Found " + cells.Length + " cells in " + SceneManager.GetActiveScene().name);
+
+            EnemySpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
+            Debug.Log("Found " + spawnPoints.Length + " enemy spawn points in " + SceneManager.GetActiveScene().name);
+
+            StageLayout stageElements = new StageLayout();
+            stageElements.SceneName = SceneManager.GetActiveScene().name;
+            stageElements.elements = new CellObject[cells.Length];
+            stageElements.spawnPoints = new SpawnPointElement[spawnPoints.Length];
+
+            for (int i = 0; i < cells.Length; i++)
+            {
+                stageElements.elements[i] = new CellObject(cells[i]);
+            }
+
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                stageElements.spawnPoints[i] = new SpawnPointElement(spawnPoints[i]);
+            }
+
+            return stageElements;
         }
 
         private string GetNewPath()

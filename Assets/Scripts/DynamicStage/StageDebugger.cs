@@ -46,7 +46,7 @@ namespace Utilities
 
             /*
 
-            StageLayout stageElements = StageTransitionManager.GetStageElements(stageToLoad);
+            StageLayout stageElements = StageTransitionManager.GetStageElements(StageB);
             CellObject[] cellEmements = stageElements.elements;
             SpawnPointElement[] spawnPointElements = stageElements.spawnPoints;
 
