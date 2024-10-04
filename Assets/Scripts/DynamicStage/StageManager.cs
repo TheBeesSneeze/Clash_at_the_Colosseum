@@ -74,7 +74,7 @@ public class StageManager
         if(stageIndex+1 == _stages.Length) 
         {
             Debug.LogWarning("I think the players supposed to beat the game here");
-            SceneManager.LoadScene("WinScreen");
+            SceneManager.LoadScene("Boss Test");
             return;
         }
 
@@ -84,7 +84,6 @@ public class StageManager
         currentStage = _stages[stageIndex];
 
         StageTransitionManager.TransitionStage(pastStage.StageLayout, currentStage.StageLayout);
-
 
         PublicEvents.OnStageTransition.Invoke();
 

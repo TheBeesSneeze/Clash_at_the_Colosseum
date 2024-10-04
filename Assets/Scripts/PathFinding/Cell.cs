@@ -122,7 +122,26 @@ namespace PathFinding
             return null;
         }
 
+        private IEnumerator StageFall()
+        {
+            yield return new WaitForSeconds(boss3PieceFallDelay);
+            float timeElapsed = 0;
+            Vector3 startPos = transform.position;
+            Vector3 endpos = new Vector3(transform.position.x, transform.position.y - CellManager.cellFallDistance, transform.position.z);
+            while (timeElapsed < CellManager.cellFallTime)
+            {
+                float t = timeElapsed / CellManager.cellFallTime;
+                t = Mathf.Pow(t, 5);
 
+
+                transform.position = Vector3.Lerp(startPos, endpos, t);
+
+                yield return null;
+                timeElapsed += Time.deltaTime;
+            }
+            Debug.Log("Destroying " + gameObject.name);
+            Destroy(gameObject);
+        }
 
 #if UNITY_EDITOR
 
@@ -165,26 +184,7 @@ namespace PathFinding
         }
 
 
-        private IEnumerator StageFall()
-        {
-            yield return new WaitForSeconds(boss3PieceFallDelay);
-            float timeElapsed = 0;
-            Vector3 startPos = transform.position;
-            Vector3 endpos = new Vector3(transform.position.x, transform.position.y-CellManager.cellFallDistance, transform.position.z);
-            while(timeElapsed < CellManager.cellFallTime)
-            {
-                float t = timeElapsed / CellManager.cellFallTime;
-                t = Mathf.Pow(t, 5);
-
-
-                transform.position = Vector3.Lerp (startPos, endpos, t);    
-
-                yield return null;
-                timeElapsed += Time.deltaTime;
-            }
-            Debug.Log("Destroying "+gameObject.name);
-            Destroy(gameObject);
-        }
+        
         
 #endif
 

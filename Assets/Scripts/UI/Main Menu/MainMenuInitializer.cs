@@ -17,6 +17,12 @@ namespace mainMenu
 {
     public class MainMenuInitializer : MonoBehaviour
     {
+
+        public void GoBoss()
+        {
+            SceneManager.LoadScene("Boss Test");
+        }
+
         [Header("Variables")]
         [SerializeField] public string mainSceneName = "Circle Dynamic Stage";
 
