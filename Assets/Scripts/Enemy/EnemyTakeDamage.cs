@@ -44,7 +44,6 @@ public class EnemyTakeDamage : MonoBehaviour
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
-        Debug.Log(currentHealth);
         if (currentHealth < damage && isStillAlive) 
         {
             Die();
@@ -57,12 +56,10 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void Die()
     {
+        Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
-
         PublicEvents.OnEnemyDeath.Invoke();
-        Destroy(gameObject);
-
     }
 
 }
