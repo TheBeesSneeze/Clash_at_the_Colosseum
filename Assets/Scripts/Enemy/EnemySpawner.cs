@@ -108,7 +108,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     //make this a unity event
     public static void OnEnemyDeath()
     {
-        Debug.Log("boss active"+BossController.bossActive);
+        //Debug.Log("boss active"+BossController.bossActive);
         if(BossController.bossActive) return;
 
         _currentEnemiesAlive--;

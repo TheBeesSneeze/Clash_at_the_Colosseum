@@ -93,7 +93,6 @@ public class Bullet : MonoBehaviour
 
         if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
         {
-            print("hit enemy");
             OnEnemyHit(enemy);
             return;
         }
