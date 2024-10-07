@@ -46,12 +46,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float HeightAboveGround;
 
 
-    public enum RangedBulletType
-    {
-        Basic,
-        Harpy,
-        Cyclops
-    }
+    
     #region affectors
 
     //updating countdown timer
@@ -72,4 +67,11 @@ public class EnemyStats : MonoBehaviour
     }
     #endregion
    
+}
+
+public enum RangedBulletType
+{
+    Basic,
+    Harpy,
+    Cyclops
 }

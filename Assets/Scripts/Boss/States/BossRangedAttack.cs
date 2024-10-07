@@ -63,7 +63,7 @@ public class BossRangedAttack : StateMachineBehaviour
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
         bulletObject.bulletForce = shootingMode.BulletSpeed;
-        bulletObject.Initialize(direction);
+        bulletObject.OnBulletShoot(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
 

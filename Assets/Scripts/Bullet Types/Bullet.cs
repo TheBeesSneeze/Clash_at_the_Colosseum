@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
     private Vector3 lastPosition;
     private float timeActive;
     private GunController gunController;
+    private List<BulletEffect> effects;
 
     [HideInInspector] public float damageAmount = 10f;
     [HideInInspector] public float bulletForce = 200f;
@@ -36,23 +37,39 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         gunController = GameObject.FindObjectOfType<GunController>();
+        effects = new List<BulletEffect>();
+    }
+
+    /// <summary>
+    /// only called for player bullets
+    /// </summary>
+    public void OneTimeInitalize(List<BulletEffect> bulletEffects)
+    {
+        foreach (BulletEffect effect in bulletEffects)
+        {
+            AddEffect(effect);
+        }
+
     }
 
     /// <summary>
     /// was previously start function, changed to get called in GunController
     /// </summary>
-    public void Initialize(Vector3 dir)
+    public void OnBulletShoot(Vector3 dir)
     {
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
         lastPosition = transform.position;
-        SetColorGradient();
 
-        for (int i = 0; i < gunController.bulletEffects.Count; i++)
+        if (effects == null)
+            return; //who cares probably an enemy
+
+        SetColorGradient();
+        foreach (BulletEffect effect in effects)
         {
-            gunController.bulletEffects[i].DefaultInitialize(this, gunController);
-            gunController.bulletEffects[i].Initialize(this);
+            effect.OnShoot(this);
         }
     }
+
 
     public void ResetBullet()
     {
@@ -98,10 +115,25 @@ public class Bullet : MonoBehaviour
         OnHitSurface(hit);
     }
 
+    /// <summary>
+    /// Called in bulletpoolmanager
+    /// </summary>
+    public void AddEffect(BulletEffect effect)
+    {
+        if (effect == null)
+            return ;
+        if(effects == null)
+            effects = new List<BulletEffect>();
+
+        BulletEffect copy = Instantiate(effect);
+        effects.Add(copy);
+        copy.DefaultInitialize(this, gunController);
+    }
+   
     private void OnEnemyHit(EnemyTakeDamage enemy)
     {
         enemy.TakeDamage(damageAmount);
-        foreach(BulletEffect effect in gunController.bulletEffects)
+        foreach(BulletEffect effect in effects)
         {
             effect.OnEnemyHit(enemy, damageAmount, this);
         }
@@ -121,9 +153,9 @@ public class Bullet : MonoBehaviour
 
     private void OnHitSurface(RaycastHit hit)
     {
-        for (int i=0; i< gunController.bulletEffects.Count; i++)
+        for (int i=0; i< effects.Count; i++)
         {
-            gunController.bulletEffects[i].OnHitOther(hit, damageAmount, this);
+            effects[i].OnHitOther(hit, damageAmount, this);
         }
 
         if (DestroyOnSurfaceHit())
@@ -135,7 +167,7 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        foreach (BulletEffect effect in gunController.bulletEffects)
+        foreach (BulletEffect effect in effects)
         {
             if (!effect.DestroyBulletOnEntityContact)
                 destroy = false;
@@ -148,7 +180,7 @@ public class Bullet : MonoBehaviour
     {
         bool destroy = true;
 
-        foreach (BulletEffect effect in gunController.bulletEffects)
+        foreach (BulletEffect effect in effects)
         {
             if (!effect.DestroyBulletOnSurfaceContact)
                 destroy = false;
@@ -157,6 +189,13 @@ public class Bullet : MonoBehaviour
         return destroy;
     }
 
+    public void OnDisableBullet()
+    {
+        foreach(BulletEffect effect in effects)
+        {
+            effect.OnDestroyBullet(this, damageAmount);
+        }
+    }
     /// <summary>
     /// this code does not work
     /// </summary>

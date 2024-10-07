@@ -117,8 +117,8 @@ public class EnemyRangedAttack : MonoBehaviour
         nextFireTime += Time.deltaTime;
         Vector3 destination = playerObject.transform.position;
         destination += new Vector3(
-            Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
-            Random.Range(shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 direction = destination - transform.position;
 
@@ -128,28 +128,24 @@ public class EnemyRangedAttack : MonoBehaviour
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
         bulletObject.bulletForce = shootingMode.BulletSpeed;
-        bulletObject.Initialize(direction);
+        bulletObject.OnBulletShoot(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
     }
 
-    private GameObject InstantiateBullet(EnemyStats.RangedBulletType type)
+    private GameObject InstantiateBullet(RangedBulletType type)
     {
-        GameObject bullet; 
-        if(type == EnemyStats.RangedBulletType.Cyclops)
+        if(type == RangedBulletType.Cyclops)
         {
-            bullet = BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
-            return bullet;
+            return BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
         }
-        else if(type == EnemyStats.RangedBulletType.Harpy)
+        else if(type == RangedBulletType.Harpy)
         {
-            bullet = BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
-            return bullet;
+            return BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
         }
         else
         {
-            bullet = BulletPoolManager.InstantiateBasicEnemyBullet(transform.position);
-            return bullet;
+            return BulletPoolManager.InstantiateBasicEnemyBullet(transform.position);
         }
 
     }

@@ -8,7 +8,7 @@ public class WindBullet : BulletEffect
 {
     public float KnockBackForce = 10f;
     public float PlayerKnockBackForce = 10f;
-    public override void Initialize(Bullet bullet)
+    public override void OnShoot(Bullet bullet)
     {
         _playerGunController.GetComponent<Rigidbody>().AddForce(-bullet.transform.forward * PlayerKnockBackForce, ForceMode.Impulse);
     }
@@ -21,4 +21,6 @@ public class WindBullet : BulletEffect
         }
     }
     public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet) {}
+
+    public override void OnDestroyBullet(Bullet bullet, float damage) {}
 }

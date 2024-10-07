@@ -13,8 +13,12 @@ public class BulletPoolManager
     private static GameObject cyclopsEnemyBullet;
     private static GameObject playerBullet;
 
+    private static GunController gunController;
+
     public BulletPoolManager(int amountPooled, GameObject bulletPrefab, GameObject enemyBulletPrefab, GameObject harypyBulletPrefab, GameObject cyclopsBulletPrefab)
     {
+        gunController = GameObject.FindObjectOfType<GunController>();
+
         playerBullet = bulletPrefab;
         basicEnemyBullet = enemyBulletPrefab;
         harpyEnemyBullet = harypyBulletPrefab;
@@ -22,19 +26,18 @@ public class BulletPoolManager
 
         for (int i = 0; i < amountPooled; i++)
         {
-            GameObject shot = GameObject.Instantiate(bulletPrefab);
             GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
             GameObject harpyShot = GameObject.Instantiate(harypyBulletPrefab);
             GameObject cyclopsShot = GameObject.Instantiate(cyclopsBulletPrefab);
-            bulletList.Add(shot);
             basicEnemyBulletList.Add(enemyShot);
             harpyEnemyBulletList.Add(harpyShot);
             cyclopsEnemyBulletList.Add(cyclopsShot);
             enemyShot.SetActive(false);
-            shot.SetActive(false);
             cyclopsShot.SetActive(false);
             harpyShot.SetActive(false);
+            CreateNewPlayerBullet().SetActive(false);
         }
+
     }
 
     public static GameObject Instantiate(Vector3 position)
@@ -48,9 +51,7 @@ public class BulletPoolManager
                 return bulletList[i];
             }
         }
-        GameObject newShot = GameObject.Instantiate(playerBullet);
-        bulletList.Add(newShot);
-        return newShot;
+        return CreateNewPlayerBullet();
     }
 
     public static GameObject InstantiateBasicEnemyBullet(Vector3 position)
@@ -99,10 +100,33 @@ public class BulletPoolManager
         return newShot;
     }
 
+    public static GameObject CreateNewPlayerBullet()
+    {
+        GameObject newShot = GameObject.Instantiate(playerBullet);
+        bulletList.Add(newShot);
+        if (newShot.TryGetComponent<Bullet>(out Bullet b))
+        {
+            b.OneTimeInitalize(gunController.bulletEffects);
+        }
+        return newShot;
+    }
+
     public static void Destroy(Bullet bullet)
     {
+        bullet.OnDisableBullet();
         bullet.ResetBullet();
         bullet.gameObject.SetActive(false);
+    }
+
+    public static void AddPlayerBulletEffect(BulletEffect effect)
+    {
+        foreach(GameObject bullet in bulletList)
+        {
+            if(bullet.TryGetComponent<Bullet>(out Bullet b))
+            {
+                b.AddEffect(effect);
+            }
+        }
     }
 
     public void OnDisable()

@@ -9,6 +9,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -82,11 +83,13 @@ public class GunController : MonoBehaviour
             Application.Quit();
             return;
         }
-        BulletEffect copy = Instantiate(bulletEffect);
-        bulletEffects.Add(copy);
+        //BulletEffect copy = Instantiate(bulletEffect);
+        //bulletEffects.Add(copy);
+        bulletEffects.Add(bulletEffect);
+        BulletPoolManager.AddPlayerBulletEffect(bulletEffect);
     }
     /// <summary>
-    /// shoots all the bullets. calls the ShootBullet function
+    /// shoots all the bullets. calls the OnBulletShoot function
     /// </summary>
     private void Shoot()
     {
@@ -108,7 +111,7 @@ public class GunController : MonoBehaviour
     private void ShootBullet()
     {
         //alec put code here
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, scanMask))
         {
@@ -136,7 +139,7 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = shootingMode.BulletDamage;
         bulletObj.bulletForce = shootingMode.BulletSpeed;
         bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        bulletObj.Initialize(dir);
+        bulletObj.OnBulletShoot(dir);
     }
     
     private void Update()

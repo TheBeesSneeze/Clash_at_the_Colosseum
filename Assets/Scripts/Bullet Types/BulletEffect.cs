@@ -42,8 +42,10 @@ public abstract class BulletEffect : ScriptableObject
         _playerGunController = player;
     }
 
-    public abstract void Initialize(Bullet bullet);
+    public abstract void OnShoot(Bullet bullet);
     public abstract void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet);
     public abstract void OnHitOther(RaycastHit point, float damage, Bullet bullet);
+
+    public abstract void OnDestroyBullet(Bullet bullet, float damage);
 
 }

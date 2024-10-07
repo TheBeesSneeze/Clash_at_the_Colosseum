@@ -21,7 +21,7 @@ namespace DefaultNamespace
         public int MaxEnemiesToZap;
         [SerializeField] LineRenderer line;
 
-        public override void Initialize(Bullet bullet)
+        public override void OnShoot(Bullet bullet)
         {
             //throw new System.NotImplementedException();
         }
@@ -91,6 +91,10 @@ namespace DefaultNamespace
             }
 
             return enemies;
+        }
+
+        public override void OnDestroyBullet(Bullet bullet, float damage)
+        {
         }
     }
 }

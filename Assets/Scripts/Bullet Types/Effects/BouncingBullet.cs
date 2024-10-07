@@ -33,15 +33,13 @@ namespace DefaultNamespace
         private Rigidbody rb;
         private LayerMask enemyLayer;
 
-        public override void Initialize(Bullet bullet) 
+        public override void OnShoot(Bullet bullet) 
         {
             //DestroyBulletOnSurfaceContact = false; // this can be set on the scriptable object
             rb = bullet.GetComponent<Rigidbody>();
             bullet.despawnTime = Mathf.Max(OverrideBulletTime, bullet.despawnTime);
             bounces = BouncesUntilDestroy;
             enemyLayer = LayerMask.NameToLayer("Enemy");
-
-            Debug.Log("hello!");
         }
         public override void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet)
         {
@@ -49,12 +47,11 @@ namespace DefaultNamespace
         }
         public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet)
         {
-            Debug.Log(bounces);
             //figures out how many bounces the bullet has left
             if (bounces <= 0)
             {
-                //BulletPoolManager.Destroy(parentBullet);
-                //return;
+                BulletPoolManager.Destroy(bullet);
+                return;
             }
             bounces--;
 
@@ -99,10 +96,12 @@ namespace DefaultNamespace
         }
         private void Bounce(RaycastHit hit)
         {
-            Debug.Log(rb.velocity);
             Vector3 direction = Vector3.Reflect(rb.velocity, hit.normal);
             rb.velocity = direction.normalized * rb.velocity.magnitude;
-            Debug.Log(rb.velocity);
+        }
+
+        public override void OnDestroyBullet(Bullet bullet, float damage)
+        {
         }
     }
 }
