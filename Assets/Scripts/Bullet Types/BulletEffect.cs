@@ -32,7 +32,6 @@ public abstract class BulletEffect : ScriptableObject
     public Color bodyColor=Color.white;
     public Color secondaryColor=Color.white;
 
-    protected Bullet _parentBullet;
     protected GunController _playerGunController;
 
     /// <summary>
@@ -40,12 +39,11 @@ public abstract class BulletEffect : ScriptableObject
     /// </summary>
     public void DefaultInitialize(Bullet parentBullet, GunController player)
     {
-        _parentBullet = parentBullet;
         _playerGunController = player;
     }
 
-    public abstract void Initialize();
-    public abstract void OnEnemyHit(EnemyTakeDamage type, float damage);
-    public abstract void OnHitOther(Vector3 point, float damage);
+    public abstract void Initialize(Bullet bullet);
+    public abstract void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet);
+    public abstract void OnHitOther(RaycastHit point, float damage, Bullet bullet);
 
 }

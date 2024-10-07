@@ -33,6 +33,7 @@ public class GunController : MonoBehaviour
 
     private void Start()
     {
+        DebugStartingBulletEffects();
         //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
@@ -44,6 +45,16 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         scanMask |= (1 << LayerMask.GetMask("Default"));
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
+    }
+
+    public void DebugStartingBulletEffects()
+    {
+        List<BulletEffect> newBulletEffects=new List<BulletEffect>();
+        foreach(BulletEffect bulletEffect in bulletEffects)
+        {
+            newBulletEffects.Add((BulletEffect)Instantiate(bulletEffect));
+        }
+        bulletEffects = newBulletEffects;
     }
 
     /// <summary>
@@ -63,16 +74,16 @@ public class GunController : MonoBehaviour
     public void AddBulletEffect(BulletEffect bulletEffect)
     {
         if (bulletEffects == null)
-        {
             bulletEffects = new List<BulletEffect>();
-        }
+        
         if(bulletEffect == null)
         {
             Debug.LogError("what the fuck bro");
             Application.Quit();
             return;
         }
-        bulletEffects.Add(bulletEffect);
+        BulletEffect copy = Instantiate(bulletEffect);
+        bulletEffects.Add(copy);
     }
     /// <summary>
     /// shoots all the bullets. calls the ShootBullet function
@@ -97,7 +108,7 @@ public class GunController : MonoBehaviour
     private void ShootBullet()
     {
         //alec put code here
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));
         Vector3 destination;
         if(Physics.Raycast(ray, out RaycastHit hit, 1000f, scanMask))
         {
@@ -125,12 +136,12 @@ public class GunController : MonoBehaviour
         bulletObj.damageAmount = shootingMode.BulletDamage;
         bulletObj.bulletForce = shootingMode.BulletSpeed;
         bulletObj.GetComponent<Rigidbody>().velocity = playerRB.GetPointVelocity(bulletSpawnPoint.position);
-        bulletObj.Initialize(bulletEffects, dir);
+        bulletObj.Initialize(dir);
     }
     
     private void Update()
     {
-        DebugTarget();
+        //DebugTarget();
         secondsSinceLastShoot += Time.deltaTime;
 
         if (!InputEvents.ShootPressed) return;
@@ -146,8 +157,6 @@ public class GunController : MonoBehaviour
     {
         Shoot();
     }
-
-
     private void DebugTarget()
     {
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(.5f, 0.5f, 0f));

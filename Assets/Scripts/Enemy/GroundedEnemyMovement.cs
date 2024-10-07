@@ -184,9 +184,6 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         path.DrawPath();
 
-        Debug.Log(path.position);
-        Debug.Log(path.nextPath.position);
-
         return;
 
         Gizmos.color = Color.yellow;

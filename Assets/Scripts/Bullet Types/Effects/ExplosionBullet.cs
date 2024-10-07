@@ -19,10 +19,10 @@ namespace DefaultNamespace
         [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private GameObject explosionPrefab;
 
-        public override void Initialize(){
+        public override void Initialize(Bullet bullet){
            // enemyLayer = LayerMask.NameToLayer("Enemy");
         }
-        public override void OnEnemyHit(EnemyTakeDamage enemy, float damage)
+        public override void OnEnemyHit(EnemyTakeDamage enemy, float damage, Bullet bullet)
         {
             Ray enemyOrgin = new Ray(enemy.transform.position, enemy.transform.forward);
             RaycastHit[] hits = Physics.SphereCastAll(enemyOrgin, enemyHitExplotionRadius, 0.1f, enemyLayer);
@@ -35,15 +35,15 @@ namespace DefaultNamespace
             explosion.transform.localScale = Vector3.one * enemyHitExplotionRadius * 2;
             explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
         }
-        public override void OnHitOther(Vector3 point, float damage)
+        public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet)
         {
-            RaycastHit[] hits = Physics.SphereCastAll(point, surfaceHitExplosionRadius, Vector3.zero,0.1f, enemyLayer);
+            RaycastHit[] hits = Physics.SphereCastAll(hit.point, surfaceHitExplosionRadius, Vector3.zero,0.1f, enemyLayer);
             for (int i = 1; i < hits.Length; i++)
             {
                 hits[i].collider.GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
                 //Debug.Log(hits[i].collider.gameObject.name + " took " + (damage * DamageMultiplier) + " damage");
             }
-            GameObject explosion = Instantiate(explosionPrefab, point, Quaternion.identity);
+            GameObject explosion = Instantiate(explosionPrefab, hit.point, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * surfaceHitExplosionRadius * 2;
             explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
         }

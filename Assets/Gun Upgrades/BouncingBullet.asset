@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrailColor: {r: 1, g: 1, b: 1, a: 1}
   DamageMultiplier: 0
-  DestroyBulletOnSurfaceContact: 1
+  DestroyBulletOnSurfaceContact: 0
   DestroyBulletOnEntityContact: 1
   UpgradeName: 
+  UpgradeDescription: 
   UpgradeIcon: {fileID: 0}
   bodyColor: {r: 1, g: 1, b: 1, a: 1}
   secondaryColor: {r: 1, g: 1, b: 1, a: 1}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  bounceAimRange: 100
+  TargetEnemies: 0
+  BounceOffSurfaces: 1
+  deflectionAimRange: 3
+  BouncesUntilDestroy: 10
+  SlowdownMultiplier: 0.8
+  OverrideBulletTime: 1

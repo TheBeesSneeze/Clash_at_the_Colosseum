@@ -21,12 +21,12 @@ namespace DefaultNamespace
         public int MaxEnemiesToZap;
         [SerializeField] LineRenderer line;
 
-        public override void Initialize()
+        public override void Initialize(Bullet bullet)
         {
             //throw new System.NotImplementedException();
         }
 
-        public override void OnEnemyHit(EnemyTakeDamage type, float damage)
+        public override void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet)
         {
             EnemyTakeDamage[] closeEnemies = GetEnemiesInRange(type);
 
@@ -42,7 +42,7 @@ namespace DefaultNamespace
             }
         }
 
-        public override void OnHitOther(Vector3 point, float damage) { }
+        public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet) { }
 
         private void Electrocute(EnemyTakeDamage enemy, float damage, Vector3 origin)
         {
