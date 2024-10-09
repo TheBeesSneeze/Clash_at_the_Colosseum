@@ -28,6 +28,9 @@ public class BulletTrail : MonoBehaviour
         if (!gameObject.activeSelf)
             return;
 
+        if (effects.Count <= 0)
+            return;
+
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed >= transitionSeconds)
