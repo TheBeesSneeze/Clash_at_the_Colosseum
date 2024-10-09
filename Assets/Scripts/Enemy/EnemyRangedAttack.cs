@@ -133,13 +133,13 @@ public class EnemyRangedAttack : MonoBehaviour
         PublicEvents.OnEnemyShoot.Invoke();
     }
 
-    private GameObject InstantiateBullet(RangedBulletType type)
+    private GameObject InstantiateBullet(EnemyType type)
     {
-        if(type == RangedBulletType.Cyclops)
+        if(type == EnemyType.Cyclops)
         {
             return BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
         }
-        else if(type == RangedBulletType.Harpy)
+        else if(type == EnemyType.Harpy)
         {
             return BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
         }

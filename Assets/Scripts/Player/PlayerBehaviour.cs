@@ -46,7 +46,7 @@ public class PlayerBehaviour : CharacterType
     {
         if (secondsSinceLastTookDamage >= stats.SecondsUntilHealing)
         {
-            RegenHealth();
+            //RegenHealth();
         }
         secondsSinceLastTookDamage += Time.deltaTime;
         
@@ -60,10 +60,9 @@ public class PlayerBehaviour : CharacterType
 
     }
 
-    private void RegenHealth()
+    public void RegenHealth()
     {
-        CurrentHealth += stats.HealthRegen * Time.deltaTime;
-        CurrentHealth = Mathf.Min (CurrentHealth, stats.DefaultHealth);
+        CurrentHealth = stats.DefaultHealth; 
         healthBar.SetHealth(CurrentHealth);
     }
 

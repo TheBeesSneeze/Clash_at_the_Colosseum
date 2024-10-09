@@ -18,7 +18,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float EnemyDamage;
     [SerializeField] public float EnemyAttackRate;
     [SerializeField][Min(0)] public float EnemyAttackRange;
-    [SerializeField] public RangedBulletType bulletType = RangedBulletType.Basic;
+    [SerializeField] public EnemyType bulletType = EnemyType.Melee;
+    [SerializeField][Min(0)] public float healCharge; 
 
     [Header("Continous Shots Variables")]
     [SerializeField] public bool canConsecutiveShoot = false;
@@ -69,9 +70,10 @@ public class EnemyStats : MonoBehaviour
    
 }
 
-public enum RangedBulletType
+public enum EnemyType
 {
-    Basic,
+    Melee,
     Harpy,
-    Cyclops
+    Cyclops,
+    Boss
 }
