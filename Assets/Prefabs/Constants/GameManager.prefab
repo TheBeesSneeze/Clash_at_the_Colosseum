@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6ef034ddd573445893f399613c9c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stages:
+  - {fileID: 11400000, guid: 7a49183b6b98f01479d4a0f1b74b78ee, type: 2}
+  transitonSeconds: 5
+  transitonDelay: 1
   BulletEffects:
   - {fileID: 11400000, guid: 794ef94bb661be949a92e6c550c80db2, type: 2}
   - {fileID: 11400000, guid: cc1100b5625a2534da4e041ff4e37414, type: 2}
@@ -54,13 +58,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d17d2bb708d5eb847bee124c80774bf8, type: 2}
   CellFallTime: 10
   CellFallDistance: 25
-  stages:
-  - {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
-  - {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
-  - {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
-  - {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
-  transitonSeconds: 5
-  transitonDelay: 1
   amountToPool: 5
   bullet: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   basicEnemyBullet: {fileID: 5939144570409094839, guid: cbb7b2a784ab8024ab175d21a05b9407, type: 3}
@@ -144,3 +141,5 @@ MonoBehaviour:
     prefab: {fileID: 4605286496879608125, guid: 22899e0ff542bb44295bd6d5c2831227, type: 3}
   - enemyTag: 2
     prefab: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
+  - enemyTag: 4
+    prefab: {fileID: 3195422292412472386, guid: 210ba51f22f7dd04e934a2e83dfccc4b, type: 3}
