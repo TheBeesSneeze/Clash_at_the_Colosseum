@@ -93,7 +93,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         if(enemySpawnPoints == null)
             return;
 
-        for(int i = 0; i < enemySpawnPoints.Length && i< StageManager.enemiesToSpawn; i++)
+        for(int i = 0; i < enemySpawnPoints.Length; i++)
         {
             Debug.Log("spawning " + enemySpawnPoints[i].enemyToSpawn);
             if (_enemyPrefabs.TryGetValue(enemySpawnPoints[i].enemyToSpawn, out GameObject enemyType))

@@ -14,7 +14,6 @@ public class DeathPlane : MonoBehaviour
         {
             other.GetComponent<PlayerBehaviour>().Die();
         }
-
         if (other.GetComponent<EnemyTakeDamage>() != null)
         {
             other.GetComponent<EnemyTakeDamage>().Die();

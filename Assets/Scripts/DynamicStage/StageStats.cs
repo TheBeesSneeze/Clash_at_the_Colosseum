@@ -15,7 +15,7 @@ using UnityEngine;
 public class StageStats : ScriptableObject
 {
     public TextAsset StageLayout;
-    public int NumberOfEnemiesForLevel;
+    //public int NumberOfEnemiesForLevel;
     //public GameObject[] EnemyPrefabs;
     public float timeTillEnemiesSpawn;
     public bool BulletEffectOnClear=true;
