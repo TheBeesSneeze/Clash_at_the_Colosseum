@@ -11,12 +11,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyTakeDamage))]
 public class EnemyStats : MonoBehaviour
 {
     [Header("Combat Variables")]
     [SerializeField][Min(0)] public float EnemyHealth;
     [SerializeField][Min(0)] public float EnemyDamage;
-    [SerializeField] public float EnemyAttackRate;
+    [Tooltip("time between enemy attacks")]
+    [SerializeField] public float AttackRate;
+    [SerializeField] public float AttackCooldown;
     [SerializeField][Min(0)] public float EnemyAttackRange;
     [SerializeField] public RangedBulletType bulletType = RangedBulletType.Basic;
 
@@ -27,13 +30,14 @@ public class EnemyStats : MonoBehaviour
     //[SerializeField] public GameObject playerObject;
 
     [Header("Movement Variables")]
-    [SerializeField][Min(0)] private float enemyMovementSpeed;
+    [SerializeField][Min(0)] private float _enemyMovementSpeed;
     [HideInInspector] public float MoveSpeed { 
         get {
             if (slowedDownCountdown <= 0)
-                return enemyMovementSpeed;
+                return _enemyMovementSpeed;
             else return slowedSpeed;
-        } }
+        }
+    }
     private float slowedDownCountdown;
     private float slowedSpeed;
     [SerializeField][Min(0)] public float TurningSpeed;
@@ -48,6 +52,21 @@ public class EnemyStats : MonoBehaviour
 
     
     #region affectors
+
+    public void OnEnemyDeath()
+    {
+        if (GetComponent<EnemyAnimator>() == null)
+        {
+            GetComponent<EnemyTakeDamage>().Die();
+        }
+        //VerticalSpeed = 0;
+        _enemyMovementSpeed = 0;
+        slowedSpeed = 0;
+        numberOfConsecutiveShots = 0;
+        EnemyDamage = 0;
+        HeightAboveGround = 0;
+
+    }    
 
     //updating countdown timer
     private void Update()
