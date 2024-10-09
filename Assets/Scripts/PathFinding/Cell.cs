@@ -48,11 +48,7 @@ namespace PathFinding
 
             GetNeighbors();
             PublicEvents.OnStageTransitionFinish.AddListener(GetNeighbors);
-        }
-
-        private void Start()
-        {
-            OnBossPhase3Start();
+            PublicEvents.OnBossPhaseThreeStart.AddListener(OnBossPhase3Start);
         }
 
         private void OnBossPhase3Start()
