@@ -90,13 +90,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 225
   EnemyDamage: 30
-  EnemyAttackRate: 5
+  AttackRate: 5
+  AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  enemyMovementSpeed: 3.25
+  _enemyMovementSpeed: 0
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1
@@ -203,6 +204,8 @@ MonoBehaviour:
   topDownSpriteDistance: 3
   playerSpriteChangeDistance: 5
   rotationReference: {fileID: 7795032412208802762}
+  damaged: 0
+  attacking: 0
 --- !u!1 &8760789773571948285
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,15 @@ public class EnemyAnimator : MonoBehaviour
     [SerializeField] private Transform rotationReference;
 
     private static Transform player;
-    private bool dead;
-    public bool damaged;
-    public bool attacking;
+    private bool dead=false;
+    public bool damaged=false;
+    public bool attacking = false;
+    
+    public AnimationState state;
+    public enum AnimationState
+    {
+        Front, Left, Right, Death, Damage, Attack, Top, Back
+    }
 
     // Use this for initialization
     void Start()
@@ -46,43 +52,62 @@ public class EnemyAnimator : MonoBehaviour
         if (dead || damaged || attacking)
             return;
         
-        float angle = transform.eulerAngles.y-rotationReference.eulerAngles.y;
-        angle = (angle + 360) % 360;
-
         float yDiff = player.position.y - rotationReference.position.y;
         if (yDiff > topDownSpriteDistance)
         {
             if (yDiff * yDiff > Mathf.Abs(
                 Mathf.Pow(player.position.x - transform.position.x, 2) +
-                Mathf.Pow(player.position.y - transform.position.y, 2)))
+                Mathf.Pow(player.position.z - transform.position.z, 2)))
             {
-                animator.SetTrigger("Top");
+                if(state != AnimationState.Top)
+                    animator.SetTrigger("Top");
+                state = AnimationState.Top;
                 return;
             }
         }
 
         if(Vector3.Distance(player.position, transform.position) < playerSpriteChangeDistance)
         {
-            animator.SetTrigger("Front");
+            if (state != AnimationState.Front)
+                animator.SetTrigger("Front");
+            state = AnimationState.Front;
             return;
         }
 
+        float angle = transform.eulerAngles.y - rotationReference.eulerAngles.y;
+        angle = (angle + 360) % 360;
 
         //Update sprites
         if (angle < 45 || angle > 315)
-            animator.SetTrigger("Front");
+        {
+            if (state != AnimationState.Front)
+                animator.SetTrigger("Front");
+            state = AnimationState.Front;
+        }
         if (angle > 45 && angle < 135)
-            animator.SetTrigger("Right");
+        {
+            if (state != AnimationState.Right)
+                animator.SetTrigger("Right");
+            state = AnimationState.Right;
+        }
         if (angle > 135 && angle < 225)
-            animator.SetTrigger("Bac");
+        {
+            if (state != AnimationState.Back)
+                animator.SetTrigger("Back");
+            state = AnimationState.Back;
+        }
         if (angle > 225 && angle < 315)
-            animator.SetTrigger("Left");
+        {
+            if(state != AnimationState.Left)
+                animator.SetTrigger("Left");
+            state = AnimationState.Left;
+        }
 
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + transform.parent.forward);
+        Gizmos.DrawLine(transform.position, transform.position+transform.forward);
     }
 }
