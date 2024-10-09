@@ -44,22 +44,18 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (currentHealth < 0)
-            return; //dude stop the horse is already dead
+        if (enemyAnimator != null)
+            enemyAnimator.OnTakeDamage(currentHealth);
 
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
-
-        if(enemyAnimator != null)
-            enemyAnimator.OnTakeDamage(damage);
 
         if (currentHealth < damage && isStillAlive) 
         {
             stats.OnEnemyDeath();
         }
         PublicEvents.OnEnemyDamage.Invoke();
-        
     }
 
     public virtual void Die()

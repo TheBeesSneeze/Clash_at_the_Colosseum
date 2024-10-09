@@ -40,11 +40,17 @@ public class EnemyAnimator : MonoBehaviour
     {
         if(newHealth < 0)
         {
-            animator.SetTrigger("Death");
+            animator.SetBool("Death",true);
             dead = true;
             return;
         }
         animator.SetTrigger("Damage");
+        damaged = true;
+    }
+
+    public void OnDamageAnimationEnd()
+    {
+        damaged = false;
     }
 
     void LateUpdate()
