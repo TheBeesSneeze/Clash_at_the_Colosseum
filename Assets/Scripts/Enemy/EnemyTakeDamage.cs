@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
+[RequireComponent(typeof(EnemyStats))]
 public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;
@@ -20,7 +21,7 @@ public class EnemyTakeDamage : MonoBehaviour
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
+    private EnemyAnimator enemyAnimator;
 
 
     private bool isStillAlive;
@@ -29,6 +30,8 @@ public class EnemyTakeDamage : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         currentHealth = stats.EnemyHealth;
         isStillAlive = true;
+        enemyAnimator = GetComponent<EnemyAnimator>();
+
     }
     private void Update()
     {
@@ -41,17 +44,22 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (currentHealth < 0)
+            return; //dude stop the horse is already dead
+
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
+
+        if(enemyAnimator != null)
+            enemyAnimator.OnTakeDamage(damage);
+
         if (currentHealth < damage && isStillAlive) 
         {
-            Die();
+            stats.OnEnemyDeath();
         }
-        else
-        {
-            PublicEvents.OnEnemyDamage.Invoke();
-        }
+        PublicEvents.OnEnemyDamage.Invoke();
+        
     }
 
     public virtual void Die()
