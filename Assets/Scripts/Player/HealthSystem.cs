@@ -8,7 +8,12 @@ public class HealthSystem : MonoBehaviour
 {
     public Slider healCharge;
     [SerializeField] private float maxChargeNeeded;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
+    private GameObject playerObject; 
+    private PlayerBehaviour playerBehaviour;
+    private PlayerStats playerStats;
+    private bool isHealing;
+    private float healPerSecond;
+    private float timeElapsed;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +21,23 @@ public class HealthSystem : MonoBehaviour
         InputEvents.Instance.HealStarted.AddListener(heal);
         healCharge.value = 0;
         healCharge.maxValue = maxChargeNeeded;
+        playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
+        playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+        playerStats = playerObject.GetComponent<PlayerStats>();
+
+        healPerSecond = (playerStats.DefaultHealth) / (playerStats.secondsTillFull);
+        timeElapsed = 0;
+    }
+
+    private void Update()
+    {
+        if (isHealing)
+        {
+            if(timeElapsed <= playerStats.secondsTillFull)
+            {
+
+            }
+        }
     }
 
     public void addCharge(float charge)
@@ -28,8 +50,9 @@ public class HealthSystem : MonoBehaviour
         if (healCharge.value >= maxChargeNeeded)
         {
             print("healing");
-            playerBehaviour.RegenHealth();
+            isHealing = true;
             healCharge.value = 0;
+            timeElapsed = 0;
         }
         else
         {
