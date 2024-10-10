@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -179,14 +179,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 125
   EnemyDamage: 1
-  EnemyAttackRate: 5
+  AttackRate: 5
+  AttackCooldown: 5
   EnemyAttackRange: 5
   bulletType: 1
   healCharge: 5
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  enemyMovementSpeed: 5
+  _enemyMovementSpeed: 0
   TurningSpeed: 1
   StopSpeed: 1
   StopDistanceToPlayer: 6

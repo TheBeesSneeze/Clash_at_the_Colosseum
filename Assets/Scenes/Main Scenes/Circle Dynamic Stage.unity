@@ -697,6 +697,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: stages.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4820e59d3537d494f85a4a34a30f07d6, type: 2}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
