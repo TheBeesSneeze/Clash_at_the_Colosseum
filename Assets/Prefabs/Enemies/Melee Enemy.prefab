@@ -94,6 +94,7 @@ MonoBehaviour:
   AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
+  healCharge: 5
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
@@ -120,6 +121,7 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageColorTime: 0.5
   spriteRenderer: {fileID: 8353514217853516538}
+  healthSystem: {fileID: 0}
 --- !u!114 &6631860369869672511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +208,7 @@ MonoBehaviour:
   rotationReference: {fileID: 7795032412208802762}
   damaged: 0
   attacking: 0
+  state: 0
 --- !u!1 &8760789773571948285
 GameObject:
   m_ObjectHideFlags: 0
