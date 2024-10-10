@@ -62,7 +62,7 @@ public class PlayerBehaviour : CharacterType
 
     public void RegenHealth(float healAmount)
     {
-        CurrentHealth += healAmount; 
+        CurrentHealth = healAmount; 
         healthBar.SetHealth(CurrentHealth);
     }
 

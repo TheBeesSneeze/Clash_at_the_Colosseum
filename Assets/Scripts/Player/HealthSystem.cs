@@ -35,7 +35,12 @@ public class HealthSystem : MonoBehaviour
         {
             if(timeElapsed <= playerStats.secondsTillFull)
             {
-
+                /*make a float that holds current health
+                 * get default - current to know how much needs healed
+                 * calculate what percent that is of default 
+                 * get new secs that = secstillheal * %default
+                 * calculate healPerSecond
+                 * Function to heal correct amount*/
             }
         }
     }
