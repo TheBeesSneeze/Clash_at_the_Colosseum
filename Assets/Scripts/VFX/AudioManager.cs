@@ -36,7 +36,8 @@ public class AudioManager : MonoBehaviour
         PublicEvents.OnMeleeEnemyAttack.AddListener(MeleeEnemyAttack);
         PublicEvents.OnGrapple.AddListener(Grapple);
         PublicEvents.OnDash.AddListener(Dash);
-        PublicEvents.OnUpgradeReceived.AddListener(UpgradeReceived);
+        //PublicEvents.OnUpgradeReceived.AddListener(UpgradeReceived);
+        PublicEvents.OnUpgradeReceived += UpgradeReceived; //bro why are you different
         PublicEvents.OnStageTransition.AddListener(StageTransition);
 
 
@@ -99,7 +100,7 @@ public class AudioManager : MonoBehaviour
     }
 
     //upgrade receive
-    private void UpgradeReceived()
+    private void UpgradeReceived(BulletEffect bulletEffect)
     {
         UpgradeReceiveSound.PlaySound();
     }

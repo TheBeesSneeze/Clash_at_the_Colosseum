@@ -1,3 +1,9 @@
+///
+/// Toby
+/// (omg im on the airplane rn)
+///
+
+using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +13,7 @@ using UnityEngine.UI;
 public class GunGameplaySprite : MonoBehaviour
 {
     [SerializeField] private Image gunImage;
+    [SerializeField] private Image lightningImage;
     private GunController gunController;
     private float _time=0;
     private GunState gunState = GunState.idle;
@@ -23,6 +30,7 @@ public class GunGameplaySprite : MonoBehaviour
         gunAnimation = gunController.shootingMode.GameplayShootSprite;
 
         PublicEvents.OnPlayerShoot.AddListener(OnGunShoot);
+        PublicEvents.OnUpgradeReceived += OnBulletEffectGet;
     }
 
     private void OnGunShoot()
@@ -88,6 +96,16 @@ public class GunGameplaySprite : MonoBehaviour
         if (sprite == null) return;
 
         gunImage.sprite = sprite.baseSprite;
+
+        if(lightningImage.isActiveAndEnabled) lightningImage.sprite = sprite.lightningSprite; 
+    }
+
+    private void OnBulletEffectGet(BulletEffect effect)
+    {
+        //not super huge on the way im doing this. if u have any better ideas then im open to em
+
+        if(effect.GetType() == typeof(ElectricityBullet))
+            lightningImage.gameObject.SetActive(true);
     }
 }
 public enum GunState
