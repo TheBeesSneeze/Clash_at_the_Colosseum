@@ -17,7 +17,7 @@ using Random = UnityEngine.Random;
 public class EnemyRangedAttack : MonoBehaviour
 {
     private EnemyStats stats;
-    private GameObject playerObject;
+    private static GameObject playerObject;
     private float coolDown; 
     private float fireRate;
     private float slowFireRate;
@@ -34,10 +34,11 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
-        fireRate = stats.EnemyAttackRate;
+        if(playerObject == null)
+            playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
-        coolDown = stats.EnemyAttackRate;
+        coolDown = stats.AttackRate;
         canMultiShoot = stats.canConsecutiveShoot;
         shotsFired = 0;
         

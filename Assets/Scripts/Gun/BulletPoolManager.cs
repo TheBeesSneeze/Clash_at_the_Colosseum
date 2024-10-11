@@ -133,5 +133,8 @@ public class BulletPoolManager
     {
         Debug.Log("its disablin time");
         bulletList = new List<GameObject>();
+        cyclopsEnemyBulletList = new List<GameObject>();
+        harpyEnemyBulletList = new List<GameObject>();
+        basicEnemyBulletList = new List<GameObject>();
     }
 }
