@@ -17,7 +17,7 @@ public class EnemyMelee : MonoBehaviour
 {
     
     private EnemyStats stats;
-    private PlayerBehaviour player;
+    private static PlayerBehaviour player;
     private GameObject playerObject;
     private float coolDown;
     private float timeBetweenAttacks;
@@ -25,12 +25,11 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-       // playerObject = stats.playerObject;
-        //player = playerObject.GetComponent<PlayerBehaviour>();
-        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+        if(player == null)
+            player = GameObject.FindObjectOfType<PlayerBehaviour>();
         playerObject = player.gameObject;
-        timeBetweenAttacks = stats.EnemyAttackRate;
-        coolDown =stats.EnemyAttackRate;
+        timeBetweenAttacks = stats.AttackRate;
+        coolDown =stats.AttackCooldown;
     }
     private void Update()
     {
