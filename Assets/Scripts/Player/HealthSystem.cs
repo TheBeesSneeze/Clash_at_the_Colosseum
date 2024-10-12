@@ -33,17 +33,30 @@ public class HealthSystem : MonoBehaviour
     {
         if (isHealing)
         {
+            timeElapsed += Time.deltaTime;
             if(timeElapsed <= playerStats.secondsTillFull)
             {
+                float newHealth = Mathf.Max(CalculateHealth(), playerBehaviour.CurrentHealth);
+                playerBehaviour.RegenHealth(Mathf.Min(newHealth, playerStats.DefaultHealth));
                 /*make a float that holds current health
                  * get default - current to know how much needs healed
                  * calculate what percent that is of default 
-                 * get new secs that = secstillheal * %default
                  * calculate healPerSecond
                  * Function to heal correct amount*/
             }
+            else 
+            {
+                playerBehaviour.RegenHealth(playerStats.DefaultHealth);
+                isHealing = false;
+            }
         }
     }
+
+    private float CalculateHealth()
+    {
+        float newHealth = timeElapsed * healPerSecond;
+        return newHealth;
+    }    
 
     public void addCharge(float charge)
     {
