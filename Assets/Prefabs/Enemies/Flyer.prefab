@@ -164,6 +164,7 @@ MonoBehaviour:
   AttackCooldown: 5
   EnemyAttackRange: 5
   bulletType: 1
+  healCharge: 5
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
@@ -206,6 +207,7 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageColorTime: 0.5
   spriteRenderer: {fileID: 5820015479103233236}
+  healthSystem: {fileID: 0}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
   m_ObjectHideFlags: 0
