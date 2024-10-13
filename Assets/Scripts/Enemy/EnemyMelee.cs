@@ -21,6 +21,7 @@ public class EnemyMelee : MonoBehaviour
     private GameObject playerObject;
     private float coolDown;
     private float timeBetweenAttacks;
+    private EnemyAnimator animator;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class EnemyMelee : MonoBehaviour
             player = GameObject.FindObjectOfType<PlayerBehaviour>();
         playerObject = player.gameObject;
         timeBetweenAttacks = stats.AttackRate;
+        animator = GetComponent<EnemyAnimator>();
         coolDown =stats.AttackCooldown;
     }
     private void Update()
@@ -49,8 +51,10 @@ public class EnemyMelee : MonoBehaviour
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();
 
-                coolDown = timeBetweenAttacks; 
-            }
+                coolDown = timeBetweenAttacks;
+                if (animator != null)
+                    animator.OnAttackStart();
+            };
         }
 
     }

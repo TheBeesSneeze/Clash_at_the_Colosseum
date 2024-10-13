@@ -70,7 +70,7 @@ public class GunController : MonoBehaviour
             Application.Quit(); // this is so extreme lol i love this
         }
         shootingMode = shootMode;
-        shootHeld = true;
+        shootHeld = true; 
     }
     public void AddBulletEffect(BulletEffect bulletEffect)
     {
@@ -86,6 +86,7 @@ public class GunController : MonoBehaviour
         //BulletEffect copy = Instantiate(bulletEffect);
         //bulletEffects.Add(copy);
         bulletEffects.Add(bulletEffect);
+        PublicEvents.OnUpgradeReceived?.Invoke(bulletEffect);
         BulletPoolManager.AddPlayerBulletEffect(bulletEffect);
     }
     /// <summary>
