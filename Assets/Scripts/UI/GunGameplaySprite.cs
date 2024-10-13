@@ -97,15 +97,15 @@ public class GunGameplaySprite : MonoBehaviour
 
         gunImage.sprite = sprite.baseSprite;
 
-        if(lightningImage.isActiveAndEnabled) lightningImage.sprite = sprite.lightningSprite; 
+        if(lightningImage.enabled) lightningImage.sprite = sprite.lightningSprite; 
     }
 
     private void OnBulletEffectGet(BulletEffect effect)
     {
         //not super huge on the way im doing this. if u have any better ideas then im open to em
 
-        if(effect.GetType() == typeof(ElectricityBullet))
-            lightningImage.gameObject.SetActive(true);
+        if (effect.GetType() == typeof(ElectricityBullet))
+            lightningImage.enabled = true;
     }
 }
 public enum GunState
