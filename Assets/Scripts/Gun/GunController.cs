@@ -18,6 +18,8 @@ public class GunController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] public ShootingMode shootingMode;
     [SerializeField] public GameObject BulletPrefab;
+    [SerializeField][Min(1)] private int shotsTillCoolDown;
+    [SerializeField][Min(0)] private float overheatCoolDown;
     
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
@@ -31,6 +33,8 @@ public class GunController : MonoBehaviour
     private Animator animator;
 
     private bool shootHeld;
+    private int currentShots;
+    private float cooldown;
 
     private void Start()
     {
@@ -46,6 +50,8 @@ public class GunController : MonoBehaviour
         //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         scanMask |= (1 << LayerMask.GetMask("Default"));
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
+        currentShots = 0;
+        cooldown = 0;
     }
 
     public void DebugStartingBulletEffects()
@@ -94,14 +100,27 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        secondsSinceLastShoot = 0;
-
-        for (int i = 0; i < shootingMode.BulletsPerShot; i++)
+        if(cooldown <= 0f)
         {
-            ShootBullet();
-        }
+            if (currentShots < shotsTillCoolDown)
+            {
+                secondsSinceLastShoot = 0;
 
-        PublicEvents.OnPlayerShoot.Invoke();
+                for (int i = 0; i < shootingMode.BulletsPerShot; i++)
+                {
+                    ShootBullet();
+                }
+                ++currentShots;
+                PublicEvents.OnPlayerShoot.Invoke();
+            }
+            else
+            {
+                currentShots = 0;
+                cooldown = overheatCoolDown;
+            }
+        }
+        
+        
 
         //playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }
@@ -147,6 +166,7 @@ public class GunController : MonoBehaviour
     {
         //DebugTarget();
         secondsSinceLastShoot += Time.deltaTime;
+        cooldown -= Time.deltaTime;
 
         if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
@@ -154,7 +174,11 @@ public class GunController : MonoBehaviour
         if (!shootingMode.CanHoldFire) return;
 
         //shootin time
+        
         Shoot();
+        
+        
+        
     }
 
     private void OnShootStart()

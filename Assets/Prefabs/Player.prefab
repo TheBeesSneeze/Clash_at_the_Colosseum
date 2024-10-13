@@ -259,10 +259,10 @@ MonoBehaviour:
   DashCoolDown: 3
   Friction: 1
   AirMovementMultiplier: 0.25
-  HealthRegen: 15
-  SecondsUntilHealing: 2
+  secondsTillFull: 0
   AirJumps: 1
   JumpHeight: 5
+  SecondJumpHeight: 2.5
   GravityBoost: 15
 --- !u!114 &2558676147345522402
 MonoBehaviour:
@@ -276,7 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2231677ca646d1428c78cba20d2e5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _airJumps: 1
   jumpRaycastDistance: 1
   ConsistentJumps: 1
   cameraHolder: {fileID: 3447060050390161073}
@@ -317,6 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
+  shotsTillCoolDown: 15
+  overheatCoolDown: 2
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffects: []
   secondsSinceLastShoot: 0

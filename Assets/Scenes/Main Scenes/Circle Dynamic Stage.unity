@@ -1199,6 +1199,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
     - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: overheatCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: shotsTillCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: bulletEffects.Array.size
       value: 0
       objectReference: {fileID: 0}
