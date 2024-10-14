@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4770044433410946019}
   - component: {fileID: 6259805595287225161}
   m_Layer: 0
-  m_Name: cyclops rough final
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: 1426887766406785384}
   - component: {fileID: 8266884244933607397}
   - component: {fileID: 2893096892758536757}
+  - component: {fileID: 2143556855426773734}
+  - component: {fileID: 1611578784109909493}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
@@ -253,7 +255,6 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageColorTime: 0.5
   spriteRenderer: {fileID: 4770044433410946019}
-  healthSystem: {fileID: 0}
 --- !u!114 &2893096892758536757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,3 +269,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   currentCell: {fileID: 0}
+--- !u!95 &2143556855426773734
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996317265162831292}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ade394680fd4aa24199ce037fa1688c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1611578784109909493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7996317265162831292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0104053507940804eb71ce90254e4b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2143556855426773734}
+  topDownSpriteDistance: 3
+  playerSpriteChangeDistance: 0
+  rotationReference: {fileID: 3007730471301732929}
+  state: 0
