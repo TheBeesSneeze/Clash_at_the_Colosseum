@@ -12,7 +12,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     private float _verticalSpeed;
     private float _heightAboveGround;
     private float _stoppingDistanceToPlayer;
-
+    private float r;
     private Transform _player;
     private int _groundMask;
     private Rigidbody rb;
@@ -20,6 +20,7 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     private void Awake()
     {
+        r = Random.Range(-1, 1);
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -69,6 +70,9 @@ public class FlyingEnemyMovement : MonoBehaviour
         Vector3 playerPos = _player.position;
         enemyPos.y = y;
         playerPos.y = y;
+
+        playerPos.x += r;
+        playerPos.z += r ;
 
         //stay still
         float distance = Vector3.Distance(enemyPos, playerPos);
