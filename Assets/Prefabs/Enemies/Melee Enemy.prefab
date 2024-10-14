@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6631860369869672511}
   - component: {fileID: 220553809436584676}
   - component: {fileID: 5260031247862540590}
+  - component: {fileID: 3626825542950979533}
+  - component: {fileID: 7172312253035401016}
   m_Layer: 8
   m_Name: Melee Enemy
   m_TagString: Untagged
@@ -88,9 +90,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 225
   EnemyDamage: 30
-  EnemyAttackRate: 5
+  AttackRate: 5
+  AttackCooldown: 1
   EnemyAttackRange: 1.5
-  enemyMovementSpeed: 3.25
+  bulletType: 0
+  canConsecutiveShoot: 0
+  numberOfConsecutiveShots: 0
+  timeBetweenContinousShots: 0
+  _enemyMovementSpeed: 0
   TurningSpeed: 3
   StopSpeed: 5
   StopDistanceToPlayer: 1
@@ -109,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d9709d0cf1b541bbf9b6f8b5f5c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageColorTime: 0.5
   spriteRenderer: {fileID: 8353514217853516538}
@@ -159,6 +167,44 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.90581363
   m_Center: {x: 0, y: 0, z: 0.043817222}
+--- !u!95 &3626825542950979533
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605286496879608125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6539e81e39ddcb346996ae98c9882a0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7172312253035401016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605286496879608125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0104053507940804eb71ce90254e4b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3626825542950979533}
+  topDownSpriteDistance: 3
+  playerSpriteChangeDistance: 5
+  rotationReference: {fileID: 7795032412208802762}
+  state: 0
 --- !u!1 &8760789773571948285
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +217,7 @@ GameObject:
   - component: {fileID: 8353514217853516538}
   - component: {fileID: 7347180719966320934}
   m_Layer: 0
-  m_Name: Minotaur Rough Final
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,10 +302,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf975f4ba874ad4e809123178da0381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frontSprite: {fileID: 21300000, guid: 5456780f4bf78fa4fb53cf3a25b671b8, type: 3}
-  _leftSprite: {fileID: 21300000, guid: 828614ea6b4ab5a41b81c96193f3be89, type: 3}
-  _rightSprite: {fileID: 21300000, guid: adbd19d53a15ec0408d5b133c38682bb, type: 3}
-  _backSprite: {fileID: 21300000, guid: 5456780f4bf78fa4fb53cf3a25b671b8, type: 3}
-  closeToPlayerSprite: {fileID: 0}
-  playerSpriteChangeDistance: 0
-  rotationReference: {fileID: 7795032412208802762}

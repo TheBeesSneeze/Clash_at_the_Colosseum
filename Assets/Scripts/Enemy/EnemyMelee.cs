@@ -17,20 +17,21 @@ public class EnemyMelee : MonoBehaviour
 {
     
     private EnemyStats stats;
-    private PlayerBehaviour player;
+    private static PlayerBehaviour player;
     private GameObject playerObject;
     private float coolDown;
     private float timeBetweenAttacks;
+    private EnemyAnimator animator;
 
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-       // playerObject = stats.playerObject;
-        //player = playerObject.GetComponent<PlayerBehaviour>();
-        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+        if(player == null)
+            player = GameObject.FindObjectOfType<PlayerBehaviour>();
         playerObject = player.gameObject;
-        timeBetweenAttacks = stats.EnemyAttackRate;
-        coolDown =stats.EnemyAttackRate;
+        timeBetweenAttacks = stats.AttackRate;
+        animator = GetComponent<EnemyAnimator>();
+        coolDown =stats.AttackCooldown;
     }
     private void Update()
     {
@@ -50,8 +51,10 @@ public class EnemyMelee : MonoBehaviour
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();
 
-                coolDown = timeBetweenAttacks; 
-            }
+                coolDown = timeBetweenAttacks;
+                if (animator != null)
+                    animator.OnAttackStart();
+            };
         }
 
     }

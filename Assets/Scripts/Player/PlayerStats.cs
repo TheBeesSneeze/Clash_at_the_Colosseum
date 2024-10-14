@@ -35,10 +35,8 @@ public class PlayerStats : MonoBehaviour
     public float Friction = 0.175f;
     [Tooltip("What percent of normal movement will get applied whilst moving in the air")][Min(0)]
     public float AirMovementMultiplier = 0.5f;
-    [Tooltip("How much player regens every second.")][Min(0)]
-    public float HealthRegen = 0.25f;
-    [Tooltip("Seconds until player heals.")][Min(0)]
-    public int SecondsUntilHealing = 2;
+    [Tooltip("Seconds for full heal")]
+    public float secondsTillFull;
     [Header("Jumps")]
     //[Tooltip("how much velocity is carried over from one frame to another")]
     //public float PlayerSlipperyness; //@TODO

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
+[RequireComponent(typeof(EnemyStats))]
 public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;
@@ -20,7 +21,8 @@ public class EnemyTakeDamage : MonoBehaviour
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
+    private EnemyAnimator enemyAnimator;
+    private HealthSystem healthSystem;
 
 
     private bool isStillAlive;
@@ -29,6 +31,9 @@ public class EnemyTakeDamage : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         currentHealth = stats.EnemyHealth;
         isStillAlive = true;
+        enemyAnimator = GetComponent<EnemyAnimator>();
+        healthSystem = FindObjectOfType<HealthSystem>();
+
     }
     private void Update()
     {
@@ -41,17 +46,18 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (enemyAnimator != null)
+            enemyAnimator.OnTakeDamage(currentHealth);
+
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
+
         if (currentHealth < damage && isStillAlive) 
         {
-            Die();
+            stats.OnEnemyDeath();
         }
-        else
-        {
-            PublicEvents.OnEnemyDamage.Invoke();
-        }
+        PublicEvents.OnEnemyDamage.Invoke();
     }
 
     public virtual void Die()
@@ -59,6 +65,7 @@ public class EnemyTakeDamage : MonoBehaviour
         Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
+        healthSystem.addCharge(stats.healCharge);
         PublicEvents.OnEnemyDeath.Invoke();
     }
 

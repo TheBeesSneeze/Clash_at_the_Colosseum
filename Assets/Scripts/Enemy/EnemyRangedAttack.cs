@@ -17,13 +17,14 @@ using Random = UnityEngine.Random;
 public class EnemyRangedAttack : MonoBehaviour
 {
     private EnemyStats stats;
-    private GameObject playerObject;
+    private static GameObject playerObject;
     private float coolDown; 
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
     private bool canMultiShoot;
     private int shotsFired;
+    private EnemyAnimator animator;
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -34,10 +35,12 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
-        fireRate = stats.EnemyAttackRate;
+        if(playerObject == null)
+            playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        animator = GetComponent<EnemyAnimator>();
+        fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
-        coolDown = stats.EnemyAttackRate;
+        coolDown = stats.AttackRate;
         canMultiShoot = stats.canConsecutiveShoot;
         shotsFired = 0;
         
@@ -131,15 +134,16 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.OnBulletShoot(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
+        if(animator!= null) animator.OnAttackStart();
     }
 
-    private GameObject InstantiateBullet(RangedBulletType type)
+    private GameObject InstantiateBullet(EnemyType type)
     {
-        if(type == RangedBulletType.Cyclops)
+        if(type == EnemyType.Cyclops)
         {
             return BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
         }
-        else if(type == RangedBulletType.Harpy)
+        else if(type == EnemyType.Harpy)
         {
             return BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
         }
