@@ -25,6 +25,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private bool canMultiShoot;
     private int shotsFired;
     private EnemyAnimator animator;
+    private EnemyTakeDamage damage;
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -38,6 +39,7 @@ public class EnemyRangedAttack : MonoBehaviour
         if(playerObject == null)
             playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         animator = GetComponent<EnemyAnimator>();
+        damage = GetComponent<EnemyTakeDamage>();
         fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
         coolDown = stats.AttackRate;
@@ -54,6 +56,9 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void AttemptAttack()
     {
+        if (damage.IsDead)
+            return;
+
         if (coolDown <= 0f)
         {
             float distanceFromPlayer = GetDistanceFromPlayer();

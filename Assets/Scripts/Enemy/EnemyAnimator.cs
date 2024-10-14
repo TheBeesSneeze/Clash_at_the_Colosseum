@@ -16,6 +16,7 @@ public class EnemyAnimator : MonoBehaviour
     private bool dead=false;
     private bool damaged=false;
     private bool attacking = false;
+    private EnemyTakeDamage damage;
     
     public AnimationState state;
     public enum AnimationState
@@ -32,6 +33,7 @@ public class EnemyAnimator : MonoBehaviour
             rotationReference = transform;
         if (player == null)
             player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+        damage = GetComponent<EnemyTakeDamage>();   
     }
 
     /// <summary>
@@ -76,6 +78,9 @@ public class EnemyAnimator : MonoBehaviour
 
     void LateUpdate()
     {
+        if (damage.IsDead)
+            animator.SetBool("Death", true);
+
         if (dead || damaged || attacking)
             return;
         
