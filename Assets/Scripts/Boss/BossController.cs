@@ -15,7 +15,7 @@ public class BossController : Singleton<BossController>
     [HideInInspector] public static Rigidbody PlayerRB;
     [HideInInspector] public static PlayerBehaviour playerBehaviour;
     [HideInInspector] public static BossTakeDamage bossTakeDamage;
-    [HideInInspector] public static bool Invincible = false;
+    [HideInInspector] public static bool Invincible = true;
     [HideInInspector] public static EnemySpawner enemySpawner;
     [HideInInspector] public static bool bossActive= false;
     [HideInInspector] public static Transform Boss;
