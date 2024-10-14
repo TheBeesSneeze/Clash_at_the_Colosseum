@@ -62,8 +62,9 @@ public class BulletTrail : MonoBehaviour
         GradientColorKey[] colors = new GradientColorKey[1];
         colors[0] = new GradientColorKey(effects[0].TrailColor, 0.0f);
 
-        GradientAlphaKey[] alphas = new GradientAlphaKey[1];
-        alphas[0] = new GradientAlphaKey(1, 0.0f);
+       // GradientAlphaKey[] alphas = new GradientAlphaKey[1];
+        //alphas[0] = new GradientAlphaKey(1, 0.0f);
+        GradientAlphaKey[] alphas = trail.colorGradient.alphaKeys;
 
         Gradient gradient = new Gradient();
         gradient.SetKeys(colors, alphas);
@@ -80,8 +81,9 @@ public class BulletTrail : MonoBehaviour
         colors[0] = new GradientColorKey(color1, 0.0f);
         colors[1] = new GradientColorKey(color2, 1.0f);
 
-        GradientAlphaKey[] alphas = new GradientAlphaKey[1];
-        alphas[0] = new GradientAlphaKey(1, 1.0f);
+        // GradientAlphaKey[] alphas = new GradientAlphaKey[1];
+        //alphas[0] = new GradientAlphaKey(1, 1.0f);
+        GradientAlphaKey[] alphas = trail.colorGradient.alphaKeys;
 
         Gradient gradient = new Gradient();
         gradient.SetKeys(colors, alphas);
@@ -101,8 +103,9 @@ public class BulletTrail : MonoBehaviour
         colors[1] = new GradientColorKey(color2, 0.5f);
         colors[2] = new GradientColorKey(color3, 1.0f);
 
-        GradientAlphaKey[] alphas = new GradientAlphaKey[1];
-        alphas[0] = new GradientAlphaKey(1, 1.0f);
+        //GradientAlphaKey[] alphas = new GradientAlphaKey[1];
+        //alphas[0] = new GradientAlphaKey(1, 1.0f);
+        GradientAlphaKey[] alphas = trail.colorGradient.alphaKeys;
 
         Gradient gradient = new Gradient();
         gradient.SetKeys(colors, alphas);

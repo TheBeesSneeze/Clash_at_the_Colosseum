@@ -63,7 +63,6 @@ public class Bullet : MonoBehaviour
         if (effects == null)
             return; //who cares probably an enemy
 
-        SetColorGradient();
         foreach (BulletEffect effect in effects)
         {
             effect.OnShoot(this);
@@ -114,6 +113,7 @@ public class Bullet : MonoBehaviour
         
         OnHitSurface(hit);
     }
+
 
     /// <summary>
     /// Called in bulletpoolmanager
@@ -196,57 +196,11 @@ public class Bullet : MonoBehaviour
             effect.OnDestroyBullet(this, damageAmount);
         }
     }
-    /// <summary>
-    /// this code does not work
-    /// </summary>
-    private void SetColorGradient() //or does it???
-    {
-        //Debug.Log("todo: color gradient");
-        /*
-        TrailRenderer tr = GetComponent<TrailRenderer>();
-        tr.enabled = true;
-
-        tr.startColor = Color.white;
-        tr.endColor = Color.white;
-
-        if (_bulletEffect1 != null)
-        {
-            tr.startColor = _bulletEffect1.TrailColor;
-        }
-        if (_bulletEffect2 != null)
-        {
-            tr.endColor = _bulletEffect2.TrailColor;
-        }
-        */
-    }
 
     /// <summary>
     /// averages the colors from both enemyBullet effects.
     /// returns white if no upgrades are loaded
     /// </summary>
     /// <returns></returns>
-    private Color GetBulletColor()
-    {
-        return Color.white;
-        /*
-        if (_bulletEffect1 == null && _bulletEffect2 == null)
-        {
-            return Color.white;
-        }
-
-        if (_bulletEffect1 == null)
-        {
-            return _bulletEffect2.TrailColor;
-        }
-
-        if (_bulletEffect2 == null)
-        {
-            return _bulletEffect1.TrailColor;
-        }
-
-        //weird way of averaging them but colors get weird when you add their parts to numbers above 1
-        return (_bulletEffect1.TrailColor / 2) + (_bulletEffect2.TrailColor / 2);
-        */
-    }
 
 }
