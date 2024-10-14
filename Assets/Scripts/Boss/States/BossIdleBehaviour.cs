@@ -9,6 +9,7 @@ public class BossIdleBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         nextState = Random.Range(1, 4);
+        BossController.Invincible = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
