@@ -1399,6 +1399,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      propertyPath: overheatCoolDown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_Name
       value: Player

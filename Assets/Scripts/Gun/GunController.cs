@@ -35,6 +35,7 @@ public class GunController : MonoBehaviour
     private bool shootHeld;
     private int currentShots;
     private float cooldown;
+    private bool isOverHeating;
 
     private void Start()
     {
@@ -100,28 +101,19 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        if(cooldown <= 0f)
+        if(currentShots < shotsTillCoolDown)
         {
-            if (currentShots < shotsTillCoolDown)
-            {
-                secondsSinceLastShoot = 0;
+            secondsSinceLastShoot = 0;
 
-                for (int i = 0; i < shootingMode.BulletsPerShot; i++)
-                {
-                    ShootBullet();
-                }
-                ++currentShots;
-                PublicEvents.OnPlayerShoot.Invoke();
-            }
-            else
+            for (int i = 0; i < shootingMode.BulletsPerShot; i++)
             {
-                currentShots = 0;
-                cooldown = overheatCoolDown;
+                ShootBullet();
             }
+            ++currentShots;
+            PublicEvents.OnPlayerShoot.Invoke();
         }
+            
         
-        
-
         //playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }
 
@@ -168,6 +160,22 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot += Time.deltaTime;
         cooldown -= Time.deltaTime;
 
+        if(cooldown <= 0f && isOverHeating)
+        {
+            currentShots = 0;
+            isOverHeating = false;
+        }
+        else if (cooldown <= 0f)
+        {
+            if (currentShots >= shotsTillCoolDown)
+            {
+                cooldown = overheatCoolDown;
+                isOverHeating = true;
+                return; 
+            }
+        }
+        
+
         if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;
 
@@ -200,6 +208,21 @@ public class GunController : MonoBehaviour
         Debug.DrawLine(ray.origin, destination, Color.red);
         Debug.DrawLine(bulletSpawnPoint.position, destination, Color.red);
     }
+
+    public int GetShotsLeft()
+    {
+        if(isOverHeating)
+            return 0;
+
+        return shotsTillCoolDown - currentShots;
+    }
+
+    public int GetShotsTillCoolDown()
+    {
+        return shotsTillCoolDown;
+    }
+
+    
 
     
 
