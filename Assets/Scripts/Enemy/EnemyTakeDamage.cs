@@ -24,6 +24,8 @@ public class EnemyTakeDamage : MonoBehaviour
     private EnemyAnimator enemyAnimator;
     private HealthSystem healthSystem;
 
+    public bool IsDead { get { return currentHealth <= 0; } }
+
 
     private bool isStillAlive;
     protected virtual void Start()
@@ -46,18 +48,23 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (enemyAnimator != null)
-            enemyAnimator.OnTakeDamage(currentHealth);
+        if (IsDead)
+            return; // bro stop hes already dead
 
         currentHealth -= damage;
         damagetime = damageColorTime;
         spriteRenderer.color = damageColor;
 
-        if (currentHealth < damage && isStillAlive) 
+        PublicEvents.OnEnemyDamage.Invoke();
+
+        if (currentHealth < 0 && isStillAlive) 
         {
             stats.OnEnemyDeath();
+            return;
         }
-        PublicEvents.OnEnemyDamage.Invoke();
+
+        if (enemyAnimator != null)
+            enemyAnimator.OnTakeDamage(currentHealth);
     }
 
     public virtual void Die()
