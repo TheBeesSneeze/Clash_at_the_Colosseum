@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyAnimator : MonoBehaviour
 {
 
@@ -13,8 +14,8 @@ public class EnemyAnimator : MonoBehaviour
 
     private static Transform player;
     private bool dead=false;
-    public bool damaged=false;
-    public bool attacking = false;
+    private bool damaged=false;
+    private bool attacking = false;
     
     public AnimationState state;
     public enum AnimationState
@@ -38,7 +39,12 @@ public class EnemyAnimator : MonoBehaviour
     /// </summary>
     public void OnTakeDamage(float newHealth)
     {
-        if(newHealth < 0)
+        if (dead)
+            return;
+
+        attacking = false;
+
+        if (newHealth < 0)
         {
             animator.SetBool("Death",true);
             dead = true;
@@ -51,6 +57,21 @@ public class EnemyAnimator : MonoBehaviour
     public void OnDamageAnimationEnd()
     {
         damaged = false;
+        attacking = false;
+    }
+    public void OnAttackStart()
+    {
+        if (dead)
+            return;
+
+        attacking = true;
+        animator.SetTrigger("Attack");
+    }
+    public void OnAttackAnimationEnd()
+    {
+        damaged = false;
+        attacking = false;
+        animator.SetTrigger("Front");
     }
 
     void LateUpdate()

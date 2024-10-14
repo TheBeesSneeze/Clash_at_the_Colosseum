@@ -22,6 +22,7 @@ public class EnemyTakeDamage : MonoBehaviour
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private EnemyAnimator enemyAnimator;
+    private HealthSystem healthSystem;
 
 
     private bool isStillAlive;
@@ -31,6 +32,7 @@ public class EnemyTakeDamage : MonoBehaviour
         currentHealth = stats.EnemyHealth;
         isStillAlive = true;
         enemyAnimator = GetComponent<EnemyAnimator>();
+        healthSystem = FindObjectOfType<HealthSystem>();
 
     }
     private void Update()
@@ -63,6 +65,7 @@ public class EnemyTakeDamage : MonoBehaviour
         Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
+        healthSystem.addCharge(stats.healCharge);
         PublicEvents.OnEnemyDeath.Invoke();
     }
 

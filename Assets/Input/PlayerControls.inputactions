@@ -60,18 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Spawn Enemies",
+                    "name": "Grapple",
                     "type": "Button",
-                    "id": "4cfd24c8-30e4-4c38-862d-a4e245610820",
+                    "id": "68a10e9d-81b2-4875-8960-e50a152594c3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grapple",
+                    "name": "Heal",
                     "type": "Button",
-                    "id": "68a10e9d-81b2-4875-8960-e50a152594c3",
+                    "id": "5c73ccca-a387-4b35-abde-4a7c6869472c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -191,23 +191,23 @@
                 },
                 {
                     "name": "",
-                    "id": "ec71e085-e95c-4099-a874-e1ac9b0da013",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Spawn Enemies",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "77d9b7bf-27e9-4280-a28b-cd8f23a0e48b",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Grapple",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4d7001e-02d5-44e4-b319-8f45013d8e58",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

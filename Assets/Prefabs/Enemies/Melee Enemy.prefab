@@ -204,8 +204,7 @@ MonoBehaviour:
   topDownSpriteDistance: 3
   playerSpriteChangeDistance: 5
   rotationReference: {fileID: 7795032412208802762}
-  damaged: 0
-  attacking: 0
+  state: 0
 --- !u!1 &8760789773571948285
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +217,7 @@ GameObject:
   - component: {fileID: 8353514217853516538}
   - component: {fileID: 7347180719966320934}
   m_Layer: 0
-  m_Name: Minotaur Rough Final
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

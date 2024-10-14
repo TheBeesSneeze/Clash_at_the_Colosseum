@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -12,7 +13,7 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public UnityEvent DashStarted, DashHeld, DashCanceled;
     [HideInInspector] public UnityEvent PauseStarted, PauseCanceled;
     [HideInInspector] public UnityEvent RestartStarted, RespawnStarted;
-    [HideInInspector] public UnityEvent EnemySpawnStarted, EnemySpawnCanceled;
+    [HideInInspector] public UnityEvent HealStarted, HealCanceled;
 
     private float _sensitivity=1;
 
@@ -21,10 +22,10 @@ public class InputEvents : Singleton<InputEvents>
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
     public static bool MovePressed, JumpPressed, ShootPressed, RespawnPressed, DashPressed,
-        PausePressed, GrapplePressed, EnemySpawnPressed;
+        PausePressed, GrapplePressed, HealPressed;
 
     private PlayerInput playerInput;
-    private InputAction Move, Shoot, Jump, Look, Respawn, Grapple, Dash, Pause, SpawnEnemies;
+    private InputAction Move, Shoot, Jump, Look, Respawn, Grapple, Dash, Pause, Heal;
 
     private Transform movementOrigin;
 
@@ -48,7 +49,7 @@ public class InputEvents : Singleton<InputEvents>
         Dash = map.FindAction("Dash");
         Grapple = map.FindAction("Grapple");
         Pause = map.FindAction("Pause");
-        SpawnEnemies = map.FindAction("Spawn Enemies");
+        Heal = map.FindAction("Heal");
 
 
         Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
@@ -56,7 +57,7 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
         Pause.started += ctx => { PausePressed = true; PauseStarted.Invoke(); };
         Dash.started += ctx => ActionCanceled(ref DashPressed, DashStarted);
-        SpawnEnemies.started += ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnStarted);
+        Heal.started += ctx => ActionCanceled(ref HealPressed, HealStarted);
         Grapple.started += ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
 
         Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
@@ -64,7 +65,7 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         Dash.canceled += ctx => ActionCanceled(ref DashPressed, DashCanceled);
-        SpawnEnemies.canceled += ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnCanceled); ;
+        Heal.canceled += ctx => ActionCanceled(ref HealPressed, HealCanceled); ;
         Grapple.canceled += ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
     void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
@@ -101,7 +102,7 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
         Pause.started -= ctx => ActionCanceled(ref PausePressed, PauseStarted);
         Dash.started -= ctx => ActionCanceled(ref DashPressed, DashStarted);
-        SpawnEnemies.started -= ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnStarted);
+        Heal.started -= ctx => ActionCanceled(ref HealPressed, HealStarted);
         Grapple.started -= ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
 
         Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
@@ -109,7 +110,7 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
         Pause.canceled -= ctx => ActionCanceled(ref PausePressed, PauseCanceled);
         Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
-        SpawnEnemies.canceled -= ctx => ActionCanceled(ref EnemySpawnPressed, EnemySpawnCanceled);
+        Heal.canceled -= ctx => ActionCanceled(ref HealPressed, HealCanceled);
         Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
 

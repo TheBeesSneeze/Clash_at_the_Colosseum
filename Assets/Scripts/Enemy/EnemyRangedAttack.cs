@@ -24,6 +24,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private float nextFireTime;
     private bool canMultiShoot;
     private int shotsFired;
+    private EnemyAnimator animator;
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -36,6 +37,7 @@ public class EnemyRangedAttack : MonoBehaviour
         stats = GetComponent<EnemyStats>();
         if(playerObject == null)
             playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
+        animator = GetComponent<EnemyAnimator>();
         fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
         coolDown = stats.AttackRate;
@@ -132,15 +134,16 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.OnBulletShoot(direction);
 
         PublicEvents.OnEnemyShoot.Invoke();
+        if(animator!= null) animator.OnAttackStart();
     }
 
-    private GameObject InstantiateBullet(RangedBulletType type)
+    private GameObject InstantiateBullet(EnemyType type)
     {
-        if(type == RangedBulletType.Cyclops)
+        if(type == EnemyType.Cyclops)
         {
             return BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
         }
-        else if(type == RangedBulletType.Harpy)
+        else if(type == EnemyType.Harpy)
         {
             return BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
         }
