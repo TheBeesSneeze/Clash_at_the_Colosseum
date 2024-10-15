@@ -14,6 +14,9 @@ public class GunGameplaySprite : MonoBehaviour
 {
     [SerializeField] private Image gunImage;
     [SerializeField] private Image lightningImage;
+    [SerializeField] private Image explosionImage;
+    [SerializeField] private Image iceImage;
+    [SerializeField] private Image windImage;
     private GunController gunController;
     private float _time=0;
     private GunState gunState = GunState.idle;
@@ -97,15 +100,24 @@ public class GunGameplaySprite : MonoBehaviour
 
         gunImage.sprite = sprite.baseSprite;
 
-        if(lightningImage.enabled) lightningImage.sprite = sprite.lightningSprite; 
+        if(lightningImage.enabled) lightningImage.sprite = sprite.lightningSprite;
+        if (explosionImage.enabled) explosionImage.sprite = sprite.bombSprite;
+        if(iceImage.enabled) iceImage.sprite = sprite.iceSprite;
+        if(windImage.enabled) windImage.sprite = sprite.windSprite;
     }
 
     private void OnBulletEffectGet(BulletEffect effect)
     {
         //not super huge on the way im doing this. if u have any better ideas then im open to em
 
-        if (effect.GetType() == typeof(ElectricityBullet))
-            lightningImage.enabled = true;
+        System.Type type = effect.GetType();    
+
+        if(type == typeof(ElectricityBullet)) { lightningImage.enabled = true; return; }
+        if(type == typeof(ExplosionBullet)) { explosionImage.enabled = true; return; }
+        if(type == typeof(SlowBullet)) { iceImage.enabled = true; return; }
+        if(type == typeof(WindBullet)){ windImage.enabled = true; return; }
+
+        LoadSprite(gunAnimation.sprites[index]);
     }
 }
 public enum GunState

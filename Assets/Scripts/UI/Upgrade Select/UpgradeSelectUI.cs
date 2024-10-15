@@ -125,7 +125,8 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void OnSelectClick()
     {
-        _gunController.AddBulletEffect (selectedEffect); 
+        _gunController.AddBulletEffect (selectedEffect);
+        bulletEffectPool.Remove(selectedEffect);
         DisableMenu();
         StageManager.ChangeStage();
     }
@@ -135,7 +136,7 @@ public class UpgradeSelectUI : MonoBehaviour
     {
         //fuck you
         int count = bulletEffectPool.Count;
-        Assert.IsTrue(count > 2);
+        Assert.IsTrue(count >= 2);
 
         int index1;
         int index2;
