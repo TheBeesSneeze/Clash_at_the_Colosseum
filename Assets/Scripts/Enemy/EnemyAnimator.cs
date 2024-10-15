@@ -53,12 +53,14 @@ public class EnemyAnimator : MonoBehaviour
             dead = true;
             return;
         }
+        state = AnimationState.Damage;
         animator.SetTrigger("Damage");
         damaged = true;
     }
 
     public void OnDamageAnimationEnd()
     {
+        Debug.Log("enemy damage animation end");
         damaged = false;
         attacking = false;
     }
@@ -99,7 +101,7 @@ public class EnemyAnimator : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(player.position, transform.position) < playerSpriteChangeDistance)
+        if(Vector3.Distance(player.position, transform.position) <= playerSpriteChangeDistance)
         {
             if (state != AnimationState.Front)
                 animator.SetTrigger("Front");
