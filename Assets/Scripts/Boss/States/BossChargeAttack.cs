@@ -17,6 +17,8 @@ public class BossChargeAttack : StateMachineBehaviour
         direction = direction.normalized;
         direction *= launchForce;
         direction.y = launchForceHeight;
+        boxRB.transform.LookAt(boxInstatiated.transform.position+direction);
+        boxRB.transform.eulerAngles = new Vector3(0, boxRB.transform.eulerAngles.y, 0);
         boxRB.AddForce(direction, ForceMode.Impulse);
     }
 
