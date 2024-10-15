@@ -168,7 +168,7 @@ MonoBehaviour:
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 0
+  _enemyMovementSpeed: 5
   TurningSpeed: 1
   StopSpeed: 1
   StopDistanceToPlayer: 6
@@ -207,7 +207,6 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageColorTime: 0.5
   spriteRenderer: {fileID: 5820015479103233236}
-  healthSystem: {fileID: 0}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
   m_ObjectHideFlags: 0
