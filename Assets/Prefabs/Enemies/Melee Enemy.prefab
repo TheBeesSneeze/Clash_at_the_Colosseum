@@ -94,11 +94,12 @@ MonoBehaviour:
   AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
+  healCharge: 0
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 0
-  TurningSpeed: 3
+  _enemyMovementSpeed: 7
+  TurningSpeed: 1
   StopSpeed: 5
   StopDistanceToPlayer: 1
   SightDistance: 1
