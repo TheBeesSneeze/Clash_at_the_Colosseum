@@ -10,6 +10,7 @@ public class BulletLeftUI : MonoBehaviour
     void Start()
     {
         PublicEvents.OnPlayerShoot.AddListener(BulletUI);
+        PublicEvents.OnPlayerReload.AddListener(BulletUI);
 
         if (gunController == null) 
             gunController = GameObject.FindObjectOfType<GunController>();

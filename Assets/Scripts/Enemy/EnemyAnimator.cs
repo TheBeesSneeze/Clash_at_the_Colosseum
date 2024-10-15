@@ -60,7 +60,6 @@ public class EnemyAnimator : MonoBehaviour
 
     public void OnDamageAnimationEnd()
     {
-        Debug.Log("enemy damage animation end");
         damaged = false;
         attacking = false;
     }

@@ -15,6 +15,7 @@ using UnityEngine.Events;
 public class PublicEvents
 {
     public static UnityEvent OnPlayerShoot = new UnityEvent();
+    public static UnityEvent OnPlayerReload = new UnityEvent();
     public static UnityEvent OnSensitivitySliderChanged = new UnityEvent();
     public static UnityEvent OnPlayerDamage = new UnityEvent();
     public static UnityEvent OnEnemyDamage = new UnityEvent();

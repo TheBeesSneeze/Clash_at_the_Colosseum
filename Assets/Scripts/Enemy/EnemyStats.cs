@@ -59,6 +59,7 @@ public class EnemyStats : MonoBehaviour
         if (GetComponent<EnemyAnimator>() == null)
         {
             GetComponent<EnemyTakeDamage>().Die();
+            return;
         }
         //VerticalSpeed = 0;
         _enemyMovementSpeed = 0;
@@ -66,7 +67,9 @@ public class EnemyStats : MonoBehaviour
         numberOfConsecutiveShots = 0;
         EnemyDamage = 0;
         HeightAboveGround = 0;
-
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().useGravity=false;
+            
     }    
 
     //updating countdown timer
