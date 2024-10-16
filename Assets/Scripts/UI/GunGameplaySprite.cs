@@ -17,6 +17,8 @@ public class GunGameplaySprite : MonoBehaviour
     [SerializeField] private Image explosionImage;
     [SerializeField] private Image iceImage;
     [SerializeField] private Image windImage;
+
+    [SerializeField] private Sprite EmptySprite;
     private GunController gunController;
     private float _time=0;
     private GunState gunState = GunState.idle;
@@ -98,12 +100,12 @@ public class GunGameplaySprite : MonoBehaviour
     {
         if (sprite == null) return;
 
-        gunImage.sprite = sprite.baseSprite;
+        SetGunSprite(sprite);
 
-        if(lightningImage.enabled) lightningImage.sprite = sprite.lightningSprite;
-        if (explosionImage.enabled) explosionImage.sprite = sprite.bombSprite;
-        if(iceImage.enabled) iceImage.sprite = sprite.iceSprite;
-        if(windImage.enabled) windImage.sprite = sprite.windSprite;
+        LoadIndividualSprite(lightningImage, sprite.lightningSprite);
+        LoadIndividualSprite(explosionImage, sprite.bombSprite);
+        LoadIndividualSprite(iceImage, sprite.iceSprite);
+        LoadIndividualSprite(windImage, sprite.windSprite);
     }
 
     private void OnBulletEffectGet(BulletEffect effect)
@@ -118,6 +120,46 @@ public class GunGameplaySprite : MonoBehaviour
         if(type == typeof(WindBullet)){ windImage.enabled = true; return; }
 
         LoadSprite(gunAnimation.sprites[index]);
+    }
+
+    private void SetGunSprite(GunSprite sprite)
+    {
+        Debug.Log(gunController.GetShotsLeftPercent());
+        //what in the magic numbers???
+        if (gunController.GetShotsLeft() <= 1)
+        {
+            LoadIndividualSprite(gunImage, sprite.NoneSnakes);
+            return;
+        }
+        float p = gunController.GetShotsLeftPercent();
+        if (gunController.GetShotsFired() <= 2 || p >= 0.666f)
+        {
+            LoadIndividualSprite(gunImage, sprite.AllSnakes);
+            return;
+        }
+        if (p <= 0.333f)
+        {
+            LoadIndividualSprite(gunImage, sprite.OneSnakes);
+            return;
+        }
+
+        LoadIndividualSprite(gunImage, sprite.TwoSnakes);
+    }
+
+    private void LoadIndividualSprite(Image image, Sprite sprite, bool emptySprite=false)
+    {
+
+        if (!image.enabled) return;
+
+        if (emptySprite)
+        {
+            image.sprite = EmptySprite;
+            return;
+        }
+
+        if (sprite == null || image.sprite == sprite) return;
+
+        image.sprite = sprite;
     }
 }
 public enum GunState
