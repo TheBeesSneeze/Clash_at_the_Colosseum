@@ -18,11 +18,13 @@ MonoBehaviour:
   BulletAccuracyOffset: 0
   CanHoldFire: 1
   BulletSpeed: 50
-  BulletDamage: 75
+  BulletDamage: 35
   RecoilForce: 0
   MenuSprite: {fileID: 0}
-  GameplaySprite: {fileID: 0}
-  GameplayShootSprite: {fileID: 0}
-  GameplayCantShootSprite: {fileID: 0}
-  ShootSpriteSeconds: 0.1
+  GameplaySprite:
+    sprites: []
+    SecondsBetweenFrames: 0.1
+  GameplayShootSprite:
+    sprites: []
+    SecondsBetweenFrames: 0.1
   SelectHeaderColor: {r: 1, g: 1, b: 1, a: 1}
