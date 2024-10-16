@@ -164,6 +164,7 @@ public class GunController : MonoBehaviour
         {
             currentShots = 0;
             isOverHeating = false;
+            PublicEvents.OnPlayerReload.Invoke();
         }
         else if (cooldown <= 0f)
         {

@@ -22,6 +22,7 @@ public class EnemyMelee : MonoBehaviour
     private float coolDown;
     private float timeBetweenAttacks;
     private EnemyAnimator animator;
+    private EnemyTakeDamage damage;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class EnemyMelee : MonoBehaviour
         playerObject = player.gameObject;
         timeBetweenAttacks = stats.AttackRate;
         animator = GetComponent<EnemyAnimator>();
+        damage = GetComponent<EnemyTakeDamage>();   
         coolDown =stats.AttackCooldown;
     }
     private void Update()
@@ -41,6 +43,9 @@ public class EnemyMelee : MonoBehaviour
 
     private void AttemptAttack()
     {
+        if (damage.IsDead)
+            return;
+
         if (coolDown <= 0f)
         {
             float distanceToPlayer = GetDistanceFromPlayer();

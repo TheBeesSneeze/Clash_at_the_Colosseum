@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 [RequireComponent(typeof(Animator))]
 public class EnemyAnimator : MonoBehaviour
@@ -18,7 +19,7 @@ public class EnemyAnimator : MonoBehaviour
     private bool attacking = false;
     private EnemyTakeDamage damage;
     
-    public AnimationState state;
+    [ReadOnly]public AnimationState state;
     public enum AnimationState
     {
         Front, Left, Right, Death, Damage, Attack, Top, Back
@@ -52,6 +53,7 @@ public class EnemyAnimator : MonoBehaviour
             dead = true;
             return;
         }
+        state = AnimationState.Damage;
         animator.SetTrigger("Damage");
         damaged = true;
     }
@@ -98,7 +100,7 @@ public class EnemyAnimator : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(player.position, transform.position) < playerSpriteChangeDistance)
+        if(Vector3.Distance(player.position, transform.position) <= playerSpriteChangeDistance)
         {
             if (state != AnimationState.Front)
                 animator.SetTrigger("Front");

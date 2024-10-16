@@ -17,18 +17,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerStats))]
-public class PlayerBehaviour : CharacterType
+public class PlayerBehaviour : MonoBehaviour
 {
     private PlayerStats stats;
     [SerializeField] private Image redVignette;
     [SerializeField] private HealthBar healthBar;
+    [HideInInspector] public float CurrentHealth = 0;
 
     private float secondsSinceLastTookDamage;
     private LayerMask groundmask;
 
     
     // Start is called before the first frame update
-    protected override void Start()
+    protected void Start()
     {
         groundmask = LayerMask.GetMask(new string[] { "Fill Cell", "Default" });
         SetStats();
@@ -74,14 +75,22 @@ public class PlayerBehaviour : CharacterType
         healthBar = FindObjectOfType<HealthBar>();
     }
     
-    public override void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         Debug.Log("take damage." + damage);
-        base.TakeDamage(damage);
+        CurrentHealth = CurrentHealth - damage;
         secondsSinceLastTookDamage = 0;
+
+        if(CurrentHealth <= 0)
+        {
+            Die();
+            return;
+        }
+
         healthBar.SetHealth(CurrentHealth);
+        PublicEvents.OnPlayerDamage.Invoke();
     }
-    public override void Die()
+    public void Die()
     {
         PublicEvents.OnPlayerDeath.Invoke();
         string currentSceneName = SceneManager.GetActiveScene().name;

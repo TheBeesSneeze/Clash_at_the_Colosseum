@@ -24,7 +24,7 @@ public class EnemyTakeDamage : MonoBehaviour
     private EnemyAnimator enemyAnimator;
     private HealthSystem healthSystem;
 
-    public bool IsDead { get { return currentHealth <= 0; } }
+    public bool IsDead { get { return currentHealth < 0; } }
 
 
     private bool isStillAlive;
@@ -69,6 +69,7 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public virtual void Die()
     {
+        Debug.Log("die");
         Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;

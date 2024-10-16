@@ -41,9 +41,12 @@ public class BossEnemySpawn : StateMachineBehaviour
             if (BossController.enemySpawner._enemyPrefabs.TryGetValue((EnemySpawn)s.enemyIndex, out GameObject enemyType))
             {
 
-                Debug.Log("is this working");
-                GameObject.Instantiate(enemyType, s.pos, Quaternion.identity);
+                Debug.Log("Spawning "+ (((EnemySpawn)s.enemyIndex).ToString())+" from boss");
+                GameObject e = GameObject.Instantiate(enemyType, s.pos, Quaternion.identity);
                 _currentEnemiesAlive++;
+                //e.GetComponent<EnemyTakeDamage>().currentHealth = e.GetComponent<EnemyStats>().EnemyHealth;
+                Debug.Log(e.GetComponent<EnemyTakeDamage>().currentHealth);
+
             }
         }
     }
@@ -54,8 +57,6 @@ public class BossEnemySpawn : StateMachineBehaviour
             return;
 
         _currentEnemiesAlive--;
-
-        Debug.Log(_currentEnemiesAlive);
 
         if( _currentEnemiesAlive <= 0 )
         {

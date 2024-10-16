@@ -9,17 +9,18 @@ public class BulletLeftUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        PublicEvents.OnPlayerShoot.AddListener(BulletUI);
+        PublicEvents.OnPlayerReload.AddListener(BulletUI);
 
-    // Update is called once per frame
-    void Update()
-    {
-        BulletUI();
+        if (gunController == null) 
+            gunController = GameObject.FindObjectOfType<GunController>();
     }
 
     private void BulletUI()
     {
+        if (text == null)
+            return;
+
         text.text = gunController.GetShotsLeft().ToString() + "/" + gunController.GetShotsTillCoolDown().ToString();
     }
 }
