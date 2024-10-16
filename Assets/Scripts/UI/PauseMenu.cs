@@ -13,6 +13,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] private AudioSource backgroundMusic;
+
     [SerializeField] private CanvasGroup pauseGroup;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
@@ -22,8 +24,12 @@ public class PauseMenu : MonoBehaviour
     
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
+    private float baseBGMVolume;
+
     private void Start()
     {
+        baseBGMVolume = backgroundMusic.volume;
+
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
 
         resumeButton.onClick.AddListener(ResumeClicked);
@@ -82,6 +88,7 @@ public class PauseMenu : MonoBehaviour
         float sliderValue = volumeSlider.value;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
+        backgroundMusic.volume = sliderValue * baseBGMVolume;
     }
 
     public void sensitivityChanged(float value)
