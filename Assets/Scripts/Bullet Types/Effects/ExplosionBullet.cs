@@ -25,17 +25,15 @@ namespace DefaultNamespace
         [SerializeField] private bool ExplodeOnDestroy = true;
 
         public override void OnShoot(Bullet bullet){
-            enemyLayer = LayerMask.NameToLayer("Enemy");
+            //enemyLayer = LayerMask.NameToLayer("Enemy");
         }
         public override void OnEnemyHit(EnemyTakeDamage enemy, float damage, Bullet bullet)
         {
             if (!ExplodeOnEnemyHit) return;
-
-            Ray enemyOrgin = new Ray(enemy.transform.position, enemy.transform.forward);
-            RaycastHit[] hits = Physics.SphereCastAll(enemyOrgin, enemyHitExplotionRadius, 0.1f, enemyLayer);
+            Collider[] hits = Physics.OverlapSphere(enemy.transform.position, enemyHitExplotionRadius, enemyLayer);
             for (int i = 1; i < hits.Length; i++) 
             {
-                hits[i].collider.GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
+                hits[i].GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
                 //Debug.Log(hits[i].collider.gameObject.name + " took " + (damage * DamageMultiplier) + " damage");
             }
             GameObject explosion = Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
@@ -44,12 +42,12 @@ namespace DefaultNamespace
         }
         public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet)
         {
-            if(!ExplodeOnSurfaceHit) return;    
+            if(!ExplodeOnSurfaceHit) return;
 
-            RaycastHit[] hits = Physics.SphereCastAll(hit.point, surfaceHitExplosionRadius, Vector3.zero,0.1f, enemyLayer);
+            Collider[] hits = Physics.OverlapSphere(hit.point, enemyHitExplotionRadius, enemyLayer);
             for (int i = 1; i < hits.Length; i++)
             {
-                hits[i].collider.GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
+                hits[i].GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
                 //Debug.Log(hits[i].collider.gameObject.name + " took " + (damage * DamageMultiplier) + " damage");
             }
             GameObject explosion = Instantiate(explosionPrefab, hit.point, Quaternion.identity);
