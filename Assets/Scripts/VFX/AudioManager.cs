@@ -20,6 +20,11 @@ public class AudioManager : MonoBehaviour
     public SoundClip DashSound;
     public SoundClip UpgradeReceiveSound;
     public SoundClip StageTransitionSound;
+    public SoundClip SnakeCooldownSound;
+    public SoundClip HydraIntroSound;
+    public SoundClip HydraFireAttackSound;
+    public SoundClip HydraDeathSound;
+    public SoundClip CyclopsAttackSound;
 
     public static float masterVolume=1;
 
