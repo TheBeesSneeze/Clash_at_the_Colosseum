@@ -14,15 +14,14 @@ using UnityEngine;
 public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats bstats;
-    private GameObject boss;
+    [HideInInspector]public GameObject bossBar;
 
-    private HealthBar bossHealthBar;
+    private BossHealthBar bossHealthBar;
     protected override void Start()
     {
         bstats = GetComponent<BossStats>();
         currentHealth = bstats.BossHealth;
-        boss = GameObject.Find("BossHealthBar");
-        bossHealthBar = boss.GetComponent<HealthBar>();
+        bossHealthBar = bossBar.GetComponent<BossHealthBar>();
         bossHealthBar.SetMaxHealth(currentHealth);
     }
     public override void TakeDamage(float damage)
@@ -31,7 +30,11 @@ public class BossTakeDamage : EnemyTakeDamage
         {
             base.TakeDamage(damage);
             float temp = currentHealth - damage;
-            bossHealthBar.SetHealth(temp);
+            if (bossHealthBar != null)
+            {
+                bossHealthBar.SetHealth(temp);
+            }
+            
         }
            
     }
@@ -42,4 +45,6 @@ public class BossTakeDamage : EnemyTakeDamage
         Debug.Log("boss is dead yahoo");
         Destroy(gameObject);
     }
+
+ 
 }

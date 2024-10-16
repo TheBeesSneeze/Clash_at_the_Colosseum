@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3104708511573755163}
   - component: {fileID: 2107198180163099063}
-  - component: {fileID: 6966993812901562381}
+  - component: {fileID: 1774896878877667999}
   m_Layer: 5
   m_Name: BossHealthBar
   m_TagString: Untagged
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6966993812901562381
+--- !u!114 &1774896878877667999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7522448573874020354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f8dc306285faf458a99c8a7b3cdc8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 20bb60054a81a5142a0a257f592e5587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2107198180163099063}
