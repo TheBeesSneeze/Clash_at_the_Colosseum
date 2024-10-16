@@ -17,7 +17,7 @@ MonoBehaviour:
   DestroyBulletOnSurfaceContact: 1
   DestroyBulletOnEntityContact: 1
   UpgradeName: Dubious Detonation
-  UpgradeDescription: Expoldes on impact damaging any enemies in its radius
+  UpgradeDescription: Explodes on impact damaging any enemies in its radius
   UpgradeIcon: {fileID: -203969728, guid: f1bcea4c2f7dc5e439f6979c7bfacbd6, type: 3}
   bodyColor: {r: 1, g: 0.6901917, b: 0.2679245, a: 1}
   secondaryColor: {r: 1, g: 0.5305271, b: 0.37169808, a: 1}
@@ -27,3 +27,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   explosionPrefab: {fileID: 7213380324865138197, guid: 95c7ef7f95ac12d43927ef44af8149b2, type: 3}
+  ExplodeOnEnemyHit: 0
+  ExplodeOnSurfaceHit: 0
+  ExplodeOnDestroy: 1
