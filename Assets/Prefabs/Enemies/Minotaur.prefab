@@ -71,7 +71,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 32
@@ -94,12 +94,14 @@ MonoBehaviour:
   AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
-  healCharge: 0
+  healCharge: 5
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
   _enemyMovementSpeed: 6
+  gravity: 10
   TurningSpeed: 3
+  JumpForce: 10
   StopSpeed: 5
   StopDistanceToPlayer: 1
   SightDistance: 1
@@ -146,6 +148,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
+  ContactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   currentCell: {fileID: 0}
 --- !u!135 &5260031247862540590
 SphereCollider:

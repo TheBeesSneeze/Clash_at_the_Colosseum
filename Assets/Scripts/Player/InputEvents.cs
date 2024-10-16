@@ -34,7 +34,7 @@ public class InputEvents : Singleton<InputEvents>
         movementOrigin = Camera.main.transform;
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
-        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
     }
 
     void InitializeActions()

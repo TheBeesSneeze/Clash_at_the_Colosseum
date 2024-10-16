@@ -32,6 +32,7 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Movement Variables")]
     [SerializeField][Min(0)] private float _enemyMovementSpeed;
+    [SerializeField] public float gravity;
     [HideInInspector] public float MoveSpeed { 
         get {
             if (slowedDownCountdown <= 0)
@@ -42,6 +43,7 @@ public class EnemyStats : MonoBehaviour
     private float slowedDownCountdown;
     private float slowedSpeed;
     [SerializeField][Min(0)] public float TurningSpeed;
+    [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
     [SerializeField][Min(0)] public float StopDistanceToPlayer;
     [SerializeField][Min(0)] public float SightDistance; 
