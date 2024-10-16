@@ -59,7 +59,7 @@ public class ScreenShake : MonoBehaviour
     {
         if (shootShakeTimer > 0)
         {
-            //Debug.Log("screen shake " + shootShakeTimer);
+            //oDebug.Log("screen shake " + shootShakeTimer);
             shootShakeTimer -= Time.deltaTime;
             cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerDamageIntensity);
             return true;
