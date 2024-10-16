@@ -23,42 +23,66 @@ MonoBehaviour:
   MenuSprite: {fileID: -401717556, guid: 9831f24c0a2883e4fa1238a74abbdfa8, type: 3}
   GameplaySprite:
     sprites:
-    - baseSprite: {fileID: 770448850, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 770448850, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -1122585239, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: 204568997, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: -1301215797, guid: 94391d88fd767214191f31594122310a, type: 3}
       bombSprite: {fileID: 464503169, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1470339598, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1092359744, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 1653303679, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -2082019052, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -2082019052, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -372824269, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: 1915976221, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: -1107739322, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: -2056158255, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 1488644423, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -556268504, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 1942443314, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 1942443314, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -1520192530, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -1942952641, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: -1630263022, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: -612504825, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1361444963, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 452803767, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 972683760, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 972683760, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -1662137784, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -1165208853, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: -1981517271, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1815912103, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 388648540, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -1277789603, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 1252153488, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 1252153488, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: 68280702, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -347671542, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: 598471037, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1971381761, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -948011996, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 464114128, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -1793054861, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -1793054861, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: 628469386, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -1930191448, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: 1246960590, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1742099250, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1857240206, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 166704870, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -528066697, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -528066697, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: 149575754, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: 549397527, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 0}
       bombSprite: {fileID: -258822202, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: -1488797782, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 316314341, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -1719033810, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 1784508651, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 1784508651, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -2070024679, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -346573139, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: -1802872923, guid: 94391d88fd767214191f31594122310a, type: 3}
       bombSprite: {fileID: 2142574624, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 735402510, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 1607919575, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
@@ -66,42 +90,66 @@ MonoBehaviour:
     SecondsBetweenFrames: 0.25
   GameplayShootSprite:
     sprites:
-    - baseSprite: {fileID: -985749778, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -985749778, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -896520861, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -7828479, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 131251926, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1651752345, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -2143706994, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -422373432, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -1885555589, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -1885555589, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -1735623913, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -1649042643, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: -1751758722, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 869963614, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1993318857, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 1906289106, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -752042823, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -752042823, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -825273805, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -1545712217, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: -324185627, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1623663987, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 1493485825, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -1280536939, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -1636668856, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -1636668856, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: 218621320, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: 928213653, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 1549084098, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 325243587, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 2013304654, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -286710330, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -939879557, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -939879557, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: 129849101, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -401685294, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 704258041, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1054724822, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1547473074, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: -1928134219, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 1359800060, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 1359800060, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -300685020, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -854613362, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 2036539006, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 1742099250, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 169743280, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 1541025336, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: -725607063, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: -725607063, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -862327593, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: 1311620737, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: 1858040438, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: -1488797782, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: 1713774581, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}
       windSprite: {fileID: 1134245127, guid: 1d83603a9a2286548bf20aecea806d29, type: 3}
-    - baseSprite: {fileID: 393412061, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+    - AllSnakes: {fileID: 393412061, guid: 69a7307fde877294a93227f6ce2bbc64, type: 3}
+      TwoSnakes: {fileID: -1083198467, guid: eecf2cee6b844cd4eabbfc9d7f1ef78e, type: 3}
+      OneSnakes: {fileID: -346639446, guid: 53d3f71dfed625447ba1699f26068168, type: 3}
+      NoneSnakes: {fileID: -1046273550, guid: 675b106223f760b498ad3b3d7b945d36, type: 3}
       bombSprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
       lightningSprite: {fileID: 735402510, guid: f73358e9b7b1664409d7cd4e68db94a8, type: 3}
       iceSprite: {fileID: -1224436903, guid: 5f79adaf470e6b44382c4c916ae45551, type: 3}

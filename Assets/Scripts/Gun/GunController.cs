@@ -185,9 +185,6 @@ public class GunController : MonoBehaviour
         //shootin time
         
         Shoot();
-        
-        
-        
     }
 
     private void OnShootStart()
@@ -210,6 +207,8 @@ public class GunController : MonoBehaviour
         Debug.DrawLine(bulletSpawnPoint.position, destination, Color.red);
     }
 
+    // god i hate public variables and i love getters
+
     public int GetShotsLeft()
     {
         if(isOverHeating)
@@ -218,11 +217,30 @@ public class GunController : MonoBehaviour
         return shotsTillCoolDown - currentShots;
     }
 
+    public int GetShotsFired()
+    {
+        //if (isOverHeating) return 0;
+
+        return currentShots;
+    }
+
     public int GetShotsTillCoolDown()
     {
         return shotsTillCoolDown;
     }
 
+    /// <summary>
+    /// 0 <-> 1 
+    /// 0 is no shots left
+    /// 1 is full ammo
+    /// </summary>
+    public float GetShotsLeftPercent()
+    {
+        if (isOverHeating)
+            return 0;
+
+        return (float)(shotsTillCoolDown - currentShots) / (float) shotsTillCoolDown;
+    }
     
 
     

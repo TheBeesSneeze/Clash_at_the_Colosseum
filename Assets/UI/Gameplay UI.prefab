@@ -448,6 +448,7 @@ MonoBehaviour:
   explosionImage: {fileID: 7159182316780955856}
   iceImage: {fileID: 2534483369267652459}
   windImage: {fileID: 4973415554769938027}
+  EmptySprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
 --- !u!114 &6112878189171349388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,11 +1747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58.574158
+      value: 58.5
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 154.39954
+      value: 154.375
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
