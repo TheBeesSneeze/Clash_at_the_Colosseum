@@ -25,6 +25,7 @@ public class PublicEvents
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
     public static UnityEvent OnGrapple = new UnityEvent();
     public static UnityEvent OnDash = new UnityEvent();
+    public static UnityEvent NewUpgrade = new UnityEvent();
     //public static UnityEvent OnUpgradeReceived = new UnityEvent(); //@TODO
     public static UnityEvent OnStageTransition = new UnityEvent();
     public static UnityEvent OnStageTransitionFinish = new UnityEvent();
