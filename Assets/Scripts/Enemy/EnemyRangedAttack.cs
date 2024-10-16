@@ -138,7 +138,6 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.bulletForce = shootingMode.BulletSpeed;
         bulletObject.OnBulletShoot(direction);
 
-        PublicEvents.OnEnemyShoot.Invoke();
         if(animator!= null) animator.OnAttackStart();
     }
 
@@ -146,10 +145,12 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         if(type == EnemyType.Cyclops)
         {
+            PublicEvents.CyclopsAttack.Invoke();
             return BulletPoolManager.InstantiateCyclopsEnemyBullet(transform.position);
         }
         else if(type == EnemyType.Harpy)
         {
+            PublicEvents.OnEnemyShoot.Invoke();
             return BulletPoolManager.InstantiateHarpyEnemyBullet(transform.position);
         }
         else
