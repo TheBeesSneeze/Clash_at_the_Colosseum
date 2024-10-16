@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1611578784109909493}
   - component: {fileID: 8962055937136017716}
   m_Layer: 8
-  m_Name: Tank
+  m_Name: Cyclops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 300
-  EnemyDamage: 10
+  EnemyHealth: 400
+  EnemyDamage: 0
   AttackRate: 5
   AttackCooldown: 5
   EnemyAttackRange: 5

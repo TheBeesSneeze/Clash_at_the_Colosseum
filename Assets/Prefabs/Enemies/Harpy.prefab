@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 6103782579045716118}
   - component: {fileID: 5712375584481207822}
   m_Layer: 8
-  m_Name: Flyer
+  m_Name: Harpy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 125
-  EnemyDamage: 1
+  EnemyHealth: 100
+  EnemyDamage: 0
   AttackRate: 5
   AttackCooldown: 5
   EnemyAttackRange: 5
@@ -286,8 +286,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.06
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.0937154
+  m_Center: {x: -0.111655, y: -0.07793951, z: 0}
 --- !u!114 &5712375584481207822
 MonoBehaviour:
   m_ObjectHideFlags: 0
