@@ -124,7 +124,6 @@ public class GunGameplaySprite : MonoBehaviour
 
     private void SetGunSprite(GunSprite sprite)
     {
-        Debug.Log(gunController.GetShotsLeftPercent());
         //what in the magic numbers???
         if (gunController.GetShotsLeft() <= 1)
         {

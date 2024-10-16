@@ -42,6 +42,7 @@ public class EnemyStats : MonoBehaviour
     private float slowedDownCountdown;
     private float slowedSpeed;
     [SerializeField][Min(0)] public float TurningSpeed;
+    [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
     [SerializeField][Min(0)] public float StopDistanceToPlayer;
     [SerializeField][Min(0)] public float SightDistance; 

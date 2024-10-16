@@ -66,6 +66,8 @@ namespace PathFinding
             _sideNeighbors.Clear();
             raycastSideNeighbors();
 
+            return;
+
             Vector3 pathpos = PathPosition;
 
             foreach(Cell neighbor in _verticalNeighbors)
@@ -96,7 +98,8 @@ namespace PathFinding
 
                     if (!_verticalNeighbors.Contains(neighbor))
                     {
-                        _verticalNeighbors.Add(neighbor);
+                        //_verticalNeighbors.Add(neighbor);
+                        _sideNeighbors.Add(neighbor);
                     }
                 }
             }
