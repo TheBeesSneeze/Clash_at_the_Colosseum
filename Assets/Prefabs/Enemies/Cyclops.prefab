@@ -212,7 +212,9 @@ MonoBehaviour:
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
   _enemyMovementSpeed: 2
+  gravity: 12
   TurningSpeed: 1
+  JumpForce: 4
   StopSpeed: 2
   StopDistanceToPlayer: 5
   SightDistance: 15
@@ -247,6 +249,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
+  ContactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   currentCell: {fileID: 0}
 --- !u!95 &2143556855426773734
 Animator:
