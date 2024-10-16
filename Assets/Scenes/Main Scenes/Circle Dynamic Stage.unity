@@ -821,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
+      objectReference: {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[1]
       value: 
@@ -841,7 +841,7 @@ PrefabInstance:
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 4820e59d3537d494f85a4a34a30f07d6, type: 2}
+      objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1220,6 +1220,14 @@ PrefabInstance:
     - target: {fileID: 7833158468835574519, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_Name
       value: Gameplay UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877961865724681637, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048346399850607240, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170818157980978525, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y
