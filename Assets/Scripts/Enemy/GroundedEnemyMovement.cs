@@ -57,7 +57,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         bool navigating = NavigateToPlayer();
         if (!navigating)
         {
-            Debug.LogWarning("enemy stopping");
             float y = rb.velocity.y;
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, y, 0), Time.deltaTime*_stoppingSpeed);
         }
@@ -102,8 +101,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         direction.y = y; //apply gravity
         rb.velocity = Vector3.Lerp( rb.velocity, direction, 0.5f );
 
-        //if (jump)
-            //Jump(); //if jump Jump
+        if (jump)
+            Jump(); //if jump Jump
 
         return true;
     }
@@ -111,7 +110,8 @@ public class GroundedEnemyMovement : MonoBehaviour
     private void Jump()
     {
         Debug.Log("jump");
-        rb.AddForce(0, _enemyStats.JumpForce*100, 0,ForceMode.Impulse);
+        //rb.AddForce(0, _enemyStats.JumpForce*100, 0,ForceMode.Impulse);
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
     }
 
     private Vector3 getTargetPosition()
@@ -150,10 +150,9 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private bool isGrounded()
     {
+        Debug.Log(rb.velocity.y);
         return rb.velocity.y == 0;
     }
-
-
 
     private Cell UpdateCurrentCell()
     {

@@ -96,7 +96,7 @@ namespace PathFinding
                     if (neighbor == null)
                         continue;
 
-                    if (!_verticalNeighbors.Contains(neighbor))
+                    if (!_sideNeighbors.Contains(neighbor))
                     {
                         //_verticalNeighbors.Add(neighbor);
                         _sideNeighbors.Add(neighbor);
