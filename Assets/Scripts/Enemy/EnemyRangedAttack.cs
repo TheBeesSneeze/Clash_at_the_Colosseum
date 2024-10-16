@@ -42,7 +42,7 @@ public class EnemyRangedAttack : MonoBehaviour
         damage = GetComponent<EnemyTakeDamage>();
         fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
-        coolDown = stats.AttackRate;
+        coolDown = stats.AttackRate + Random.Range(0,2); // random offset
         canMultiShoot = stats.canConsecutiveShoot;
         shotsFired = 0;
         

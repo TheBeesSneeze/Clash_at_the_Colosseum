@@ -54,12 +54,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268625551565947900}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.76, y: -0.06, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9054523835055469481}
+  m_Father: {fileID: 3447060050390161073}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393061656236962668
@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 2558676147345522402}
   - component: {fileID: 7911197565489766704}
   - component: {fileID: 18831259720661764}
-  - component: {fileID: 2690957284186633973}
   - component: {fileID: 5964920643477375803}
   m_Layer: 9
   m_Name: Player
@@ -133,12 +132,11 @@ Transform:
   m_Children:
   - {fileID: 3447060050390161073}
   - {fileID: 7450907664879607023}
-  - {fileID: 3274248623167992823}
   - {fileID: 3880159941308313104}
   - {fileID: 4129320510770929134}
   - {fileID: 9138300447882929290}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -321,36 +319,6 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffects: []
   secondsSinceLastShoot: 0
---- !u!114 &2690957284186633973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199585334150164854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952b673439c7ad34e904bcdc1a519e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootLayers:
-    serializedVersion: 2
-    m_Bits: 129
-  maxDistanceFromPointMultiplier: 0.1
-  minDistanceFromPointMultiplier: 0.1
-  jointSpring: 11.86
-  jointDamper: 7
-  jumpingSpring: 9
-  jumpingDamper: 0.77
-  jointMassScale: 4.5
-  jointForceBoost: 20
-  gunModel: {fileID: 3880159941308313104}
-  gunFirePoint: {fileID: 404411727347908862}
-  gunFollowPoint: {fileID: 4129320510770929134}
-  gunExitPoint: {fileID: 9138300447882929290}
-  _grappleEnd: {fileID: 0}
-  _bodyMaterial: {fileID: 2100000, guid: 6e468e0072104de49af51f58b5fd94ea, type: 2}
-  _hookRenderer: {fileID: 2432049269265537686}
 --- !u!114 &5964920643477375803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3274248623167992823}
   - {fileID: 5315044224774374552}
   m_Father: {fileID: 9054523835055469481}
   m_RootOrder: -1
