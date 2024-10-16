@@ -19,7 +19,7 @@ public class ScreenShake : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
-        startPos = cameraTransform.position;
+        startPos = cameraTransform.localPosition;
 
         PublicEvents.OnPlayerDamage.AddListener(OnPlayerTakeDamage);
         PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
@@ -38,10 +38,10 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shook = TryDamageShake() && TryShootShake();
+        bool shook = TryDamageShake() || TryShootShake();
 
         if(!shook)
-            cameraTransform.position = startPos;
+            cameraTransform.localPosition = startPos;
     }
 
     bool TryDamageShake()
@@ -49,7 +49,7 @@ public class ScreenShake : MonoBehaviour
         if (damageShakeTimer > 0)
         {
             damageShakeTimer-= Time.deltaTime;
-            cameraTransform.position = startPos + (Random.insideUnitSphere * playerShootIntensity);
+            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerShootIntensity);
             return true;
         }
         return false;
@@ -59,8 +59,9 @@ public class ScreenShake : MonoBehaviour
     {
         if (shootShakeTimer > 0)
         {
+            //Debug.Log("screen shake " + shootShakeTimer);
             shootShakeTimer -= Time.deltaTime;
-            cameraTransform.position = startPos + (Random.insideUnitSphere * playerDamageIntensity);
+            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerDamageIntensity);
             return true;
         }
         return false;
