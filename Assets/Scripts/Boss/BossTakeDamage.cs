@@ -14,15 +14,26 @@ using UnityEngine;
 public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats bstats;
+    private GameObject boss;
+
+    private HealthBar bossHealthBar;
     protected override void Start()
     {
         bstats = GetComponent<BossStats>();
         currentHealth = bstats.BossHealth;
+        boss = GameObject.Find("BossHealthBar");
+        bossHealthBar = boss.GetComponent<HealthBar>();
+        bossHealthBar.SetMaxHealth(currentHealth);
     }
     public override void TakeDamage(float damage)
     {
         if (!BossController.Invincible)
+        {
             base.TakeDamage(damage);
+            float temp = currentHealth - damage;
+            bossHealthBar.SetHealth(temp);
+        }
+           
     }
 
 
