@@ -14,6 +14,11 @@ public class GunGameplaySprite : MonoBehaviour
 {
     [SerializeField] private Image gunImage;
     [SerializeField] private Image lightningImage;
+    [SerializeField] private Image explosionImage;
+    [SerializeField] private Image iceImage;
+    [SerializeField] private Image windImage;
+
+    [SerializeField] private Sprite EmptySprite;
     private GunController gunController;
     private float _time=0;
     private GunState gunState = GunState.idle;
@@ -95,17 +100,66 @@ public class GunGameplaySprite : MonoBehaviour
     {
         if (sprite == null) return;
 
-        gunImage.sprite = sprite.baseSprite;
+        SetGunSprite(sprite);
 
-        if(lightningImage.enabled) lightningImage.sprite = sprite.lightningSprite; 
+        LoadIndividualSprite(lightningImage, sprite.lightningSprite);
+        LoadIndividualSprite(explosionImage, sprite.bombSprite);
+        LoadIndividualSprite(iceImage, sprite.iceSprite);
+        LoadIndividualSprite(windImage, sprite.windSprite);
     }
 
     private void OnBulletEffectGet(BulletEffect effect)
     {
         //not super huge on the way im doing this. if u have any better ideas then im open to em
 
-        if (effect.GetType() == typeof(ElectricityBullet))
-            lightningImage.enabled = true;
+        System.Type type = effect.GetType();    
+
+        if(type == typeof(ElectricityBullet)) { lightningImage.enabled = true; return; }
+        if(type == typeof(ExplosionBullet)) { explosionImage.enabled = true; return; }
+        if(type == typeof(SlowBullet)) { iceImage.enabled = true; return; }
+        if(type == typeof(WindBullet)){ windImage.enabled = true; return; }
+
+        LoadSprite(gunAnimation.sprites[index]);
+    }
+
+    private void SetGunSprite(GunSprite sprite)
+    {
+        Debug.Log(gunController.GetShotsLeftPercent());
+        //what in the magic numbers???
+        if (gunController.GetShotsLeft() <= 1)
+        {
+            LoadIndividualSprite(gunImage, sprite.NoneSnakes);
+            return;
+        }
+        float p = gunController.GetShotsLeftPercent();
+        if (gunController.GetShotsFired() <= 2 || p >= 0.666f)
+        {
+            LoadIndividualSprite(gunImage, sprite.AllSnakes);
+            return;
+        }
+        if (p <= 0.333f)
+        {
+            LoadIndividualSprite(gunImage, sprite.OneSnakes);
+            return;
+        }
+
+        LoadIndividualSprite(gunImage, sprite.TwoSnakes);
+    }
+
+    private void LoadIndividualSprite(Image image, Sprite sprite, bool emptySprite=false)
+    {
+
+        if (!image.enabled) return;
+
+        if (emptySprite)
+        {
+            image.sprite = EmptySprite;
+            return;
+        }
+
+        if (sprite == null || image.sprite == sprite) return;
+
+        image.sprite = sprite;
     }
 }
 public enum GunState

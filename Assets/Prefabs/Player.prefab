@@ -138,7 +138,7 @@ Transform:
   - {fileID: 4129320510770929134}
   - {fileID: 9138300447882929290}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -254,9 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultHealth: 100
   Speed: 25
-  MaxSpeed: 0
+  MaxSpeed: 30
   DashSpeed: 800
-  DashCoolDown: 3
+  DashCoolDown: 0
   Friction: 1
   AirMovementMultiplier: 0.25
   secondsTillFull: 0
@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e987b627af848f7448efdb5010912b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 1
   redVignette: {fileID: 0}
   healthBar: {fileID: 7130086367456736589, guid: 5c78f633eefc9e0449b4597bbc727020, type: 3}
+  CurrentHealth: 1
 --- !u!114 &18831259720661764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
   shotsTillCoolDown: 15
-  overheatCoolDown: 2
+  overheatCoolDown: 1.25
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffects: []
   secondsSinceLastShoot: 0

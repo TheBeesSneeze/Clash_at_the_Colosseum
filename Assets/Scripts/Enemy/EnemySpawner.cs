@@ -100,6 +100,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
             {
                 GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
                 _currentEnemiesAlive++;
+
+                if (enemySpawnPoints[i].enemyToSpawn == EnemySpawn.Boss)
+                {
+                    PublicEvents.OnBossSpawn.Invoke();
+                }
             }
         }
         hasSpawnedEnemies=true;

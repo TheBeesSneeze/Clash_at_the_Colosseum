@@ -53,7 +53,11 @@ public class ShootingMode : ScriptableObject
 [System.Serializable]
 public class GunSprite
 {
-    [SerializeField] public Sprite baseSprite;
+    [Header("Base Gun")]
+    [SerializeField] public Sprite AllSnakes;
+    [SerializeField] public Sprite TwoSnakes;
+    [SerializeField] public Sprite OneSnakes;
+    [SerializeField] public Sprite NoneSnakes;
     [Header("Effects")]
     [SerializeField] public Sprite bombSprite;
     [SerializeField] public Sprite lightningSprite;
