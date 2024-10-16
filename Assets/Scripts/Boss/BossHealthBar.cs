@@ -13,6 +13,7 @@ public class BossHealthBar : MonoBehaviour
     {
         gameObject.SetActive(false);
         PublicEvents.OnBossSpawn.AddListener(EnableBar);
+        PublicEvents.HydraDeath.AddListener(DisableBar);
     }
 
     public void SetHealth(float health)
@@ -31,6 +32,11 @@ public class BossHealthBar : MonoBehaviour
         gameObject.SetActive(true);
         bossTakeDamage = FindObjectOfType<BossTakeDamage>();
         bossTakeDamage.bossBar = this.gameObject;
+    }
+
+    private void DisableBar()
+    {
+        gameObject.SetActive(false);    
     }
 }
 

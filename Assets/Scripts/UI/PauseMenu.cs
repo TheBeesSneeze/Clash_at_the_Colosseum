@@ -28,7 +28,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        baseBGMVolume = backgroundMusic.volume;
+        if(backgroundMusic != null) 
+            baseBGMVolume = backgroundMusic.volume;
 
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
 
@@ -39,11 +40,13 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
-        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.5f);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.4f);
 
         TogglePauseUI(false);
     }
     public void escPressed() {
+
+        Debug.Log("pause");
 
         if (GameManager.Instance.pausedForUI)
             return;
@@ -88,7 +91,8 @@ public class PauseMenu : MonoBehaviour
         float sliderValue = volumeSlider.value;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
-        backgroundMusic.volume = sliderValue * baseBGMVolume;
+        if (backgroundMusic != null)
+            backgroundMusic.volume = sliderValue * baseBGMVolume;
     }
 
     public void sensitivityChanged(float value)

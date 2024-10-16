@@ -6,34 +6,33 @@ using TMPro;
 using NaughtyAttributes;
 using Utilities;
 using UnityEngine.UIElements;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 [RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
 {
     private float _turningSpeed = 1;
     private float _stoppingSpeed = 1;
-    bool _needsToSeePlayer = false; //TODO. DOESNT WORK
     private float _sightDistance = 10;
     private EnemyStats _enemyStats;
 
     private Transform _player;
     public bool debug = true;
     private Rigidbody rb;
-    private SphereCollider _collider; //im so sorry it needs to be a sphere
+    private Collider _collider; 
 
     private Path path;
     private int _playerLayer = 6;
     private LayerMask groundlm;
+    public ContactFilter2D ContactFilter;
     [ReadOnly][SerializeField] private Cell currentCell;
-
-
     private void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _playerLayer = LayerMask.NameToLayer("Player");
         groundlm = LayerMask.NameToLayer("Default");
         rb = GetComponent<Rigidbody>();
-        _collider = GetComponent<SphereCollider>();
+        _collider = GetComponent<Collider>();
         _enemyStats = GetComponent<EnemyStats>();
 
         if (_enemyStats == null) return;
@@ -44,6 +43,8 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        ApplyGravity();
+
         currentCell = UpdateCurrentCell();
 
         if (currentCell == null)
@@ -59,12 +60,16 @@ public class GroundedEnemyMovement : MonoBehaviour
         bool navigating = NavigateToPlayer();
         if (!navigating)
         {
-            Debug.LogWarning("enemy stopping");
             float y = rb.velocity.y;
             rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, y, 0), Time.deltaTime*_stoppingSpeed);
         }
         RotateColliderTowardsDirection(rb.velocity);
 
+    }
+
+    private void ApplyGravity()
+    {
+        rb.AddForce(0, -_enemyStats.gravity, 0, ForceMode.Acceleration);
     }
 
     private void RotateColliderTowardsDirection(Vector3 direction)
@@ -82,9 +87,6 @@ public class GroundedEnemyMovement : MonoBehaviour
     /// <returns></returns>
     private bool NavigateToPlayer()
     {
-        if (_needsToSeePlayer && !HasClearViewToPoint(_player.transform.position, _playerLayer))
-            return false;
-
         //if (Vector3.Distance(transform.position, _player.transform.position) < _enemyStats.StopDistanceToPlayer)
         //    return false;
 
@@ -96,14 +98,28 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         path = path.nextPath;
 
+        float y = rb.velocity.y;
         Vector3 targetPosition = getTargetPosition();
         Vector3 direction = targetPosition - transform.position;
-        Debug.DrawLine(transform.position, targetPosition, Color.blue);
+        
+        direction.y = 0;
         direction = direction.normalized * _enemyStats.MoveSpeed;
-        //rb.velocity = Vector3.Lerp( rb.velocity, direction, _enemyStats.MoveSpeed * Time.deltaTime);
+        Debug.DrawLine(transform.position, transform.position+direction, Color.red);
+        bool jump = ShouldJump(direction);
+        direction.y = y; //apply gravity
         rb.velocity = Vector3.Lerp( rb.velocity, direction, 0.5f );
 
+        if (jump)
+            Jump(); //if jump Jump
+
         return true;
+    }
+
+    private void Jump()
+    {
+        Debug.Log("jump");
+        //rb.AddForce(0, _enemyStats.JumpForce*100, 0,ForceMode.Impulse);
+        rb.velocity = new Vector3(rb.velocity.x, _enemyStats.JumpForce, rb.velocity.z);
     }
 
     private Vector3 getTargetPosition()
@@ -128,25 +144,24 @@ public class GroundedEnemyMovement : MonoBehaviour
         return path.position;
     }
 
-    private bool HasClearViewToPoint(Vector3 point, int layer)
+    private bool ShouldJump(Vector3 direction)
     {
-        float distance = Vector3.Distance(point, transform.position);
-        return HasClearViewToPoint(point, layer, distance);
-    }
+        if (!isGrounded()) return false;
 
-    private bool HasClearViewToPoint(Vector3 point, int layer, float distance)
-    {
-        Vector3 direction = point - transform.position;
-        Vector3 radius = _collider.radius * transform.lossyScale / 2.1f;
-        if (Physics.BoxCast(transform.position, radius, direction, out RaycastHit hit, Quaternion.identity, distance, layer))
+        if(Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude, ~groundlm))
         {
-            DebugUtilities.DrawBoxCastBox(transform.position, radius,  direction, Quaternion.identity, distance, Color.magenta);
-            return false;
+            return true;
         }
-        return true;
+
+        return false;
     }
 
-
+    private bool isGrounded()
+    {
+        //this is so scuffed man this should get fixed
+        Debug.Log(rb.velocity.y);
+        return rb.velocity.y < 0.05f && rb.velocity.y > -0.05f;
+    }
 
     private Cell UpdateCurrentCell()
     {
