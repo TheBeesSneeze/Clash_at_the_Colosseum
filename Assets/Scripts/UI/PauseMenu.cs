@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
-        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.5f);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.4f);
 
         TogglePauseUI(false);
     }

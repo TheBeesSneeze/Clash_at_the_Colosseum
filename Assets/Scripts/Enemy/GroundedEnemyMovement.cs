@@ -6,6 +6,7 @@ using TMPro;
 using NaughtyAttributes;
 using Utilities;
 using UnityEngine.UIElements;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 [RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
@@ -42,6 +43,8 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        ApplyGravity();
+
         currentCell = UpdateCurrentCell();
 
         if (currentCell == null)
@@ -62,6 +65,11 @@ public class GroundedEnemyMovement : MonoBehaviour
         }
         RotateColliderTowardsDirection(rb.velocity);
 
+    }
+
+    private void ApplyGravity()
+    {
+        rb.AddForce(0, -_enemyStats.gravity, 0, ForceMode.Acceleration);
     }
 
     private void RotateColliderTowardsDirection(Vector3 direction)
@@ -111,7 +119,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         Debug.Log("jump");
         //rb.AddForce(0, _enemyStats.JumpForce*100, 0,ForceMode.Impulse);
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, _enemyStats.JumpForce, rb.velocity.z);
     }
 
     private Vector3 getTargetPosition()
@@ -140,7 +148,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         if (!isGrounded()) return false;
 
-        if(Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude, groundlm))
+        if(Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude, ~groundlm))
         {
             return true;
         }
@@ -150,8 +158,9 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private bool isGrounded()
     {
+        //this is so scuffed man this should get fixed
         Debug.Log(rb.velocity.y);
-        return rb.velocity.y == 0;
+        return rb.velocity.y < 0.05f && rb.velocity.y > -0.05f;
     }
 
     private Cell UpdateCurrentCell()
