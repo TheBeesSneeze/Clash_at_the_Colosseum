@@ -168,12 +168,14 @@ MonoBehaviour:
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 5
-  TurningSpeed: 1
+  _enemyMovementSpeed: 4
+  gravity: 0
+  TurningSpeed: 0.9
+  JumpForce: 0
   StopSpeed: 1
   StopDistanceToPlayer: 6
   SightDistance: 2
-  VerticalSpeed: 5
+  VerticalSpeed: 4
   HeightAboveGround: 10
 --- !u!114 &2574494738450226700
 MonoBehaviour:

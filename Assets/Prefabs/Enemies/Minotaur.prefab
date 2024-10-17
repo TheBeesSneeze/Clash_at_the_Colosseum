@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 200
-  EnemyDamage: 20
+  EnemyHealth: 150
+  EnemyDamage: 15
   AttackRate: 5
   AttackCooldown: 1
   EnemyAttackRange: 1.5
@@ -98,9 +98,9 @@ MonoBehaviour:
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 6
+  _enemyMovementSpeed: 5
   gravity: 10
-  TurningSpeed: 3
+  TurningSpeed: 0.75
   JumpForce: 10
   StopSpeed: 5
   StopDistanceToPlayer: 1
