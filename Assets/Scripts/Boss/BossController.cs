@@ -52,4 +52,9 @@ public class BossController : Singleton<BossController>
         bossActive = false;
     }
 
+    private void Update()
+    {
+        Debug.Log(bossActive);
+    }
+
 }

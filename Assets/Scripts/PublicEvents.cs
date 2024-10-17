@@ -19,7 +19,7 @@ public class PublicEvents
     public static UnityEvent OnSensitivitySliderChanged = new UnityEvent();
     public static UnityEvent OnPlayerDamage = new UnityEvent();
     public static UnityEvent OnEnemyDamage = new UnityEvent();
-    public static UnityEvent OnEnemyDeath = new UnityEvent();
+    public static UnityEvent OnAnyEnemyDeath = new UnityEvent();
     public static UnityEvent OnPlayerDeath = new UnityEvent();
     public static UnityEvent OnEnemyShoot = new UnityEvent();
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
