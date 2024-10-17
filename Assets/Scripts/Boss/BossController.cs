@@ -30,6 +30,7 @@ public class BossController : Singleton<BossController>
         playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
         enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         PublicEvents.OnPlayerDeath.AddListener(OnPlayerDeath);
+        bossActive = true;
     }
 
     private void OnPlayerDeath()
@@ -49,6 +50,11 @@ public class BossController : Singleton<BossController>
     private void OnDisable()
     {
         bossActive = false;
+    }
+
+    private void Update()
+    {
+        Debug.Log(bossActive);
     }
 
 }

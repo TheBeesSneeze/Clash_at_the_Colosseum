@@ -71,6 +71,7 @@ public class EnemyStats : MonoBehaviour
         HeightAboveGround = 0;
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity=false;
+        gravity = 0;
             
     }    
 
