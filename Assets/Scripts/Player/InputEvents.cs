@@ -35,6 +35,7 @@ public class InputEvents : Singleton<InputEvents>
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
         _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
+        PublicEvents.OnSensitivitySliderChanged.AddListener(OnSensitivitySliderChange);
     }
 
     void InitializeActions()
@@ -111,5 +112,10 @@ public class InputEvents : Singleton<InputEvents>
         Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
         Heal.canceled -= ctx => ActionCanceled(ref HealPressed, HealCanceled);
         Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
+    }
+
+    private void OnSensitivitySliderChange()
+    {
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
     }
 }
