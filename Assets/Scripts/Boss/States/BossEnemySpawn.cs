@@ -57,7 +57,7 @@ public class BossEnemySpawn : StateMachineBehaviour
             return;
 
         _currentEnemiesAlive--;
-
+        Debug.Log(_currentEnemiesAlive);
         if( _currentEnemiesAlive <= 0 )
         {
             animator.SetTrigger("EnemiesDead");

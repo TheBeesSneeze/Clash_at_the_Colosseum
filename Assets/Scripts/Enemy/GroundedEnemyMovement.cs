@@ -159,7 +159,6 @@ public class GroundedEnemyMovement : MonoBehaviour
     private bool isGrounded()
     {
         //this is so scuffed man this should get fixed
-        Debug.Log(rb.velocity.y);
         return rb.velocity.y < 0.05f && rb.velocity.y > -0.05f;
     }
 
