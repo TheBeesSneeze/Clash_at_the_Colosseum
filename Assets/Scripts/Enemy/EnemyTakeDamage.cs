@@ -74,7 +74,9 @@ public class EnemyTakeDamage : MonoBehaviour
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
         healthSystem.addCharge(stats.healCharge);
-        
+
+        PublicEvents.OnAnyEnemyDeath.Invoke();
+
         if(stats.bulletType == EnemyType.Melee){PublicEvents.MinoutarDeath.Invoke();}
         else if(stats.bulletType == EnemyType.Cyclops) { PublicEvents.CyclopsDeath.Invoke(); }
         else if(stats.bulletType == EnemyType.Harpy) { PublicEvents.HarpyDeath.Invoke(); }

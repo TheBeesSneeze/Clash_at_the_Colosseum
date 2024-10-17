@@ -13,7 +13,7 @@ public class BossEnemySpawn : StateMachineBehaviour
     {
         SpawnEnemies(0);
         this.animator = animator;
-        PublicEvents.OnEnemyDeath.AddListener(OnEnemyDeath);
+        PublicEvents.OnAnyEnemyDeath.AddListener(OnEnemyDeath);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -57,7 +57,7 @@ public class BossEnemySpawn : StateMachineBehaviour
             return;
 
         _currentEnemiesAlive--;
-
+        Debug.Log(_currentEnemiesAlive);
         if( _currentEnemiesAlive <= 0 )
         {
             animator.SetTrigger("EnemiesDead");

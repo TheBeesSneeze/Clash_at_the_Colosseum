@@ -18,6 +18,7 @@ namespace Utilities
 {
     public class StageBuilderTool : MonoBehaviour
     {
+#if UNITY_EDITOR
         [InfoBox("Changing the order of any of the cells in the hierarchy will break any existing stage files.")]
         [InfoBox("This tool will only record the position/scale/Solidity of GameObjects with the Cell component")]
         #region Import
@@ -139,6 +140,8 @@ namespace Utilities
             
         }
         #endregion
+
+#endif
     }
 
     [Serializable]

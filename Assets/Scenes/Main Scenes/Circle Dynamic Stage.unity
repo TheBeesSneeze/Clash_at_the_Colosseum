@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2104746, g: 0.88403714, b: 0.595373, a: 1}
+  m_IndirectSpecularColor: {r: 1.2102548, g: 0.883931, b: 0.5953271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -787,6 +787,14 @@ PrefabInstance:
       propertyPath: stages.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: BulletEffects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: BulletEffects.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1348,6 +1356,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 9d3e558a5bc64d94c88bbe48e4fe8e75, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9d3e558a5bc64d94c88bbe48e4fe8e75, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cff5680f661548d48b570879e2af0e4d, type: 2}
@@ -1515,7 +1527,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8613831879522448468, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1500376622}
   m_SourcePrefab: {fileID: 100100000, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
 --- !u!20 &457740021 stripped
 Camera:
@@ -7111,6 +7126,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3470125298711099941, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
+--- !u!1 &1500376621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8613831879522448468, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  m_PrefabInstance: {fileID: 457740020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1500376622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500376621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95454a1b7579f534ba6ebb8372956132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamageIntensity: 0
+  damageShakeDuration: 0.1
+  playerShootIntensity: 0
+  shootShakeDuration: 0.05
 --- !u!114 &1518104782
 MonoBehaviour:
   m_ObjectHideFlags: 0

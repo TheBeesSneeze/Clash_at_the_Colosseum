@@ -186,29 +186,18 @@ public class PlayerController : MonoBehaviour
     */
     private void Jump()
     {
-        if (GrapplingHook.isGrappling)
-        {
-            return;
-        }
-
+        //if (GrapplingHook.isGrappling){return;}
+        print("is grounded" + IsGrounded());
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
 
         if (IsGrounded())
         {
-            rb.AddForce(
-                Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
-
+            rb.AddForce(Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
             airJumpCounter = stats.AirJumps;
-
-            return;
         }
-
-        if(airJumpCounter > 0)
+        if(!IsGrounded() && (airJumpCounter > 0))
         {
-            
-            rb.AddForce(
-                Vector3.up * (Mathf.Sqrt(2 * stats.SecondJumpHeight * (grav*2))), ForceMode.Impulse);
-
+            rb.AddForce(Vector3.up * (Mathf.Sqrt(2 * stats.SecondJumpHeight * (grav*2))), ForceMode.Impulse);
             airJumpCounter--;
         }
     }
