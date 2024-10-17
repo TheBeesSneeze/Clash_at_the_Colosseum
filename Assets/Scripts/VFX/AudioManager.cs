@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     public SoundClip GunSound;
     public SoundClip EnemyDamageSound;
     public SoundClip PlayerDamageSound;
-    public SoundClip EnemyDeathSound;
     public SoundClip PlayerDeathSound;
     public SoundClip EnemyShootSound;
     public SoundClip MeleeAttackSound;
@@ -20,6 +19,15 @@ public class AudioManager : MonoBehaviour
     public SoundClip DashSound;
     public SoundClip UpgradeReceiveSound;
     public SoundClip StageTransitionSound;
+    public SoundClip SnakeCooldownSound;
+    public SoundClip HydraIntroSound;
+    public SoundClip HydraFireAttackSound;
+    public SoundClip HydraDeathSound;
+    public SoundClip CyclopsAttackSound;
+    public SoundClip CyclopsDeathSound;
+    public SoundClip HarpyDeathSound;
+    public SoundClip MinoutarDeathSound;
+
 
     public static float masterVolume=1;
 
@@ -28,9 +36,9 @@ public class AudioManager : MonoBehaviour
         masterVolume = PlayerPrefs.GetFloat("volume", 1);
 
         PublicEvents.OnPlayerShoot.AddListener(OnGunShoot);
+        PublicEvents.OnPlayerReload.AddListener(Cooldown);
         PublicEvents.OnPlayerDamage.AddListener(PlayerDamage);
         PublicEvents.OnEnemyDamage.AddListener(EnemyDamage);
-        PublicEvents.OnEnemyDeath.AddListener(EnemyDeath);
         PublicEvents.OnPlayerDeath.AddListener(PlayerDeath);
         PublicEvents.OnEnemyShoot.AddListener(EnemyShoot);
         PublicEvents.OnMeleeEnemyAttack.AddListener(MeleeEnemyAttack);
@@ -38,6 +46,13 @@ public class AudioManager : MonoBehaviour
         PublicEvents.OnDash.AddListener(Dash);
         PublicEvents.OnUpgradeReceived += UpgradeReceived; //bro why are you different
         PublicEvents.OnStageTransition.AddListener(StageTransition);
+        PublicEvents.OnBossSpawn.AddListener(HydraIntro);
+        PublicEvents.HydraFireAttack.AddListener(HydraFireAttack);
+        PublicEvents.HydraDeath.AddListener(HydraDeath);
+        PublicEvents.CyclopsAttack.AddListener(CyclopsAttack);
+        PublicEvents.CyclopsDeath.AddListener(CyclopsDeath);
+        PublicEvents.HarpyDeath.AddListener(HarpyDeath);
+        PublicEvents.MinoutarDeath.AddListener(MinotaurDeath);
 
 
         gunController = GameObject.FindObjectOfType<GunController>();
@@ -59,12 +74,6 @@ public class AudioManager : MonoBehaviour
     private void PlayerDamage()
     {
         PlayerDamageSound.PlaySound();
-    }
-    //enemy death
-    private void EnemyDeath()
-    {
-        EnemyDeathSound.PlaySound();
-
     }
 
     //player death
@@ -110,8 +119,54 @@ public class AudioManager : MonoBehaviour
         StageTransitionSound.PlaySound();
     }
 
-    //cooldown sound ---------------------------------------------
-    //boss sound ------------------------------------
+    //overheat
+    private void Cooldown()
+    {
+        SnakeCooldownSound.PlaySound();
+    }
+
+    //hydra spawn
+    private void HydraIntro()
+    {
+        HydraIntroSound.PlaySound();
+    }
+
+    //hydra fireball
+    private void HydraFireAttack()
+    {
+        HydraFireAttackSound.PlaySound();
+    }
+
+    //hydra dies
+    private void HydraDeath()
+    {
+        HydraDeathSound.PlaySound();
+    }
+
+    //cyclops dies
+    private void CyclopsDeath()
+    {
+        CyclopsDeathSound.PlaySound();
+    }
+
+    //harpy dies
+    private void HarpyDeath()
+    {
+        HarpyDeathSound.PlaySound();
+    }
+
+    //minoutar death
+    private void MinotaurDeath()
+    {
+        MinoutarDeathSound.PlaySound();
+    }
+
+    //cyclops attacks 
+    private void CyclopsAttack()
+    {
+        CyclopsAttackSound.PlaySound();
+    }
+    
 }
 
 [System.Serializable]

@@ -34,8 +34,8 @@ public class InputEvents : Singleton<InputEvents>
         movementOrigin = Camera.main.transform;
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
-        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
-        PublicEvents.OnSensitivitySliderChanged.AddListener(OnSettingsValueChanged);
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
+        PublicEvents.OnSensitivitySliderChanged.AddListener(OnSensitivitySliderChange);
     }
 
     void InitializeActions()
@@ -114,8 +114,8 @@ public class InputEvents : Singleton<InputEvents>
         Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
 
-    private void OnSettingsValueChanged()
+    private void OnSensitivitySliderChange()
     {
-        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 1);
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
     }
 }

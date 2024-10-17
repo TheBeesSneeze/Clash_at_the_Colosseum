@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Explosion Bullet
   m_EditorClassIdentifier: 
   TrailColor: {r: 1, g: 0.666574, b: 0.30566037, a: 1}
-  DamageMultiplier: 100
+  DamageMultiplier: 0.75
   DestroyBulletOnSurfaceContact: 1
   DestroyBulletOnEntityContact: 1
   UpgradeName: Dubious Detonation
-  UpgradeDescription: Expoldes on impact damaging any enemies in its radius
+  UpgradeDescription: Bullets explode on impact with enemies and surfaces damaging
+    any enemies in its radius
   UpgradeIcon: {fileID: -203969728, guid: f1bcea4c2f7dc5e439f6979c7bfacbd6, type: 3}
   bodyColor: {r: 1, g: 0.6901917, b: 0.2679245, a: 1}
   secondaryColor: {r: 1, g: 0.5305271, b: 0.37169808, a: 1}
-  enemyHitExplotionRadius: 100
-  surfaceHitExplosionRadius: 100
+  enemyHitExplotionRadius: 3.5
+  surfaceHitExplosionRadius: 3.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256

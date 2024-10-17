@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6670010424615105723
 MonoBehaviour:
@@ -85,19 +85,16 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
   PlayerDamageSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: 685fa23bcc6026545993bce993c5e17b, type: 3}
-  EnemyDeathSound:
-    Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 95c9f47f02a1b7f4abdd70d36c314f5c, type: 3}
   PlayerDeathSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: 669159055fff48d4384c67fcb6580105, type: 3}
+    sound: {fileID: 8300000, guid: 2b2c916bf72f1ca4aa39f91691702038, type: 3}
   EnemyShootSound:
     Volume: 0.947
     sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
   MeleeAttackSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: f53bb791b307f494aa2f9a30173f12de, type: 3}
+    sound: {fileID: 8300000, guid: 9237b42ca9fd0a64fb900ba0d44bf844, type: 3}
   GrappleSound:
     Volume: 0.836
     sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
@@ -106,10 +103,34 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 6a195b654c54f7c4ab009cdd13a92514, type: 3}
   UpgradeReceiveSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: d7af78ee66a6be84dab240a7f91adcbb, type: 3}
+    sound: {fileID: 8300000, guid: 19d5c0487ce9fc042a6a47c2a0c74e3d, type: 3}
   StageTransitionSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: 8476fb5141b345b4a9d0c5223a56a0b1, type: 3}
+    sound: {fileID: 8300000, guid: 159bd3b663b378948a5ffbbdd6cbcc4c, type: 3}
+  SnakeCooldownSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 8f6e04b8de334b348aa4bf3d3f6fa020, type: 3}
+  HydraIntroSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 8770b93ea14ad0a47b6dd4c16b0d2b74, type: 3}
+  HydraFireAttackSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 46178f9ae7752ce40b0367526799a393, type: 3}
+  HydraDeathSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 3f0f5a1d9fd1dba4a8e1f378719ed7e8, type: 3}
+  CyclopsAttackSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: f76d16a0caafb70418a49ef8183542f9, type: 3}
+  CyclopsDeathSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 87b11277fde1c424b8f25752abe4f5cc, type: 3}
+  HarpyDeathSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 21b1943bce60f594cae16ff8a780d77b, type: 3}
+  MinoutarDeathSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: 1defb620513a33249af0f879713b1a04, type: 3}
 --- !u!114 &6405318079182177319
 MonoBehaviour:
   m_ObjectHideFlags: 0

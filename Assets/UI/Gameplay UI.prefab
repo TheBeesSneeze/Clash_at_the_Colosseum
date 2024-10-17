@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 28665766, guid: c11d05167f8c2aa44bd0ee6ba22627c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 2485398717009069508}
   - component: {fileID: 8158703902223346645}
   - component: {fileID: 4797828148654619718}
+  - component: {fileID: 4744621170359594644}
   m_Layer: 5
   m_Name: Gameplay UI
   m_TagString: Untagged
@@ -592,6 +593,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &4744621170359594644
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833158468835574519}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1748175242042110060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -600,6 +613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4764649902187602851}
     m_Modifications:
+    - target: {fileID: 1168213214437298720, guid: 5c0eea954094df84d8e847f32d8679a7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1168213214437298720, guid: 5c0eea954094df84d8e847f32d8679a7, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -910,7 +927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5961662349391443569, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.25
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5961662349391443569, guid: acafd9c1e660e4b4199c6f84a35c45b8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1024,7 +1041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3104708511573755163, guid: bdc2893c1c35b024fa4aec89b4a9eaf1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.190002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3104708511573755163, guid: bdc2893c1c35b024fa4aec89b4a9eaf1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1799,7 +1816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038166637566581598, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_Pivot.x
@@ -1867,11 +1884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58.5
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 154.375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7308156804635179578, guid: de2c64667971d974cb87975222684559, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -114,17 +114,16 @@ public class GunGameplaySprite : MonoBehaviour
 
         System.Type type = effect.GetType();    
 
-        if(type == typeof(ElectricityBullet)) { lightningImage.enabled = true; return; }
-        if(type == typeof(ExplosionBullet)) { explosionImage.enabled = true; return; }
-        if(type == typeof(SlowBullet)) { iceImage.enabled = true; return; }
-        if(type == typeof(WindBullet)){ windImage.enabled = true; return; }
+        if(type == typeof(ElectricityBullet)) { if (lightningImage != null) lightningImage.enabled = true; return; }
+        if(type == typeof(ExplosionBullet)) { if (explosionImage != null) explosionImage.enabled = true; return; }
+        if(type == typeof(SlowBullet)) { if(iceImage != null) iceImage.enabled = true; return; }
+        if(type == typeof(WindBullet)) { if (windImage != null) windImage.enabled = true; return; }
 
         LoadSprite(gunAnimation.sprites[index]);
     }
 
     private void SetGunSprite(GunSprite sprite)
     {
-        Debug.Log(gunController.GetShotsLeftPercent());
         //what in the magic numbers???
         if (gunController.GetShotsLeft() <= 1)
         {
