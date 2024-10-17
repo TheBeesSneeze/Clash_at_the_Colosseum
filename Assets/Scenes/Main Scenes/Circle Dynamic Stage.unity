@@ -787,6 +787,14 @@ PrefabInstance:
       propertyPath: stages.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: BulletEffects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: BulletEffects.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
