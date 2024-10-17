@@ -38,6 +38,9 @@ public class ScreenShake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.pausedForUI || GameManager.Instance.isPaused)
+            return;
+
         bool shook = TryDamageShake() || TryShootShake();
 
         if(!shook)
