@@ -72,6 +72,7 @@ namespace PathFinding
 
             return;
 
+            /*
             Vector3 pathpos = PathPosition;
 
             foreach(Cell neighbor in _verticalNeighbors)
@@ -81,7 +82,7 @@ namespace PathFinding
                 //if(difference < 1 && difference > -1)
                 //if(difference < 2 && difference > -2)
                     _sideNeighbors.Add(neighbor);
-            }
+            }*/
         }
 
         
