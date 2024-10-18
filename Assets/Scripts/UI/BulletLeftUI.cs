@@ -14,6 +14,8 @@ public class BulletLeftUI : MonoBehaviour
 
         if (gunController == null) 
             gunController = GameObject.FindObjectOfType<GunController>();
+
+        BulletUI();
     }
 
     private void BulletUI()
