@@ -19,7 +19,7 @@ public class GunController : MonoBehaviour
     [SerializeField] public ShootingMode shootingMode;
     [SerializeField] public GameObject BulletPrefab;
     [SerializeField][Min(1)] private int shotsTillCoolDown;
-    [SerializeField][Min(0)] private float overheatCoolDown;
+    [SerializeField][Min(0)] public float overheatCoolDown;
     
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
@@ -191,6 +191,7 @@ public class GunController : MonoBehaviour
     {
         cooldown = overheatCoolDown;
         isOverHeating = true;
+        PublicEvents.Reloading.Invoke();
         return;
     }
 

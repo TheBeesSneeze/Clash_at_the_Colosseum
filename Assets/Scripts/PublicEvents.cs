@@ -36,7 +36,7 @@ public class PublicEvents
     public static UnityEvent CyclopsDeath = new UnityEvent();
     public static UnityEvent HarpyDeath = new UnityEvent();
     public static UnityEvent MinoutarDeath = new UnityEvent();
-
+    public static UnityEvent Reloading = new UnityEvent();
  
 
     // actions???? what the fuck!!!
