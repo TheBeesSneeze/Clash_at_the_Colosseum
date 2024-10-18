@@ -33,7 +33,7 @@ public class EnemyMelee : MonoBehaviour
         timeBetweenAttacks = stats.AttackRate;
         animator = GetComponent<EnemyAnimator>();
         damage = GetComponent<EnemyTakeDamage>();   
-        coolDown =stats.AttackCooldown;
+        coolDown =timeBetweenAttacks;
     }
     private void Update()
     {

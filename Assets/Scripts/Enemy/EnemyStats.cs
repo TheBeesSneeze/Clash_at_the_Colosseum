@@ -19,7 +19,6 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float EnemyDamage;
     [Tooltip("time between enemy attacks")]
     [SerializeField] public float AttackRate;
-    [SerializeField] public float AttackCooldown;
     [SerializeField][Min(0)] public float EnemyAttackRange;
     [SerializeField] public EnemyType bulletType = EnemyType.Melee;
     [SerializeField][Min(0)] public float healCharge; 
