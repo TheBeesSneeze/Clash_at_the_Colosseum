@@ -36,6 +36,8 @@ namespace PathFinding
         private LayerMask _cellLM;
         private Collider _collider;
 
+        private ParticleSystem ps;
+
         // should ve called in cellmanager MAYBE
         void Awake()
         {
@@ -49,13 +51,15 @@ namespace PathFinding
             GetNeighbors();
             PublicEvents.OnStageTransitionFinish.AddListener(GetNeighbors);
             PublicEvents.OnBossPhaseThreeStart.AddListener(OnBossPhase3Start);
+
+            ps = GetComponent<ParticleSystem>();
         }
 
         private void OnBossPhase3Start()
         {
             if (boss3PieceFallDelay < 0)
                 return;
-
+            
             StartCoroutine(StageFall());
         }
 
@@ -123,6 +127,8 @@ namespace PathFinding
 
         private IEnumerator StageFall()
         {
+            if (ps != null)
+                   ps.Play();
             yield return new WaitForSeconds(boss3PieceFallDelay);
             float timeElapsed = 0;
             Vector3 startPos = transform.position;

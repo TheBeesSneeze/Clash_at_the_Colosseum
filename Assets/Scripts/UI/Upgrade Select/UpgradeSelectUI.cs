@@ -41,7 +41,7 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.onClick.AddListener(OnSelectClick);
     }
 
-    public async void OpenMenu(float delaySeconds = 2.5f)
+    public async void OpenMenu(float delaySeconds =0)
     {
         if (open) return;
         open = true;
