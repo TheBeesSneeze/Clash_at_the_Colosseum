@@ -60,7 +60,7 @@ public class StageManager
         }
 
         if (currentStage.BulletEffectOnClear)
-            _upgradeSelectUI.OpenMenu();
+            _upgradeSelectUI.OpenMenu(1);
         else
             ChangeStage();
     }

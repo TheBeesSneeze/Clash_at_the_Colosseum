@@ -18,5 +18,11 @@ public class DebugControls : MonoBehaviour
             UpgradeSelectUI ui = GameObject.FindObjectOfType<UpgradeSelectUI>();
             ui.OpenMenu();
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            HealthSystem hs = GameObject.FindObjectOfType<HealthSystem>();
+            hs.addCharge(99999);
+        }
     }
 }

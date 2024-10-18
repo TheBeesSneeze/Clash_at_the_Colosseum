@@ -16,6 +16,7 @@ public class PublicEvents
 {
     public static UnityEvent OnPlayerShoot = new UnityEvent();
     public static UnityEvent OnPlayerReload = new UnityEvent();
+    public static UnityEvent OnPlayerHeal = new UnityEvent();
     public static UnityEvent OnSensitivitySliderChanged = new UnityEvent();
     public static UnityEvent OnPlayerDamage = new UnityEvent();
     public static UnityEvent OnEnemyDamage = new UnityEvent();
@@ -35,6 +36,7 @@ public class PublicEvents
     public static UnityEvent CyclopsDeath = new UnityEvent();
     public static UnityEvent HarpyDeath = new UnityEvent();
     public static UnityEvent MinoutarDeath = new UnityEvent();
+
  
 
     // actions???? what the fuck!!!
