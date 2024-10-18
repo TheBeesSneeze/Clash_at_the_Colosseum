@@ -53,6 +53,7 @@ public class GunController : MonoBehaviour
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
         currentShots = 0;
         cooldown = 0;
+        InputEvents.Instance.ReloadStarted.AddListener(Reload);
     }
 
     public void DebugStartingBulletEffects()
@@ -168,12 +169,11 @@ public class GunController : MonoBehaviour
         }
         else if (cooldown <= 0f)
         {
-            if (currentShots >= shotsTillCoolDown)
+            if(currentShots >= shotsTillCoolDown)
             {
-                cooldown = overheatCoolDown;
-                isOverHeating = true;
-                return; 
+                Reload();
             }
+ 
         }
         
 
@@ -185,6 +185,13 @@ public class GunController : MonoBehaviour
         //shootin time
         
         Shoot();
+    }
+
+    private void Reload()
+    {
+        cooldown = overheatCoolDown;
+        isOverHeating = true;
+        return;
     }
 
     private void OnShootStart()
