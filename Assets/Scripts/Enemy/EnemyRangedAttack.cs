@@ -72,10 +72,6 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private float GetDistanceFromPlayer()
     {
-        if (playerObject == null)
-        {
-            playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
-        }
         var distance = (transform.position - playerObject.transform.position).normalized;
         distance.y = 0f;
         float distanceFrom = distance.magnitude;
@@ -83,12 +79,7 @@ public class EnemyRangedAttack : MonoBehaviour
     }
     
     private void Attacking()
-    {
-        if (playerObject == null)
-        {
-            playerObject = FindObjectOfType<PlayerBehaviour>().gameObject;
-        }
-        
+    {   
         if (shootingMode == null)
         {
             return;
@@ -138,7 +129,7 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.bulletForce = shootingMode.BulletSpeed;
         bulletObject.OnBulletShoot(direction);
 
-        if(animator!= null) animator.OnAttackStart();
+        if (animator != null) { animator.OnAttackStart(); }
     }
 
     private GameObject InstantiateBullet(EnemyType type)
