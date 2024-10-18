@@ -161,8 +161,8 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 897
-  _bulletEffect1: {fileID: 0}
-  _bulletEffect2: {fileID: 0}
+  DealPlayerDamage: 1
+  DealEnemyDamage: 0
   damageAmount: 10
   bulletForce: 200
 --- !u!96 &1388419814164784260
