@@ -6,42 +6,37 @@ using UnityEngine.ParticleSystemJobs;
 
 public class ParticleManager : Singleton<ParticleManager>
 {
-    public ParticleThing EnemySpawns;
+    public ParticleGroup EnemySpawns;
+    public ParticleGroup PlayerHeal;
     public void Start()
     {
         PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
         InitalizeParticles(EnemySpawns);
-        EnemySpawns.Play(); // it also needs to play at beiginning at game
+        //EnemySpawns.Play(); // it also needs to play at beiginning at game
+
+        PublicEvents.OnPlayerHeal.AddListener(PlayerHeal.Play);
+        InitalizeParticles(PlayerHeal);
 
     }
 
-    public void InitalizeParticles(ParticleThing particles)
+    public void InitalizeParticles(ParticleGroup particles)
     {
+        if(particles.PlayOnStart)
+        {
+            particles.Play();
+            return;
+        }
+
         foreach (ParticleSystem particle in particles.particles)
         {
             if (!particles.PlayOnStart)
                 particle.Stop();
-
         }
     }
-
-    //public static IEnumerator PlayParticleGroups(ParticleThing particles)
-    //{
-        
-        
-        /*yield return new WaitForSeconds(particles.PlayDuration);
-
-        foreach (ParticleSystem particle in particles.particles)
-        {
-            if (particle == null) 
-                particle.Stop();
-        }
-        */
-    //}
 }
 
 [System.Serializable]
-public class ParticleThing
+public class ParticleGroup
 {
     //public float PlayDuration = 1;
     public List<ParticleSystem> particles;
@@ -54,6 +49,8 @@ public class ParticleThing
         {
             if (particle != null)
                 particle.Play();
+            else
+                Debug.LogWarning("No Particles set");
         }
     }
 }
