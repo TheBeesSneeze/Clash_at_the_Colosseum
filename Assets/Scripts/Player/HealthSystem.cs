@@ -73,6 +73,7 @@ public class HealthSystem : MonoBehaviour
             isHealing = true;
             healCharge.value = 0;
             timeElapsed = 0;
+            PublicEvents.OnPlayerHeal.Invoke();
         }
         else
         {
