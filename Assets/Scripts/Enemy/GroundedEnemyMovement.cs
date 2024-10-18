@@ -183,7 +183,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         return null;
         */
     }
-
     private void OnDrawGizmos()
     {
         if (!debug) return;
@@ -198,25 +197,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         path.DrawPath();
 
-        return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireMesh(path.cell.GetComponent<MeshFilter>().mesh, path.cell.transform.position+Vector3.up, path.cell.transform.rotation, path.cell.transform.lossyScale);
-
-        Vector3 lastPoint = path.position+Vector3.up;
-
-        Path parth = path; //this is my worst variable name yet
-        while (parth != null)
-        {
-            //Gizmos.color = Color.yellow;
-            //Gizmos.DrawWireCube(parth.position, parth.position+Vector3.up);
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(lastPoint, parth.position + Vector3.up);
-            lastPoint = parth.position + Vector3.up;
-
-            parth = parth.nextPath;
-        }
+        return; //top ten most necessary returns
     }
 
 }
