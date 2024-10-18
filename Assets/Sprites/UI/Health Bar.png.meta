@@ -173,7 +173,7 @@ TextureImporter:
         width: 64
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
         width: 64
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
         width: 7
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
         width: 7
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,12 +249,33 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Health Bar_6
+      name: bullet left
       rect:
         serializedVersion: 2
         x: 65
         y: 23
-        width: 16
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50a9698b26690e4cb42c8564b7cdf45
+      internalID: -1338255217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet mid
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 23
+        width: 7
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -263,8 +284,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50a9698b26690e4cb42c8564b7cdf45
-      internalID: -1338255217
+      spriteID: 76230b0bb4083134aa0477d397cea6a9
+      internalID: -413577301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet right
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 23
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1dea367f11d2634c836f8620f5925cb
+      internalID: -920462779
       vertices: []
       indices: 
       edges: []
@@ -286,7 +328,9 @@ TextureImporter:
       Health Bar_3: -348079708
       Health Bar_4: 876999150
       Health Bar_5: -96190264
-      Health Bar_6: -1338255217
+      bullet left: -1338255217
+      bullet mid: -413577301
+      bullet right: -920462779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
