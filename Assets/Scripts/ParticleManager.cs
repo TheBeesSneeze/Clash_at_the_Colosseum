@@ -4,35 +4,53 @@ using UnityEngine;
 //using UnityEngine.ParticleSystemModule;
 using UnityEngine.ParticleSystemJobs;
 
-public class ParticleManager : MonoBehaviour
+public class ParticleManager : Singleton<ParticleManager>
 {
+    public ParticleGroup EnemySpawns;
+    public ParticleGroup PlayerHeal;
     public void Start()
     {
-        
+        PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
+        InitalizeParticles(EnemySpawns);
+        //EnemySpawns.Play(); // it also needs to play at beiginning at game
+
+        PublicEvents.OnPlayerHeal.AddListener(PlayerHeal.Play);
+        InitalizeParticles(PlayerHeal);
+
     }
 
-    public IEnumerator PlayParticleGroups(ParticleThing particles)
+    public void InitalizeParticles(ParticleGroup particles)
     {
-        foreach (ParticleSystem particle in particles.particles)
+        if(particles.PlayOnStart)
         {
-            if (particle != null) 
-                particle.Play();
+            particles.Play();
+            return;
         }
-        
-        yield return new WaitForSeconds(particles.PlayDuration);
 
         foreach (ParticleSystem particle in particles.particles)
         {
-            if (particle == null) 
+            if (!particles.PlayOnStart)
                 particle.Stop();
         }
-
     }
 }
 
 [System.Serializable]
-public class ParticleThing
+public class ParticleGroup
 {
-    public float PlayDuration = 1;
+    //public float PlayDuration = 1;
     public List<ParticleSystem> particles;
+    public bool PlayOnStart = false;
+
+    public void Play()
+    {
+        //ParticleManager.Instance.StartCoroutine(ParticleManager.PlayParticleGroups(this));
+        foreach (ParticleSystem particle in particles)
+        {
+            if (particle != null)
+                particle.Play();
+            else
+                Debug.LogWarning("No Particles set");
+        }
+    }
 }
