@@ -10,13 +10,14 @@ namespace PathFinding
     public class Path : IComparable<Path>
     {
         public Vector3 position { get =>  cell.PathPosition; } 
-        public int Cost { get => (_distanceToStart + _distanceToTarget); }
+        public int Cost { get => (_distanceToStart + _distanceToTarget + (int)(_heightDifference*100)); }
 
         public Cell cell;
         public Path nextPath;
 
         private int _distanceToTarget;
         private int _distanceToStart;
+        private float _heightDifference;
 
         public float DistanceToStart { get => _distanceToStart; }
         public float DistanceToTarget { get => _distanceToTarget; }
@@ -26,6 +27,7 @@ namespace PathFinding
             this.cell = cell;
             _distanceToStart = 0;
             _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
+            _heightDifference = 0;
         }
 
         public Path(Cell cell, Path lastPath, Cell target)
@@ -33,6 +35,7 @@ namespace PathFinding
             this.cell = cell;
             _distanceToStart = Mathf.RoundToInt(lastPath.DistanceToStart + Vector3.Distance(this.cell.PathPosition, lastPath.position) * 10);
             _distanceToTarget = Mathf.RoundToInt(Vector3.Distance(cell.PathPosition, target.PathPosition) * 10);
+            _heightDifference = position.y - lastPath.position.y;
             nextPath = lastPath;
         }
 

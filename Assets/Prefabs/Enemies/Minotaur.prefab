@@ -91,7 +91,6 @@ MonoBehaviour:
   EnemyHealth: 75
   EnemyDamage: 15
   AttackRate: 5
-  AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
   healCharge: 5
@@ -208,7 +207,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605286496879608125}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

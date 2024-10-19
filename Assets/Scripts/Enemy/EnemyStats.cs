@@ -51,8 +51,11 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
 
+    private void Start()
+    {
+        PublicEvents.OnEnemySpawned.Invoke(this);
+    }
 
-    
     #region affectors
 
     public void OnEnemyDeath()

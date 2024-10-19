@@ -107,6 +107,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        cellManager.Update();
+        pathManager.Update();
     }
 }
