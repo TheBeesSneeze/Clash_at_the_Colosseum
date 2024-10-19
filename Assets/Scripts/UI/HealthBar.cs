@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class HealthBar : MonoBehaviour
 {
 
-    public Slider slider;
+    [SerializeField] private Slider slider;
    
     public void SetHealth(float health)
     {

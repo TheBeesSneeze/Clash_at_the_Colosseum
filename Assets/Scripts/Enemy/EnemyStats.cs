@@ -19,7 +19,6 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float EnemyDamage;
     [Tooltip("time between enemy attacks")]
     [SerializeField] public float AttackRate;
-    [SerializeField] public float AttackCooldown;
     [SerializeField][Min(0)] public float EnemyAttackRange;
     [SerializeField] public EnemyType bulletType = EnemyType.Melee;
     [SerializeField][Min(0)] public float healCharge; 
@@ -52,8 +51,11 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
 
+    private void Start()
+    {
+        PublicEvents.OnEnemySpawned.Invoke(this);
+    }
 
-    
     #region affectors
 
     public void OnEnemyDeath()
@@ -71,6 +73,7 @@ public class EnemyStats : MonoBehaviour
         HeightAboveGround = 0;
         GetComponent<Collider>().enabled = false;
         GetComponent<Rigidbody>().useGravity=false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         gravity = 0;
             
     }    

@@ -19,7 +19,7 @@ public class GunController : MonoBehaviour
     [SerializeField] public ShootingMode shootingMode;
     [SerializeField] public GameObject BulletPrefab;
     [SerializeField][Min(1)] private int shotsTillCoolDown;
-    [SerializeField][Min(0)] private float overheatCoolDown;
+    [SerializeField][Min(0)] public float overheatCoolDown;
     
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
@@ -53,6 +53,7 @@ public class GunController : MonoBehaviour
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
         currentShots = 0;
         cooldown = 0;
+        InputEvents.Instance.ReloadStarted.AddListener(Reload);
     }
 
     public void DebugStartingBulletEffects()
@@ -168,12 +169,11 @@ public class GunController : MonoBehaviour
         }
         else if (cooldown <= 0f)
         {
-            if (currentShots >= shotsTillCoolDown)
+            if(currentShots >= shotsTillCoolDown)
             {
-                cooldown = overheatCoolDown;
-                isOverHeating = true;
-                return; 
+                Reload();
             }
+ 
         }
         
 
@@ -185,6 +185,14 @@ public class GunController : MonoBehaviour
         //shootin time
         
         Shoot();
+    }
+
+    private void Reload()
+    {
+        cooldown = overheatCoolDown;
+        isOverHeating = true;
+        PublicEvents.Reloading.Invoke();
+        return;
     }
 
     private void OnShootStart()

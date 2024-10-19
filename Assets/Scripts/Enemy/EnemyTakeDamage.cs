@@ -44,6 +44,9 @@ public class EnemyTakeDamage : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
+
+        if (transform.position.y < -500)
+            stats.OnEnemyDeath();
     }
 
     public virtual void TakeDamage(float damage)
@@ -75,7 +78,7 @@ public class EnemyTakeDamage : MonoBehaviour
         isStillAlive = false;
         healthSystem.addCharge(stats.healCharge);
 
-        PublicEvents.OnAnyEnemyDeath.Invoke();
+        PublicEvents.OnAnyEnemyDeath.Invoke(stats);
 
         if(stats.bulletType == EnemyType.Melee){PublicEvents.MinoutarDeath.Invoke();}
         else if(stats.bulletType == EnemyType.Cyclops) { PublicEvents.CyclopsDeath.Invoke(); }

@@ -28,7 +28,7 @@ public class StageTransitionManager
 
     }
 
-    public async static void TransitionStage(TextAsset end)
+    public static void TransitionStage(TextAsset end)
     {
         TransitionStagePercent(end, end, 1);
         PublicEvents.OnStageTransitionFinish.Invoke();

@@ -52,7 +52,6 @@ public class FlyingEnemyMovement : MonoBehaviour
     private float GetYPosition()
     {
         float currentY = transform.position.y;
-        float targetY;
         //Debug.DrawRay(transform.position, Vector3.down * _heightAboveGround, Color.red);
 
         //Go Up

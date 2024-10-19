@@ -20,7 +20,6 @@ public class PublicEvents
     public static UnityEvent OnSensitivitySliderChanged = new UnityEvent();
     public static UnityEvent OnPlayerDamage = new UnityEvent();
     public static UnityEvent OnEnemyDamage = new UnityEvent();
-    public static UnityEvent OnAnyEnemyDeath = new UnityEvent();
     public static UnityEvent OnPlayerDeath = new UnityEvent();
     public static UnityEvent OnEnemyShoot = new UnityEvent();
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
@@ -36,9 +35,12 @@ public class PublicEvents
     public static UnityEvent CyclopsDeath = new UnityEvent();
     public static UnityEvent HarpyDeath = new UnityEvent();
     public static UnityEvent MinoutarDeath = new UnityEvent();
-
+    public static UnityEvent Reloading = new UnityEvent();
  
 
     // actions???? what the fuck!!!
     public static Action<BulletEffect> OnUpgradeReceived;
+    public static Action<EnemyStats> OnEnemySpawned;
+    public static Action<EnemyStats> OnAnyEnemyDeath;
+
 }
