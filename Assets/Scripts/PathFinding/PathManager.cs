@@ -107,9 +107,15 @@ namespace PathFinding
         {
             UpdatePlayerPosition();
 
-            if(aliveGroundedEnemies.Count == 0) return;
+            if (aliveGroundedEnemies.Count == 0) return;
 
             pathUpdateIndex = (pathUpdateIndex + 1) % aliveGroundedEnemies.Count;
+
+            if (aliveGroundedEnemies[pathUpdateIndex] == null)
+            {
+                aliveGroundedEnemies.RemoveAt(pathUpdateIndex);
+                return;
+            }
 
             Path p = Navigate(aliveGroundedEnemies[pathUpdateIndex].GetCurrentCell(), PlayerCell); 
             if(p != null)

@@ -65,6 +65,9 @@ namespace PathFinding
         // Update is called once per frame
         public void GetNeighbors()
         {
+            _center = _collider.bounds.center;
+            topPoint = _collider.bounds.max.y;
+
             _verticalNeighbors.Clear();
             _sideNeighbors.Clear();
             raycastSideNeighbors();

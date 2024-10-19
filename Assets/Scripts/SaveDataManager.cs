@@ -40,7 +40,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
         //SaveData.bulletEffectPool = ui.GetPool();
     }
 
-    private void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
         SaveData.gotBulletEffects.Clear();
         SaveData.bulletEffectPool.Clear();

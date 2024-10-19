@@ -83,6 +83,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void mainMenuClicked() {
+        SaveDataManager.Instance.OnApplicationQuit();
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
@@ -104,6 +105,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        SaveDataManager.Instance.OnApplicationQuit();
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
