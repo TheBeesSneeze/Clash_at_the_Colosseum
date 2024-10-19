@@ -162,7 +162,6 @@ MonoBehaviour:
   EnemyHealth: 75
   EnemyDamage: 5
   AttackRate: 2
-  AttackCooldown: 5
   EnemyAttackRange: 5
   bulletType: 1
   healCharge: 5
@@ -306,7 +305,7 @@ MonoBehaviour:
   animator: {fileID: 4209364712133159823}
   topDownSpriteDistance: 3
   playerSpriteChangeDistance: 0
-  rotationReference: {fileID: 2418623821713463542}
+  rotationReference: {fileID: 1939992571173494461}
   state: 0
 --- !u!114 &-6131569129583551446
 MonoBehaviour:

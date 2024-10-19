@@ -7,7 +7,8 @@ public class AudienceFaceCenter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        OrientAllChildren();
+        Destroy(this);
     }
 
     void OrientAllChildren () //like a youth pastor

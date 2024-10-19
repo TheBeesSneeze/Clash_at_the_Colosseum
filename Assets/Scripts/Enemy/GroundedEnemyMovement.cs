@@ -68,10 +68,11 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void RotateColliderTowardsDirection(Vector3 direction)
     {
+
+        direction.y = 0;
         if (direction.magnitude < 0.01f) 
             return;
 
-        direction.y = 0;
         Quaternion targetRoation = Quaternion.LookRotation(direction);
         rb.transform.rotation = Quaternion.Lerp(transform.rotation, targetRoation, Time.deltaTime * _turningSpeed);
     }

@@ -8,15 +8,21 @@ public class HealthBar : MonoBehaviour
 {
 
     [SerializeField] private Slider slider;
-   
+    private float value;
+
+    private void Update()
+    {
+        slider.value = Mathf.Lerp(slider.value, value, 4*Time.deltaTime);
+    }
+
     public void SetHealth(float health)
     {
-        slider.value = health;
+        value = health;
     }
 
     public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
-        slider.value = health;
+        value = health;
     }
 }

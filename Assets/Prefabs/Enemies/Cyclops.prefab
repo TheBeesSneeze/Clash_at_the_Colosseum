@@ -205,7 +205,6 @@ MonoBehaviour:
   EnemyHealth: 150
   EnemyDamage: 5
   AttackRate: 3
-  AttackCooldown: 5
   EnemyAttackRange: 5
   bulletType: 2
   healCharge: 5
@@ -301,7 +300,7 @@ MonoBehaviour:
   animator: {fileID: 2143556855426773734}
   topDownSpriteDistance: 3
   playerSpriteChangeDistance: 0
-  rotationReference: {fileID: 3007730471301732929}
+  rotationReference: {fileID: 701974086056608564}
   state: 0
 --- !u!136 &8962055937136017716
 CapsuleCollider:

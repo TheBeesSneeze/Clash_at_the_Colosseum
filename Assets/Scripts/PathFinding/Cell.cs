@@ -54,6 +54,13 @@ namespace PathFinding
             ps = GetComponent<ParticleSystem>();
         }
 
+        private void LateUpdate()
+        {
+            //get rid of this
+            _center = _collider.bounds.center;
+            topPoint = _collider.bounds.max.y;
+        }
+
         private void OnBossPhase3Start()
         {
             if (boss3PieceFallDelay < 0)
