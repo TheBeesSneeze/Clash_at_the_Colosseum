@@ -75,7 +75,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8831908593280347190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   EnemyHealth: 75
   EnemyDamage: 15
   AttackRate: 5
-  AttackCooldown: 1
   EnemyAttackRange: 1.5
   bulletType: 0
   healCharge: 5
@@ -101,7 +100,7 @@ MonoBehaviour:
   _enemyMovementSpeed: 5
   gravity: 10
   TurningSpeed: 0.75
-  JumpForce: 10
+  JumpForce: 15
   StopSpeed: 5
   StopDistanceToPlayer: 1
   SightDistance: 1
@@ -208,7 +207,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605286496879608125}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d3c8338bcb4b07c458f864f9773dc18d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

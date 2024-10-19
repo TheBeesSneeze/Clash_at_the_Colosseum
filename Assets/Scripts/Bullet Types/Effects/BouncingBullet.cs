@@ -96,7 +96,7 @@ namespace DefaultNamespace
         private void Bounce(RaycastHit hit)
         {
             Vector3 direction = Vector3.Reflect(rb.velocity, hit.normal);
-            rb.velocity = direction.normalized * rb.velocity.magnitude;
+            rb.velocity = direction.normalized * rb.velocity.magnitude * SlowdownMultiplier;
         }
 
         public override void OnDestroyBullet(Bullet bullet, float damage)

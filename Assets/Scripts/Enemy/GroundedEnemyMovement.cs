@@ -6,7 +6,6 @@ using TMPro;
 using NaughtyAttributes;
 using Utilities;
 using UnityEngine.UIElements;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 [RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
@@ -26,6 +25,8 @@ public class GroundedEnemyMovement : MonoBehaviour
     private LayerMask groundlm;
     public ContactFilter2D ContactFilter;
     [ReadOnly][SerializeField] private Cell currentCell;
+    private float _colliderHeight;
+
     private void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
@@ -34,6 +35,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
         _enemyStats = GetComponent<EnemyStats>();
+
+        _colliderHeight = _collider.bounds.size.y;
 
         if (_enemyStats == null) return;
         _turningSpeed = _enemyStats.TurningSpeed;
@@ -44,15 +47,6 @@ public class GroundedEnemyMovement : MonoBehaviour
     private void Update()
     {
         ApplyGravity();
-
-        currentCell = UpdateCurrentCell();
-
-        if (currentCell == null)
-        {
-            //Debug.LogWarning("no cell!");
-            return;
-        }
-        path = GameManager.pathManager.GetPathToPlayer(currentCell);
 
         if (path == null ) return;
         if (path.nextPath == null) return;
@@ -74,9 +68,10 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void RotateColliderTowardsDirection(Vector3 direction)
     {
-        if (direction.magnitude < 0.01f)
+        if (direction.magnitude < 0.01f) 
             return;
 
+        direction.y = 0;
         Quaternion targetRoation = Quaternion.LookRotation(direction);
         rb.transform.rotation = Quaternion.Lerp(transform.rotation, targetRoation, Time.deltaTime * _turningSpeed);
     }
@@ -96,7 +91,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (distance < 0.1f)
             path = path.nextPath;
 
-        path = path.nextPath;
+        
 
         float y = rb.velocity.y;
         Vector3 targetPosition = getTargetPosition();
@@ -106,8 +101,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         direction = direction.normalized * _enemyStats.MoveSpeed;
         Debug.DrawLine(transform.position, transform.position+direction, Color.red);
         bool jump = ShouldJump(direction);
-        direction.y = y; //apply gravity
-        rb.velocity = Vector3.Lerp( rb.velocity, direction, 0.5f );
+        direction.y = y; //reapply gravity
+        rb.velocity = Vector3.Lerp( rb.velocity, direction, 8* Time.deltaTime );
 
         if (jump)
             Jump(); //if jump Jump
@@ -127,19 +122,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (path == null)
             return _player.position;
 
-        /*
-        if (path.nextPath != null)
-        {
-            Vector3 avgPosition = (path.nextPath.position + path.position) / 2;
-            if (HasClearViewToPoint(avgPosition, _emptyCellLayer))
-            {
-                //DebugUtilities.DrawBox(path.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
-                //DebugUtilities.DrawBox(path.nextPath.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
-                return avgPosition;
-            }
-        }
-        */
-
         //DebugUtilities.DrawBox(path.position, path.cell.transform.lossyScale/1.9f, Quaternion.identity, Color.green);
         return path.position;
     }
@@ -148,21 +130,32 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         if (!isGrounded()) return false;
 
-        if(Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude, ~groundlm))
-        {
-            return true;
-        }
-
-        return false;
+        return (path.position.y < path.nextPath.position.y);
+        //return Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude*2, ~groundlm);
     }
 
     private bool isGrounded()
     {
         //this is so scuffed man this should get fixed
-        return rb.velocity.y < 0.05f && rb.velocity.y > -0.05f;
+        //return rb.velocity.y < 0.01f && rb.velocity.y > -0.01f;
+
+        return Physics.Raycast(transform.position, Vector3.down, _colliderHeight * 0.6f);
     }
 
-    private Cell UpdateCurrentCell()
+    /// <summary>
+    /// called in PathManager
+    /// </summary>
+    public void SetPath(Path newPath)
+    {
+        path = newPath;
+
+        if (path == null) return;
+
+        if(path.nextPath!=null)
+            path = path.nextPath;
+    }
+
+    public Cell GetCurrentCell()
     {
         if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, ~groundlm))
         {
@@ -183,7 +176,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         return null;
         */
     }
-
     private void OnDrawGizmos()
     {
         if (!debug) return;
@@ -198,25 +190,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         path.DrawPath();
 
-        return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireMesh(path.cell.GetComponent<MeshFilter>().mesh, path.cell.transform.position+Vector3.up, path.cell.transform.rotation, path.cell.transform.lossyScale);
-
-        Vector3 lastPoint = path.position+Vector3.up;
-
-        Path parth = path; //this is my worst variable name yet
-        while (parth != null)
-        {
-            //Gizmos.color = Color.yellow;
-            //Gizmos.DrawWireCube(parth.position, parth.position+Vector3.up);
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(lastPoint, parth.position + Vector3.up);
-            lastPoint = parth.position + Vector3.up;
-
-            parth = parth.nextPath;
-        }
+        return; //top ten most necessary returns
     }
 
 }

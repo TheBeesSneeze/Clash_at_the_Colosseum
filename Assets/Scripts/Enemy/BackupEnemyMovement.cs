@@ -62,10 +62,10 @@ public class BackupEnemyMovement : MonoBehaviour
     {
         return;
 
-        if (hitpos == null)
+        /*if (hitpos == null)
             return;
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(hitpos.transform.position, hitpos.transform.lossyScale*1.2f);
+        Gizmos.DrawWireCube(hitpos.transform.position, hitpos.transform.lossyScale*1.2f);*/
     }
 }

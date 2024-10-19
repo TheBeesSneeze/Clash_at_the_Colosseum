@@ -14,6 +14,7 @@ public class InputEvents : Singleton<InputEvents>
     [HideInInspector] public UnityEvent PauseStarted, PauseCanceled;
     [HideInInspector] public UnityEvent RestartStarted, RespawnStarted;
     [HideInInspector] public UnityEvent HealStarted, HealCanceled;
+    [HideInInspector] public UnityEvent ReloadStarted, ReloadCanceled;
 
     private float _sensitivity=1;
 
@@ -22,10 +23,10 @@ public class InputEvents : Singleton<InputEvents>
     public Vector3 InputDirection => movementOrigin.TransformDirection(new Vector3(InputDirection2D.x, 0f, InputDirection2D.y));
     public Vector2 InputDirection2D => Move.ReadValue<Vector2>();
     public static bool MovePressed, JumpPressed, ShootPressed, RespawnPressed, DashPressed,
-        PausePressed, GrapplePressed, HealPressed;
+        PausePressed, GrapplePressed, HealPressed, ReloadPressed;
 
     private PlayerInput playerInput;
-    private InputAction Move, Shoot, Jump, Look, Respawn, Grapple, Dash, Pause, Heal;
+    private InputAction Move, Shoot, Jump, Look, Respawn, Grapple, Dash, Pause, Heal, Reload;
 
     private Transform movementOrigin;
 
@@ -50,6 +51,8 @@ public class InputEvents : Singleton<InputEvents>
         Grapple = map.FindAction("Grapple");
         Pause = map.FindAction("Pause");
         Heal = map.FindAction("Heal");
+        Reload = map.FindAction("Reload");
+
 
 
         Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
@@ -58,6 +61,7 @@ public class InputEvents : Singleton<InputEvents>
         Pause.started += ctx => { PausePressed = true; PauseStarted.Invoke(); };
         Dash.started += ctx => ActionCanceled(ref DashPressed, DashStarted);
         Heal.started += ctx => ActionCanceled(ref HealPressed, HealStarted);
+        Reload.started += ctx => ActionStarted(ref ReloadPressed, ReloadStarted); 
         Grapple.started += ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
 
         Move.canceled += ctx => ActionCanceled(ref MovePressed, MoveCanceled);
@@ -65,7 +69,8 @@ public class InputEvents : Singleton<InputEvents>
         Shoot.canceled += ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
         Pause.canceled += ctx => { PausePressed = false; PauseCanceled.Invoke(); };
         Dash.canceled += ctx => ActionCanceled(ref DashPressed, DashCanceled);
-        Heal.canceled += ctx => ActionCanceled(ref HealPressed, HealCanceled); ;
+        Heal.canceled += ctx => ActionCanceled(ref HealPressed, HealCanceled);
+        Reload.canceled += ctx => ActionCanceled(ref ReloadPressed, ReloadCanceled);
         Grapple.canceled += ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
     void ActionStarted(ref bool pressedFlag, UnityEvent actionEvent)
@@ -97,13 +102,14 @@ public class InputEvents : Singleton<InputEvents>
     private void OnDisable()
     {
         // Unsubscribe from all action events to prevent memory leaks
-        Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
+        /*Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
         Pause.started -= ctx => ActionCanceled(ref PausePressed, PauseStarted);
         Dash.started -= ctx => ActionCanceled(ref DashPressed, DashStarted);
         Heal.started -= ctx => ActionCanceled(ref HealPressed, HealStarted);
         Grapple.started -= ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
+        Reload.started -= ctx => ActionCanceled(ref ReloadPressed, ReloadStarted);  
 
         Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
         Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
@@ -112,6 +118,25 @@ public class InputEvents : Singleton<InputEvents>
         Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
         Heal.canceled -= ctx => ActionCanceled(ref HealPressed, HealCanceled);
         Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
+        Reload.started -= ctx => ActionCanceled(ref ReloadPressed, ReloadCancled);*/
+        Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
+        Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
+        Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
+        Pause.started -= ctx => { PausePressed = true; PauseStarted.Invoke(); };
+        Dash.started -= ctx => ActionCanceled(ref DashPressed, DashStarted);
+        Heal.started -= ctx => ActionCanceled(ref HealPressed, HealStarted);
+        if(Reload != null)
+            Reload.started -= ctx => ActionStarted(ref ReloadPressed, ReloadStarted);
+        Grapple.started -= ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
+
+        Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
+        Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
+        Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
+        Pause.canceled -= ctx => { PausePressed = false; PauseCanceled.Invoke(); };
+        Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
+        Heal.canceled -= ctx => ActionCanceled(ref HealPressed, HealCanceled);
+        Reload.canceled -= ctx => ActionCanceled(ref ReloadPressed, ReloadCanceled);
+        Grapple.canceled += ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
     }
 
     private void OnSensitivitySliderChange()
