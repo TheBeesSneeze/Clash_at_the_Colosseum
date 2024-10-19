@@ -54,7 +54,6 @@ public class BossController : Singleton<BossController>
 
     private void Update()
     {
-        Debug.Log(bossActive);
     }
 
 }

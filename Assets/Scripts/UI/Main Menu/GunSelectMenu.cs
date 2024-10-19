@@ -68,6 +68,9 @@ namespace mainMenu
         public void StartButtonPressed()
         {
             SaveData.SelectedGun = _gunTypes[currentGunIndex];
+            SaveData.bulletEffectPool = new List<BulletEffect>();
+            SaveData.gotBulletEffects = new List<BulletEffect>();
+
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(_sceneToLoad);
         }

@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         //if (GrapplingHook.isGrappling){return;}
-        print("is grounded" + IsGrounded());
         var grav = (Vector3.down * stats.GravityBoost * rb.mass).magnitude;
 
         if (IsGrounded())
