@@ -7,7 +7,6 @@ using UnityEngine;
 using NaughtyAttributes;
 using Utilities;
 using System;
-using Unity.VisualScripting;
 
 namespace PathFinding
 {
@@ -165,12 +164,21 @@ namespace PathFinding
             Destroy(gameObject);
         }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
 
         private void OnDrawGizmos()
         {
-            if(Selection.activeGameObject != null)
+            if(TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+            {
+                _collider = GetComponent<Collider>();
+                _center = _collider.bounds.center;
+                topPoint = _collider.bounds.max.y;
+                var shape = ps.shape;
+                shape.position = PathPosition - (Vector3.down * -1.5f);
+            }
+
+            if (Selection.activeGameObject != null)
             {
                 if (Selection.activeGameObject.GetComponent<StageBuilderTool>() != null)
                 {
@@ -208,7 +216,7 @@ namespace PathFinding
 
         
         
-#endif
+//#endif
 
         #region obsolete
         [Obsolete]
