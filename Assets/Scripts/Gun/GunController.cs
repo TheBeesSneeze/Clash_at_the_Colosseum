@@ -189,6 +189,7 @@ public class GunController : MonoBehaviour
 
     private void Reload()
     {
+        currentShots = shotsTillCoolDown;
         cooldown = overheatCoolDown;
         isOverHeating = true;
         PublicEvents.Reloading.Invoke();
