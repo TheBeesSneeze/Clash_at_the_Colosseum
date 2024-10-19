@@ -27,7 +27,7 @@ public class GunGameplaySprite : MonoBehaviour
     private GunAnimation gunAnimation;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gunController = GameObject.FindObjectOfType<GunController>();
 
@@ -113,6 +113,7 @@ public class GunGameplaySprite : MonoBehaviour
         //not super huge on the way im doing this. if u have any better ideas then im open to em
 
         System.Type type = effect.GetType();    
+        Debug.Log(type.ToString());
 
         if(type == typeof(ElectricityBullet)) { if (lightningImage != null) lightningImage.enabled = true; return; }
         if(type == typeof(ExplosionBullet)) { if (explosionImage != null) explosionImage.enabled = true; return; }
@@ -159,6 +160,15 @@ public class GunGameplaySprite : MonoBehaviour
         if (sprite == null || image.sprite == sprite) return;
 
         image.sprite = sprite;
+    }
+
+    public void Refresh()
+    {
+        foreach(BulletEffect be in gunController.bulletEffects)
+        {
+            if(be!= null)
+                OnBulletEffectGet(be);
+        }
     }
 }
 public enum GunState

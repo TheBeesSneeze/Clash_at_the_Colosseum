@@ -122,7 +122,6 @@ public class UpgradeSelectUI : MonoBehaviour
         selectedEffect = effect;
     }
 
-
     private void OnSelectClick()
     {
         _gunController.AddBulletEffect (selectedEffect);
@@ -130,7 +129,6 @@ public class UpgradeSelectUI : MonoBehaviour
         DisableMenu();
         StageManager.ChangeStage();
     }
-
 
     private void SetUpgradeEffects()
     {
@@ -150,5 +148,17 @@ public class UpgradeSelectUI : MonoBehaviour
 
         upgradeButton1.LoadBulletEffect(bulletEffectPool[index1]);
         upgradeButton2.LoadBulletEffect(bulletEffectPool[index2]);
+    }
+
+    public void OverridePool(List<BulletEffect> newList)
+    {
+
+        if(newList.Count != 0)
+            bulletEffectPool = newList;
+    }
+
+    public List<BulletEffect> GetPool()
+    {
+        return bulletEffectPool;
     }
 }

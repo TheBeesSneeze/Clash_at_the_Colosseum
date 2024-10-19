@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2104746, g: 0.88403714, b: 0.595373, a: 1}
+  m_IndirectSpecularColor: {r: 1.2102548, g: 0.883931, b: 0.5953271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2445,18 +2445,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: EnemyShootSound.Volume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: MeleeAttackSound.Volume
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: SnakeCooldownSound.sound
-      value: 
-      objectReference: {fileID: 8300000, guid: d297f7b2c3a2fe249860fcd6d126fa7d, type: 3}
     - target: {fileID: 438952814939047255, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2501,42 +2489,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[0]
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: PlayerHeal.particles.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[1]
+      objectReference: {fileID: 878175805}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[2]
+      objectReference: {fileID: 919969992}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[3]
+      objectReference: {fileID: 61094304}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[4]
+      objectReference: {fileID: 1363189551}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 54a31e2970de47d4f92637d33a23d068, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: stages.Array.data[5]
+      objectReference: {fileID: 1572142595}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: BulletEffects.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      propertyPath: BulletEffects.Array.data[4]
+      objectReference: {fileID: 1944752695}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
+      objectReference: {fileID: 1117913734}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[6]
+      value: 
+      objectReference: {fileID: 1119162153}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[7]
+      value: 
+      objectReference: {fileID: 1018738061}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[8]
+      value: 
+      objectReference: {fileID: 471066865}
+    - target: {fileID: 566620861554067315, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: EnemySpawns.particles.Array.data[9]
+      value: 
+      objectReference: {fileID: 1943702967}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2544,10 +2540,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 629279410}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
 --- !u!1 &354544389
 GameObject:
@@ -3015,23 +3008,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111993207619610457, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2111993207619610457, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2111993207619610457, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2111993207619610457, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2111993207619610457, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 2645586704641252850, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3039,27 +3032,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 2722016824922553026, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3078159752946743344, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8227,40 +8220,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6548145266954998754, guid: 842611e18b1a8a4459d3aa43ac2cc142, type: 3}
---- !u!1 &629279404 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
-  m_PrefabInstance: {fileID: 328434624}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &629279410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629279404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7faca236ac507944ba6bff15b0fc8d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpawns:
-    particles:
-    - {fileID: 919969992}
-    - {fileID: 61094304}
-    - {fileID: 1363189551}
-    - {fileID: 1572142595}
-    - {fileID: 1944752695}
-    - {fileID: 1117913734}
-    - {fileID: 1119162153}
-    - {fileID: 1018738061}
-    - {fileID: 471066865}
-    - {fileID: 1943702967}
-    PlayOnStart: 1
-  PlayerHeal:
-    particles:
-    - {fileID: 878175805}
-    PlayOnStart: 0
 --- !u!114 &630839198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16072,8 +16031,8 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05

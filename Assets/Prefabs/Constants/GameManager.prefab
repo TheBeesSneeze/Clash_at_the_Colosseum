@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -3221912983751877588}
   - component: {fileID: 6405318079182177319}
   - component: {fileID: 2573591770749130960}
+  - component: {fileID: 566620861554067315}
+  - component: {fileID: 1046506135144920525}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6670010424615105723
 MonoBehaviour:
@@ -48,7 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stages:
-  - {fileID: 11400000, guid: 7a49183b6b98f01479d4a0f1b74b78ee, type: 2}
+  - {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
+  - {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
+  - {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
+  - {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
+  - {fileID: 11400000, guid: 54a31e2970de47d4f92637d33a23d068, type: 2}
+  - {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
   transitonSeconds: 5
   transitonDelay: 1
   BulletEffects:
@@ -56,6 +63,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc1100b5625a2534da4e041ff4e37414, type: 2}
   - {fileID: 11400000, guid: 130a27b9b1defdc4987cc18301bf8e27, type: 2}
   - {fileID: 11400000, guid: d17d2bb708d5eb847bee124c80774bf8, type: 2}
+  - {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
   CellFallTime: 10
   CellFallDistance: 25
   amountToPool: 5
@@ -90,10 +98,10 @@ MonoBehaviour:
     Volume: 1
     sound: {fileID: 8300000, guid: 2b2c916bf72f1ca4aa39f91691702038, type: 3}
   EnemyShootSound:
-    Volume: 0.947
+    Volume: 0.05
     sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
   MeleeAttackSound:
-    Volume: 1
+    Volume: 0.33
     sound: {fileID: 8300000, guid: 9237b42ca9fd0a64fb900ba0d44bf844, type: 3}
   GrappleSound:
     Volume: 0.836
@@ -109,7 +117,7 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 159bd3b663b378948a5ffbbdd6cbcc4c, type: 3}
   SnakeCooldownSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: 8f6e04b8de334b348aa4bf3d3f6fa020, type: 3}
+    sound: {fileID: 8300000, guid: d297f7b2c3a2fe249860fcd6d126fa7d, type: 3}
   HydraIntroSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 8770b93ea14ad0a47b6dd4c16b0d2b74, type: 3}
@@ -164,3 +172,44 @@ MonoBehaviour:
     prefab: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
   - enemyTag: 4
     prefab: {fileID: 3195422292412472386, guid: 210ba51f22f7dd04e934a2e83dfccc4b, type: 3}
+--- !u!114 &566620861554067315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7faca236ac507944ba6bff15b0fc8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawns:
+    particles:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    PlayOnStart: 1
+  PlayerHeal:
+    particles:
+    - {fileID: 0}
+    PlayOnStart: 0
+--- !u!114 &1046506135144920525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ca6398707405c4c9d5fbbb3c5533e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

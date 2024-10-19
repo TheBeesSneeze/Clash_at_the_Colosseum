@@ -130,6 +130,9 @@ public class GroundedEnemyMovement : MonoBehaviour
     {
         if (!isGrounded()) return false;
 
+        if (path.nextPath == null)
+            return (path.position.y > transform.position.y);
+
         return (path.position.y < path.nextPath.position.y);
         //return Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude*2, ~groundlm);
     }
@@ -182,7 +185,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
         if (path == null)
         {
-            Debug.LogWarning("no path");
+            //Debug.LogWarning("no path");
             return;
         }
         if (path.nextPath == null)

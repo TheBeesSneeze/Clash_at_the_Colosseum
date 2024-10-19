@@ -54,6 +54,7 @@ public class GunController : MonoBehaviour
         currentShots = 0;
         cooldown = 0;
         InputEvents.Instance.ReloadStarted.AddListener(Reload);
+           
     }
 
     public void DebugStartingBulletEffects()
@@ -80,7 +81,7 @@ public class GunController : MonoBehaviour
         shootingMode = shootMode;
         shootHeld = true; 
     }
-    public void AddBulletEffect(BulletEffect bulletEffect)
+    public void AddBulletEffect(BulletEffect bulletEffect, bool save=true)
     {
         if (bulletEffects == null)
             bulletEffects = new List<BulletEffect>();
@@ -96,6 +97,12 @@ public class GunController : MonoBehaviour
         bulletEffects.Add(bulletEffect);
         PublicEvents.OnUpgradeReceived?.Invoke(bulletEffect);
         BulletPoolManager.AddPlayerBulletEffect(bulletEffect);
+
+        if (save)
+        {
+            if(SaveData.bulletEffectPool.Contains(bulletEffect)) SaveData.bulletEffectPool.Remove(bulletEffect);
+            SaveData.gotBulletEffects.Add(bulletEffect);
+        }
     }
     /// <summary>
     /// shoots all the bullets. calls the OnBulletShoot function

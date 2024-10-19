@@ -17,7 +17,7 @@ using UnityEngine.SceneManagement;
 public class StageManager
 {
     private static StageStats[] _stages;
-    private static int stageIndex = 0;
+    public static int stageIndex = 0;
     private static StageStats currentStage;
     private static UpgradeSelectUI _upgradeSelectUI;
 
@@ -27,7 +27,7 @@ public class StageManager
 
     public StageManager(StageStats[] stages)
     {
-        stageIndex = 0;
+        stageIndex = SaveData.CurrentStageIndex;
         _stages = stages;
 
         if(_stages.Length == 0)
@@ -80,6 +80,8 @@ public class StageManager
 
         var pastStage = _stages[stageIndex];
         stageIndex++;
+
+        SaveData.CurrentStageIndex = stageIndex;
 
         currentStage = _stages[stageIndex];
 
