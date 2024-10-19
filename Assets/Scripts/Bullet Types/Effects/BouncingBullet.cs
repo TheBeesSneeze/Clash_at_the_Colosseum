@@ -66,7 +66,6 @@ namespace DefaultNamespace
 
             if(BounceOffSurfaces)
             {
-                Debug.Log("bounce");
                 Bounce(hit);
             }
         }

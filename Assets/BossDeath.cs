@@ -8,5 +8,7 @@ public class BossDeath : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         BossController.Invincible = true;
+
     }
+
 }

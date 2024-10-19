@@ -34,6 +34,10 @@ public class BossTakeDamage : EnemyTakeDamage
             {
                 bossHealthBar.SetHealth(temp);
             }
+            if (currentHealth < 0)
+            {
+                Die();
+            }
             
         }
            
@@ -42,7 +46,7 @@ public class BossTakeDamage : EnemyTakeDamage
 
     public override void Die()
     {
-        Debug.Log("boss is dead yahoo");
+  
         PublicEvents.HydraDeath.Invoke();
         Destroy(gameObject);
     }
