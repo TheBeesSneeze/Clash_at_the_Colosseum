@@ -12,7 +12,8 @@ public class BossHealthBar : MonoBehaviour
     private void Start()
     {
         gameObject.SetActive(false);
-        PublicEvents.OnBossSpawn.AddListener(EnableBar);
+        //PublicEvents.OnBossSpawn.AddListener(EnableBar);
+        PublicEvents.OnBossStart.AddListener(EnableBar);
         PublicEvents.HydraDeath.AddListener(DisableBar);
     }
 

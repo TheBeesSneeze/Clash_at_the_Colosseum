@@ -28,6 +28,7 @@ public class PublicEvents
     public static UnityEvent OnStageTransition = new UnityEvent();
     public static UnityEvent OnStageTransitionFinish = new UnityEvent();
     public static UnityEvent OnBossSpawn = new UnityEvent();
+    public static UnityEvent OnBossStart = new UnityEvent();
     public static UnityEvent HydraFireAttack = new UnityEvent();
     public static UnityEvent OnBossPhaseThreeStart = new UnityEvent();
     public static UnityEvent HydraDeath = new UnityEvent();

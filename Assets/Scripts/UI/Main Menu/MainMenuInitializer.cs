@@ -45,31 +45,35 @@ namespace mainMenu
         [SerializeField] private RawImage headerImage;
         [SerializeField] private Image gunSprite;
         [SerializeField] private TMP_Text gunText;
-        [SerializeField] private RawImage scanlines;
         [SerializeField] private RectTransform tempGunInfoGroup;
         [SerializeField] private RawImage tempHeaderImage;
         [SerializeField] private Image tempGunSprite;
         [SerializeField] private TMP_Text tempGunText;
+        [SerializeField] private Button gunSelectBackButton;
 
-        [HideInInspector] public StartMenu startMenu;
+        [HideInInspector] public static StartMenu startMenu;
         [HideInInspector] public GunSelectMenu gunSelectMenu;
+        [HideInInspector] public CreditsMenu creditsMenu;
         [HideInInspector] public Animator animator;
-        [Header("Other")]
-        [SerializeField] private RawImage background;
 
+        [Header("Credits")]
+        [SerializeField] private CanvasGroup creditsGroup;
+        [SerializeField] private Button creditsBackButton;
         private void Start()
         {
             Time.timeScale = 1.0f;  
             animator = GetComponent<Animator>();
             animator.SetTrigger("Start Menu");
-            startMenu = new StartMenu(this, _playButton, _statsButton, _settingsButton, _creditsButton, _quitButton);
+            startMenu = new StartMenu(this, _playButton, _statsButton, _settingsButton, _creditsButton, _quitButton, startGroup);
             gunSelectMenu = new GunSelectMenu(this, mainSceneName, GunTypes, 
                 _leftButton, _rightButton, _startButton, 
                 gunInfoGroup, headerImage, gunSprite, gunText,
-                tempGunInfoGroup, tempHeaderImage, tempGunSprite, tempGunText );
+                tempGunInfoGroup, tempHeaderImage, tempGunSprite, tempGunText, gunSelectBackButton, gunSelectGroup);
+            creditsMenu = new CreditsMenu(creditsGroup, creditsBackButton);
 
             ToggleCanvasGroup(startGroup, true);
             ToggleCanvasGroup(gunSelectGroup, false);
+            ToggleCanvasGroup(creditsGroup, false);
         }
 
         public static void ToggleCanvasGroup(CanvasGroup group, bool enabled)
