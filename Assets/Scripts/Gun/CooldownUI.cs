@@ -17,6 +17,8 @@ public class CooldownUI : MonoBehaviour
         currentTime = 0;
         GunController controller = FindObjectOfType<GunController>();
         reloadTime = controller.overheatCoolDown;
+        cooldown.maxValue = reloadTime;
+        cooldown.value = 0;
         gameObject.SetActive(false);
     }
 

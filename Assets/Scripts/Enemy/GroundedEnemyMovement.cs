@@ -14,8 +14,9 @@ public class GroundedEnemyMovement : MonoBehaviour
     private float _stoppingSpeed = 1;
     private float _sightDistance = 10;
     private EnemyStats _enemyStats;
+    private EnemyTakeDamage _takeDamage;
 
-    private Transform _player;
+    private static Transform _player;
     public bool debug = true;
     private Rigidbody rb;
     private Collider _collider; 
@@ -29,12 +30,14 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+        if(_player == null)
+            _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _playerLayer = LayerMask.NameToLayer("Player");
         groundlm = LayerMask.NameToLayer("Default");
         rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
         _enemyStats = GetComponent<EnemyStats>();
+        _takeDamage = GetComponent<EnemyTakeDamage>();
 
         _colliderHeight = _collider.bounds.size.y;
 
@@ -46,6 +49,12 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (_takeDamage.IsDead)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         ApplyGravity();
 
         if (path == null ) return;
@@ -60,6 +69,8 @@ public class GroundedEnemyMovement : MonoBehaviour
         RotateColliderTowardsDirection(rb.velocity);
 
     }
+
+
 
     private void ApplyGravity()
     {

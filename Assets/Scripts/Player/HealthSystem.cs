@@ -33,7 +33,7 @@ public class HealthSystem : MonoBehaviour
     private void Update()
     {
         //little animation :)
-        healCharge.value = Mathf.Lerp(healCharge.value, value, 4*Time.deltaTime);
+        healCharge.value = Mathf.Lerp(healCharge.value, value, 8*Time.deltaTime);
 
         if (isHealing)
         {
