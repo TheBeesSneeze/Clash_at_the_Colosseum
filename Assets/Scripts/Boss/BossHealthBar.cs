@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class BossHealthBar : MonoBehaviour
 {
     public Slider slider;
     private BossTakeDamage bossTakeDamage;
+    private CanvasGroup group;
 
     private void Start()
     {
-        gameObject.SetActive(false);
-        //PublicEvents.OnBossSpawn.AddListener(EnableBar);
+        group = GetComponent<CanvasGroup>();    
+        group.alpha = 0;
+
         PublicEvents.OnBossStart.AddListener(EnableBar);
         PublicEvents.HydraDeath.AddListener(DisableBar);
     }
@@ -30,14 +33,15 @@ public class BossHealthBar : MonoBehaviour
 
     private void EnableBar()
     {
-        gameObject.SetActive(true);
-        bossTakeDamage = FindObjectOfType<BossTakeDamage>();
-        bossTakeDamage.bossBar = this.gameObject;
+        group.alpha = 1;
+        bossTakeDamage = GameObject.FindObjectOfType<BossTakeDamage>();
+        bossTakeDamage.bossHealthBar = this;
+        SetMaxHealth(bossTakeDamage.GetComponent<BossStats>().BossHealth);
     }
 
     private void DisableBar()
     {
-        gameObject.SetActive(false);    
+        group.alpha = 0;
     }
 }
 

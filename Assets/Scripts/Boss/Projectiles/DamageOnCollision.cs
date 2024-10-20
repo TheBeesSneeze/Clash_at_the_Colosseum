@@ -58,7 +58,8 @@ public class DamageOnCollision : MonoBehaviour
 
         foreach (Transform t in collisions)
         {
-            AttemptAttack(t);
+            if(t != null) //cant believe this is a problem
+                AttemptAttack(t);
         }
     }
 

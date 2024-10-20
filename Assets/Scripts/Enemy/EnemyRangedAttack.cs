@@ -42,7 +42,7 @@ public class EnemyRangedAttack : MonoBehaviour
         damage = GetComponent<EnemyTakeDamage>();
         fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
-        coolDown = stats.AttackRate + Random.Range(0,2); // random offset
+        coolDown = stats.AttackRate + Random.Range(0,4); // random offset
         canMultiShoot = stats.canConsecutiveShoot;
         shotsFired = 0;
         
@@ -50,6 +50,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawLine(transform.position, transform.position + getDirection());
         AttemptAttack();
         coolDown -= Time.deltaTime;
     }
@@ -114,13 +115,8 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Fire()
     {
         nextFireTime += Time.deltaTime;
-        Vector3 destination = playerObject.transform.position;
-        destination += new Vector3(
-            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
-            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
-            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
-        Vector3 direction = destination - transform.position;
 
+        Vector3 direction = getDirection();
         GameObject bullet = InstantiateBullet(stats.bulletType);
 
         bullet.transform.forward = direction.normalized;
@@ -130,6 +126,17 @@ public class EnemyRangedAttack : MonoBehaviour
         bulletObject.OnBulletShoot(direction);
 
         if (animator != null) { animator.OnAttackStart(); }
+    }
+
+    private Vector3 getDirection()
+    {
+        Vector3 destination = playerObject.transform.position;
+        destination += new Vector3(
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
+            Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
+        Vector3 direction = destination - transform.position;
+        return direction; 
     }
 
     private GameObject InstantiateBullet(EnemyType type)
