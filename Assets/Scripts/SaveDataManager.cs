@@ -25,7 +25,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
         if(SaveData.CurrentStageIndex >= 1)
         {
-            gc.transform.position = gc.transform.position + (Vector3.up * 10);
+            gc.transform.position = gc.transform.position + (Vector3.up * 15);
         }
 
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
