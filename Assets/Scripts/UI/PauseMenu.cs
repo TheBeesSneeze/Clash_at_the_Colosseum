@@ -28,9 +28,6 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        if(backgroundMusic != null) 
-            baseBGMVolume = backgroundMusic.volume;
-
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
 
         resumeButton.onClick.AddListener(ResumeClicked);
@@ -41,6 +38,20 @@ public class PauseMenu : MonoBehaviour
 
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
         sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.4f);
+
+        if(backgroundMusic == null)
+        {
+            Debug.LogWarning("no background music set.");
+            backgroundMusic = GameObject.FindObjectOfType<AudioSource>();
+        }
+
+        if (backgroundMusic != null)
+        {
+            baseBGMVolume = backgroundMusic.volume;
+            backgroundMusic.volume = baseBGMVolume * AudioManager.masterVolume;
+        }
+
+        
 
         TogglePauseUI(false);
     }

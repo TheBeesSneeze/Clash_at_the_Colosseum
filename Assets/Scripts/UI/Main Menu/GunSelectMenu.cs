@@ -70,6 +70,7 @@ namespace mainMenu
             SaveData.SelectedGun = _gunTypes[currentGunIndex];
             SaveData.bulletEffectPool = new List<BulletEffect>();
             SaveData.gotBulletEffects = new List<BulletEffect>();
+            SaveData.CurrentStageIndex = 0;
 
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(_sceneToLoad);
