@@ -37,7 +37,6 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
-        Debug.Log(volumeSlider.value);
 
         sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.4f);
 
@@ -52,6 +51,8 @@ public class PauseMenu : MonoBehaviour
             //baseBGMVolume = backgroundMusic.volume;
             baseBGMVolume = 0.3f;
             backgroundMusic.volume = baseBGMVolume * volumeSlider.value;
+            backgroundMusic.Play(); 
+            backgroundMusic.playOnAwake = true;
             Debug.Log(backgroundMusic.volume);
         }
 

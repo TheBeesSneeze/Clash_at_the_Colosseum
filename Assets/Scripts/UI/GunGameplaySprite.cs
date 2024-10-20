@@ -148,7 +148,8 @@ public class GunGameplaySprite : MonoBehaviour
 
     private void LoadIndividualSprite(Image image, Sprite sprite, bool emptySprite=false)
     {
-
+        if (image == null) return;
+        if (sprite == null) return;
         if (!image.enabled) return;
 
         if (emptySprite)
