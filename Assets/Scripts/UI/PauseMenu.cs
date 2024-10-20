@@ -92,6 +92,7 @@ public class PauseMenu : MonoBehaviour
         float sliderValue = volumeSlider.value;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
+
         if (backgroundMusic != null)
             backgroundMusic.volume = sliderValue * baseBGMVolume;
     }
