@@ -92,10 +92,10 @@ MonoBehaviour:
     Volume: 0.769
     sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
   PlayerDamageSound:
-    Volume: 1
+    Volume: 0.5
     sound: {fileID: 8300000, guid: 95c9f47f02a1b7f4abdd70d36c314f5c, type: 3}
   PlayerDeathSound:
-    Volume: 1
+    Volume: 0.7
     sound: {fileID: 8300000, guid: 2b2c916bf72f1ca4aa39f91691702038, type: 3}
   EnemyShootSound:
     Volume: 0.05
@@ -131,13 +131,13 @@ MonoBehaviour:
     Volume: 1
     sound: {fileID: 8300000, guid: f76d16a0caafb70418a49ef8183542f9, type: 3}
   CyclopsDeathSound:
-    Volume: 1
+    Volume: 0.5
     sound: {fileID: 8300000, guid: 87b11277fde1c424b8f25752abe4f5cc, type: 3}
   HarpyDeathSound:
-    Volume: 1
+    Volume: 0.3
     sound: {fileID: 8300000, guid: 21b1943bce60f594cae16ff8a780d77b, type: 3}
   MinoutarDeathSound:
-    Volume: 1
+    Volume: 0.7
     sound: {fileID: 8300000, guid: 1defb620513a33249af0f879713b1a04, type: 3}
 --- !u!114 &6405318079182177319
 MonoBehaviour:

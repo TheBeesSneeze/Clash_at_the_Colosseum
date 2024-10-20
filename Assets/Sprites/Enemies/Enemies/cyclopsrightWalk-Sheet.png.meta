@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 169050a16c430c149a991ad1832564fa
+guid: 504cddf27f5637546ac7751fd3446b2f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,34 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss Health Bar_0
+      name: cyclopsrightWalk-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
-        width: 96
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 1, z: 0, w: 1}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25be2ca2b2a66144d81fb85e3bbed317
-      internalID: 1500094387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss Health Bar_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 8
+        y: 1
+        width: 64
+        height: 72
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +137,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 571cfe3862e234e44b07f297ea78bf1a
-      internalID: -1368646915
+      spriteID: b09c5c59816531e40b7b806174478bb1
+      internalID: 1892051352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cyclopsrightWalk-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55db1ad292bb3b9498b7dbee19d7c8bc
+      internalID: -369236020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cyclopsrightWalk-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8955aaf889cc9ee4f8f4c4d75477924b
+      internalID: 1324575142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cyclopsrightWalk-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6739007eab3a725439febccad8e3a2bc
+      internalID: 949594294
       vertices: []
       indices: 
       edges: []
@@ -167,7 +209,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 18853e4765c8d4a47937f7eb192a5a16
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss Health Bar_0: 1500094387
-      Boss Health Bar_1: -1368646915
+      cyclopsrightWalk-Sheet_0: 1892051352
+      cyclopsrightWalk-Sheet_1: -369236020
+      cyclopsrightWalk-Sheet_2: 1324575142
+      cyclopsrightWalk-Sheet_3: 949594294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
