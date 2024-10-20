@@ -174,7 +174,7 @@ namespace PathFinding
             Destroy(gameObject);
         }
 
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 
 
         private void OnDrawGizmos()
@@ -226,7 +226,7 @@ namespace PathFinding
 
         
         
-//#endif
+#endif
 
         #region obsolete
         [Obsolete]
