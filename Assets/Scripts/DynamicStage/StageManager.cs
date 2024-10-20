@@ -24,6 +24,7 @@ public class StageManager
     //public static GameObject[] enemyPool { get { return currentStage.EnemyPrefabs; } }
     //public static int enemiesToSpawn { get { return currentStage.NumberOfEnemiesForLevel; } }
     public static float timeTillEnemiesSpawn { get { return currentStage.timeTillEnemiesSpawn; } }
+    private static GunController _gunController;
 
     public StageManager(StageStats[] stages)
     {
@@ -38,6 +39,7 @@ public class StageManager
 
         currentStage = _stages[stageIndex];
         _upgradeSelectUI = GameObject.FindObjectOfType<UpgradeSelectUI>();
+        _gunController = GameObject.FindObjectOfType<GunController>();
         StageTransitionManager.TransitionStage(currentStage.StageLayout);
     }
     
@@ -59,7 +61,7 @@ public class StageManager
             return;
         }
 
-        if (currentStage.BulletEffectOnClear)
+        if (currentStage.BulletEffectOnClear && _gunController.bulletEffects.Count <= 3) //delete this post alpha
             _upgradeSelectUI.OpenMenu(1);
         else
             ChangeStage();
