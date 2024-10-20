@@ -111,6 +111,8 @@ public class PauseMenu : MonoBehaviour
 
         if (backgroundMusic != null)
             backgroundMusic.volume = sliderValue * baseBGMVolume;
+
+        Debug.Log(sliderValue * baseBGMVolume);
     }
 
     public void sensitivityChanged(float value)
