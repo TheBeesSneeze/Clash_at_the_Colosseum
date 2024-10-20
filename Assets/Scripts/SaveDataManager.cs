@@ -25,7 +25,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
         if(SaveData.CurrentStageIndex >= 1)
         {
-            gc.transform.position = gc.transform.position + (Vector3.up * 10);
+            gc.transform.position = gc.transform.position + (Vector3.up * 15);
         }
 
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
@@ -36,8 +36,12 @@ public class SaveDataManager : Singleton<SaveDataManager>
     {
         Debug.Log("Restarting");
         SaveData.CurrentStageIndex = StageManager.stageIndex;
-        
-        //SaveData.bulletEffectPool = ui.GetPool();
+
+        if (SaveData.CurrentStageIndex >= StageManager._stages.Length)
+            SaveData.CurrentStageIndex -= 1;
+
+        SaveData.bulletEffectPool = ui.GetPool();
+        SaveData.gotBulletEffects = gc.bulletEffects;
     }
 
     public void OnApplicationQuit()

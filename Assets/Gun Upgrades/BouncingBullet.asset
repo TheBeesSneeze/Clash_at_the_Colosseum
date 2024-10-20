@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53c71b0e4601d84588d6ad33ff3df73, type: 3}
   m_Name: BouncingBullet
   m_EditorClassIdentifier: 
-  TrailColor: {r: 1, g: 1, b: 1, a: 1}
+  TrailColor: {r: 0.3606807, g: 1, b: 0, a: 1}
   DamageMultiplier: 0
   DestroyBulletOnSurfaceContact: 0
   DestroyBulletOnEntityContact: 1
-  UpgradeName: 
-  UpgradeDescription: 
-  UpgradeIcon: {fileID: 0}
-  bodyColor: {r: 1, g: 1, b: 1, a: 1}
-  secondaryColor: {r: 0.37587866, g: 1, b: 0.2584905, a: 1}
+  UpgradeName: Bouncing Bullet
+  UpgradeDescription: Bullets richochet between walls
+  UpgradeIcon: {fileID: 1931382908, guid: f1bcea4c2f7dc5e439f6979c7bfacbd6, type: 3}
+  bodyColor: {r: 0.5921569, g: 0.92941177, b: 0.7921569, a: 1}
+  secondaryColor: {r: 0.5292454, g: 0.9339623, b: 0.4528836, a: 1}
   TargetEnemies: 0
   BounceOffSurfaces: 1
   deflectionAimRange: 3
