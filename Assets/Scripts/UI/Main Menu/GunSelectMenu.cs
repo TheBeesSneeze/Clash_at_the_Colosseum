@@ -12,6 +12,8 @@ namespace mainMenu
 {
     public class GunSelectMenu
     {
+        public static CanvasGroup group;
+
         private float animateTime = 0.2f;
         private float screenWidth = 1920;
 
@@ -33,12 +35,15 @@ namespace mainMenu
         private string _sceneToLoad;
         private List<ShootingMode> _gunTypes;
 
+        private Button _backButton;
+
         private int currentGunIndex;
 
         public GunSelectMenu(MainMenuInitializer mainMenu, string sceneToLoad, List<ShootingMode> gunTypes,
             Button leftButton, Button rightButton, Button startButton, 
             RectTransform gunInfoGroup, RawImage headerImage, Image gunSprite, TMP_Text gunText,
-            RectTransform tempGunInfoGroup, RawImage tempHeaderImage, Image tempGunSprite, TMP_Text tempGunText)
+            RectTransform tempGunInfoGroup, RawImage tempHeaderImage, Image tempGunSprite, TMP_Text tempGunText, 
+            Button gunSelectBackButton, CanvasGroup Group)
         {
             _leftButton = leftButton;
             _rightButton = rightButton;
@@ -58,11 +63,16 @@ namespace mainMenu
             _sceneToLoad = sceneToLoad;
             _gunTypes = gunTypes;
 
+            _backButton = gunSelectBackButton;
+
+            group = Group;
+
             LoadGun(_gunTypes[currentGunIndex]);
 
             _startButton.onClick.AddListener(StartButtonPressed);
             _leftButton.onClick.AddListener(LeftButtonPressed);
             _rightButton.onClick.AddListener(RightButtonPressed);
+            _backButton.onClick.AddListener(BackButtonPressed);
         }
 
         public void StartButtonPressed()
@@ -169,6 +179,14 @@ namespace mainMenu
             _tempGunText.text = gun.GunName.ToString();
             _tempGunSprite.sprite = gun.MenuSprite;
             _tempHeaderImage.color = gun.SelectHeaderColor;
+        }
+
+        public void BackButtonPressed()
+        {
+            Debug.Log("Gun Select -> Start Menu");
+            _mainMenu.animator.SetTrigger("Start Menu");
+            //MainMenuInitializer.ToggleCanvasGroup(group, false);
+            //MainMenuInitializer.ToggleCanvasGroup(StartMenu.group, true);
         }
     }
 }

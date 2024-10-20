@@ -14,6 +14,7 @@ namespace mainMenu
 {
     public class StartMenu
     {
+        public static CanvasGroup group;
         public MainMenuInitializer _mainMenu;
 
         private Button _playButton;
@@ -23,7 +24,7 @@ namespace mainMenu
         private Button _quitButton;
         //private Button _confirmExitButton;
 
-        public StartMenu(MainMenuInitializer menu, Button playButton, Button statsButton, Button settingMenu, Button creditsMenu, Button quitButton)
+        public StartMenu(MainMenuInitializer menu, Button playButton, Button statsButton, Button settingMenu, Button creditsMenu, Button quitButton, CanvasGroup Group)
         {
             _mainMenu = menu;
             _playButton = playButton;
@@ -31,6 +32,7 @@ namespace mainMenu
             _settingsButton = settingMenu;
             _creditsButton = creditsMenu;
             _quitButton = quitButton;
+            group = Group;
             //_confirmExitButton = confirmExitButton;
 
             _playButton.onClick.AddListener(playClicked);
@@ -56,6 +58,8 @@ namespace mainMenu
 
         public void creditsClicked()
         {
+            MainMenuInitializer.ToggleCanvasGroup(group, false);
+            MainMenuInitializer.ToggleCanvasGroup(CreditsMenu.group, true);
         }
         public void quitClicked()
         {
