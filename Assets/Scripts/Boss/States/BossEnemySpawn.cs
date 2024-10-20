@@ -26,12 +26,13 @@ public class BossEnemySpawn : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         BossController.Invincible = false;
+        PublicEvents.OnAnyEnemyDeath -= OnEnemyDeath;
     }
 
     public void SpawnEnemies(int index)
     {
         Debug.Log("Spawning boss enemies");
-        StageLayout sl = StageTransitionManager.GetStageElements(enemyPlacements[0]);
+        StageLayout sl = StageTransitionManager.GetStageElements(enemyPlacements[index]);
         SpawnPointElement[] enemySpawnPoints = sl.spawnPoints;
 
         for (int i = 0; i < enemySpawnPoints.Length; i++)
