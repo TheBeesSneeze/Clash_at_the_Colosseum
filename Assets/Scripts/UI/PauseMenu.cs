@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-    private float baseBGMVolume;
+    private float baseBGMVolume=0;
 
     private void Start()
     {
@@ -37,6 +37,8 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
+        Debug.Log(volumeSlider.value);
+
         sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.4f);
 
         if(backgroundMusic == null)
@@ -47,8 +49,10 @@ public class PauseMenu : MonoBehaviour
 
         if (backgroundMusic != null)
         {
-            baseBGMVolume = backgroundMusic.volume;
-            backgroundMusic.volume = baseBGMVolume * AudioManager.masterVolume;
+            //baseBGMVolume = backgroundMusic.volume;
+            baseBGMVolume = 0.3f;
+            backgroundMusic.volume = baseBGMVolume * volumeSlider.value;
+            Debug.Log(backgroundMusic.volume);
         }
 
         
@@ -65,10 +69,10 @@ public class PauseMenu : MonoBehaviour
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         TogglePauseUI(GameManager.Instance.isPaused);
 
+        backgroundMusic.enabled = !GameManager.Instance.isPaused;
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
-        
     }
 
     public void SetPauseState(bool state)
@@ -100,12 +104,14 @@ public class PauseMenu : MonoBehaviour
 
     public void volumeChanged(float value)
     {
-        float sliderValue = volumeSlider.value;
+        float sliderValue = value;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
 
         if (backgroundMusic != null)
             backgroundMusic.volume = sliderValue * baseBGMVolume;
+
+        Debug.Log(sliderValue * baseBGMVolume);
     }
 
     public void sensitivityChanged(float value)
