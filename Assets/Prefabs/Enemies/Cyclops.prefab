@@ -155,7 +155,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996317265162831292}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingMode: {fileID: 11400000, guid: 2fec107e7fe427742ad7d080e1776e09, type: 2}
   bulletSpawnPoint: {fileID: 3007730471301732929}
-  bulletEffect1: {fileID: 0}
+  bulletEffect1: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
   bulletEffect2: {fileID: 0}
 --- !u!114 &1426887766406785384
 MonoBehaviour:
@@ -202,17 +202,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 200
+  EnemyHealth: 250
   EnemyDamage: 5
   AttackRate: 3
   EnemyAttackRange: 5
   bulletType: 2
-  healCharge: 5
+  healCharge: 7
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
   _enemyMovementSpeed: 2
-  gravity: 12
+  gravity: 20
   TurningSpeed: 1
   JumpForce: 4
   StopSpeed: 2
