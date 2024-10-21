@@ -110,7 +110,6 @@ public class EnemyAnimator : MonoBehaviour
 
         float angle = transform.eulerAngles.y - rotationReference.eulerAngles.y;
         angle = (angle + 360) % 360;
-        Debug.Log(angle);
 
         //Update sprites
         if (angle < 45 || angle > 315)

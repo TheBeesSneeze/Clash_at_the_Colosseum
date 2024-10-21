@@ -18,17 +18,17 @@ namespace mainMenu
         public MainMenuInitializer _mainMenu;
 
         private Button _playButton;
-        private Button _statsButton;
+        private Button _tutorialButton;
         private Button _settingsButton;
         private Button _creditsButton;
         private Button _quitButton;
         //private Button _confirmExitButton;
 
-        public StartMenu(MainMenuInitializer menu, Button playButton, Button statsButton, Button settingMenu, Button creditsMenu, Button quitButton, CanvasGroup Group)
+        public StartMenu(MainMenuInitializer menu, Button playButton, Button tutorialButton, Button settingMenu, Button creditsMenu, Button quitButton, CanvasGroup Group)
         {
             _mainMenu = menu;
             _playButton = playButton;
-            _statsButton = statsButton;
+            _tutorialButton = tutorialButton;
             _settingsButton = settingMenu;
             _creditsButton = creditsMenu;
             _quitButton = quitButton;
@@ -36,7 +36,7 @@ namespace mainMenu
             //_confirmExitButton = confirmExitButton;
 
             _playButton.onClick.AddListener(playClicked);
-            _statsButton.onClick.AddListener(statsClicked);
+            _tutorialButton.onClick.AddListener(tutorialClicked);
             _settingsButton.onClick.AddListener(settingsClicked);
             _creditsButton.onClick.AddListener(creditsClicked);
             _quitButton.onClick.AddListener(quitClicked);
@@ -48,9 +48,12 @@ namespace mainMenu
             Debug.Log("play clicked");
             //_mainMenu.Start_toGunSelect();
         }
-        public void statsClicked()
+        public void tutorialClicked()
         {
-            Debug.Log("Stats clicked");
+            Debug.Log("Tutorial clicked");
+
+            MainMenuInitializer.ToggleCanvasGroup(group, false);
+            MainMenuInitializer.ToggleCanvasGroup(TutorialMenu.group, true);
         }
         public void settingsClicked()
         {
