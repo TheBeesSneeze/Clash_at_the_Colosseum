@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] public float despawnTime = 5f;
+    [SerializeField] public float bulletGravity = 1f;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private bool DealPlayerDamage = true;
     [SerializeField] private bool DealEnemyDamage = true;
@@ -58,6 +59,7 @@ public class Bullet : MonoBehaviour
     public void OnBulletShoot(Vector3 dir)
     {
         rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
+
         lastPosition = transform.position;
 
         if (effects == null)
@@ -75,9 +77,14 @@ public class Bullet : MonoBehaviour
         lastPosition = transform.position;
         timeActive = 0;
     }
-
+    private void applyGravity() {
+        Vector3 direction = new Vector3();
+        direction.y = -bulletGravity;
+        rb.AddForce(direction);
+    }
     private void FixedUpdate()
     {
+        applyGravity();
         if (!gameObject.activeInHierarchy)
             return;
 

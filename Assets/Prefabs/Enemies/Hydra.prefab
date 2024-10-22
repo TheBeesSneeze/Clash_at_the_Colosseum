@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed9130b082be1a4b8ee5cfe9b692657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossHealth: 2500
+  BossHealth: 4000
   BossDamage: 5
   bossAttackRate: 5
 --- !u!114 &3442062530939633789
@@ -113,7 +113,7 @@ MonoBehaviour:
   damageColor: {r: 0.09944855, g: 0.3018868, b: 0.05268779, a: 1}
   damageColorTime: 0.15
   spriteRenderer: {fileID: 6503042700135859820}
-  bossBar: {fileID: 0}
+  bossHealthBar: {fileID: 0}
 --- !u!114 &7720788334892972428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +141,6 @@ MonoBehaviour:
   EnemyHealth: 1000
   EnemyDamage: 10
   AttackRate: 5
-  AttackCooldown: 5
   EnemyAttackRange: 1
   bulletType: 0
   healCharge: 0
@@ -149,7 +148,9 @@ MonoBehaviour:
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
   _enemyMovementSpeed: 0
+  gravity: 0
   TurningSpeed: 0
+  JumpForce: 0
   StopSpeed: 0
   StopDistanceToPlayer: 0
   SightDistance: 0
