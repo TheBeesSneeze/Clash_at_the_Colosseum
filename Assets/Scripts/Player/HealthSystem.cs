@@ -1,3 +1,12 @@
+/*******************************************************************************
+* File Name :         HealthSystem
+* Author(s) :         Clare Grady
+* Creation Date :     10/12/2024
+*
+* Brief Description : 
+* System to heal the player with Right Click
+* Gets heal with enemy death stuffs
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,11 +51,6 @@ public class HealthSystem : MonoBehaviour
             {
                 float newHealth = Mathf.Max(CalculateHealth(), playerBehaviour.CurrentHealth);
                 playerBehaviour.RegenHealth(Mathf.Min(newHealth, playerStats.DefaultHealth));
-                /*make a float that holds current health
-                 * get default - current to know how much needs healed
-                 * calculate what percent that is of default 
-                 * calculate healPerSecond
-                 * Function to heal correct amount*/
             }
             else 
             {
