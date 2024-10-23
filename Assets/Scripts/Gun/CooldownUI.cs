@@ -1,3 +1,11 @@
+/*******************************************************************************
+* File Name :         CooldownUI
+* Author(s) :         Clare Grady
+* Creation Date :     10/18/2024
+*
+* Brief Description : 
+* Cooldown UI code for the gun reload. Turns on and off as needed
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
