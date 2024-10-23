@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 438952814939047255}
   - component: {fileID: 6670010424615105723}
   - component: {fileID: -3221912983751877588}
-  - component: {fileID: 6405318079182177319}
   - component: {fileID: 2573591770749130960}
   - component: {fileID: 566620861554067315}
   - component: {fileID: 1046506135144920525}
@@ -35,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6670010424615105723
 MonoBehaviour:
@@ -139,18 +138,6 @@ MonoBehaviour:
   MinoutarDeathSound:
     Volume: 0.7
     sound: {fileID: 8300000, guid: 1defb620513a33249af0f879713b1a04, type: 3}
---- !u!114 &6405318079182177319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9219035785655578122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62fe2aca10468f428175f6d2871fc98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2573591770749130960
 MonoBehaviour:
   m_ObjectHideFlags: 0
