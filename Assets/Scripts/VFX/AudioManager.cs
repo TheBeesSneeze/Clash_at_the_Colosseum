@@ -175,14 +175,21 @@ public class SoundClip
     [Range(0f, 1f)]
     public float Volume = 1;
     public AudioClip sound;
+    public bool RandomizePitch = true;
+
+    [EnableIf("enableFlag")] [AllowNesting]
+    [Tooltip("Default Pitch is 1. Adds a random number, r, such that -n < r < n")]
+    public float randomPitchRange = 0.1f;
 
     [Button]
     public void PlaySound()
     {
-        if (sound != null)
-        {
-            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume * AudioManager.masterVolume);
-        }
+        if (sound == null)
+            return;
+
+
+        AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume * AudioManager.masterVolume);
+        
 
     }
 
