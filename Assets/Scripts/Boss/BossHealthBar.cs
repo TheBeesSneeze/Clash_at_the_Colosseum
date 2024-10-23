@@ -1,3 +1,11 @@
+/*******************************************************************************
+* File Name :         BossHealthBar
+* Author(s) :         Clare Grady
+* Creation Date :     10/16/2024
+*
+* Brief Description : 
+* Omg its the boss health bar 
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +13,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class BossHealthBar : MonoBehaviour
+public class BossHealthBar : MonoBehaviour  //I don't know why i didn't just derive from health bar
 {
     public Slider slider;
     private BossTakeDamage bossTakeDamage;

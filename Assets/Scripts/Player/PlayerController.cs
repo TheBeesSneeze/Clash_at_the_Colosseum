@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File Name :         PlayerController.cs
- * Author(s) :         Toby, Tyler
+ * Author(s) :         Toby, Tyler, Clare
  * Creation Date :     3/18/2024
  *
  * Brief Description : responds to input events.
@@ -128,6 +128,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.down * stats.GravityBoost, ForceMode.Acceleration);
     }
 
+    /*
+     * Clare worked in DoMovement to change from  gradually hit max speed to max speed at start 
+     */
     private void DoMovement()
     {
 

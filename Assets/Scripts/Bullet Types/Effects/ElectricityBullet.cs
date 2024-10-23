@@ -17,6 +17,7 @@ namespace DefaultNamespace
     [CreateAssetMenu(fileName = "ElectricityBullet", menuName = "BulletEffects/Electricity")]
     public class ElectricityBullet : BulletEffect
     {
+        //Clare coded most of this but was originally create by Toby for the GunAdders prototype
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
         [SerializeField] LineRenderer line;
@@ -68,11 +69,6 @@ namespace DefaultNamespace
         /// <returns></returns>
         private EnemyTakeDamage[] GetEnemiesInRange(EnemyTakeDamage enemy)
         {
-            //weird logic im sorry
-            //i wanted to challenge myself to not use a list but i really should have tbh
-            //wouldve been easier to read
-            //sorry if this breaks and u gotta do shit to it later
-
             Collider[] hitColliders = Physics.OverlapSphere(enemy.transform.position, 3, LayerMask.GetMask("Enemy"));
             
             int l = Mathf.Max(0, hitColliders.Length);
