@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public float DefaultSensitivity = 0.3f;
+
     [Header("Stage Manager")]
     [SerializeField] private StageStats[] stages;
 
