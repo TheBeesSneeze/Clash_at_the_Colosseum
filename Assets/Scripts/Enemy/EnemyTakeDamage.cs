@@ -20,7 +20,7 @@ public class EnemyTakeDamage : MonoBehaviour
     [SerializeField] private Color damageColor;
     //how fast you need to be falling in order to start taking fall damage
     [SerializeField] private float fallDamageSpeed = 0;
-    [SerializeField] private float fallDamage = 0;
+    [SerializeField] private float fallDamage = 1;
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -73,7 +73,7 @@ public class EnemyTakeDamage : MonoBehaviour
     }
     public virtual void ApplyFallDamage() {
         if (gameObject.GetComponent<Rigidbody>().velocity.y >= fallDamageSpeed){
-            TakeDamage()
+            TakeDamage(fallDamage * (gameObject.GetComponent<Rigidbody>().velocity.y - fallDamageSpeed));
         }
     }
     public virtual void Die()

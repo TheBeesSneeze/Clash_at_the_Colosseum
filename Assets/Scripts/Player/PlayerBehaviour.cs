@@ -23,10 +23,10 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Image redVignette;
     [SerializeField] private HealthBar healthBar;
     [HideInInspector] public float CurrentHealth = 0;
-
+    public bool canTakeDamage = true;
     private float secondsSinceLastTookDamage;
     private LayerMask groundmask;
-
+    
     
     // Start is called before the first frame update
     protected void Start()
@@ -78,7 +78,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Debug.Log("take damage." + damage);
-        CurrentHealth = CurrentHealth - damage;
+        if (canTakeDamage) {
+            CurrentHealth = CurrentHealth - damage;
+        }
         secondsSinceLastTookDamage = 0;
 
         if(CurrentHealth <= 0)
