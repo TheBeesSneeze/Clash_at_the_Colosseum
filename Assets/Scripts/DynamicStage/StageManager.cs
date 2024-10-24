@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         StageManager
-* Author(s) :         Clare Grady, Toby Schamberger
+* Author(s) :         Toby Schamberger
 * Creation Date :     9/14/2024
 *
 * Brief Description : 

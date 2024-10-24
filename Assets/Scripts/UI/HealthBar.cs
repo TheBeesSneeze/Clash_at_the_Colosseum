@@ -1,3 +1,11 @@
+/*******************************************************************************
+* File Name :         HealthBar
+* Author(s) :         Clare Grady
+* Creation Date :     9/27/2024
+*
+* Brief Description : 
+* Health bar slider UI code
+ *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

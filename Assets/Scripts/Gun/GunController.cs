@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         GunController.cs
-* Author(s) :         Toby, Alec
+* Author(s) :         Toby, Alec, Clare
 * Creation Date :     3/20/2024
 *
 * Brief Description : 
@@ -107,6 +107,8 @@ public class GunController : MonoBehaviour
     /// <summary>
     /// shoots all the bullets. calls the OnBulletShoot function
     /// </summary>
+    
+    //Clare made this function
     private void Shoot()
     {
         if(currentShots < shotsTillCoolDown)
@@ -168,6 +170,7 @@ public class GunController : MonoBehaviour
         secondsSinceLastShoot += Time.deltaTime;
         cooldown -= Time.deltaTime;
 
+        //clare's if else stuff
         if(cooldown <= 0f && isOverHeating)
         {
             currentShots = 0;
@@ -194,6 +197,7 @@ public class GunController : MonoBehaviour
         Shoot();
     }
 
+    //Clare function
     private void Reload()
     {
         currentShots = shotsTillCoolDown;

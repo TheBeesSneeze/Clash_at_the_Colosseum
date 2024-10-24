@@ -35,7 +35,7 @@ public class InputEvents : Singleton<InputEvents>
         movementOrigin = Camera.main.transform;
         playerInput = GetComponent<PlayerInput>();
         InitializeActions();
-        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
         PublicEvents.OnSensitivitySliderChanged.AddListener(OnSensitivitySliderChange);
     }
 
@@ -141,6 +141,6 @@ public class InputEvents : Singleton<InputEvents>
 
     private void OnSensitivitySliderChange()
     {
-        _sensitivity = PlayerPrefs.GetFloat("sensitivity", 0.4f);
+        _sensitivity = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
     }
 }
