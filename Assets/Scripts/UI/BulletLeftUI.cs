@@ -11,13 +11,18 @@ public class BulletLeftUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PublicEvents.OnPlayerShoot.AddListener(BulletUI);
-        PublicEvents.OnPlayerReload.AddListener(BulletUI);
+        
 
         if (gunController == null) 
             gunController = GameObject.FindObjectOfType<GunController>();
 
         canInfiniteFire = gunController.shootingMode.canInfiniteFire;
+        
+        if(!canInfiniteFire)
+        {
+            PublicEvents.OnPlayerShoot.AddListener(BulletUI);
+            PublicEvents.OnPlayerReload.AddListener(BulletUI);
+        }
 
         BulletUI();
     }
