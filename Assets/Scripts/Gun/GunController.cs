@@ -18,8 +18,7 @@ public class GunController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] public ShootingMode shootingMode;
     [SerializeField] public GameObject BulletPrefab;
-    [SerializeField][Min(1)] private int shotsTillCoolDown;
-    [SerializeField][Min(0)] public float overheatCoolDown;
+    
     
     [Header("Unity Stuff")]
     public Transform bulletSpawnPoint;
@@ -36,6 +35,10 @@ public class GunController : MonoBehaviour
     private int currentShots;
     private float cooldown;
     private bool isOverHeating;
+    private int shotsTillCoolDown;
+    private bool canInfinteShoot;
+    [HideInInspector] public float overheatCoolDown;
+    
 
     private void Start()
     {
@@ -53,6 +56,9 @@ public class GunController : MonoBehaviour
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
         currentShots = 0;
         cooldown = 0;
+        shotsTillCoolDown = shootingMode.ClipSize;
+        overheatCoolDown = shootingMode.ReloadSpeed;
+        canInfinteShoot = shootingMode.canInfiniteFire;
         InputEvents.Instance.ReloadStarted.AddListener(Reload);
            
     }
@@ -111,7 +117,7 @@ public class GunController : MonoBehaviour
     //Clare made this function
     private void Shoot()
     {
-        if(currentShots < shotsTillCoolDown)
+        if (currentShots < shotsTillCoolDown)
         {
             secondsSinceLastShoot = 0;
 
@@ -122,7 +128,13 @@ public class GunController : MonoBehaviour
             ++currentShots;
             PublicEvents.OnPlayerShoot.Invoke();
         }
-            
+        else if(canInfinteShoot)
+        {
+            secondsSinceLastShoot = 0;
+            ShootBullet();
+            PublicEvents.OnPlayerShoot.Invoke();
+        }
+
         
         //playerRB.AddForce(-playerCamera.transform.forward * shootingMode.RecoilForce, ForceMode.Impulse);
     }
@@ -171,7 +183,7 @@ public class GunController : MonoBehaviour
         cooldown -= Time.deltaTime;
 
         //clare's if else stuff
-        if(cooldown <= 0f && isOverHeating)
+        if (cooldown <= 0f && isOverHeating)
         {
             currentShots = 0;
             isOverHeating = false;
@@ -179,13 +191,13 @@ public class GunController : MonoBehaviour
         }
         else if (cooldown <= 0f)
         {
-            if(currentShots >= shotsTillCoolDown)
+            if (currentShots >= shotsTillCoolDown && !canInfinteShoot)
             {
                 Reload();
             }
- 
+
         }
-        
+
 
         if (!InputEvents.ShootPressed) return;
         if (secondsSinceLastShoot < (1/shootingMode.ShotsPerSecond)) return;

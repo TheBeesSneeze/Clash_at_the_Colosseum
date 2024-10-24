@@ -20,6 +20,9 @@ MonoBehaviour:
   BulletSpeed: 55
   BulletDamage: 25
   RecoilForce: 0.01
+  ReloadSpeed: 2
+  ClipSize: 20
+  canInfiniteFire: 0
   MenuSprite: {fileID: -401717556, guid: 9831f24c0a2883e4fa1238a74abbdfa8, type: 3}
   GameplaySprite:
     sprites:
