@@ -384,6 +384,7 @@ MonoBehaviour:
   MaxSpeed: 30
   DashSpeed: 1000
   DashCoolDown: 1.5
+  DashInvincibilityTime: 0.5
   Friction: 1
   AirMovementMultiplier: 0
   secondsTillFull: 1
@@ -429,6 +430,7 @@ MonoBehaviour:
   redVignette: {fileID: 0}
   healthBar: {fileID: 7130086367456736589, guid: 5c78f633eefc9e0449b4597bbc727020, type: 3}
   CurrentHealth: 1
+  canTakeDamage: 1
 --- !u!114 &18831259720661764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,11 +445,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingMode: {fileID: 11400000, guid: 08a6c530daec4844ea12cb9a30ff8ea6, type: 2}
   BulletPrefab: {fileID: 5939144570409094839, guid: 199ea2a7d5890b441b40daf8baf8bbdd, type: 3}
-  shotsTillCoolDown: 20
-  overheatCoolDown: 2
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffects: []
   secondsSinceLastShoot: 0
+  overheatCoolDown: 2
 --- !u!114 &5964920643477375803
 MonoBehaviour:
   m_ObjectHideFlags: 0
