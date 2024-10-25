@@ -175,20 +175,42 @@ public class SoundClip
     [Range(0f, 1f)]
     public float Volume = 1;
     public AudioClip sound;
+    public bool RandomizePitch = false;
+
+    [EnableIf("RandomizePitch")] [AllowNesting]
+    [Tooltip("Default Pitch is 1. Adds a random number, r, such that -n < r < n")]
+    public float randomPitchRange = 0.1f;
 
     [Button]
     public void PlaySound()
     {
-        if (sound != null)
-        {
-            AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume * AudioManager.masterVolume);
-        }
+        if (sound == null)
+            return;
+
+
+        AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position, Volume * AudioManager.masterVolume);
+        
 
     }
 
     //figure this out laters
     public void PlaySound(Vector3 transform)
     {
+        if(RandomizePitch)
+        {
+            // PlayClipAtPoint has no way of setting the pitch
+            // It also creates a new gameobject in the scene and destroys it. This code is basically doing the same thing.
+            GameObject gobj = new GameObject();
+            gobj.transform.position = transform;
+            AudioSource audio = gobj.AddComponent<AudioSource>();
+            float pitch = 1 + Random.Range(-randomPitchRange,randomPitchRange);
+            audio.pitch = pitch;
+            audio.PlayOneShot(sound, Volume * AudioManager.masterVolume);
+            //GameObject.Destroy(gobj, audio.clip.length / pitch);
+            GameObject.Destroy(gobj, audio.clip.length / pitch);
+            return;
+            
+        }
         if (sound != null)
         {
             AudioSource.PlayClipAtPoint(sound, transform, Volume * AudioManager.masterVolume);

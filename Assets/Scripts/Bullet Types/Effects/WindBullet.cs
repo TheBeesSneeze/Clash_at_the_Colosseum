@@ -18,6 +18,7 @@ public class WindBullet : BulletEffect
         if (enemy.GetComponent<Rigidbody>() != null)
         {
             enemy.GetComponent<Rigidbody>().AddForce(knockbackDirection.normalized * KnockBackForce, ForceMode.Impulse);
+            enemy.ApplyFallDamage();
         }
     }
     public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet) {}

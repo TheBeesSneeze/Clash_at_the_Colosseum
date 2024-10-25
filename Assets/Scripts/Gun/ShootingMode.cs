@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File Name :         ShootingMode.cs
-* Author(s) :         Toby Schamberger
+* Author(s) :         Toby Schamberger, Clare Grady 
 * Creation Date :     3/21/2024
 *
 * Brief Description : scriptable object that determines how the gun works
@@ -32,6 +32,12 @@ public class ShootingMode : ScriptableObject
     public float BulletDamage=1;
     [Tooltip("How much to push player back by. Setting negative pulls player forward")]
     public float RecoilForce;
+    [Tooltip("How long it takes for the gun to reload")]
+    public float ReloadSpeed;
+    [Tooltip("How many shots the gun has before it needs to reload")]
+    public int ClipSize;
+    [Tooltip("If the gun can shoot infinetly without reloading")]
+    public bool canInfiniteFire;
 
     [Header("Sprites")]
     public Sprite MenuSprite;

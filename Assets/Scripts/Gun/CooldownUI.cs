@@ -16,18 +16,23 @@ public class CooldownUI : MonoBehaviour
     [SerializeField] private Slider cooldown;
     private float reloadTime;
     private float currentTime;
-    private bool isReloading; 
+    private bool isReloading;
+    private GunController gunController;
 
     // Start is called before the first frame update
     void Start()
     {
-        PublicEvents.Reloading.AddListener(Enable);
         currentTime = 0;
-        GunController controller = FindObjectOfType<GunController>();
-        reloadTime = controller.overheatCoolDown;
+        GunController gunController = FindObjectOfType<GunController>();
+        reloadTime = gunController.overheatCoolDown;
         cooldown.maxValue = reloadTime;
         cooldown.value = 0;
         gameObject.SetActive(false);
+
+        if(!gunController.shootingMode.canInfiniteFire)
+        {
+            PublicEvents.Reloading.AddListener(Enable);
+        }
     }
 
     // Update is called once per frame

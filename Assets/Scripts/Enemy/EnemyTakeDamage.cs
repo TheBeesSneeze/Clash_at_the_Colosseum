@@ -18,6 +18,9 @@ public class EnemyTakeDamage : MonoBehaviour
     private EnemyStats stats;
     [HideInInspector] public float currentHealth;
     [SerializeField] private Color damageColor;
+    //how fast you need to be falling in order to start taking fall damage
+    [SerializeField] private float fallDamageSpeed = 0;
+    [SerializeField] private float fallDamage = 1;
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -49,8 +52,7 @@ public class EnemyTakeDamage : MonoBehaviour
             stats.OnEnemyDeath();
     }
 
-    public virtual void TakeDamage(float damage)
-    {
+    public virtual void TakeDamage(float damage){
         if (IsDead)
             return; // bro stop hes already dead
 
@@ -69,7 +71,11 @@ public class EnemyTakeDamage : MonoBehaviour
         if (enemyAnimator != null)
             enemyAnimator.OnTakeDamage(currentHealth);
     }
-
+    public virtual void ApplyFallDamage() {
+        if (gameObject.GetComponent<Rigidbody>().velocity.y >= fallDamageSpeed){
+            TakeDamage(fallDamage * (gameObject.GetComponent<Rigidbody>().velocity.y - fallDamageSpeed));
+        }
+    }
     public virtual void Die()
     {
         Debug.Log("die");

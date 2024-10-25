@@ -31,6 +31,8 @@ public class PlayerStats : MonoBehaviour
     public float DashSpeed = 40f;
     [Tooltip("The cool down time in seconds for the player dash")]
     public float DashCoolDown = 3f;
+    [Tooltip("The time in seconds where the player cannot take damage after dashing")]
+    public float DashInvincibilityTime = 0.25f;
     [Tooltip("How much simulated friction to prevent you from moving forward when stopping input")][Min(0)]
     public float Friction = 0.175f;
     [Tooltip("What percent of normal movement will get applied whilst moving in the air")][Min(0)]
