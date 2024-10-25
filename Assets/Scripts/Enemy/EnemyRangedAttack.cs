@@ -31,7 +31,7 @@ public class EnemyRangedAttack : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField]private BulletEffect bulletEffect1;
     [SerializeField] private BulletEffect bulletEffect2;
-    
+    [SerializeField] private GameObject bulletPrefab;
 
     private void Start()
     {
@@ -118,7 +118,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
         Vector3 direction = getDirection();
         GameObject bullet = InstantiateBullet(stats.bulletType);
-
+        //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.transform.forward = direction.normalized;
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
