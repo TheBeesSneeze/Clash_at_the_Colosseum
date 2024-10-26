@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2573591770749130960}
   - component: {fileID: 566620861554067315}
   - component: {fileID: 1046506135144920525}
+  - component: {fileID: 5416194387029784043}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6670010424615105723
 MonoBehaviour:
@@ -88,57 +89,93 @@ MonoBehaviour:
   GunSound:
     Volume: 0.529
     sound: {fileID: 8300000, guid: 165da82ba6d13fb48bd2de370bf8e68f, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   EnemyDamageSound:
     Volume: 0.769
     sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   PlayerDamageSound:
     Volume: 0.5
     sound: {fileID: 8300000, guid: 95c9f47f02a1b7f4abdd70d36c314f5c, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   PlayerDeathSound:
     Volume: 0.7
     sound: {fileID: 8300000, guid: 2b2c916bf72f1ca4aa39f91691702038, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   EnemyShootSound:
-    Volume: 0.05
+    Volume: 0.188
     sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   MeleeAttackSound:
     Volume: 0.33
     sound: {fileID: 8300000, guid: 9237b42ca9fd0a64fb900ba0d44bf844, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   GrappleSound:
     Volume: 0.836
     sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   DashSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 6a195b654c54f7c4ab009cdd13a92514, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   UpgradeReceiveSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 19d5c0487ce9fc042a6a47c2a0c74e3d, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   StageTransitionSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 159bd3b663b378948a5ffbbdd6cbcc4c, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   SnakeCooldownSound:
     Volume: 1
     sound: {fileID: 8300000, guid: d297f7b2c3a2fe249860fcd6d126fa7d, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   HydraIntroSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 8770b93ea14ad0a47b6dd4c16b0d2b74, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   HydraFireAttackSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 46178f9ae7752ce40b0367526799a393, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   HydraDeathSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 3f0f5a1d9fd1dba4a8e1f378719ed7e8, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   CyclopsAttackSound:
     Volume: 1
     sound: {fileID: 8300000, guid: f76d16a0caafb70418a49ef8183542f9, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   CyclopsDeathSound:
     Volume: 0.5
     sound: {fileID: 8300000, guid: 87b11277fde1c424b8f25752abe4f5cc, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   HarpyDeathSound:
-    Volume: 0.3
+    Volume: 0.232
     sound: {fileID: 8300000, guid: 21b1943bce60f594cae16ff8a780d77b, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
   MinoutarDeathSound:
     Volume: 0.7
     sound: {fileID: 8300000, guid: 1defb620513a33249af0f879713b1a04, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
 --- !u!114 &2573591770749130960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,5 +236,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8ca6398707405c4c9d5fbbb3c5533e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5416194387029784043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219035785655578122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62fe2aca10468f428175f6d2871fc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
