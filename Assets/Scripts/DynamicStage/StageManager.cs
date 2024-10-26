@@ -61,7 +61,7 @@ public class StageManager
             return;
         }
 
-        if (currentStage.BulletEffectOnClear && _gunController.bulletEffects.Count <= 3) //delete this post alpha
+        if (currentStage.BulletEffectOnClear /*&& _gunController.bulletEffects.Count <= 3*/) //delete this post alpha
             _upgradeSelectUI.OpenMenu(1);
         else
             ChangeStage();
