@@ -13,6 +13,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     private float _turningSpeed = 1;
     private float _stoppingSpeed = 1;
     private float _sightDistance = 10;
+    [HideInInspector] public bool canGoDown=false;
     private EnemyStats _enemyStats;
     private EnemyTakeDamage _takeDamage;
 
@@ -45,6 +46,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         _turningSpeed = _enemyStats.TurningSpeed;
         _stoppingSpeed = _enemyStats.StopSpeed;
         _sightDistance = _enemyStats.SightDistance;
+        canGoDown = _enemyStats.CanPathfindDown;
     }
 
     private void Update()
@@ -60,7 +62,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (path == null ) return;
         if (path.nextPath == null) return;
 
-        bool navigating = NavigateToPlayer();
+        bool navigating = NavigatePath();
         if (!navigating)
         {
             float y = rb.velocity.y;
@@ -92,7 +94,7 @@ public class GroundedEnemyMovement : MonoBehaviour
     /// returns true if it can navigate to player
     /// </summary>
     /// <returns></returns>
-    private bool NavigateToPlayer()
+    private bool NavigatePath()
     {
         //if (Vector3.Distance(transform.position, _player.transform.position) < _enemyStats.StopDistanceToPlayer)
         //    return false;

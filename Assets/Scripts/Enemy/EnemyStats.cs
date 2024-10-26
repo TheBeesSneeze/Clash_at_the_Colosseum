@@ -45,7 +45,9 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
     [SerializeField][Min(0)] public float StopDistanceToPlayer;
-    [SerializeField][Min(0)] public float SightDistance; 
+    [SerializeField][Min(0)] public float SightDistance;
+    [Tooltip("If enemy can pathfind down")]
+    [SerializeField] public bool CanPathfindDown=true; 
 
     [Header("Only Effect Flyers")]
     [SerializeField][Min(0)] public float VerticalSpeed;
