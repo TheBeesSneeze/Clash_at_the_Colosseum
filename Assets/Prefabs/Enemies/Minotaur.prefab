@@ -104,6 +104,7 @@ MonoBehaviour:
   StopSpeed: 5
   StopDistanceToPlayer: 1
   SightDistance: 1
+  CanPathfindDown: 1
   VerticalSpeed: 0
   HeightAboveGround: 0
 --- !u!114 &6504214350786112077
@@ -120,9 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  VelocityDamageSpeed: 5
-  VelocityDamage: 1
-  velocityDamageCoolDown: 1
+  fallDamageSpeed: 0
+  fallDamage: 1
   damageColorTime: 0.5
   spriteRenderer: {fileID: 8353514217853516538}
 --- !u!114 &6631860369869672511
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6408f4017e283e45b59c3153321886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canGoDown: 0
   debug: 1
   ContactFilter:
     useTriggers: 0

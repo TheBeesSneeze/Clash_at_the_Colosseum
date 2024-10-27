@@ -28,7 +28,7 @@ namespace PathFinding
 
         //public GameObject player;
 
-        public Path GetPathToPlayer(Cell navigator)
+        public Path GetPathToPlayer(Cell navigator, bool canGoDown=true)
         {
             if (PlayerCell == null)
             {
@@ -36,13 +36,13 @@ namespace PathFinding
                 return null;
             }
 
-            return Navigate(navigator, PlayerCell);
+            return Navigate(navigator, PlayerCell, canGoDown);
         }
 
         //doesnt account for if start / end are right next to each other
         // or if start == end
         // or if start cant navigate to end
-        public Path Navigate(Cell navigator, Cell target)
+        public Path Navigate(Cell navigator, Cell target, bool canGoDown = true)
         {
             if (target == null || navigator == null)
             {
@@ -55,7 +55,11 @@ namespace PathFinding
 
             foreach (Cell cell in target.SideNeighbors)
             {
+                if (!canGoDown && cell.PathPosition.y + 0.1f < target.PathPosition.y)
+                    continue;
+
                 Path next = new Path(cell, startNode, navigator);
+
                 if (/*!cell.Solid && */ nextCells.IndexOf(next)== -1)
                     nextCells.Add(next);
             }
@@ -116,7 +120,7 @@ namespace PathFinding
                 return;
             }
 
-            Path p = Navigate(aliveGroundedEnemies[pathUpdateIndex].GetCurrentCell(), PlayerCell); 
+            Path p = Navigate(aliveGroundedEnemies[pathUpdateIndex].GetCurrentCell(), PlayerCell, aliveGroundedEnemies[pathUpdateIndex].canGoDown); 
             if(p != null)
                 aliveGroundedEnemies[pathUpdateIndex].SetPath(p);
         }

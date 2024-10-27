@@ -77,10 +77,10 @@ public class PlayerBehaviour : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
+        if (!canTakeDamage) return;
+
         Debug.Log("take damage." + damage);
-        if (canTakeDamage) {
-            CurrentHealth = CurrentHealth - damage;
-        }
+        CurrentHealth = CurrentHealth - damage;
         secondsSinceLastTookDamage = 0;
 
         if(CurrentHealth <= 0)
