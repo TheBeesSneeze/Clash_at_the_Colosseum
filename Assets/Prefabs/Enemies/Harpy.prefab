@@ -207,6 +207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   damageColor: {r: 1, g: 0, b: 0, a: 1}
+  VelocityDamageSpeed: 5
+  VelocityDamage: 1
+  velocityDamageCoolDown: 1
   damageColorTime: 0.5
   spriteRenderer: {fileID: 5820015479103233236}
 --- !u!114 &3214837819605227419
