@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     /// returns true if player is on the ground
     /// </summary>
     /// <returns></returns> bool
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         RaycastHit hit;
 

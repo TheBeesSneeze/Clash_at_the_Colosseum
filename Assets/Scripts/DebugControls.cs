@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugControls : MonoBehaviour
 {
+#if UNITY_EDITOR
     // Start is called before the first frame update
     void Start()
     {
@@ -11,18 +12,26 @@ public class DebugControls : MonoBehaviour
     }
 
     // Update is called once per frame
-   // void Update()
-    //{
-      //  if (Input.GetKeyDown(KeyCode.P))
-        //{
-          //  UpgradeSelectUI ui = GameObject.FindObjectOfType<UpgradeSelectUI>();
-           // ui.OpenMenu();
-        //}
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EnemyTakeDamage[] enemies = GameObject.FindObjectsOfType<EnemyTakeDamage>(); //idgaf if findobjectsoftype sucks THIS IS DEBUG TOWN
 
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-          //  HealthSystem hs = GameObject.FindObjectOfType<HealthSystem>();
-            //hs.addCharge(99999);
-        //}
-    //}
+            foreach (EnemyTakeDamage enemy in enemies)
+            {
+                enemy.TakeDamage(9999999); 
+            }
+
+            //UpgradeSelectUI ui = GameObject.FindObjectOfType<UpgradeSelectUI>();
+            //ui.OpenMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            HealthSystem hs = GameObject.FindObjectOfType<HealthSystem>();
+            hs.addCharge(99999);
+        }
+    }
+#endif
 }
