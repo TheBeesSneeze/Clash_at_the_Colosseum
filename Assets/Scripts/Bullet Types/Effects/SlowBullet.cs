@@ -15,12 +15,13 @@ namespace DefaultNamespace
     {
         [SerializeField] private float SlowBulletSpeed;
         [SerializeField] private float EnemySlowedTime;
+        [SerializeField] private float EnemySlowedRate;
         public override void OnShoot(Bullet bullet) {}
         public override void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet)
         {
             if(type.TryGetComponent<EnemyStats>(out EnemyStats es))
             {
-                es.SlowEnemy(SlowBulletSpeed, EnemySlowedTime);
+                es.SlowEnemy(SlowBulletSpeed, EnemySlowedTime, EnemySlowedRate);
             }
             if (type.TryGetComponent<BossStats>(out BossStats bs))
             {

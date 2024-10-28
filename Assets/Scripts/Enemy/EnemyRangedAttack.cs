@@ -101,13 +101,13 @@ public class EnemyRangedAttack : MonoBehaviour
             else
             {
                 shotsFired = 0;
-                coolDown = fireRate;
+                coolDown = stats.TimeBetweenAttacks;
             }
         }
         else
         {
             Fire();
-            coolDown = fireRate;
+            coolDown = stats.TimeBetweenAttacks;
         }
         
     }
