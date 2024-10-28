@@ -18,9 +18,16 @@ public class EnemyTakeDamage : MonoBehaviour
     private EnemyStats stats;
     [HideInInspector] public float currentHealth;
     [SerializeField] private Color damageColor;
-    //how fast you need to be falling in order to start taking fall damage
-    [SerializeField] private float fallDamageSpeed = 0;
-    [SerializeField] private float fallDamage = 1;
+   
+    [Header("Velocity Damage")]
+    [Tooltip("how fast you need to be falling in order to start taking fall damage")]
+    [SerializeField] private float VelocityDamageSpeed = 0;
+    [Tooltip("how much base damage the Velocity damage does")]
+    [SerializeField] private float VelocityDamage = 1;
+    [Tooltip("how long after it has been hit by the wind bullet will it try to apply velocity damage")]
+    [SerializeField] private float velocityDamageCoolDown = 1;
+    private bool doVelocityDamage = false;
+
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -71,10 +78,14 @@ public class EnemyTakeDamage : MonoBehaviour
         if (enemyAnimator != null)
             enemyAnimator.OnTakeDamage(currentHealth);
     }
-    public virtual void ApplyFallDamage() {
-        if (gameObject.GetComponent<Rigidbody>().velocity.y >= fallDamageSpeed){
-            TakeDamage(fallDamage * (gameObject.GetComponent<Rigidbody>().velocity.y - fallDamageSpeed));
-        }
+    public virtual void ApplyVelocityDamage() {
+        doVelocityDamage = true;
+        StartCoroutine(doVelocityDamageCoolDown(velocityDamageCoolDown));
+    }
+    IEnumerator doVelocityDamageCoolDown(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        doVelocityDamage = false;
     }
     public virtual void Die()
     {
@@ -90,5 +101,13 @@ public class EnemyTakeDamage : MonoBehaviour
         else if(stats.bulletType == EnemyType.Cyclops) { PublicEvents.CyclopsDeath.Invoke(); }
         else if(stats.bulletType == EnemyType.Harpy) { PublicEvents.HarpyDeath.Invoke(); }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        float speed = gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        if (speed >= VelocityDamageSpeed && doVelocityDamage)
+        {
+            print("Velocity Damage Dealt: " + VelocityDamage * (speed - VelocityDamage));
+            TakeDamage(VelocityDamage * (speed - VelocityDamage));
+        }
+    }
 }

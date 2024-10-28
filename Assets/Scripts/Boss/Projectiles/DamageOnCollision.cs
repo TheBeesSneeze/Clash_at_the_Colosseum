@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using Unity.VisualScripting;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class DamageOnCollision : MonoBehaviour
 {
@@ -13,7 +12,9 @@ public class DamageOnCollision : MonoBehaviour
     private List<Transform> collisions = new List<Transform>();
     //private float cooldown;
 
-
+    [EnableIf("ApplyDamageOverTime")]
+    [SerializeField] private float SecondsBetweenDamage = 0.1f;
+    private float timeOfLastAttack;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -53,26 +54,36 @@ public class DamageOnCollision : MonoBehaviour
     {
         //cooldown -= Time.deltaTime;
 
+        if(!ApplyDamageOverTime)  return; 
+
         if (collisions.Count <= 0)
             return;
 
+        if (timeOfLastAttack + SecondsBetweenDamage > Time.time)
+            return;
+
+        // go time
+        timeOfLastAttack = Time.time;
         foreach (Transform t in collisions)
         {
-            if(t != null) //cant believe this is a problem
-                AttemptAttack(t);
+            AttemptAttack(t);
         }
     }
 
     private void AttemptAttack(Transform col)
     {
+        if (col == null)
+            return; //cant believe this is a problem
+
+        
         if (damagePlayer && col.TryGetComponent(out PlayerBehaviour behaviour))
         {
-            behaviour.TakeDamage(dps * Time.deltaTime);
+            behaviour.TakeDamage(dps * Time.deltaTime/ SecondsBetweenDamage);
         }
 
         if (damageEnemies && col.TryGetComponent(out EnemyTakeDamage enemy))
         {
-            enemy.TakeDamage(dps*Time.deltaTime);
+            enemy.TakeDamage(dps*Time.deltaTime/ SecondsBetweenDamage);
         }
 
     }

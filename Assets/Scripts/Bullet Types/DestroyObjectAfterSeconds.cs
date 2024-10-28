@@ -14,7 +14,8 @@ public class DestroyObjectAfterSeconds : MonoBehaviour
 
     public void Start()
     {
-        DestroyTimer(Seconds);
+        if(DestroyAtStart)
+            DestroyTimer(Seconds);
     }
 
     public void DestroyTimer(float seconds)
