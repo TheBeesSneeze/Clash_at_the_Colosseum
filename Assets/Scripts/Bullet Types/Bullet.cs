@@ -30,7 +30,8 @@ public class Bullet : MonoBehaviour
     private float timeActive;
     private GunController gunController;
     private List<BulletEffect> effects;
-
+    
+    [HideInInspector]public bool playerBullet = false;
     [HideInInspector] public float damageAmount = 10f;
     [HideInInspector] public float bulletForce = 200f;
 
@@ -90,7 +91,12 @@ public class Bullet : MonoBehaviour
 
         if (timeActive >= despawnTime)
         {
-            BulletPoolManager.Destroy(this);
+            if(playerBullet)
+            {
+                BulletPoolManager.Destroy(this);
+                return;
+            }
+            Destroy();
             return;
         }
         timeActive += Time.fixedDeltaTime;
@@ -146,7 +152,16 @@ public class Bullet : MonoBehaviour
         }
 
         if(DestroyOnEntityHit())
-            BulletPoolManager.Destroy(this);
+        {
+            if (playerBullet)
+            {
+                BulletPoolManager.Destroy(this);
+                return;
+            }
+
+            Destroy();
+        }
+            
     }
 
     private void OnPlayerHit(PlayerBehaviour player)
@@ -155,7 +170,15 @@ public class Bullet : MonoBehaviour
         player.TakeDamage(damageAmount);
 
         if (DestroyOnEntityHit())
-            BulletPoolManager.Destroy(this);
+        {
+            if (playerBullet)
+            {
+                BulletPoolManager.Destroy(this);
+                return;
+            }
+            Destroy();
+        }
+
     }
 
     private void OnHitSurface(RaycastHit hit)
@@ -166,7 +189,14 @@ public class Bullet : MonoBehaviour
         }
 
         if (DestroyOnSurfaceHit())
-            BulletPoolManager.Destroy(this);
+        {
+            if (playerBullet)
+            {
+                BulletPoolManager.Destroy(this);
+                return;
+            }
+            Destroy();
+        }
 
     }
 
@@ -202,6 +232,11 @@ public class Bullet : MonoBehaviour
         {
             effect.OnDestroyBullet(this, damageAmount);
         }
+    }
+
+    public void Destroy()
+    {
+        Destroy(this); 
     }
 
     /// <summary>

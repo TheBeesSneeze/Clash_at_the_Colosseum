@@ -8,12 +8,12 @@ using UnityEngine;
 public class BulletPoolManager
 {
     private static List<GameObject> bulletList = new List<GameObject>();
-    private static List<GameObject> basicEnemyBulletList = new List<GameObject>();
+    /*private static List<GameObject> basicEnemyBulletList = new List<GameObject>();
     private static List<GameObject> harpyEnemyBulletList = new List<GameObject>();
     private static List<GameObject> cyclopsEnemyBulletList = new List<GameObject>();
     private static GameObject basicEnemyBullet;
     private static GameObject harpyEnemyBullet;
-    private static GameObject cyclopsEnemyBullet;
+    private static GameObject cyclopsEnemyBullet;*/
     private static GameObject playerBullet;
 
     private static GunController gunController;
@@ -23,13 +23,13 @@ public class BulletPoolManager
         gunController = GameObject.FindObjectOfType<GunController>();
 
         playerBullet = bulletPrefab;
-        basicEnemyBullet = enemyBulletPrefab;
+        /*basicEnemyBullet = enemyBulletPrefab;
         harpyEnemyBullet = harypyBulletPrefab;
-        cyclopsEnemyBullet = cyclopsBulletPrefab;
+        cyclopsEnemyBullet = cyclopsBulletPrefab;*/
 
         for (int i = 0; i < amountPooled; i++)
         {
-            GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
+            /*GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
             GameObject harpyShot = GameObject.Instantiate(harypyBulletPrefab);
             GameObject cyclopsShot = GameObject.Instantiate(cyclopsBulletPrefab);
             basicEnemyBulletList.Add(enemyShot);
@@ -37,7 +37,7 @@ public class BulletPoolManager
             cyclopsEnemyBulletList.Add(cyclopsShot);
             enemyShot.SetActive(false);
             cyclopsShot.SetActive(false);
-            harpyShot.SetActive(false);
+            harpyShot.SetActive(false);*/
             CreateNewPlayerBullet().SetActive(false);
         }
 
@@ -57,7 +57,7 @@ public class BulletPoolManager
         return CreateNewPlayerBullet();
     }
 
-    public static GameObject InstantiateBasicEnemyBullet(Vector3 position)
+    /*public static GameObject InstantiateBasicEnemyBullet(Vector3 position)
     {
         for (int i = 0; i < basicEnemyBulletList.Count; i++)
         {
@@ -71,8 +71,9 @@ public class BulletPoolManager
         GameObject newShot = GameObject.Instantiate(basicEnemyBullet);
         basicEnemyBulletList.Add(newShot);
         return newShot;
-    }
-    public static GameObject InstantiateHarpyEnemyBullet(Vector3 position)
+    }*/
+
+    /*public static GameObject InstantiateHarpyEnemyBullet(Vector3 position)
     {
         for (int i = 0; i < harpyEnemyBulletList.Count; i++)
         {
@@ -86,8 +87,9 @@ public class BulletPoolManager
         GameObject newShot = GameObject.Instantiate(harpyEnemyBullet);
         harpyEnemyBulletList.Add(newShot);
         return newShot;
-    }
-    public static GameObject InstantiateCyclopsEnemyBullet(Vector3 position)
+    }*/
+
+    /*public static GameObject InstantiateCyclopsEnemyBullet(Vector3 position)
     {
         for (int i = 0; i < cyclopsEnemyBulletList.Count; i++)
         {
@@ -101,7 +103,7 @@ public class BulletPoolManager
         GameObject newShot = GameObject.Instantiate(cyclopsEnemyBullet);
         cyclopsEnemyBulletList.Add(newShot);
         return newShot;
-    }
+    }*/
 
     public static GameObject CreateNewPlayerBullet()
     {
@@ -110,12 +112,13 @@ public class BulletPoolManager
         if (newShot.TryGetComponent<Bullet>(out Bullet b))
         {
             b.OneTimeInitalize(gunController.bulletEffects);
+            b.playerBullet = true;
         }
         return newShot;
     }
 
     public static void Destroy(Bullet bullet)
-    {
+    {   
         bullet.OnDisableBullet();
         bullet.ResetBullet();
         bullet.gameObject.SetActive(false);
@@ -136,8 +139,8 @@ public class BulletPoolManager
     {
         Debug.Log("its disablin time");
         bulletList = new List<GameObject>();
-        cyclopsEnemyBulletList = new List<GameObject>();
+        /*cyclopsEnemyBulletList = new List<GameObject>();
         harpyEnemyBulletList = new List<GameObject>();
-        basicEnemyBulletList = new List<GameObject>();
+        basicEnemyBulletList = new List<GameObject>();*/
     }
 }

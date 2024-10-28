@@ -117,8 +117,10 @@ public class EnemyRangedAttack : MonoBehaviour
         nextFireTime += Time.deltaTime;
 
         Vector3 direction = getDirection();
-        GameObject bullet = InstantiateBullet(stats.bulletType);
-        //GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        //GameObject bullet = InstantiateBullet(stats.bulletType);
+
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.transform.forward = direction.normalized;
         Bullet bulletObject = bullet.GetComponent<Bullet>();
         bulletObject.damageAmount = shootingMode.BulletDamage;
@@ -139,7 +141,7 @@ public class EnemyRangedAttack : MonoBehaviour
         return direction; 
     }
 
-    private GameObject InstantiateBullet(EnemyType type)
+    /*private GameObject InstantiateBullet(EnemyType type)
     {
         if(type == EnemyType.Cyclops)
         {
@@ -156,7 +158,7 @@ public class EnemyRangedAttack : MonoBehaviour
             return BulletPoolManager.InstantiateBasicEnemyBullet(transform.position);
         }
 
-    }
+    }*/
 
     private void OnDisable()
     {

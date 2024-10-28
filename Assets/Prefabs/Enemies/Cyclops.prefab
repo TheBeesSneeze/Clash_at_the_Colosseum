@@ -190,6 +190,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 3007730471301732929}
   bulletEffect1: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
   bulletEffect2: {fileID: 0}
+  bulletPrefab: {fileID: 5939144570409094839, guid: e6ff837cdb7a59b4fb8a2383e7975b23, type: 3}
 --- !u!114 &1426887766406785384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   StopSpeed: 2
   StopDistanceToPlayer: 5
   SightDistance: 15
+  CanPathfindDown: 1
   VerticalSpeed: 0
   HeightAboveGround: 0
 --- !u!114 &8266884244933607397
@@ -251,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6408f4017e283e45b59c3153321886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canGoDown: 0
   debug: 1
   ContactFilter:
     useTriggers: 0
