@@ -13,7 +13,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
         ///Find object of type sucks so bad i will fix this later
        
         gc = GameObject.FindObjectOfType<GunController>();
-        gc.bulletEffects.Clear();
+        //gc.bulletEffects.Clear();
         foreach(BulletEffect be in SaveData.gotBulletEffects)
         {
             gc.AddBulletEffect(be,false);

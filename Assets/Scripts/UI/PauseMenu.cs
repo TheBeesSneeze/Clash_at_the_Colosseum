@@ -69,7 +69,8 @@ public class PauseMenu : MonoBehaviour
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         TogglePauseUI(GameManager.Instance.isPaused);
 
-        backgroundMusic.enabled = !GameManager.Instance.isPaused;
+        if(backgroundMusic != null)
+            backgroundMusic.enabled = !GameManager.Instance.isPaused;
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;

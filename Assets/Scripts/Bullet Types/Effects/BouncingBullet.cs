@@ -50,7 +50,12 @@ namespace DefaultNamespace
             //figures out how many bounces the bullet has left
             if (bounces <= 0)
             {
-                BulletPoolManager.Destroy(bullet);
+                if (bullet.playerBullet)
+                {
+                    BulletPoolManager.Destroy(bullet);
+                    return;
+                }
+                bullet.Destroy();
                 return;
             }
             bounces--;
