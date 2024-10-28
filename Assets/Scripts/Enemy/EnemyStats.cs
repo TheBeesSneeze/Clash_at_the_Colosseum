@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyTakeDamage))]
@@ -39,8 +40,19 @@ public class EnemyStats : MonoBehaviour
             else return slowedSpeed;
         }
     }
+
+    [HideInInspector] public float TimeBetweenAttacks
+    {
+        get
+        {
+            if (slowedDownCountdown <= 0)
+                return AttackRate;
+            else return slowedAttackRate;
+        }
+    }
     private float slowedDownCountdown;
     private float slowedSpeed;
+    private float slowedAttackRate;
     [SerializeField][Min(0)] public float TurningSpeed;
     [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
@@ -91,10 +103,11 @@ public class EnemyStats : MonoBehaviour
     /// </summary>
     /// <param name="slowedAmount"></param>
     /// <param name="slowedTime"></param>
-    public void SlowEnemy(float slowedAmount, float slowedTime)
+    public void SlowEnemy(float slowedAmount, float slowedTime, float slowedRate)
     {
         slowedSpeed = slowedAmount;
         slowedDownCountdown = slowedTime;
+        slowedAttackRate = slowedRate;
     }
     #endregion
    

@@ -15,7 +15,7 @@ public class BossFireBall : MonoBehaviour
 
     public void Launch(Vector3 startPosition, Vector3 endPosition)
     {
-        StartCoroutine(launchArch(startPosition, endPosition, maxHeight, defaultTime));
+        StartCoroutine(launchArch(startPosition, endPosition, maxHeight, defaultTime / BossController.Stats.BossAttackRate));
     }
     public void Launch(Vector3 startPosition, Vector3 endPosition, float height, float time)
     {

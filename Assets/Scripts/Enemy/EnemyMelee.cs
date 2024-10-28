@@ -56,7 +56,7 @@ public class EnemyMelee : MonoBehaviour
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();
 
-                coolDown = timeBetweenAttacks;
+                coolDown = stats.TimeBetweenAttacks;
                 if (animator != null)
                     animator.OnAttackStart();
             };

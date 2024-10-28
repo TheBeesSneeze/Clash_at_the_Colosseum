@@ -10,7 +10,10 @@ public class BossStats : MonoBehaviour
     [SerializeField] [Min(0)] public float BossDamage;
 
     [Header("Movement Variables")]
-    [SerializeField] [Min(0)] private float bossAttackRate;
+    [SerializeField] [Min(0)] private float bossAttackRate = 1;
+
+    //[Header("Slow Variables")]
+   // [SerializeField] public Color SlowedColor;
     [HideInInspector]
     public float BossAttackRate
     {
@@ -21,15 +24,19 @@ public class BossStats : MonoBehaviour
             else return slowedRate;
         }
     }
+
     private float slowedDownCountdown;
     private float slowedRate;
 
 
     #region affectors
 
+
     //updating countdown timer
     private void Update()
     {
+        //ColorChange();
+        BossController.animator.SetFloat("Slow", BossAttackRate);
         slowedDownCountdown -= Time.deltaTime;
     }
 
@@ -43,6 +50,15 @@ public class BossStats : MonoBehaviour
         slowedRate = slowedAmount;
         slowedDownCountdown = slowedTime;
     }
+
+   /* public void ColorChange()
+    {
+        if (slowedDownCountdown <= 0)
+            BossController.BossSR.color = Color.white;
+        else
+            BossController.BossSR.color = SlowedColor;
+    }
+   */
     #endregion
 
 }
