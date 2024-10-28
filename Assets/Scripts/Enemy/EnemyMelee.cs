@@ -37,7 +37,7 @@ public class EnemyMelee : MonoBehaviour
     }
     private void Update()
     {
-        coolDown -= Time.deltaTime;
+        coolDown -= Time.deltaTime / BossController.Stats.BossAttackRate;
         AttemptAttack();
     }
 

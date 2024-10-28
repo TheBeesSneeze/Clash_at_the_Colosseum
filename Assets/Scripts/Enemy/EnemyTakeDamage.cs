@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
-[RequireComponent(typeof(EnemyStats))]
 public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8529430527981866008}
   - component: {fileID: 3442062530939633789}
   - component: {fileID: 7720788334892972428}
-  - component: {fileID: 1116169480285745374}
   m_Layer: 8
   m_Name: Hydra
   m_TagString: Untagged
@@ -96,7 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossHealth: 4000
   BossDamage: 5
-  bossAttackRate: 5
+  bossAttackRate: 1
+  SlowedColor: {r: 0.13163051, g: 0.59309345, b: 0.9622642, a: 1}
 --- !u!114 &3442062530939633789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   damageColor: {r: 0.09944855, g: 0.3018868, b: 0.05268779, a: 1}
+  fallDamageSpeed: 0
+  fallDamage: 1
   damageColorTime: 0.15
   spriteRenderer: {fileID: 6503042700135859820}
   bossHealthBar: {fileID: 0}
@@ -126,36 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b4af86b269cd44ba3bb43cd412a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1116169480285745374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3195422292412472386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c89fc4d4d0d6fc4dbae91faaf43f231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyHealth: 1000
-  EnemyDamage: 10
-  AttackRate: 5
-  EnemyAttackRange: 1
-  bulletType: 0
-  healCharge: 0
-  canConsecutiveShoot: 0
-  numberOfConsecutiveShots: 0
-  timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 0
-  gravity: 0
-  TurningSpeed: 0
-  JumpForce: 0
-  StopSpeed: 0
-  StopDistanceToPlayer: 0
-  SightDistance: 0
-  VerticalSpeed: 0
-  HeightAboveGround: 0
 --- !u!1 &6418192911890800890
 GameObject:
   m_ObjectHideFlags: 0
