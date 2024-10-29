@@ -95,7 +95,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         for(int i = 0; i < enemySpawnPoints.Length; i++)
         {
-            Debug.Log("spawning " + enemySpawnPoints[i].enemyToSpawn);
+           // Debug.Log("spawning " + enemySpawnPoints[i].enemyToSpawn);
             if (_enemyPrefabs.TryGetValue(enemySpawnPoints[i].enemyToSpawn, out GameObject enemyType))
             {
                 GameObject.Instantiate(enemyType, enemySpawnPoints[i].transform.position, Quaternion.identity);
