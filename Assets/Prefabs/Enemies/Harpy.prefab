@@ -175,6 +175,7 @@ MonoBehaviour:
   StopSpeed: 1
   StopDistanceToPlayer: 6
   SightDistance: 2
+  CanPathfindDown: 1
   VerticalSpeed: 4
   HeightAboveGround: 10
 --- !u!114 &2574494738450226700
@@ -193,6 +194,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 2418623821713463542}
   bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
+  bulletPrefab: {fileID: 5939144570409094839, guid: c8ebc61181de1dd4a9cb58681487a175, type: 3}
 --- !u!114 &1340366527727773368
 MonoBehaviour:
   m_ObjectHideFlags: 0

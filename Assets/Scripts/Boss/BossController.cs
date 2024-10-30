@@ -18,6 +18,7 @@ public class BossController : Singleton<BossController>
     [HideInInspector] public static bool bossActive= false;
     [HideInInspector] public static Transform Boss;
     [HideInInspector] public static Animator animator;
+    [HideInInspector] public static SpriteRenderer BossSR;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class BossController : Singleton<BossController>
         enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         PublicEvents.OnPlayerDeath.AddListener(OnPlayerDeath);
         bossActive = true;
+        BossSR = Boss.GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnPlayerDeath()

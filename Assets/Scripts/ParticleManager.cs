@@ -29,7 +29,7 @@ public class ParticleManager : Singleton<ParticleManager>
 
         foreach (ParticleSystem particle in particles.particles)
         {
-            if (!particles.PlayOnStart)
+            if (!particles.PlayOnStart && particle != null)
                 particle.Stop();
         }
     }

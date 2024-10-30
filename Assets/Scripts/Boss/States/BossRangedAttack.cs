@@ -28,7 +28,7 @@ public class BossRangedAttack : StateMachineBehaviour
             return;
         }
 
-        secondsSinceLastShot += Time.deltaTime;
+        secondsSinceLastShot += Time.deltaTime / BossController.Stats.BossAttackRate;
 
         if (shotsFired >= numberOfBullets)
         {

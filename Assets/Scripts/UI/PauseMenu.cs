@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
             backgroundMusic.volume = baseBGMVolume * volumeSlider.value;
             backgroundMusic.Play(); 
             backgroundMusic.playOnAwake = true;
-            Debug.Log(backgroundMusic.volume);
+           // Debug.Log(backgroundMusic.volume);
         }
 
         
@@ -112,7 +112,7 @@ public class PauseMenu : MonoBehaviour
         if (backgroundMusic != null)
             backgroundMusic.volume = sliderValue * baseBGMVolume;
 
-        Debug.Log(sliderValue * baseBGMVolume);
+        //Debug.Log(sliderValue * baseBGMVolume);
     }
 
     public void sensitivityChanged(float value)
