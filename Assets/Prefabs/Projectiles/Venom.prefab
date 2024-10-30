@@ -237,7 +237,7 @@ Transform:
   m_Children:
   - {fileID: 4488377413273720168}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-149849139835284078
 MonoBehaviour:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92daf38c92b9a2145a5ace8c169d4681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Seconds: 5
+  Seconds: 4
   DestroyAtStart: 1
 --- !u!1 &8225424785489257699
 GameObject:
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31920dad7ac696e49afe5206ace1557b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dps: 5
+  dps: 10
   damagePlayer: 0
   damageEnemies: 1
   ApplyDamageOverTime: 1
