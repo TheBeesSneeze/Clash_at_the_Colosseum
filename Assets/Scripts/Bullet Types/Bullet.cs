@@ -190,7 +190,6 @@ public class Bullet : MonoBehaviour
         }
         if (wallHitParticle != null)
             Instantiate(wallHitParticle, transform.position, Quaternion.identity);
-        Debug.Log("HALLO");
 
         if (DestroyOnSurfaceHit())
         {

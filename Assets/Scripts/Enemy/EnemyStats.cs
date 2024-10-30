@@ -65,6 +65,10 @@ public class EnemyStats : MonoBehaviour
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
 
+    [Header("Particles")]
+    public ParticleSystem zappedParticles;
+
+
     private void Start()
     {
         PublicEvents.OnEnemySpawned.Invoke(this);
