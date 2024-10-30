@@ -54,6 +54,7 @@ public class BackgroundManager : MonoBehaviour
 
         StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, audioSource));
         StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume, lenghtOfAudioSwitch, secondaryAudio));
+        audioSourcePlayingCurrent = false;
     }
 
     private void AudioSourceCurrentFalse()
@@ -64,6 +65,7 @@ public class BackgroundManager : MonoBehaviour
 
         StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, secondaryAudio));
         StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume, lenghtOfAudioSwitch, audioSource));
+        audioSourcePlayingCurrent = true;
     }
 
     IEnumerator LerpFunctionDown(float endVolume, float duration, AudioSource downVol)
