@@ -12,11 +12,14 @@ public class FlyingEnemyMovement : MonoBehaviour
     private float _verticalSpeed;
     private float _heightAboveGround;
     private float _stoppingDistanceToPlayer;
+    private float _flyingOffset; 
     private float r;
     private Transform _player;
     private int _groundMask;
     private Rigidbody rb;
     private EnemyStats enemyStats;
+
+    private Vector3 playerOffset;
 
     private void Awake()
     {
@@ -38,6 +41,8 @@ public class FlyingEnemyMovement : MonoBehaviour
         _verticalSpeed = enemyStats.VerticalSpeed;
         _heightAboveGround = enemyStats.HeightAboveGround;
         _stoppingDistanceToPlayer = enemyStats.StopDistanceToPlayer;
+        _flyingOffset = enemyStats.MovementOffset;
+        playerOffset = new Vector3(Random.Range(-_flyingOffset, _flyingOffset), Random.Range(-_flyingOffset, _flyingOffset), Random.Range(-_flyingOffset, _flyingOffset));
     }
 
     private void Update()
@@ -67,6 +72,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = _player.position;
+        playerPos += playerOffset;
         enemyPos.y = y;
         playerPos.y = y;
 
