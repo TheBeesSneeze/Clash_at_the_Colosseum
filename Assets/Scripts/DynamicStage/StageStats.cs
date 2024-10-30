@@ -19,4 +19,6 @@ public class StageStats : ScriptableObject
     //public GameObject[] EnemyPrefabs;
     public float timeTillEnemiesSpawn;
     public bool BulletEffectOnClear=true;
+    public AudioClip BackgroundAudio;
+    [Range(0,1)]public float BackgroundVolume;
 }
