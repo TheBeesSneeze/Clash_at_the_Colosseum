@@ -126,7 +126,7 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("jump");
+        //Debug.Log("jump");
         //rb.AddForce(0, _enemyStats.JumpForce*100, 0,ForceMode.Impulse);
         rb.velocity = new Vector3(rb.velocity.x, _enemyStats.JumpForce, rb.velocity.z);
     }
