@@ -54,14 +54,12 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.interactable = false;
         Time.timeScale = 0f;
 
-
         Debug.Log("opening menu");
         SetUpgradeEffects();
     }
 
     private void EnableMenu()
     {
-        animator.SetBool("Open", true);
         animator.SetBool("Left Selected", false);
         animator.SetBool("Right Selected", false);
 
@@ -75,7 +73,6 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void DisableMenu()
     {
-        animator.SetBool("Open", false);
         animator.SetBool("Left Selected", false);
         animator.SetBool("Right Selected", false);
 
