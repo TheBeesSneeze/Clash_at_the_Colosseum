@@ -64,6 +64,7 @@ public class EnemyStats : MonoBehaviour
     [Header("Only Effect Flyers")]
     [SerializeField][Min(0)] public float VerticalSpeed;
     [SerializeField][Min(0)] public float HeightAboveGround;
+    [SerializeField][Min(0)] public float MovementOffset;
 
     [Header("Particles")]
     public ParticleSystem zappedParticles;

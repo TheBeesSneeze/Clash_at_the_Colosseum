@@ -55,7 +55,7 @@ namespace DefaultNamespace
             //if(!ExplodeOnSurfaceHit) return;
 
             Collider[] hits = Physics.OverlapSphere(hit.point, enemyHitExplotionRadius, enemyLayer);
-            for (int i = 1; i < hits.Length; i++)
+            for (int i = 0; i < hits.Length; i++)
             {
                 hits[i].GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
                 Debug.Log(hits[i].gameObject.name + i + " took " + (damage * DamageMultiplier) + " damage");

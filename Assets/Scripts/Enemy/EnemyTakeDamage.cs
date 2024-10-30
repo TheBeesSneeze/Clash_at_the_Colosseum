@@ -26,6 +26,7 @@ public class EnemyTakeDamage : MonoBehaviour
     [Tooltip("how long after it has been hit by the wind bullet will it try to apply velocity damage")]
     [SerializeField] private float velocityDamageCoolDown = 1;
     private bool doVelocityDamage = false;
+    private Coroutine velocityDamageCoRoutine;
 
     [SerializeField] private float damageColorTime;
     private float damagetime;
@@ -79,8 +80,11 @@ public class EnemyTakeDamage : MonoBehaviour
             enemyAnimator.OnTakeDamage(currentHealth);
     }
     public virtual void ApplyVelocityDamage() {
+        if (velocityDamageCoRoutine != null) {
+            StopCoroutine(velocityDamageCoRoutine);
+        }
         doVelocityDamage = true;
-        StartCoroutine(doVelocityDamageCoolDown(velocityDamageCoolDown));
+        velocityDamageCoRoutine = StartCoroutine(doVelocityDamageCoolDown(velocityDamageCoolDown));
     }
     IEnumerator doVelocityDamageCoolDown(float seconds)
     {
