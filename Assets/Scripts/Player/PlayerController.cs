@@ -78,9 +78,7 @@ public class PlayerController : MonoBehaviour
 
         ApplyGravity();
 
-
         if (GameManager.Instance.pausedForUI) return;
-
 
         DoMovement();
     }
