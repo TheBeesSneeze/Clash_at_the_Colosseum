@@ -46,15 +46,13 @@ public class EnemyStats : MonoBehaviour
         get
         {
             if (slowedDownCountdown <= 0)
-            {
                 return AttackRate;
-            }
-            else return slowedAttackRate;
+            else return AttackRate * slowedAttackMultiplier;
         }
     }
     private float slowedDownCountdown;
     private float slowedSpeed;
-    private float slowedAttackRate;
+    private float slowedAttackMultiplier;
     [SerializeField][Min(0)] public float TurningSpeed;
     [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
@@ -98,18 +96,6 @@ public class EnemyStats : MonoBehaviour
     private void Update()
     {
         slowedDownCountdown -= Time.deltaTime;
-        //sorry guys this is such a long if statement
-        if (slowedDownCountdown > 0 && !frostParticles.isPlaying && frostParticles != null)
-        {
-            frostParticles.Play();
-            frostParticles.enableEmission = true;
-        }
-        else if (slowedDownCountdown <= 0 && frostParticles.isPlaying)
-        {
-            frostParticles.Stop();
-            frostParticles.enableEmission = false;
-        }
-    
     }
 
     /// <summary>
@@ -121,12 +107,10 @@ public class EnemyStats : MonoBehaviour
     {
         slowedSpeed = slowedAmount;
         slowedDownCountdown = slowedTime;
-        slowedAttackRate = slowedRate;
+        slowedAttackMultiplier = slowedRate;
     }
     #endregion
-
-    [Header("Particles")]
-    [SerializeField] private ParticleSystem frostParticles;
+   
 }
 
 public enum EnemyType
