@@ -28,11 +28,13 @@ public class UpgradeSelectUI : MonoBehaviour
     private GunController _gunController;
     private BulletEffect selectedEffect;
     private bool open = true;
+    public static Animator animator;
 
     private void Start()
     {
         _gunController = GameObject.FindObjectOfType<GunController>();
         bulletEffectPool = new List<BulletEffect>(GameManager.Instance.BulletEffects);
+        animator = GetComponent<Animator>();    
 
         DisableMenu();
 
@@ -52,13 +54,15 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.interactable = false;
         Time.timeScale = 0f;
 
-
         Debug.Log("opening menu");
         SetUpgradeEffects();
     }
 
     private void EnableMenu()
     {
+        animator.SetBool("Left Selected", false);
+        animator.SetBool("Right Selected", false);
+
         group.alpha = 1;
         group.interactable = true;
         group.blocksRaycasts = true;
@@ -69,6 +73,9 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void DisableMenu()
     {
+        animator.SetBool("Left Selected", false);
+        animator.SetBool("Right Selected", false);
+
         group.alpha = 0;
         group.interactable = false;
         group.blocksRaycasts = false;
@@ -83,6 +90,8 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void OnUpgradeButton1Clicked()
     {
+        animator.SetBool("Left Selected", true);
+        animator.SetBool("Right Selected", false);
         LoadUpgradeEffectOnClick(upgradeButton1.bulletEffect);
 
         ColorBlock cb1 = upgradeButton1.button.colors;
@@ -100,6 +109,8 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void OnUpgradeButton2Clicked()
     {
+        animator.SetBool("Left Selected", false);
+        animator.SetBool("Right Selected", true);
         LoadUpgradeEffectOnClick(upgradeButton2.bulletEffect);
 
         ColorBlock cb2 = upgradeButton2.button.colors;

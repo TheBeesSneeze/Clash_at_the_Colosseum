@@ -47,12 +47,12 @@ public class EnemyStats : MonoBehaviour
         {
             if (slowedDownCountdown <= 0)
                 return AttackRate;
-            else return slowedAttackRate;
+            else return AttackRate * slowedAttackMultiplier;
         }
     }
     private float slowedDownCountdown;
     private float slowedSpeed;
-    private float slowedAttackRate;
+    private float slowedAttackMultiplier;
     [SerializeField][Min(0)] public float TurningSpeed;
     [SerializeField][Min(0)] public float JumpForce;
     [SerializeField][Min(0)] public float StopSpeed;
@@ -107,7 +107,7 @@ public class EnemyStats : MonoBehaviour
     {
         slowedSpeed = slowedAmount;
         slowedDownCountdown = slowedTime;
-        slowedAttackRate = slowedRate;
+        slowedAttackMultiplier = slowedRate;
     }
     #endregion
    

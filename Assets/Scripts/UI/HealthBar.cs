@@ -16,8 +16,16 @@ public class HealthBar : MonoBehaviour
 {
 
     [SerializeField] private Slider slider;
+    [SerializeField] private Animator animator;
     private float value;
-
+    public float shakeIntensity;
+    private void Start()
+    {
+        PublicEvents.OnPlayerDamage.AddListener(shakeHelathBar);
+    }
+    public void shakeHelathBar() {
+        animator.SetTrigger("Health");
+    }
     private void Update()
     {
         slider.value = Mathf.Lerp(slider.value, value, 4*Time.deltaTime);
