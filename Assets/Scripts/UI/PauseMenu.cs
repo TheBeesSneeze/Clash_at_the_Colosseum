@@ -13,7 +13,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private AudioSource backgroundMusic;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [SerializeField] private CanvasGroup pauseGroup;
     [SerializeField] private Button resumeButton;
@@ -24,10 +24,27 @@ public class PauseMenu : MonoBehaviour
     
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-    private float baseBGMVolume=0;
+    private float baseBGMVolume;
 
     private void Start()
     {
+        volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
+
+        if(backgroundManager == null)
+        {
+            Debug.LogWarning("no background music set.");
+            backgroundManager = FindObjectOfType<BackgroundManager>();
+        }
+
+        if(backgroundManager != null)
+        {
+            baseBGMVolume = backgroundManager.audioSource.volume;
+            Debug.Log("baseBGM: "+ baseBGMVolume);
+            backgroundManager.audioSource.volume = baseBGMVolume * volumeSlider.value;
+        }
+        TogglePauseUI(false);
+
         InputEvents.Instance.PauseStarted.AddListener(escPressed);
 
         resumeButton.onClick.AddListener(ResumeClicked);
@@ -35,29 +52,6 @@ public class PauseMenu : MonoBehaviour
         restartGameButton.onClick.AddListener(RestartGame);
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
-
-        volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
-        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
-
-        if(backgroundMusic == null)
-        {
-            Debug.LogWarning("no background music set.");
-            backgroundMusic = GameObject.FindObjectOfType<AudioSource>();
-        }
-
-        if (backgroundMusic != null)
-        {
-            //baseBGMVolume = backgroundMusic.volume;
-            baseBGMVolume = 0.3f;
-            backgroundMusic.volume = baseBGMVolume * volumeSlider.value;
-            backgroundMusic.Play(); 
-            backgroundMusic.playOnAwake = true;
-           // Debug.Log(backgroundMusic.volume);
-        }
-
-        
-
-        TogglePauseUI(false);
     }
     public void escPressed() {
 
@@ -65,12 +59,35 @@ public class PauseMenu : MonoBehaviour
 
         if (GameManager.Instance.pausedForUI)
             return;
-        
+
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            {
+                if (!GameManager.Instance.isPaused)
+                {
+                    backgroundManager.audioSource.Pause();
+                }
+                else
+                {
+                    backgroundManager.audioSource.Play();
+                }
+            }
+            else
+            {
+                if(!GameManager.Instance.isPaused)
+                {
+                    backgroundManager.secondaryAudio.Pause();
+                }
+                else
+                {
+                    backgroundManager.secondaryAudio.Play();
+                }
+            }
+        }
+
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         TogglePauseUI(GameManager.Instance.isPaused);
-
-        if(backgroundMusic != null)
-            backgroundMusic.enabled = !GameManager.Instance.isPaused;
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
@@ -96,6 +113,17 @@ public class PauseMenu : MonoBehaviour
     public void ResumeClicked()
     {
         SetPauseState(false);
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            {
+                backgroundManager.audioSource.Play();
+            }
+            else
+            {
+                backgroundManager.secondaryAudio.Play();
+            }
+        }
     }
 
     public void mainMenuClicked() {
@@ -108,11 +136,19 @@ public class PauseMenu : MonoBehaviour
         float sliderValue = value;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            { 
+                backgroundManager.audioSource.volume = sliderValue * baseBGMVolume;
+            }
+            else
+            {
+                backgroundManager.secondaryAudio.volume = sliderValue * baseBGMVolume;
+            }
+        }
 
-        if (backgroundMusic != null)
-            backgroundMusic.volume = sliderValue * baseBGMVolume;
-
-        //Debug.Log(sliderValue * baseBGMVolume);
+        Debug.Log(sliderValue * baseBGMVolume);
     }
 
     public void sensitivityChanged(float value)
