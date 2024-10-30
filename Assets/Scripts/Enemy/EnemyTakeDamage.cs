@@ -30,6 +30,7 @@ public class EnemyTakeDamage : MonoBehaviour
     [SerializeField] private float damageColorTime;
     private float damagetime;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject enemyRedParticle;
     private EnemyAnimator enemyAnimator;
     private HealthSystem healthSystem;
 
@@ -89,6 +90,8 @@ public class EnemyTakeDamage : MonoBehaviour
     public virtual void Die()
     {
         Debug.Log("die");
+        if (enemyRedParticle != null)
+            Instantiate(enemyRedParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
@@ -102,11 +105,15 @@ public class EnemyTakeDamage : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        float speed = gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-        if (speed >= VelocityDamageSpeed && doVelocityDamage)
+        if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            print("Velocity Damage Dealt: " + VelocityDamage * (speed - VelocityDamage));
-            TakeDamage(VelocityDamage * (speed - VelocityDamage));
+            float speed = rb.velocity.magnitude;
+
+            if (speed >= VelocityDamageSpeed && doVelocityDamage)
+            {
+                print("Velocity Damage Dealt: " + VelocityDamage * (speed - VelocityDamage));
+                TakeDamage(VelocityDamage * (speed - VelocityDamage));
+            }
         }
     }
 }
