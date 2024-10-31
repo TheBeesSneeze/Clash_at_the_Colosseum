@@ -1,5 +1,6 @@
 ///
 /// Nothing burger script. its important tho.
+/// Enemies get spawned in enemy spawn
 ///
 
 using System.Collections;
@@ -9,6 +10,17 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     public EnemySpawn enemyToSpawn;
+
+    private void Start()
+    {
+        PublicEvents.OnStageTransitionFinish.AddListener(BeforeSpawn);
+    }
+
+    private void BeforeSpawn()
+    {
+        //sky - you know what to do 
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, enemyToSpawn.ToString(), true);
