@@ -811,7 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingMode: {fileID: 11400000, guid: 2fec107e7fe427742ad7d080e1776e09, type: 2}
   bulletSpawnPoint: {fileID: 3007730471301732929}
-  bulletEffect1: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
+  bulletEffect1: {fileID: 0}
   bulletEffect2: {fileID: 0}
   bulletPrefab: {fileID: 5939144570409094839, guid: e6ff837cdb7a59b4fb8a2383e7975b23, type: 3}
 --- !u!114 &1426887766406785384
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5dd23043883ddc4f9fc765acb41f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiesLeftToEnableOutline: 3
+  EnemiesLeftToEnableOutline: 1
 --- !u!1001 &3016220203267829594
 PrefabInstance:
   m_ObjectHideFlags: 0

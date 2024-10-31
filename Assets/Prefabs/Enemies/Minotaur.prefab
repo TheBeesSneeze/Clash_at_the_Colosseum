@@ -101,7 +101,7 @@ MonoBehaviour:
   canConsecutiveShoot: 0
   numberOfConsecutiveShots: 0
   timeBetweenContinousShots: 0
-  _enemyMovementSpeed: 5
+  _enemyMovementSpeed: 6
   gravity: 10
   TurningSpeed: 0.75
   JumpForce: 15
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5dd23043883ddc4f9fc765acb41f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemiesLeftToEnableOutline: 3
+  EnemiesLeftToEnableOutline: 2
 --- !u!1 &7670276426436449493
 GameObject:
   m_ObjectHideFlags: 0
