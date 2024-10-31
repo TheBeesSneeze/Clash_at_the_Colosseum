@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private Vector3 movementDirection;
+    private DashScript ds;
     
 
     private int airJumpCounter;
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         cameraHolder.transform.parent = null;
         InputEvents.Instance.JumpStarted.AddListener(Jump);
         airJumpCounter = stats.AirJumps;
+        ds = GetComponent<DashScript>();
     }
 
     /// <summary>
@@ -116,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance*2, groundLayers))
         {
+            ds.recentlyGrounded = true;
             return true;
         }
         return false;

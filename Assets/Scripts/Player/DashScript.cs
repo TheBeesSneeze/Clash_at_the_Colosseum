@@ -7,32 +7,37 @@ public class DashScript : MonoBehaviour
     bool dashCooldown = false;
     Rigidbody rb;
     PlayerStats stats;
-    PlayerBehaviour player;
+    PlayerBehaviour pb;
+    PlayerController pc;
+    public bool recentlyGrounded;
     void Start()
     {
         InputEvents.Instance.DashStarted.AddListener(startDash);
         InputEvents.Instance.MoveStarted.AddListener(getKeyPressed);
         rb = gameObject.GetComponent<Rigidbody>();
         stats = GetComponent<PlayerStats>();
-        player = gameObject.GetComponent<PlayerBehaviour>();
+        pb = gameObject.GetComponent<PlayerBehaviour>();
+        pc = gameObject.GetComponent<PlayerController>();
     }
     public void getKeyPressed() { 
+        
     }
     public void startDash() {
         Vector3 direction = InputEvents.Instance.InputDirection;
-        if (!dashCooldown) {
-            player.canTakeDamage = false;
+        if (!dashCooldown && recentlyGrounded) {
+            pb.canTakeDamage = false;
             rb.AddForce(direction * stats.DashSpeed);
             PublicEvents.OnDash.Invoke();
             dashCooldown = true;
             StartCoroutine(DashCoolDown());
             StartCoroutine(DashInvincibilityTime());
+            recentlyGrounded = pc.IsGrounded();
         }
     }
     IEnumerator DashInvincibilityTime()
     {
         yield return new WaitForSeconds(stats.DashInvincibilityTime);
-        player.canTakeDamage = true;
+        pb.canTakeDamage = true;
     }
     IEnumerator DashCoolDown()
     {
