@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 6103782579045716118}
   - component: {fileID: 5712375584481207822}
   - component: {fileID: -6131569129583551446}
+  - component: {fileID: 7739378607665603860}
   m_Layer: 8
   m_Name: Harpy
   m_TagString: Untagged
@@ -219,7 +220,7 @@ MonoBehaviour:
   velocityDamageCoolDown: 1
   damageColorTime: 0.5
   spriteRenderer: {fileID: 5820015479103233236}
-  enemyRedParticle: {fileID: 0}
+  enemyRedParticle: {fileID: 3022155380096670711, guid: 73ccc343b74cabc469ad0df4b9e81253, type: 3}
 --- !u!114 &3214837819605227419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +331,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be210ac5603699449d8492f64e837b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7739378607665603860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661017455119386389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd23043883ddc4f9fc765acb41f32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemiesLeftToEnableOutline: 3
 --- !u!1 &6192676168278609413
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +435,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6192676168278609413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -1035,6 +1049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2418623821713463542}
     m_Modifications:
+    - target: {fileID: 1958532780765132940, guid: 426de08fc0484b140b3cf766a53ffacd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2008780720607119805, guid: 426de08fc0484b140b3cf766a53ffacd, type: 3}
       propertyPath: m_Name
       value: FrostParticles
