@@ -1,5 +1,6 @@
 ///
 /// Nothing burger script. its important tho.
+/// Enemies get spawned in enemy spawn
 ///
 
 using System.Collections;
@@ -9,11 +10,43 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     public EnemySpawn enemyToSpawn;
+
+    private void Start()
+    {
+        PublicEvents.OnStageTransitionFinish.AddListener(BeforeSpawn);
+    }
+    
+    /// <summary>
+    /// starts playing particles before enemies spawn in
+    /// </summary>
+    private void BeforeSpawn()
+    {
+        //sky - you know what to do 
+        //yeah man i got it
+
+        if (enemyToSpawn != EnemySpawn.None)
+        {
+            ParticleSystem particle = gameObject.GetComponent<ParticleSystem>();
+            Debug.Log(particle);
+            if (!particle.isPlaying )
+            {
+                particle.Play();
+            }
+        }
+    }
+
+#if UNITY_EDITOR
     public void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, enemyToSpawn.ToString(), true);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x);
+
+        //this is stuff toby tried to use
+        if(TryGetComponent<ParticleSystem>(out ParticleSystem ps))
+        {
+            ps.playOnAwake = (enemyToSpawn != EnemySpawn.None);
+        }
     }
     public void OnDrawGizmosSelected()
     {
@@ -26,6 +59,8 @@ public class EnemySpawnPoint : MonoBehaviour
         else
             Gizmos.DrawRay(transform.position, Vector3.down * 100);
     }
+
+#endif
 }
 
 
