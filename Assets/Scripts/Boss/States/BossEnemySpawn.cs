@@ -41,6 +41,7 @@ public class BossEnemySpawn : StateMachineBehaviour
 
             if (BossController.enemySpawner._enemyPrefabs.TryGetValue((EnemySpawn)s.enemyIndex, out GameObject enemyType))
             {
+                BeforeSpawn(s);
 
                 Debug.Log("Spawning "+ (((EnemySpawn)s.enemyIndex).ToString())+" from boss");
                 GameObject e = GameObject.Instantiate(enemyType, s.pos, Quaternion.identity);
@@ -62,6 +63,26 @@ public class BossEnemySpawn : StateMachineBehaviour
         if( _currentEnemiesAlive <= 0 )
         {
             animator.SetTrigger("EnemiesDead");
+        }
+    }
+
+
+    /// <summary>
+    /// starts playing particles before enemies spawn in
+    /// </summary>
+    private void BeforeSpawn(SpawnPointElement s)
+    {
+        //sky - you know what to do 
+        //yeah man i got it
+
+        if (s.enemyIndex == 0)
+        {
+            /* ParticleSystem particle = s.GetComponent<ParticleSystem>();
+             Debug.Log(particle);
+             if (!particle.isPlaying)
+             {   particle.Play();
+             }
+              */
         }
     }
 }
