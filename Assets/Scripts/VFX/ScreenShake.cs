@@ -1,5 +1,6 @@
 ///
-/// Uses animation curve 
+/// Uses animation curve to do shake things
+/// -Toby
 ///
 
 
