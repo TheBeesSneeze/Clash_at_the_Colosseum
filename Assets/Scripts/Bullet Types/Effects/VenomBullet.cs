@@ -34,7 +34,6 @@ public class VenomBullet : BulletEffect
         if(getFloorPoint(hitPoint, out Vector3 position))
         {
             GameObject venom = Instantiate(VenomPoolGameObject, position, Quaternion.identity); //TODO object pooling?
-
         }
         
     }
