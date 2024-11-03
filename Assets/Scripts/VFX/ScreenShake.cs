@@ -1,3 +1,8 @@
+///
+/// Uses animation curve 
+///
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +11,9 @@ using System.Threading.Tasks;
 
 public class ScreenShake : MonoBehaviour
 {
-    [SerializeField] private AnimationCurve playerDamageIntensity;
-    [SerializeField] private float damageShakeDuration = 0.1f;
+    [Tooltip("x axis (time) needs to be synced with damageShakeDuration")]
+    [SerializeField] private AnimationCurve playerDamageIntensityCurve;
+    private float damageShakeDuration = 0.1f;
 
     //[SerializeField] private float playerShootIntensity = 0.25f;
     //[SerializeField] private float shootShakeDuration = 0.1f;
@@ -21,18 +27,12 @@ public class ScreenShake : MonoBehaviour
         cameraTransform = Camera.main.transform;
         startPos = cameraTransform.localPosition;
 
-        PublicEvents.OnPlayerDamage.AddListener(OnPlayerTakeDamage);
+        //automatically get animation time
+        damageShakeDuration = playerDamageIntensityCurve.keys[playerDamageIntensityCurve.keys.Length - 1].time;
+
+        PublicEvents.OnPlayerDamage.AddListener(DamageShake);
         //PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
     }
-
-    void OnPlayerTakeDamage()
-    {
-        DamageShake();
-    }
-
-    //void OnPlayerShoot()
-    //{
-    //}
 
     async private void DamageShake()
     {
@@ -42,7 +42,7 @@ public class ScreenShake : MonoBehaviour
         while(startTime + damageShakeDuration >= Time.time)
         {
             t= (Time.time - startTime)/damageShakeDuration;
-            intensity = playerDamageIntensity.Evaluate(Time.time - startTime);
+            intensity = playerDamageIntensityCurve.Evaluate(Time.time - startTime);
             cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
             Debug.Log(intensity);
             await Task.Yield();
