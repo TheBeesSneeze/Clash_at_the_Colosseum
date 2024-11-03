@@ -1,5 +1,5 @@
 ///
-/// Nothing burger script. its important tho.
+/// (not anymore) Nothing burger script. its important tho. 
 /// Enemies get spawned in enemy spawn
 ///
 
@@ -10,10 +10,12 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     public EnemySpawn enemyToSpawn;
+    private ParticleSystem particles;
 
     private void Start()
     {
         PublicEvents.OnStageTransitionFinish.AddListener(BeforeSpawn);
+        particles = gameObject.GetComponent<ParticleSystem>();
     }
     
     /// <summary>
@@ -26,12 +28,15 @@ public class EnemySpawnPoint : MonoBehaviour
 
         if (enemyToSpawn != EnemySpawn.None)
         {
-            ParticleSystem particle = gameObject.GetComponent<ParticleSystem>();
-            Debug.Log(particle);
-            if (!particle.isPlaying )
-            {
-                particle.Play();
-            }
+            PlayParticles();
+        }
+    }
+
+    public void PlayParticles()
+    {
+        if (!particles.isPlaying)
+        {
+            particles.Play(false);
         }
     }
 
