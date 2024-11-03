@@ -34,6 +34,7 @@ public class BossEnemySpawn : StateMachineBehaviour
         Debug.Log("Spawning boss enemies");
         StageLayout sl = StageTransitionManager.GetStageElements(enemyPlacements[index]);
         SpawnPointElement[] enemySpawnPoints = sl.spawnPoints;
+        int spawnPointCount=0;
 
         for (int i = 0; i < enemySpawnPoints.Length; i++)
         {
@@ -46,14 +47,18 @@ public class BossEnemySpawn : StateMachineBehaviour
                 GameObject e = GameObject.Instantiate(enemyType, s.pos, Quaternion.identity);
                 _currentEnemiesAlive++;
                 //e.GetComponent<EnemyTakeDamage>().currentHealth = e.GetComponent<EnemyStats>().EnemyHealth;
-                Debug.Log(e.GetComponent<EnemyTakeDamage>().currentHealth);
-                StartParticles(EnemySpawner.enemySpawnPoints[i]);
+
+                if(spawnPointCount< EnemySpawner.enemySpawnPoints.Length)
+                    StartParticles(EnemySpawner.enemySpawnPoints[spawnPointCount]);
+                spawnPointCount++;
             }
         }
     }
 
     private void StartParticles(EnemySpawnPoint esp)
     {
+        if (esp == null)
+            return;
         esp.transform.position = Vector3.zero;
         esp.PlayParticles();
     }
@@ -67,7 +72,7 @@ public class BossEnemySpawn : StateMachineBehaviour
         Debug.Log(_currentEnemiesAlive);
         if( _currentEnemiesAlive <= 0 )
         {
-            animator.SetTrigger("EnemiesDead");
+            animator.SetBool("EnemiesDead",true);
         }
     }
 }

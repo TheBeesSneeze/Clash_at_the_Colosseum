@@ -28,10 +28,15 @@ public class StageTransitionManager
 
     }
 
+    /// <summary>
+    /// instantly transition the stage
+    /// </summary>
+    /// <param name="end"></param>
     public static void TransitionStage(TextAsset end)
     {
         TransitionStagePercent(end, end, 1);
         PublicEvents.OnStageTransitionFinish.Invoke();
+        Debug.Log("stage transition finish");
     }
 
     public async static void TransitionStage(TextAsset start, TextAsset end)

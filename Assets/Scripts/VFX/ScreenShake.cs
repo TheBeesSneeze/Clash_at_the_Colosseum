@@ -42,10 +42,14 @@ public class ScreenShake : MonoBehaviour
         float t;
         while(startTime + damageShakeDuration >= Time.time)
         {
-            t= (Time.time - startTime)/damageShakeDuration;
-            intensity = playerDamageIntensityCurve.Evaluate(Time.time - startTime);
-            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
-            Debug.Log(intensity);
+            if(Time.timeScale != 0) // if not paused
+            {
+                t = (Time.time - startTime) / damageShakeDuration;
+                intensity = playerDamageIntensityCurve.Evaluate(Time.time - startTime);
+                cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
+            }
+
+            
             await Task.Yield();
         }
     }
