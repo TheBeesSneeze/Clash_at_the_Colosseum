@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+
 
 public class ScreenShake : MonoBehaviour
 {
-    [SerializeField] private float playerDamageIntensity = 0.5f;
+    [SerializeField] private AnimationCurve playerDamageIntensity;
     [SerializeField] private float damageShakeDuration = 0.1f;
-    private float damageShakeTimer = 0;
 
-    [SerializeField] private float playerShootIntensity = 0.25f;
-    [SerializeField] private float shootShakeDuration = 0.1f;
-    private float shootShakeTimer=0;
+    //[SerializeField] private float playerShootIntensity = 0.25f;
+    //[SerializeField] private float shootShakeDuration = 0.1f;
 
     private Transform cameraTransform;
     private Vector3 startPos;
@@ -22,51 +22,30 @@ public class ScreenShake : MonoBehaviour
         startPos = cameraTransform.localPosition;
 
         PublicEvents.OnPlayerDamage.AddListener(OnPlayerTakeDamage);
-        PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
+        //PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
     }
 
     void OnPlayerTakeDamage()
     {
-        shootShakeTimer = shootShakeDuration;
+        DamageShake();
     }
 
-    void OnPlayerShoot()
+    //void OnPlayerShoot()
+    //{
+    //}
+
+    async private void DamageShake()
     {
-        damageShakeTimer = damageShakeDuration;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (GameManager.Instance.pausedForUI || GameManager.Instance.isPaused)
-            return;
-
-        bool shook = TryDamageShake() || TryShootShake();
-
-        if(!shook)
-            cameraTransform.localPosition = startPos;
-    }
-
-    bool TryDamageShake()
-    {
-        if (damageShakeTimer > 0)
+        float startTime = Time.time;
+        float intensity;
+        float t;
+        while(startTime + damageShakeDuration >= Time.time)
         {
-            damageShakeTimer-= Time.deltaTime;
-            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerShootIntensity);
-            return true;
+            t= (Time.time - startTime)/damageShakeDuration;
+            intensity = playerDamageIntensity.Evaluate(Time.time - startTime);
+            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
+            Debug.Log(intensity);
+            await Task.Yield();
         }
-        return false;
-    }
-
-    bool TryShootShake()
-    {
-        if (shootShakeTimer > 0)
-        {
-            //oDebug.Log("screen shake " + shootShakeTimer);
-            shootShakeTimer -= Time.deltaTime;
-            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerDamageIntensity);
-            return true;
-        }
-        return false;
     }
 }
