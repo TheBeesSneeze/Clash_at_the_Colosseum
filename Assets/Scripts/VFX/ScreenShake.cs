@@ -21,6 +21,7 @@ public class ScreenShake : MonoBehaviour
         cameraTransform = Camera.main.transform;
         startPos = cameraTransform.localPosition;
 
+<<<<<<< Updated upstream
         PublicEvents.OnPlayerDamage.AddListener(OnPlayerTakeDamage);
         PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
     }
@@ -54,6 +55,26 @@ public class ScreenShake : MonoBehaviour
             damageShakeTimer-= Time.deltaTime;
             cameraTransform.localPosition = startPos + (Random.insideUnitSphere * playerShootIntensity);
             return true;
+=======
+        PublicEvents.OnPlayerDamage.AddListener(DamageShakeAnimation);
+        //PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
+    }
+
+    //void OnPlayerShoot()
+    //{
+    //}
+
+    async private void DamageShakeAnimation()
+    {
+        float startTime = Time.time;
+        float intensity;
+        while(startTime + damageShakeDuration >= Time.time)
+        {
+            intensity = playerDamageIntensity.Evaluate(Time.time - startTime); 
+            cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
+            Debug.Log(intensity);
+            await Task.Yield();
+>>>>>>> Stashed changes
         }
         return false;
     }

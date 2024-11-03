@@ -7,7 +7,10 @@ public class SaveDataManager : Singleton<SaveDataManager>
     GunController gc;
     UpgradeSelectUI ui;
     GunGameplaySprite ggs;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// get the save data and load it up baby
+    /// </summary>
     void Start()
     {
         ///Find object of type sucks so bad i will fix this later
@@ -25,7 +28,8 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
         if(SaveData.CurrentStageIndex >= 1)
         {
-            gc.transform.position = gc.transform.position + (Vector3.up * 15);
+            // respawn move the player up so they dont clip through the ground
+            gc.transform.position = gc.transform.position + (Vector3.up * 25);
         }
 
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
