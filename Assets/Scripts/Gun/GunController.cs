@@ -34,6 +34,8 @@ public class GunController : MonoBehaviour
     private bool shootHeld;
     private int currentShots;
     private float cooldown;
+
+    //returns true if the gun is reloading
     private bool isOverHeating;
     private int shotsTillCoolDown;
     private bool canInfinteShoot;
@@ -212,11 +214,13 @@ public class GunController : MonoBehaviour
     //Clare function
     private void Reload()
     {
-        currentShots = shotsTillCoolDown;
-        cooldown = overheatCoolDown;
-        isOverHeating = true;
-        PublicEvents.Reloading.Invoke();
-        return;
+        if (!isOverHeating) {
+            currentShots = shotsTillCoolDown;
+            cooldown = overheatCoolDown;
+            isOverHeating = true;
+            PublicEvents.Reloading.Invoke();
+            return;
+        }
     }
 
     private void OnShootStart()
