@@ -5,6 +5,7 @@ using UnityEngine;
 public class DebugControls : MonoBehaviour
 {
 #if UNITY_EDITOR
+    public ShootingMode GodGun;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,11 @@ public class DebugControls : MonoBehaviour
         {
             HealthSystem hs = GameObject.FindObjectOfType<HealthSystem>();
             hs.addCharge(99999);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            FindObjectOfType<GunController>().LoadShootingMode(GodGun);
         }
     }
 #endif

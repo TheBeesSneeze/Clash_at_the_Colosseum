@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using NaughtyAttributes;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private BackgroundManager backgroundManager;
@@ -21,7 +22,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button restartGameButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider sensitivitySlider;
-    
+
+    [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private float baseBGMVolume;

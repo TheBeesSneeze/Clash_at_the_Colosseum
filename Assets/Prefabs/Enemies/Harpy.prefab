@@ -183,7 +183,7 @@ MonoBehaviour:
   VerticalSpeed: 4
   HeightAboveGround: 10
   MovementOffset: 7.5
-  zappedParticles: {fileID: 0}
+  zappedParticles: {fileID: 1788524419065986553}
 --- !u!114 &2574494738450226700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,6 +1039,11 @@ PrefabInstance:
 --- !u!4 &858912579610205152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2887738444804679198, guid: 7c30f12057e34ef449dcdacab20d3522, type: 3}
+  m_PrefabInstance: {fileID: 2591881646610693630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1788524419065986553 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4263268219552235527, guid: 7c30f12057e34ef449dcdacab20d3522, type: 3}
   m_PrefabInstance: {fileID: 2591881646610693630}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8569230121159989838

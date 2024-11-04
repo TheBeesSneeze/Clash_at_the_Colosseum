@@ -27,12 +27,11 @@ public class BossTakeDamage : EnemyTakeDamage
         if (!BossController.Invincible)
         {
             base.TakeDamage(damage);
-            float temp = currentHealth - damage;
             if (bossHealthBar != null)
             {
-                bossHealthBar.SetHealth(temp);
+                bossHealthBar.SetHealth(currentHealth);
             }
-            if (currentHealth < 0)
+            if (currentHealth <= 0)
             {
                 Die();
             }
@@ -44,9 +43,10 @@ public class BossTakeDamage : EnemyTakeDamage
 
     public override void Die()
     {
-  
+        
         PublicEvents.HydraDeath.Invoke();
-        Destroy(gameObject);
+        Debug.Log("i died");
+        //Destroy(gameObject);
     }
 
  

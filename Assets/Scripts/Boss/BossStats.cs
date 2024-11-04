@@ -7,7 +7,7 @@ public class BossStats : MonoBehaviour
 
     [Header("Combat Variables")]
     [SerializeField] [Min(0)] public float BossHealth;
-    [SerializeField] [Min(0)] public float BossDamage;
+    //[SerializeField] [Min(0)] public float BossDamage;
 
     [Header("Movement Variables")]
     [SerializeField] [Min(0)] private float bossAttackRate = 1;

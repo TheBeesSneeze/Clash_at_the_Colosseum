@@ -1,6 +1,7 @@
 ///
-/// Nothing burger script. its important tho.
+/// (not anymore) Nothing burger script. its important tho. 
 /// Enemies get spawned in enemy spawn
+/// this is just gizmos and particles
 ///
 
 using System.Collections;
@@ -10,11 +11,14 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     public EnemySpawn enemyToSpawn;
+    private ParticleSystem particles;
 
-    private void Start()
+    private void Awake() //this HAS to be awake
     {
         PublicEvents.OnStageTransitionFinish.AddListener(BeforeSpawn);
+        particles = gameObject.GetComponent<ParticleSystem>();
     }
+
     
     /// <summary>
     /// starts playing particles before enemies spawn in
@@ -26,12 +30,15 @@ public class EnemySpawnPoint : MonoBehaviour
 
         if (enemyToSpawn != EnemySpawn.None)
         {
-            ParticleSystem particle = gameObject.GetComponent<ParticleSystem>();
-            Debug.Log(particle);
-            if (!particle.isPlaying )
-            {
-                particle.Play();
-            }
+            PlayParticles();
+        }
+    }
+
+    public void PlayParticles()
+    {
+        if (!particles.isPlaying)
+        {
+            particles.Play(false);
         }
     }
 
@@ -42,11 +49,7 @@ public class EnemySpawnPoint : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x);
 
-        //this is stuff toby tried to use
-        if(TryGetComponent<ParticleSystem>(out ParticleSystem ps))
-        {
-            ps.playOnAwake = (enemyToSpawn != EnemySpawn.None);
-        }
+        
     }
     public void OnDrawGizmosSelected()
     {

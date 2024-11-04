@@ -97,7 +97,7 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
             return;
         }
         timeActive += Time.fixedDeltaTime;
@@ -160,7 +160,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
 
-            Destroy();
+            Destroy(gameObject);
         }
             
     }
@@ -177,7 +177,7 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
         }
 
     }
@@ -198,7 +198,7 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
         }
 
 
@@ -238,16 +238,5 @@ public class Bullet : MonoBehaviour
             effect.OnDestroyBullet(this, damageAmount);
         }
     }
-
-    public void Destroy()
-    {
-        Destroy(this); 
-    }
-
-    /// <summary>
-    /// averages the colors from both enemyBullet effects.
-    /// returns white if no upgrades are loaded
-    /// </summary>
-    /// <returns></returns>
 
 }

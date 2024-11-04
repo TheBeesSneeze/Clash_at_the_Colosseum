@@ -17,7 +17,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public Dictionary<EnemySpawn, GameObject> _enemyPrefabs = new Dictionary<EnemySpawn, GameObject>();
     private bool hasSpawnedEnemies;
     private float timeTillEnemiesSpawn;
-    private EnemySpawnPoint[] enemySpawnPoints;
+    public static EnemySpawnPoint[] enemySpawnPoints;
 
     private static int _currentEnemiesAlive;
 
@@ -102,6 +102,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
         hasSpawnedEnemies=true;
     }
+
+
 
     //make this a unity event
     public static void OnEnemyDeath()

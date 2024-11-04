@@ -62,9 +62,31 @@ namespace PathFinding
             if (nextPath == null)
                 return;
 
-            Debug.DrawLine(position + Vector3.up, nextPath.position + Vector3.up, Color.red);
+            Debug.DrawLine(position + Vector3.up, nextPath.position + Vector3.up, Color.magenta, 1);
 
             nextPath.DrawPath();
+        }
+
+        /// <summary>
+        /// Return number of paths ahead (recursively)
+        /// </summary>
+        public int GetPathLength()
+        {
+            if (nextPath == null)
+                return 0;
+
+            return nextPath.GetPathLength() + 1;
+        }
+
+        public bool IsLengthGreaterThan(int value)
+        {
+            if (value < 0)
+                return false;
+
+            if(nextPath != null)
+                return nextPath.IsLengthGreaterThan(value-1);
+
+            return true;
         }
     }
 }
