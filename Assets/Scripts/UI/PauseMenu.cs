@@ -44,6 +44,7 @@ public class PauseMenu : MonoBehaviour
             baseBGMVolume = backgroundManager.audioSource.volume;
             Debug.Log("baseBGM: "+ baseBGMVolume);
             backgroundManager.audioSource.volume = baseBGMVolume * volumeSlider.value;
+            backgroundManager.volumeSliderAdjustment = volumeSlider.value;
         }
         TogglePauseUI(false);
 
@@ -54,6 +55,8 @@ public class PauseMenu : MonoBehaviour
         restartGameButton.onClick.AddListener(RestartGame);
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
+
+        PublicEvents.StartSound.Invoke();
     }
     public void escPressed() {
 
@@ -136,6 +139,7 @@ public class PauseMenu : MonoBehaviour
     public void volumeChanged(float value)
     {
         float sliderValue = value;
+        backgroundManager.volumeSliderAdjustment = sliderValue;
         PlayerPrefs.SetFloat("volume", sliderValue);
         AudioManager.masterVolume = sliderValue;
         if (backgroundManager != null)
