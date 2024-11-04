@@ -82,7 +82,7 @@ public class GunController : MonoBehaviour
         if(shootMode == null)
         {
             Debug.LogError("empty shooting mode");
-            Application.Quit(); // this is so extreme lol i love this
+            Application.Quit(); //this is so extreme lol i love this
         }
         shootingMode = shootMode;
         shootHeld = true; 
