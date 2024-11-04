@@ -7,12 +7,14 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioSource secondaryAudio;
     [SerializeField] private float  lenghtOfAudioSwitch;
+   
     private AudioClip current;
     private AudioClip previous;
     private int stageIndex;
     private StageStats[] stageStats;
     
     [HideInInspector] public bool audioSourcePlayingCurrent = true;
+    [HideInInspector] public float volumeSliderAdjustment = 1; 
 
     private void Start()
     {
@@ -53,7 +55,7 @@ public class BackgroundManager : MonoBehaviour
         secondaryAudio.Play();
 
         StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, audioSource));
-        StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume, lenghtOfAudioSwitch, secondaryAudio));
+        StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume * volumeSliderAdjustment, lenghtOfAudioSwitch, secondaryAudio));
         audioSourcePlayingCurrent = false;
     }
 
