@@ -15,11 +15,14 @@ MonoBehaviour:
   GunName: Harpy Feather
   ShotsPerSecond: 1
   BulletsPerShot: 1
-  BulletAccuracyOffset: 0
+  BulletAccuracyOffset: 1
   CanHoldFire: 1
-  BulletSpeed: 50
-  BulletDamage: 15
+  BulletSpeed: 40
+  BulletDamage: 10
   RecoilForce: 0
+  ReloadSpeed: 0
+  ClipSize: 0
+  canInfiniteFire: 0
   MenuSprite: {fileID: 0}
   GameplaySprite:
     sprites: []

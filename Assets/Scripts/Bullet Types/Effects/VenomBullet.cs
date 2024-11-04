@@ -1,5 +1,6 @@
 ///
-/// Unfinished oops
+/// Spawns venom puddles and such
+/// its finished now
 /// - Toby
 ///
 
@@ -34,7 +35,7 @@ public class VenomBullet : BulletEffect
         if(getFloorPoint(hitPoint, out Vector3 position))
         {
             GameObject venom = Instantiate(VenomPoolGameObject, position, Quaternion.identity); //TODO object pooling?
-
+            venom.transform.LookAt(venom.transform.position + Vector3.down);
         }
         
     }
@@ -43,7 +44,7 @@ public class VenomBullet : BulletEffect
     {
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         Vector3 direction = Vector3.Reflect(Vector3.up, hit.normal);
-        GameObject venom = Instantiate(VenomPoolGameObject, hit.point, Quaternion.identity);
+        GameObject venom = Instantiate(VenomPoolGameObject, hit.point, Quaternion.identity, hit.transform);
         venom.transform.LookAt(hit.point + hit.normal);
         venom.transform.SetParent(hit.transform.parent);
     }

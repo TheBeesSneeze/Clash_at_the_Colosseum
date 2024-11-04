@@ -16,13 +16,13 @@ MonoBehaviour:
   DamageMultiplier: 0
   DestroyBulletOnSurfaceContact: 1
   DestroyBulletOnEntityContact: 1
-  UpgradeName: venom
-  UpgradeDescription: like from the movie venom
-  UpgradeIcon: {fileID: 21300000, guid: 6f23a5e5261cc464992839f4a9ef35a1, type: 3}
+  UpgradeName: Vile Venom
+  UpgradeDescription: Form a puddle of damaging venom where your shots land
+  UpgradeIcon: {fileID: 21300000, guid: a39d9221a69113d448e14758803f6546, type: 3}
   bodyColor: {r: 0.81960785, g: 0.29803923, b: 1, a: 1}
   secondaryColor: {r: 0.61459553, g: 0.12936985, b: 0.745283, a: 1}
   VenomPoolGameObject: {fileID: 7275771511854018987, guid: 29133ba7b6045ea409bb05cec94efd29, type: 3}
   distanceToGround: 3
   groundmask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 9

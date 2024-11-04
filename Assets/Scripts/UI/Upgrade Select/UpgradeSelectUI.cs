@@ -24,7 +24,7 @@ public class UpgradeSelectUI : MonoBehaviour
     [SerializeField] private Image selectButtonImage;
     [SerializeField] private Color notSelectedTint;
 
-    private List<BulletEffect> bulletEffectPool;
+    [SerializeField] private List<BulletEffect> bulletEffectPool;
     private GunController _gunController;
     private BulletEffect selectedEffect;
     private bool open = true;

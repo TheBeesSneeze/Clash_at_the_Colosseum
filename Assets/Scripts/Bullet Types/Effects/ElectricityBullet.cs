@@ -10,6 +10,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -20,6 +21,7 @@ namespace DefaultNamespace
         //Clare coded most of this but was originally create by Toby for the GunAdders prototype
         public float ElectrocutionRange;
         public int MaxEnemiesToZap;
+        private EnemyStats stats;
         [SerializeField] LineRenderer line;
 
         public override void OnShoot(Bullet bullet)
@@ -29,6 +31,7 @@ namespace DefaultNamespace
 
         public override void OnEnemyHit(EnemyTakeDamage type, float damage, Bullet bullet)
         {
+            stats = type.GetComponent<EnemyStats>();
             EnemyTakeDamage[] closeEnemies = GetEnemiesInRange(type);
 
             if (closeEnemies.Length == 0) return;
@@ -51,8 +54,13 @@ namespace DefaultNamespace
             {
                 enemy.TakeDamage(damage);
                 Visualize(origin, enemy.transform.position, enemy);
+
+                if (!stats.zappedParticles.isPlaying && stats.zappedParticles != null)
+                {
+                    stats.zappedParticles.Play();
+                }
             }
-            
+
         }
 
         private void Visualize(Vector3 origin, Vector3 target, EnemyTakeDamage enemy)
@@ -83,6 +91,16 @@ namespace DefaultNamespace
                 {
                     EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
                     enemies[i] = e;
+
+                    if(stats.zappedParticles != null)
+                    {
+                        continue;
+                    }
+
+                    if (!stats.zappedParticles.isPlaying )
+                    {
+                        stats.zappedParticles.Play();
+                    }
                 }
             }
 

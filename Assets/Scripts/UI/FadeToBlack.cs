@@ -3,36 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
+
 
 public class FadeToBlack : MonoBehaviour
 {
     public Image FadeImage;
     private bool fadeStart = false;
+    [SerializeField] private int Delay;
     public float FadeTime;
     private float timePassed;
 
     void Start()
     {
-
         PublicEvents.HydraDeath.AddListener(Fading);
     }
 
-    void Update()
+    async public void Fading()
     {
-        if (fadeStart)
-            FadingToBlack();
-
-        
-    }
-
-    public void Fading()
-    {
-        fadeStart = true;
-    }
-
-    public void FadingToBlack()
-    {
-        if (fadeStart == true)
+        await Task.Delay((int)(Delay*1000));
+        while (timePassed<FadeTime)
         {
             timePassed += Time.deltaTime;
             FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, timePassed / FadeTime);
@@ -41,8 +31,11 @@ public class FadeToBlack : MonoBehaviour
                 Debug.LogWarning("replace this");
                 SceneManager.LoadScene("WinScreen");
             }
-            
 
+            await Task.Yield();
         }
+        
+        
     }
+
 }

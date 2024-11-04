@@ -10,8 +10,8 @@ public class ParticleManager : Singleton<ParticleManager>
     public ParticleGroup PlayerHeal;
     public void Start()
     {
-        PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
-        InitalizeParticles(EnemySpawns);
+        //PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
+        //InitalizeParticles(EnemySpawns);
         //EnemySpawns.Play(); // it also needs to play at beiginning at game
 
         PublicEvents.OnPlayerHeal.AddListener(PlayerHeal.Play);

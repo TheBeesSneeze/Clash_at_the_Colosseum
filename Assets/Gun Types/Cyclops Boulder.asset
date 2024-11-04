@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Cyclops Boulder
   m_EditorClassIdentifier: 
   GunName: Cyclops Boulder
-  ShotsPerSecond: 1
+  ShotsPerSecond: 1.25
   BulletsPerShot: 1
   BulletAccuracyOffset: 0
   CanHoldFire: 1
-  BulletSpeed: 30
+  BulletSpeed: 40
   BulletDamage: 35
   RecoilForce: 0
+  ReloadSpeed: 0
+  ClipSize: 0
+  canInfiniteFire: 0
   MenuSprite: {fileID: 0}
   GameplaySprite:
     sprites: []

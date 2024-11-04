@@ -7,10 +7,13 @@ public class BossStats : MonoBehaviour
 
     [Header("Combat Variables")]
     [SerializeField] [Min(0)] public float BossHealth;
-    [SerializeField] [Min(0)] public float BossDamage;
+    //[SerializeField] [Min(0)] public float BossDamage;
 
     [Header("Movement Variables")]
     [SerializeField] [Min(0)] private float bossAttackRate = 1;
+
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem frostParticles;
 
     //[Header("Slow Variables")]
    // [SerializeField] public Color SlowedColor;
@@ -38,6 +41,18 @@ public class BossStats : MonoBehaviour
         //ColorChange();
         BossController.animator.SetFloat("Slow", BossAttackRate);
         slowedDownCountdown -= Time.deltaTime;
+
+        //sorry guys this is such a long if statement
+        if (slowedDownCountdown > 0 && !frostParticles.isPlaying && frostParticles != null)
+        {
+            frostParticles.Play();
+            frostParticles.enableEmission = true;
+        }
+        else if (slowedDownCountdown <= 0 && frostParticles.isPlaying)
+        {
+            frostParticles.Stop();
+            frostParticles.enableEmission = false;
+        }
     }
 
     /// <summary>

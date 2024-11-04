@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private bool DealPlayerDamage = true;
     [SerializeField] private bool DealEnemyDamage = true;
+    [SerializeField] private GameObject wallHitParticle; 
 
     private Rigidbody rb;
     private Vector3 lastPosition;
@@ -96,7 +97,7 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
             return;
         }
         timeActive += Time.fixedDeltaTime;
@@ -159,7 +160,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
 
-            Destroy();
+            Destroy(gameObject);
         }
             
     }
@@ -176,7 +177,7 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
         }
 
     }
@@ -187,6 +188,8 @@ public class Bullet : MonoBehaviour
         {
             effects[i].OnHitOther(hit, damageAmount, this);
         }
+        if (wallHitParticle != null)
+            Instantiate(wallHitParticle, transform.position, Quaternion.identity);
 
         if (DestroyOnSurfaceHit())
         {
@@ -195,8 +198,10 @@ public class Bullet : MonoBehaviour
                 BulletPoolManager.Destroy(this);
                 return;
             }
-            Destroy();
+            Destroy(gameObject);
         }
+
+
 
     }
 
@@ -233,16 +238,5 @@ public class Bullet : MonoBehaviour
             effect.OnDestroyBullet(this, damageAmount);
         }
     }
-
-    public void Destroy()
-    {
-        Destroy(this); 
-    }
-
-    /// <summary>
-    /// averages the colors from both enemyBullet effects.
-    /// returns white if no upgrades are loaded
-    /// </summary>
-    /// <returns></returns>
 
 }
