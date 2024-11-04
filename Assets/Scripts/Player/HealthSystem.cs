@@ -29,8 +29,10 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         InputEvents.Instance.HealStarted.AddListener(heal);
-        healCharge.value = 0;
+        // healCharge.value = 0;
         healCharge.maxValue = maxChargeNeeded;
+        addCharge(maxChargeNeeded/2);
+
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         playerStats = playerBehaviour.GetComponent<PlayerStats>();
 
@@ -73,11 +75,6 @@ public class HealthSystem : MonoBehaviour
 
         if (value == maxChargeNeeded)
             controlPrompt.enabled = true;
-    }
-
-    public void OverrideHealth(float charge)
-    {
-        value = charge;
     }
 
     public void heal()
