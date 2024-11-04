@@ -568,19 +568,19 @@ AnimatorStateMachine:
     m_Position: {x: 490, y: 760, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1094585053008677873}
-    m_Position: {x: 670, y: 920, z: 0}
+    m_Position: {x: 740, y: 920, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5931914659055145706}
-    m_Position: {x: 630, y: 1030, z: 0}
+    m_Position: {x: 700, y: 1030, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -712129390322308283}
-    m_Position: {x: 470, y: 1120, z: 0}
+    m_Position: {x: 540, y: 1120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4548548848363530848}
-    m_Position: {x: 740, y: 1150, z: 0}
+    m_Position: {x: 810, y: 1150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8209699056602909570}
-    m_Position: {x: 940, y: 1040, z: 0}
+    m_Position: {x: 1010, y: 1040, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5901265337045046628}
     m_Position: {x: 640, y: 840, z: 0}
@@ -653,67 +653,67 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Ranged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: AOE
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HalfHealth
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BossHealth
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BulletHell
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: BossDeath
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Test
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TailThwap
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Slow
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: EnemiesDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
