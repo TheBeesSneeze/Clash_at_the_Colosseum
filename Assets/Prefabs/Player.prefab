@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 100
-  Speed: 40
+  Speed: 50
   MaxSpeed: 30
   DashSpeed: 1000
   DashCoolDown: 1.5
@@ -262,9 +262,9 @@ MonoBehaviour:
   AirMovementMultiplier: 0
   secondsTillFull: 1
   AirJumps: 1
-  JumpHeight: 7.5
+  JumpHeight: 8.25
   SecondJumpHeight: 4
-  GravityBoost: 60
+  GravityBoost: 70
 --- !u!114 &2558676147345522402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,8 +286,8 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
-  groundDrag: 5
-  airDrag: 3.5
+  groundDrag: 6
+  airDrag: 3.75
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,40 +1244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95454a1b7579f534ba6ebb8372956132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamageIntensity:
+  playerDamageIntensityCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.031350307
-      value: 0.09964732
-      inSlope: 0.10880126
-      outSlope: 0.10880126
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 1
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.10376833
-      value: 0.0019427491
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  damageShakeDuration: 0.1
 --- !u!114 &7560038672324414093
 MonoBehaviour:
   m_ObjectHideFlags: 0
