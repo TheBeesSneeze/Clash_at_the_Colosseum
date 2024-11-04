@@ -92,7 +92,12 @@ namespace DefaultNamespace
                     EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
                     enemies[i] = e;
 
-                    if (!stats.zappedParticles.isPlaying && stats.zappedParticles != null)
+                    if(stats.zappedParticles != null)
+                    {
+                        continue;
+                    }
+
+                    if (!stats.zappedParticles.isPlaying )
                     {
                         stats.zappedParticles.Play();
                     }

@@ -872,6 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeImage: {fileID: 4796684988475268516}
+  Delay: 5
   FadeTime: 5
 --- !u!1 &5446433100176608916
 GameObject:
@@ -1215,7 +1216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1, y: 0}
   m_SizeDelta: {x: 64, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4266861997604578302
@@ -1494,10 +1495,10 @@ RectTransform:
   - {fileID: 8052612451468919481}
   - {fileID: 6999826032046887002}
   - {fileID: 2007424560154147826}
-  - {fileID: 1715851634814555987}
   - {fileID: 3476914700171780123}
+  - {fileID: 1715851634814555987}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
