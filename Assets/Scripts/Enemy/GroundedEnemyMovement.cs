@@ -135,7 +135,7 @@ public class GroundedEnemyMovement : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position+direction, Color.red);
         bool jump = ShouldJump(direction);
         direction.y = y; //reapply gravity
-        rb.velocity = Vector3.Lerp( rb.velocity, direction, 8* Time.deltaTime );
+        rb.velocity = Vector3.Lerp( rb.velocity, direction, 8 * Time.deltaTime );
 
         if (jump)
             Jump(); //if jump Jump
