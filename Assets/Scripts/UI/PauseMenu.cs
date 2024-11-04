@@ -55,6 +55,8 @@ public class PauseMenu : MonoBehaviour
         restartGameButton.onClick.AddListener(RestartGame);
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
+
+        PublicEvents.StartSound.Invoke();
     }
     public void escPressed() {
 

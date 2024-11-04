@@ -23,10 +23,15 @@ public class BackgroundManager : MonoBehaviour
         current = stageStats[stageIndex].BackgroundAudio;
         previous = current;
         audioSource.clip = current;
-        audioSource.Play();
         PublicEvents.OnStageTransition.AddListener(Transition);
+        PublicEvents.StartSound.AddListener(StartSound);
     }
 
+    private void StartSound()
+    {
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment; 
+        audioSource.Play();
+    }
     private void Transition()
     {
         ++stageIndex;
