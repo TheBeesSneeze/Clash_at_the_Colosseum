@@ -111,26 +111,26 @@ public class EnemyAnimator : MonoBehaviour
         float angle = transform.eulerAngles.y - rotationReference.eulerAngles.y;
         angle = (angle + 360) % 360;
 
-        //Update sprites
-        if (angle < 45 || angle > 315)
+        //Update sprites     
+        if(angle < 60 || angle > 300) // (angle < 45 || angle > 315)
         {
             if (state != AnimationState.Front)
                 animator.SetTrigger("Front");
             state = AnimationState.Front;
         }
-        if (angle > 45 && angle < 135)
+        if (angle >60 && angle < 180) // (angle > 45 && angle < 135)
         {
             if (state != AnimationState.Right)
                 animator.SetTrigger("Right");
             state = AnimationState.Right;
         }
-        if (angle > 135 && angle < 225)
+        /*if (angle > 135 && angle < 225)
         {
             if (state != AnimationState.Back)
                 animator.SetTrigger("Back");
             state = AnimationState.Back;
-        }
-        if (angle > 225 && angle < 315)
+        }*/
+        if (angle > 180 && angle < 360) // (angle > 225 && angle < 315)
         {
             if(state != AnimationState.Left)
                 animator.SetTrigger("Left");

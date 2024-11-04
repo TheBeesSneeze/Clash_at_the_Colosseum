@@ -8,6 +8,7 @@
  *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 
@@ -55,7 +56,7 @@ namespace DefaultNamespace
                     BulletPoolManager.Destroy(bullet);
                     return;
                 }
-                bullet.Destroy();
+                Destroy(bullet.gameObject);
                 return;
             }
             bounces--;

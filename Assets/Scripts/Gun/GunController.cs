@@ -43,15 +43,14 @@ public class GunController : MonoBehaviour
     private void Start()
     {
         DebugStartingBulletEffects();
-        //InputEvents.Instance.ShootHeld.AddListener(ShootHeld);
+        InputEvents.Instance.PauseStarted.AddListener(ShootStopped);
         playerRB = GetComponent<Rigidbody>();
         playerCamera = Camera.main;
         animator = GetComponent<Animator>();
         if(SaveData.SelectedGun!= null)
-            shootingMode = SaveData.SelectedGun;
+        shootingMode = SaveData.SelectedGun;
         LoadShootingMode(shootingMode);
         InputEvents.Instance.ShootStarted.AddListener(OnShootStart);
-        //InputEvents.Instance.ShootCanceled.AddListener(ShootReleased);
         scanMask |= (1 << LayerMask.GetMask("Default"));
         scanMask |= (1 << LayerMask.GetMask("Enemy"));
         currentShots = 0;
@@ -62,7 +61,10 @@ public class GunController : MonoBehaviour
         InputEvents.Instance.ReloadStarted.AddListener(Reload);
            
     }
-
+    public void ShootStopped()
+    {
+        shootHeld = false;
+    }
     public void DebugStartingBulletEffects()
     {
         List<BulletEffect> newBulletEffects=new List<BulletEffect>();
@@ -82,7 +84,7 @@ public class GunController : MonoBehaviour
         if(shootMode == null)
         {
             Debug.LogError("empty shooting mode");
-            Application.Quit(); // this is so extreme lol i love this
+            Application.Quit(); //this is so extreme lol i love this
         }
         shootingMode = shootMode;
         shootHeld = true; 
@@ -188,14 +190,11 @@ public class GunController : MonoBehaviour
             currentShots = 0;
             isOverHeating = false;
             PublicEvents.OnPlayerReload.Invoke();
-        }
-        else if (cooldown <= 0f)
-        {
+        } else if (cooldown <= 0f) {
             if (currentShots >= shotsTillCoolDown && !canInfinteShoot)
             {
                 Reload();
             }
-
         }
 
 
@@ -205,8 +204,9 @@ public class GunController : MonoBehaviour
         if (!shootingMode.CanHoldFire) return;
 
         //shootin time
-        
-        Shoot();
+        if (shootHeld) {
+            Shoot();
+        }
     }
 
     //Clare function
@@ -222,6 +222,7 @@ public class GunController : MonoBehaviour
     private void OnShootStart()
     {
         Shoot();
+        shootHeld = true;
     }
     private void DebugTarget()
     {
@@ -230,9 +231,7 @@ public class GunController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))
         {
             destination = hit.point;
-        }
-        else
-        {
+        } else {
             destination = ray.GetPoint(1000f);
         }
         Debug.DrawLine(ray.origin, destination, Color.red);

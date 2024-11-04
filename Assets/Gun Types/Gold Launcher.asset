@@ -18,8 +18,11 @@ MonoBehaviour:
   BulletAccuracyOffset: 0
   CanHoldFire: 1
   BulletSpeed: 55
-  BulletDamage: 25
-  RecoilForce: 0.01
+  BulletDamage: 1000
+  RecoilForce: 0
+  ReloadSpeed: 0
+  ClipSize: 0
+  canInfiniteFire: 1
   MenuSprite: {fileID: -401717556, guid: 9831f24c0a2883e4fa1238a74abbdfa8, type: 3}
   GameplaySprite:
     sprites:
