@@ -1,5 +1,6 @@
 ///
-/// Unfinished oops
+/// Spawns venom puddles and such
+/// its finished now
 /// - Toby
 ///
 
@@ -34,6 +35,7 @@ public class VenomBullet : BulletEffect
         if(getFloorPoint(hitPoint, out Vector3 position))
         {
             GameObject venom = Instantiate(VenomPoolGameObject, position, Quaternion.identity); //TODO object pooling?
+            venom.transform.LookAt(venom.transform.position + Vector3.down);
         }
         
     }

@@ -6,6 +6,7 @@ using TMPro;
 using NaughtyAttributes;
 using Utilities;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(EnemyStats))]
 public class GroundedEnemyMovement : MonoBehaviour
@@ -152,7 +153,13 @@ public class GroundedEnemyMovement : MonoBehaviour
         if (path == null)
             return _player.position;
 
-        return path.position;
+        if(path.nextPath == null)
+            return path.position;
+
+        if(Mathf.Abs(path.nextPath.position.y - path.position.y)>0.1f)
+            return path.position;
+
+        return (path.position + path.nextPath.position)/2;
     }
 
     private bool ShouldJump(Vector3 direction)
