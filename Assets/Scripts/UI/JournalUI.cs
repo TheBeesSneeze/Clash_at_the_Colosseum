@@ -35,11 +35,14 @@ public class JournalUI : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         backButton.SetActive(true);
         forwardButton.SetActive(true);
         exitButton.SetActive(true);
-        
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -70,6 +73,9 @@ public class JournalUI : MonoBehaviour
     // Will turn off the canvas...turn it back on in main menu code!
     public void ExitCanvas()
     {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         returnToJournalButton.SetActive(true);
         Journal.SetActive(false);
     }
