@@ -38,6 +38,7 @@ public class PublicEvents
     public static UnityEvent HarpyDeath = new UnityEvent();
     public static UnityEvent MinoutarDeath = new UnityEvent();
     public static UnityEvent Reloading = new UnityEvent();
+    public static UnityEvent StartSound = new UnityEvent();
  
 
     // actions???? what the fuck!!!
