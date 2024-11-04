@@ -15,7 +15,7 @@ using Utilities;
 public class EnemyTakeDamage : MonoBehaviour
 {
     private EnemyStats stats;
-    [HideInInspector] public float currentHealth;
+    public float currentHealth;
     [SerializeField] private Color damageColor;
    
     [Header("Velocity Damage")]
@@ -38,7 +38,7 @@ public class EnemyTakeDamage : MonoBehaviour
     public bool IsDead { get { return currentHealth < 0; } }
 
 
-    private bool isStillAlive;
+    protected bool isStillAlive;
     protected virtual void Start()
     {
         stats = GetComponent<EnemyStats>();
