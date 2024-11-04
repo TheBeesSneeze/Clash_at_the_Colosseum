@@ -75,6 +75,11 @@ public class HealthSystem : MonoBehaviour
             controlPrompt.enabled = true;
     }
 
+    public void OverrideHealth(float charge)
+    {
+        value = charge;
+    }
+
     public void heal()
     {
         if (value >= maxChargeNeeded)

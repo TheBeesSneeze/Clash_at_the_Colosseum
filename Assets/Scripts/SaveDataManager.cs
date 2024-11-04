@@ -7,6 +7,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
     GunController gc;
     UpgradeSelectUI ui;
     GunGameplaySprite ggs;
+    HealthSystem hs;
 
     /// <summary>
     /// get the save data and load it up baby
@@ -32,8 +33,12 @@ public class SaveDataManager : Singleton<SaveDataManager>
             gc.transform.position = gc.transform.position + (Vector3.up * 25);
         }
 
+        //why
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
         ggs.Refresh();
+
+        hs = FindObjectOfType<HealthSystem>();
+        hs.OverrideHealth(0);
     }
 
     private void OnDisable()
