@@ -34,6 +34,7 @@ public class BossEnemySpawn : StateMachineBehaviour
         Debug.Log("Spawning boss enemies");
         StageLayout sl = StageTransitionManager.GetStageElements(enemyPlacements[index]);
         SpawnPointElement[] enemySpawnPoints = sl.spawnPoints;
+        int spawnPointCount=0;
 
         for (int i = 0; i < enemySpawnPoints.Length; i++)
         {
@@ -41,48 +42,37 @@ public class BossEnemySpawn : StateMachineBehaviour
 
             if (BossController.enemySpawner._enemyPrefabs.TryGetValue((EnemySpawn)s.enemyIndex, out GameObject enemyType))
             {
-                BeforeSpawn(s);
-
+                
                 Debug.Log("Spawning "+ (((EnemySpawn)s.enemyIndex).ToString())+" from boss");
                 GameObject e = GameObject.Instantiate(enemyType, s.pos, Quaternion.identity);
                 _currentEnemiesAlive++;
                 //e.GetComponent<EnemyTakeDamage>().currentHealth = e.GetComponent<EnemyStats>().EnemyHealth;
-                Debug.Log(e.GetComponent<EnemyTakeDamage>().currentHealth);
 
+                if(spawnPointCount< EnemySpawner.enemySpawnPoints.Length)
+                    StartParticles(EnemySpawner.enemySpawnPoints[spawnPointCount]);
+                spawnPointCount++;
             }
         }
     }
 
+    private void StartParticles(EnemySpawnPoint esp)
+    {
+        if (esp == null)
+            return;
+        esp.transform.position = Vector3.zero;
+        esp.PlayParticles();
+    }
+
     private void OnEnemyDeath(EnemyStats _)
     {
-        if (!BossController.bossActive)
-            return;
+        //if (!BossController.bossActive)
+        //    return;
 
         _currentEnemiesAlive--;
         Debug.Log(_currentEnemiesAlive);
         if( _currentEnemiesAlive <= 0 )
         {
-            animator.SetTrigger("EnemiesDead");
-        }
-    }
-
-
-    /// <summary>
-    /// starts playing particles before enemies spawn in
-    /// </summary>
-    private void BeforeSpawn(SpawnPointElement s)
-    {
-        //sky - you know what to do 
-        //yeah man i got it
-
-        if (s.enemyIndex == 0)
-        {
-            /* ParticleSystem particle = s.GetComponent<ParticleSystem>();
-             Debug.Log(particle);
-             if (!particle.isPlaying)
-             {   particle.Play();
-             }
-              */
+            animator.SetBool("EnemiesDead",true);
         }
     }
 }

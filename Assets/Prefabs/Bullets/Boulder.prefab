@@ -161,9 +161,11 @@ MonoBehaviour:
   bulletGravity: 1
   hitLayers:
     serializedVersion: 2
-    m_Bits: 897
+    m_Bits: 905
   DealPlayerDamage: 1
   DealEnemyDamage: 0
+  wallHitParticle: {fileID: 0}
+  playerBullet: 0
   damageAmount: 10
   bulletForce: 200
 --- !u!96 &1388419814164784260
