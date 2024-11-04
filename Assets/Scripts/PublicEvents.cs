@@ -30,6 +30,7 @@ public class PublicEvents
     public static UnityEvent OnBossSpawn = new UnityEvent();
     public static UnityEvent OnBossStart = new UnityEvent();
     public static UnityEvent HydraFireAttack = new UnityEvent();
+    public static UnityEvent OnBossPhaseTwoStart = new UnityEvent();
     public static UnityEvent OnBossPhaseThreeStart = new UnityEvent();
     public static UnityEvent HydraDeath = new UnityEvent();
     public static UnityEvent CyclopsAttack = new UnityEvent();

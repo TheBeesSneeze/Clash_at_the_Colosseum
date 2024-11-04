@@ -25,6 +25,8 @@ public class BossHealthBar : MonoBehaviour  //I don't know why i didn't just der
         group.alpha = 0;
 
         PublicEvents.OnBossStart.AddListener(EnableBar);
+        PublicEvents.OnBossPhaseTwoStart.AddListener(HalfOpacity);
+        PublicEvents.OnBossPhaseThreeStart.AddListener(ReturnFullOpacity);
         PublicEvents.HydraDeath.AddListener(DisableBar);
     }
 
@@ -45,6 +47,15 @@ public class BossHealthBar : MonoBehaviour  //I don't know why i didn't just der
         bossTakeDamage = GameObject.FindObjectOfType<BossTakeDamage>();
         bossTakeDamage.bossHealthBar = this;
         SetMaxHealth(bossTakeDamage.GetComponent<BossStats>().BossHealth);
+    }
+    private void HalfOpacity()
+    {
+        group.alpha = 0.5f;
+    }
+
+    private void ReturnFullOpacity()
+    {
+        group.alpha = 1;
     }
 
     private void DisableBar()
