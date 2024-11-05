@@ -21,6 +21,7 @@ public class PublicEvents
     public static UnityEvent OnPlayerDamage = new UnityEvent();
     public static UnityEvent OnEnemyDamage = new UnityEvent();
     public static UnityEvent OnPlayerDeath = new UnityEvent();
+    public static UnityEvent OnPlayerRespawn = new UnityEvent();
     public static UnityEvent OnEnemyShoot = new UnityEvent();
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
     public static UnityEvent OnGrapple = new UnityEvent();
@@ -30,6 +31,7 @@ public class PublicEvents
     public static UnityEvent OnBossSpawn = new UnityEvent();
     public static UnityEvent OnBossStart = new UnityEvent();
     public static UnityEvent HydraFireAttack = new UnityEvent();
+    public static UnityEvent OnBossPhaseTwoStart = new UnityEvent();
     public static UnityEvent OnBossPhaseThreeStart = new UnityEvent();
     public static UnityEvent HydraDeath = new UnityEvent();
     public static UnityEvent CyclopsAttack = new UnityEvent();
@@ -37,7 +39,8 @@ public class PublicEvents
     public static UnityEvent HarpyDeath = new UnityEvent();
     public static UnityEvent MinoutarDeath = new UnityEvent();
     public static UnityEvent Reloading = new UnityEvent();
- 
+    public static UnityEvent StartSound = new UnityEvent();
+   
 
     // actions???? what the fuck!!!
     public static Action<BulletEffect> OnUpgradeReceived;

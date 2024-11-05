@@ -32,8 +32,10 @@ public class SaveDataManager : Singleton<SaveDataManager>
             gc.transform.position = gc.transform.position + (Vector3.up * 25);
         }
 
+        //why
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
         ggs.Refresh();
+
     }
 
     private void OnDisable()

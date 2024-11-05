@@ -12,13 +12,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using NaughtyAttributes;
 
 namespace mainMenu
 {
     public class MainMenuInitializer : MonoBehaviour
     {
         [Header("Variables")]
-        [SerializeField] public string mainSceneName = "Circle Dynamic Stage";
+        [Scene]
+        [SerializeField] public string mainSceneName;
 
         [Header("Groups")]
         [SerializeField] private CanvasGroup startGroup;

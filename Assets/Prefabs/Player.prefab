@@ -253,18 +253,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultHealth: 100
-  Speed: 40
-  MaxSpeed: 30
+  Speed: 60
+  MaxSpeed: 50
   DashSpeed: 1000
   DashCoolDown: 1.5
   DashInvincibilityTime: 0.5
-  Friction: 1
+  Friction: 3
   AirMovementMultiplier: 0
   secondsTillFull: 1
   AirJumps: 1
-  JumpHeight: 7.5
-  SecondJumpHeight: 4
-  GravityBoost: 60
+  JumpHeight: 9
+  SecondJumpHeight: 6
+  GravityBoost: 88
 --- !u!114 &2558676147345522402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,8 +286,8 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
-  groundDrag: 5
-  airDrag: 3.5
+  groundDrag: 6
+  airDrag: 3.75
 --- !u!114 &7911197565489766704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95454a1b7579f534ba6ebb8372956132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamageIntensity:
+  playerDamageIntensityCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -1257,17 +1257,35 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.031350307
-      value: 0.09964732
-      inSlope: 0.10880126
-      outSlope: 0.10880126
+      time: 0.024927039
+      value: 0.16001692
+      inSlope: 0.1536504
+      outSlope: 0.1536504
       tangentMode: 0
       weightedMode: 0
-      inWeight: 1
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.10376833
-      value: 0.0019427491
+      time: 0.04840686
+      value: 0.16272381
+      inSlope: -1.0322753
+      outSlope: -1.0322753
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.08117339
+      value: 0.1528022
+      inSlope: -2.3445797
+      outSlope: -2.3445797
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.12336157
+      value: 0.011102942
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1277,7 +1295,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  damageShakeDuration: 0.1
 --- !u!114 &7560038672324414093
 MonoBehaviour:
   m_ObjectHideFlags: 0

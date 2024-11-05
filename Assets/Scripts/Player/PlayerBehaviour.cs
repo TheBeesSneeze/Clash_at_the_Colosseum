@@ -41,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if(healthBar != null)
             healthBar.SetMaxHealth(stats.DefaultHealth);
+        PublicEvents.OnPlayerRespawn.AddListener(RespawnPlayer);
     }
 
     public void Update()
@@ -95,9 +96,14 @@ public class PlayerBehaviour : MonoBehaviour
     public void Die()
     {
         PublicEvents.OnPlayerDeath.Invoke();
+        
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RespawnPlayer()
+    {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public Vector3 GetGroundPosition()

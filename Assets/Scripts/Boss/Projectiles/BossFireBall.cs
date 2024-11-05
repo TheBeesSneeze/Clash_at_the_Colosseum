@@ -7,8 +7,8 @@ public class BossFireBall : MonoBehaviour
 {
     [Tooltip("Only if player collides with the thing")]
     [SerializeField] private float collisionDamage = 60;
-    [SerializeField] private float maxHeight=0;
-    [SerializeField][Min(0)] private float defaultTime=1;
+    [SerializeField] public float maxHeight=0;
+    [SerializeField][Min(0)] public float defaultTime=1;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Transform visual;
 

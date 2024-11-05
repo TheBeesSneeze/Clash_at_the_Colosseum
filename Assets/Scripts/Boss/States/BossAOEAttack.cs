@@ -9,7 +9,7 @@ public class BossAOEAttack : StateMachineBehaviour
     {
         GameObject fireball = Instantiate(Fireball, animator.position, Quaternion.identity);
         BossFireBall fb = fireball.GetComponent<BossFireBall>();
-        fb.Launch(animator.transform.position, BossController.playerBehaviour.GetGroundPosition());
+        fb.Launch(animator.transform.position, BossController.playerBehaviour.GetGroundPosition(), fb.maxHeight, fb.defaultTime * BossController.Stats.BossAttackRate);
         PublicEvents.HydraFireAttack.Invoke();
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

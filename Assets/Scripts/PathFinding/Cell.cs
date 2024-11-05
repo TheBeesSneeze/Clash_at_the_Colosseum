@@ -49,7 +49,7 @@ namespace PathFinding
 
             GetNeighbors();
             PublicEvents.OnStageTransitionFinish.AddListener(GetNeighbors);
-            PublicEvents.OnBossPhaseThreeStart.AddListener(OnBossPhase3Start);
+            //PublicEvents.OnBossPhaseThreeStart.AddListener(OnBossPhase3Start);
 
             ps = GetComponent<ParticleSystem>();
         }
