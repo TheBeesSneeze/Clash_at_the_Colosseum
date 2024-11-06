@@ -14,7 +14,7 @@ using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private BackgroundManager backgroundManager;
+    [SerializeField] private BackgroundMusicManager backgroundManager;
 
     [SerializeField] private CanvasGroup pauseGroup;
     [SerializeField] private Button resumeButton;
@@ -36,8 +36,7 @@ public class PauseMenu : MonoBehaviour
 
         if(backgroundManager == null)
         {
-            Debug.LogWarning("no background music set.");
-            backgroundManager = FindObjectOfType<BackgroundManager>();
+            backgroundManager = FindObjectOfType<BackgroundMusicManager>();
         }
 
         if(backgroundManager != null)
@@ -46,6 +45,10 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("baseBGM: "+ baseBGMVolume);
             backgroundManager.audioSource.volume = baseBGMVolume * volumeSlider.value;
             backgroundManager.volumeSliderAdjustment = volumeSlider.value;
+        }
+        else
+        {
+            Debug.LogWarning("no background music set.");
         }
         TogglePauseUI(false);
 

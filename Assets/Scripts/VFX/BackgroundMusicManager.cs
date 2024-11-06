@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundManager : MonoBehaviour
+public class BackgroundMusicManager : MonoBehaviour
 {
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioSource secondaryAudio;
