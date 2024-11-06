@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * File Name :         DeathScren
+ * Author(s) :         Clare G
+ * Creation Date :     11/52024
+ *
+ * Brief Description : When player dies load up death screen
+ *                     
+ *****************************************************************************/
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +21,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private CanvasGroup deathGroup;
     [SerializeField] private Button respawnButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -22,11 +31,24 @@ public class DeathScreen : MonoBehaviour
         PublicEvents.OnPlayerDeath.AddListener(showScreen);
         respawnButton.onClick.AddListener(Respawn);
         mainMenuButton.onClick.AddListener(goToMain); 
+
+        if(backgroundManager == null)
+        {
+            backgroundManager = FindObjectOfType<BackgroundManager>();
+        }
     }
 
 
     private void showScreen()
     {
+        if(backgroundManager.audioSourcePlayingCurrent)
+        {
+            backgroundManager.audioSource.Stop();
+        }
+        else
+        {
+            backgroundManager.secondaryAudio.Stop();
+        }
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         TogglePauseUI(GameManager.Instance.isPaused);
         Cursor.visible = GameManager.Instance.isPaused;
@@ -37,6 +59,14 @@ public class DeathScreen : MonoBehaviour
     private void Respawn()
     {
         SetDeathState(false);
+        if (backgroundManager.audioSourcePlayingCurrent)
+        {
+            backgroundManager.secondaryAudio.Play();
+        }
+        else
+        {
+            backgroundManager.secondaryAudio.Play();
+        }
         PublicEvents.OnPlayerRespawn.Invoke();
     }
 
@@ -57,7 +87,6 @@ public class DeathScreen : MonoBehaviour
     {
         GameManager.Instance.isPaused = state;
         TogglePauseUI(state);
-
         Cursor.visible = state;
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = state ? 0 : 1;
