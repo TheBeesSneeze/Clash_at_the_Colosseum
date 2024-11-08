@@ -42,7 +42,7 @@ public class ScreenShake : MonoBehaviour
         float t;
         while(startTime + damageShakeDuration >= Time.time)
         {
-            if (cameraTransform == null) //crazy that this is a problem
+            if (this==null || cameraTransform == null) //crazy that this is a problem
                 return;
 
             if(Time.timeScale != 0) // if not paused
