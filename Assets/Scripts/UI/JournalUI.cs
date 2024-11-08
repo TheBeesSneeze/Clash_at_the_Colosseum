@@ -27,7 +27,7 @@ public class JournalUI : MonoBehaviour
     [SerializeField] private GameObject forwardButton;
     [Tooltip("DO NOT TOUCH")]
     [SerializeField] private GameObject exitButton;
-    //[SerializeField] private GameObject returnToJournalButton;
+    [SerializeField] private GameObject returnToJournalButton;
     [Tooltip("DO NOT TOUCH, if this Canvas is set to false it MUST be set to true somewhere else when inititating the Journal, this means that " +
         "this variable must be referenced in pause menu code!")]
     [SerializeField] private GameObject Journal;
@@ -38,7 +38,6 @@ public class JournalUI : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Journal.SetActive(true);
         backButton.SetActive(true);
         forwardButton.SetActive(true);
         exitButton.SetActive(true);
@@ -75,9 +74,9 @@ public class JournalUI : MonoBehaviour
     public void ExitCanvas()
     {
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //returnToJournalButton.SetActive(true);
+        returnToJournalButton.SetActive(true);
         Journal.SetActive(false);
     }
 
@@ -85,7 +84,7 @@ public class JournalUI : MonoBehaviour
     // This function really will only be necessary in the first room...not the colosseum. 
     public void PullBackUpJournal()
     {
-        //returnToJournalButton.SetActive(false);
+        returnToJournalButton.SetActive(false);
         pageNumber = 0;
         Journal.SetActive(true);
         backButton.SetActive(true);
