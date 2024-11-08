@@ -21,7 +21,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private CanvasGroup deathGroup;
     [SerializeField] private Button respawnButton;
     [SerializeField] private Button mainMenuButton;
-    [SerializeField] private BackgroundMusicManager backgroundManager;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -34,7 +34,7 @@ public class DeathScreen : MonoBehaviour
 
         if(backgroundManager == null)
         {
-            backgroundManager = FindObjectOfType<BackgroundMusicManager>();
+            backgroundManager = FindObjectOfType<BackgroundManager>();
         }
     }
 
