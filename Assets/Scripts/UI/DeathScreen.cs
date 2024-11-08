@@ -13,6 +13,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private CanvasGroup deathGroup;
     [SerializeField] private Button respawnButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -22,6 +23,11 @@ public class DeathScreen : MonoBehaviour
         PublicEvents.OnPlayerDeath.AddListener(showScreen);
         respawnButton.onClick.AddListener(Respawn);
         mainMenuButton.onClick.AddListener(goToMain); 
+
+        if(backgroundManager == null)
+        {
+            backgroundManager = FindObjectOfType<BackgroundManager>();  
+        }
     }
 
 
@@ -38,6 +44,7 @@ public class DeathScreen : MonoBehaviour
     {
         SetDeathState(false);
         PublicEvents.OnPlayerRespawn.Invoke();
+        PublicEvents.StartSound.Invoke();
     }
 
     private void goToMain()
