@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private float baseBGMVolume;
+    private bool canPressEscape = true;
 
     private void Start()
     {
@@ -57,45 +58,50 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         PublicEvents.StartSound.Invoke();
+        PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
+        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);    
     }
     public void escPressed() {
-
-        Debug.Log("pause");
-
-        if (GameManager.Instance.pausedForUI)
-            return;
-
-        if (backgroundManager != null)
+        if(canPressEscape)
         {
-            if (backgroundManager.audioSourcePlayingCurrent)
-            {
-                if (!GameManager.Instance.isPaused)
-                {
-                    backgroundManager.audioSource.Pause();
-                }
-                else
-                {
-                    backgroundManager.audioSource.Play();
-                }
-            }
-            else
-            {
-                if(!GameManager.Instance.isPaused)
-                {
-                    backgroundManager.secondaryAudio.Pause();
-                }
-                else
-                {
-                    backgroundManager.secondaryAudio.Play();
-                }
-            }
-        }
+            Debug.Log("pause");
 
-        GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-        TogglePauseUI(GameManager.Instance.isPaused);
-        Cursor.visible = GameManager.Instance.isPaused;
-        Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
-        Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+            if (GameManager.Instance.pausedForUI)
+                return;
+
+            if (backgroundManager != null)
+            {
+                if (backgroundManager.audioSourcePlayingCurrent)
+                {
+                    if (!GameManager.Instance.isPaused)
+                    {
+                        backgroundManager.audioSource.Pause();
+                    }
+                    else
+                    {
+                        backgroundManager.audioSource.Play();
+                    }
+                }
+                else
+                {
+                    if (!GameManager.Instance.isPaused)
+                    {
+                        backgroundManager.secondaryAudio.Pause();
+                    }
+                    else
+                    {
+                        backgroundManager.secondaryAudio.Play();
+                    }
+                }
+            }
+
+            GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
+            TogglePauseUI(GameManager.Instance.isPaused);
+            Cursor.visible = GameManager.Instance.isPaused;
+            Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+            Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+        }
+        
     }
 
     public void SetPauseState(bool state)
@@ -169,5 +175,10 @@ public class PauseMenu : MonoBehaviour
         SaveDataManager.Instance.OnApplicationQuit();
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+    }
+
+    private void SetCanEsc()
+    {
+        canPressEscape = !canPressEscape;
     }
 }
