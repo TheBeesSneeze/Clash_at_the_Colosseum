@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File Name :         PauseMenuToggle.cs
- * Author(s) :         Tyler, Toby S, Clare G
+ * Author(s) :         Tyler, Toby S
  * Creation Date :     9/3/2024
  *
  * Brief Description : Listens for the ESC key to be pressed and then brings 
@@ -27,7 +27,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private float baseBGMVolume;
-    private bool canPause = true;
 
     private void Start()
     {
@@ -57,8 +56,6 @@ public class PauseMenu : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
-        PublicEvents.OnPlayerDeath.AddListener(setCanPause);
-        PublicEvents.OnPlayerRespawn.AddListener(setCanPause);
         PublicEvents.StartSound.Invoke();
     }
     public void escPressed() {
@@ -66,8 +63,6 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("pause");
 
         if (GameManager.Instance.pausedForUI)
-            return;
-        if (!canPause)
             return;
 
         if (backgroundManager != null)
@@ -127,11 +122,11 @@ public class PauseMenu : MonoBehaviour
         {
             if (backgroundManager.audioSourcePlayingCurrent)
             {
-                backgroundManager.audioSource.UnPause();
+                backgroundManager.audioSource.Play();
             }
             else
             {
-                backgroundManager.secondaryAudio.UnPause();
+                backgroundManager.secondaryAudio.Play();
             }
         }
     }
@@ -140,12 +135,6 @@ public class PauseMenu : MonoBehaviour
         SaveDataManager.Instance.OnApplicationQuit();
         SceneManager.LoadScene(mainMenuSceneName);
     }
-
-    public void setCanPause()
-    {
-        canPause = !canPause;
-    }
-
 
     public void volumeChanged(float value)
     {

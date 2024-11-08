@@ -29,10 +29,9 @@ public class BackgroundManager : MonoBehaviour
 
     private void StartSound()
     {
-        audioSource.volume = audioSource.volume * volumeSliderAdjustment;
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment; 
         audioSource.Play();
     }
-
     private void Transition()
     {
         ++stageIndex;
