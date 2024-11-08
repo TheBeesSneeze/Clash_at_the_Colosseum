@@ -89,9 +89,11 @@ namespace DefaultNamespace
                 Debug.Log(hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>());
                 if (hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>() != null)
                 {
-                    EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
-                    enemies[i] = e;
-
+                    if (hitColliders[i].gameObject.GetComponent<BossController>() == null)
+                    {
+                        EnemyTakeDamage e = hitColliders[i].gameObject.GetComponent<EnemyTakeDamage>();
+                        enemies[i] = e;
+                    }
                     if(stats==null)
                         continue;
 

@@ -27,15 +27,12 @@ namespace mainMenu
         public void OnPointerEnter(PointerEventData data)
         {
             GetComponent<RectTransform>().sizeDelta = start + offsetSize;
-            GetComponent<RectTransform>().anchoredPosition = startPos + offsetPosition;
             //GetComponent<RectTransform>().anchoredPosition = startPos + offsetPosition;
         }
 
         public void OnPointerExit(PointerEventData data)
         {
             GetComponent<RectTransform>().sizeDelta = start;
-            GetComponent<RectTransform>().anchoredPosition = startPos;
-
             //GetComponent<RectTransform>().anchoredPosition = startPos;
         }
     }

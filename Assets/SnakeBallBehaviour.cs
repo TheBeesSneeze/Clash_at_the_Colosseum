@@ -25,8 +25,12 @@ public class SnakeBallBehaviour : MonoBehaviour
         float timeAlive = Time.time - timeOfSpawn;
         while (timeAlive < durationOfSnakeBall)
         {
-            //amount of seconds since spawned in
+            if (this  == null)
+            {
+                return;
+            }
 
+            //amount of seconds since spawned in
             timeAlive = Time.time - timeOfSpawn;
             float t = timeAlive / durationOfSnakeBall;
             Vector3 desiredScale = Vector3.Lerp(scale, Vector3.zero, t);

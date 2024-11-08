@@ -30,7 +30,7 @@ namespace mainMenu
         [SerializeField] private Button _playButton;
         //[SerializeField] private Button _tutorialButton;
         [SerializeField] private Button _tutorialButton;
-        //[SerializeField] private Button _settingsButton;
+        [SerializeField] private Button _settingsButton;
         [SerializeField] private Button _creditsButton;
         [SerializeField] private Button _quitButton;
         [SerializeField] private RectTransform startButtonsHolder;
@@ -72,7 +72,7 @@ namespace mainMenu
             Time.timeScale = 1.0f;  
             animator = GetComponent<Animator>();
             animator.SetTrigger("Start Menu");
-            startMenu = new StartMenu(this, _playButton, _tutorialButton, _creditsButton, _quitButton, startGroup, mainSceneName);
+            startMenu = new StartMenu(this, _playButton, _tutorialButton, _settingsButton, _creditsButton, _quitButton, startGroup);
             gunSelectMenu = new GunSelectMenu(this, mainSceneName, GunTypes, 
                 _leftButton, _rightButton, _startButton, 
                 gunInfoGroup, headerImage, gunSprite, gunText,
