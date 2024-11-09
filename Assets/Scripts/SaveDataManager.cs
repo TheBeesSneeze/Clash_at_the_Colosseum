@@ -23,8 +23,8 @@ public class SaveDataManager : Singleton<SaveDataManager>
         }
 
         ui = GameObject.FindObjectOfType<UpgradeSelectUI>();
-
-        ui.OverridePool(SaveData.bulletEffectPool);
+        if(ui != null) 
+            ui.OverridePool(SaveData.bulletEffectPool);
 
         if(SaveData.CurrentStageIndex >= 1)
         {
@@ -34,7 +34,8 @@ public class SaveDataManager : Singleton<SaveDataManager>
 
         //why
         ggs = GameObject.FindObjectOfType<GunGameplaySprite>();
-        ggs.Refresh();
+        if(ggs!= null)
+            ggs.Refresh();
 
     }
 
@@ -46,7 +47,9 @@ public class SaveDataManager : Singleton<SaveDataManager>
         if (SaveData.CurrentStageIndex >= StageManager._stages.Length)
             SaveData.CurrentStageIndex -= 1;
 
-        SaveData.bulletEffectPool = ui.GetPool();
+
+        if(ui!= null)
+            SaveData.bulletEffectPool = ui.GetPool();
         SaveData.gotBulletEffects = gc.bulletEffects;
     }
 
