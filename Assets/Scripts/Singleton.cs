@@ -14,6 +14,9 @@ using UnityEngine;
 
 public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
+    [SerializeField]
+    private bool dontDestroyOnLoad=false;
+
     private static T instance;
     public static T Instance
     {
@@ -28,10 +31,13 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         if (instance == null)
         {
             instance = (T)this;
+
+            if (dontDestroyOnLoad)
+                DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(dontDestroyOnLoad ? gameObject : this);
         }
     }
 }
