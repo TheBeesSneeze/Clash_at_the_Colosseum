@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button restartGameButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider sensitivitySlider;
+    [SerializeField] private Tutorialmusic tutorialMusic; 
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -40,7 +41,17 @@ public class PauseMenu : MonoBehaviour
             backgroundManager = FindObjectOfType<BackgroundManager>();
         }
 
-        if(backgroundManager != null)
+        if (tutorialMusic == null)
+        {
+            tutorialMusic = FindObjectOfType<Tutorialmusic>();
+        }
+
+        if(tutorialMusic != null)
+        {
+            tutorialMusic.StartMusic();
+        }
+
+        if (backgroundManager != null)
         {
             baseBGMVolume = backgroundManager.audioSource.volume;
             Debug.Log("baseBGM: "+ baseBGMVolume);
@@ -158,6 +169,11 @@ public class PauseMenu : MonoBehaviour
             {
                 backgroundManager.secondaryAudio.volume = sliderValue * baseBGMVolume;
             }
+        }
+        if(tutorialMusic != null)
+        {
+            tutorialMusic.volumeSliderAdjustment = sliderValue;
+            tutorialMusic.UpdateVolume();
         }
 
         Debug.Log(sliderValue * baseBGMVolume);
