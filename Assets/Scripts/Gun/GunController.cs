@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
@@ -37,7 +38,7 @@ public class GunController : MonoBehaviour
 
     //returns true if the gun is reloading
     private bool isOverHeating;
-    private int shotsTillCoolDown;
+    public int shotsTillCoolDown;
     private bool canInfinteShoot;
     [HideInInspector] public float overheatCoolDown;
     
