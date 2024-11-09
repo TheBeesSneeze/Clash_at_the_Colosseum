@@ -34,9 +34,16 @@ public class UpgradeSelectUI : MonoBehaviour
     {
         _gunController = GameObject.FindObjectOfType<GunController>();
         bulletEffectPool = new List<BulletEffect>(GameManager.Instance.BulletEffects);
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
 
-        DisableMenu();
+        //DisableMenu();
+        animator.SetBool("Left Selected", false);
+        animator.SetBool("Right Selected", false);
+
+        group.alpha = 0;
+        group.interactable = false;
+        group.blocksRaycasts = false;
+        selectButton.interactable = false;
 
         upgradeButton1.button.onClick.AddListener(OnUpgradeButton1Clicked);
         upgradeButton2.button.onClick.AddListener(OnUpgradeButton2Clicked);

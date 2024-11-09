@@ -53,8 +53,6 @@ public class InputEvents : Singleton<InputEvents>
         Heal = map.FindAction("Heal");
         Reload = map.FindAction("Reload");
 
-
-
         Move.started += ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started += ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started += ctx => ActionStarted(ref ShootPressed, ShootStarted);
@@ -101,24 +99,6 @@ public class InputEvents : Singleton<InputEvents>
     }
     private void OnDisable()
     {
-        // Unsubscribe from all action events to prevent memory leaks
-        /*Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
-        Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
-        Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);
-        Pause.started -= ctx => ActionCanceled(ref PausePressed, PauseStarted);
-        Dash.started -= ctx => ActionCanceled(ref DashPressed, DashStarted);
-        Heal.started -= ctx => ActionCanceled(ref HealPressed, HealStarted);
-        Grapple.started -= ctx => ActionCanceled(ref GrapplePressed, GrappleStarted);
-        Reload.started -= ctx => ActionCanceled(ref ReloadPressed, ReloadStarted);  
-
-        Move.canceled -= ctx => ActionCanceled(ref MovePressed, MoveCanceled);
-        Jump.canceled -= ctx => ActionCanceled(ref JumpPressed, JumpCanceled);
-        Shoot.canceled -= ctx => ActionCanceled(ref ShootPressed, ShootCanceled);
-        Pause.canceled -= ctx => ActionCanceled(ref PausePressed, PauseCanceled);
-        Dash.canceled -= ctx => ActionCanceled(ref DashPressed, DashCanceled);
-        Heal.canceled -= ctx => ActionCanceled(ref HealPressed, HealCanceled);
-        Grapple.canceled -= ctx => ActionCanceled(ref GrapplePressed, GrappleCanceled);
-        Reload.started -= ctx => ActionCanceled(ref ReloadPressed, ReloadCancled);*/
         Move.started -= ctx => ActionStarted(ref MovePressed, MoveStarted);
         Jump.started -= ctx => ActionStarted(ref JumpPressed, JumpStarted);
         Shoot.started -= ctx => ActionStarted(ref ShootPressed, ShootStarted);

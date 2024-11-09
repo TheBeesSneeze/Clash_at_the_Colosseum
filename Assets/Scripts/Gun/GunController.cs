@@ -122,6 +122,9 @@ public class GunController : MonoBehaviour
     //Clare made this function
     private void Shoot()
     {
+        if (Time.timeScale <= 0)
+            return; //hard coded solution for beta :/
+
         if (currentShots < shotsTillCoolDown)
         {
             secondsSinceLastShoot = 0;
