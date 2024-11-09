@@ -27,7 +27,7 @@ public class UpgradeSelectUI : MonoBehaviour
     [SerializeField] private List<BulletEffect> bulletEffectPool;
     private GunController _gunController;
     private BulletEffect selectedEffect;
-    private bool open = true;
+    private bool open = false;
     public static Animator animator;
 
     private void Start()
@@ -37,7 +37,9 @@ public class UpgradeSelectUI : MonoBehaviour
         animator = GetComponent<Animator>();
 
         //DisableMenu();
-        animator.SetBool("Left Selected", false);
+
+        GameManager.Instance.pausedForUI = false;
+        animator.SetBool("Left Selected",  false);
         animator.SetBool("Right Selected", false);
 
         group.alpha = 0;
