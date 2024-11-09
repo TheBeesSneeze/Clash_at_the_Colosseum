@@ -96,7 +96,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void Die()
     {
         PublicEvents.OnPlayerDeath.Invoke();
-        PublicEvents.StopSound.Invoke();
         
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -105,7 +104,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
-        PublicEvents.StartSound.Invoke();
     }
 
     public Vector3 GetGroundPosition()
