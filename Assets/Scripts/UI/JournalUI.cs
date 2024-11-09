@@ -89,7 +89,7 @@ public class JournalUI : MonoBehaviour
     public void ExitCanvas()
     {
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         //returnToJournalButton.SetActive(true);
 
