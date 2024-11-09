@@ -225,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5313124145692097918}
+  - component: {fileID: 4236546474353675771}
   - component: {fileID: 6586150003587767605}
   - component: {fileID: 8303970227628683751}
   - component: {fileID: 8074276148529022299}
@@ -253,13 +254,38 @@ RectTransform:
   - {fileID: 5659722690704215054}
   - {fileID: 7478969335633665043}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &4236546474353675771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356563372746672245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db11e85c9fb2f764a8bdb378e68f8142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpenByDefault: 1
+  pages:
+  - {fileID: 3024314502073053239}
+  - {fileID: 6716009486027876479}
+  - {fileID: 5951757257262734798}
+  - {fileID: 296958932226786913}
+  - {fileID: 2982158398680062808}
+  - {fileID: 3383438919161790929}
+  - {fileID: 1444708465275470533}
+  backButton: {fileID: 6904852113975494680}
+  forwardButton: {fileID: 5342851042655865018}
+  exitButton: {fileID: 3126236152329998787}
+  Journal: {fileID: 6167026827909095218}
 --- !u!223 &6586150003587767605
 Canvas:
   m_ObjectHideFlags: 0
@@ -281,7 +307,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &8303970227628683751
 MonoBehaviour:
@@ -489,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8905823860266241267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -622,7 +648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Right Click to shoot my trusty Snake Launcher
+  m_text: 'Left Click to shoot my trusty Snake Launcher
 
 '
   m_isRightToLeft: 0
@@ -1321,7 +1347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4236546474353675771}
         m_TargetAssemblyTypeName: JournalUI, Assembly-CSharp
         m_MethodName: ExitCanvas
         m_Mode: 1
@@ -2452,7 +2478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4236546474353675771}
         m_TargetAssemblyTypeName: JournalUI, Assembly-CSharp
         m_MethodName: FlipPageForward
         m_Mode: 1
@@ -3133,7 +3159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4236546474353675771}
         m_TargetAssemblyTypeName: JournalUI, Assembly-CSharp
         m_MethodName: FlipPageBack
         m_Mode: 1

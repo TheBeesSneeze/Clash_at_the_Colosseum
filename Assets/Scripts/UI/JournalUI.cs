@@ -8,6 +8,8 @@ using System.ComponentModel.Design.Serialization;
 
 public class JournalUI : MonoBehaviour
 {
+    public bool OpenByDefault=true;
+
     // This is a List that contains all of the pages. It can be changed in inspector.
     [Tooltip("This list should contain the pages in the canvas in hierarchy! The number you put is the actual number of pages unlike pageCap variable")]
     public List<GameObject> pages = new List<GameObject>();
@@ -41,17 +43,12 @@ public class JournalUI : MonoBehaviour
     private void Start()
     {
         pageCap = pages.Count - 1;
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Journal.SetActive(true);
         group = Journal.transform.parent.GetComponent<CanvasGroup>();
 
-        group.alpha = 1.0f;
-        group.interactable = true;
-        group.blocksRaycasts = true;
-
-        FlipPageAny();
+        if (OpenByDefault)
+            OpenJournal();
+        else
+            ExitCanvas();
     }
 
     /// <summary>
@@ -75,12 +72,13 @@ public class JournalUI : MonoBehaviour
         FlipPageAny();
     }
 
-    public void FlipPageAny()
+    private void FlipPageAny()
     {
         pages[pageNumber].SetActive(true);
 
         backButton.SetActive(pageNumber != 0);
         forwardButton.SetActive(pageNumber != pageCap);
+        exitButton.SetActive(true);
     }
 
     /// <summary>
@@ -98,15 +96,30 @@ public class JournalUI : MonoBehaviour
         group.blocksRaycasts = false;
     }
 
+    /// <summary>
+    /// Will turn off the canvas...turn it back on in main menu code!
+    /// </summary>
+    public void ExitCanvasToPauseMenu()
+    {
+        pages[pageNumber].SetActive(false);
+        group.alpha = 0f;
+        group.interactable = false;
+        group.blocksRaycasts = false;
+    }
+
+    // Called in pause menu button (hierarchy)
     // This will pull the journal back up starting at page one.
     // This function really will only be necessary in the first room...not the colosseum. 
-    public void PullBackUpJournal()
+    public void OpenJournal()
     {
         //returnToJournalButton.SetActive(false);
         pageNumber = 0;
-        backButton.SetActive(true);
-        forwardButton.SetActive(true);
-        exitButton.SetActive(true);
+        FlipPageAny();
+
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Journal.SetActive(true);
 
         group.alpha = 1.0f;
         group.interactable = true;
