@@ -13,6 +13,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private CanvasGroup deathGroup;
     [SerializeField] private Button respawnButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -22,6 +23,10 @@ public class DeathScreen : MonoBehaviour
         PublicEvents.OnPlayerDeath.AddListener(showScreen);
         respawnButton.onClick.AddListener(Respawn);
         mainMenuButton.onClick.AddListener(goToMain); 
+
+        if(backgroundManager == null)
+            backgroundManager = FindObjectOfType<BackgroundManager>();
+
     }
 
 
@@ -29,6 +34,24 @@ public class DeathScreen : MonoBehaviour
     {
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         TogglePauseUI(GameManager.Instance.isPaused);
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            {
+                if (GameManager.Instance.isPaused)
+                {
+                    print("Made it here");
+                    backgroundManager.audioSource.Pause();
+                }
+            }
+            else
+            {
+                if (GameManager.Instance.isPaused)
+                {
+                    backgroundManager.secondaryAudio.Pause();
+                }
+            }
+        }
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
