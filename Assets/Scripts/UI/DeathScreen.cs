@@ -22,9 +22,11 @@ public class DeathScreen : MonoBehaviour
     {
         PublicEvents.OnPlayerDeath.AddListener(showScreen);
         respawnButton.onClick.AddListener(Respawn);
-        mainMenuButton.onClick.AddListener(goToMain); 
+        mainMenuButton.onClick.AddListener(goToMain);
 
-        if(backgroundManager == null)
+        ToggleDeathUI(false);
+
+        if (backgroundManager == null)
             backgroundManager = FindObjectOfType<BackgroundManager>();
 
     }
@@ -33,7 +35,7 @@ public class DeathScreen : MonoBehaviour
     private void showScreen()
     {
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-        TogglePauseUI(GameManager.Instance.isPaused);
+        ToggleDeathUI(GameManager.Instance.isPaused);
         if (backgroundManager != null)
         {
             if (backgroundManager.audioSourcePlayingCurrent)
@@ -69,7 +71,7 @@ public class DeathScreen : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    private void TogglePauseUI(bool toggle)
+    private void ToggleDeathUI(bool toggle)
     {
         deathGroup.alpha = toggle ? 1 : 0;
         deathGroup.interactable = toggle;
@@ -79,7 +81,7 @@ public class DeathScreen : MonoBehaviour
     public void SetDeathState(bool state)
     {
         GameManager.Instance.isPaused = state;
-        TogglePauseUI(state);
+        ToggleDeathUI(state);
 
         Cursor.visible = state;
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
