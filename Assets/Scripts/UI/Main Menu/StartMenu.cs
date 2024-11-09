@@ -44,10 +44,10 @@ namespace mainMenu
 
         public void playClicked()
         {
-            //_mainMenu.animator.SetTrigger("Gun Select");
+            SaveData.ResetData();
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             SceneManager.LoadScene(_sceneToLoad);
             Debug.Log("play clicked");
-            //_mainMenu.Start_toGunSelect();
         }
         public void tutorialClicked()
         {
