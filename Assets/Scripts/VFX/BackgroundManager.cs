@@ -25,34 +25,12 @@ public class BackgroundManager : MonoBehaviour
         audioSource.clip = current;
         PublicEvents.OnStageTransition.AddListener(Transition);
         PublicEvents.StartSound.AddListener(StartSound);
-        PublicEvents.StopSound.AddListener(StopSound);
     }
 
     private void StartSound()
     {
-        if(audioSourcePlayingCurrent)
-        {
-            audioSource.volume = audioSource.volume * volumeSliderAdjustment;
-            audioSource.Play();
-        }
-        else
-        {
-            secondaryAudio.volume = secondaryAudio.volume * volumeSliderAdjustment;
-            secondaryAudio.Play();
-        }
-        
-    }
-
-    private void StopSound()
-    {
-        if(audioSourcePlayingCurrent)
-        {
-            audioSource.Stop();
-        }
-        else
-        {
-            secondaryAudio.Stop();
-        }
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment; 
+        audioSource.Play();
     }
     private void Transition()
     {
