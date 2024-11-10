@@ -33,11 +33,11 @@ RectTransform:
   m_Father: {fileID: 5597856836471409236}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.19998, y: 11.7771}
-  m_SizeDelta: {x: 73.077, y: 73.5542}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -103.8615, y: 6.2}
+  m_SizeDelta: {x: 73.076996, y: 73.5542}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &5486219549004871584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -66,10 +66,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "But what to use as the base of the posion that'd be strong enough to kill
-    a swarm so grand... \nI got it! A beast resides in The Colosseum that's blood
-    is rumored to be so poisonous it can drop even mythical heros dead in seconds
-    if they touch the stuff."
+  m_text: 'Oh... but what could be strong enough to kill a swarm so grand?
+
+    I
+    got it! A beast resides in the fabled Colosseum who''s blood is rumored to be
+    so poisonous that it can drop even mythical heroes dead in seconds if they touch
+    the stuff.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -254,7 +256,7 @@ RectTransform:
   - {fileID: 5659722690704215054}
   - {fileID: 7478969335633665043}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -394,11 +396,11 @@ RectTransform:
   m_Father: {fileID: 908568893254812540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.7, y: -38.581}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 20.199997, y: 4}
   m_SizeDelta: {x: 33.4256, y: 22.838}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5223033199928251170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -427,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press shift to dash in any direction you are moving in
+  m_text: 'SHIFT to DASH in any direction you are moving in.
 
 '
   m_isRightToLeft: 0
@@ -463,7 +465,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -617,7 +619,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.1, y: 1.4}
+  m_AnchoredPosition: {x: -20.06, y: 3.3}
   m_SizeDelta: {x: 28.4539, y: 10.5993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7308488098137453291
@@ -648,7 +650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left Click to shoot my trusty Snake Launcher
+  m_text: 'LEFT CLICK to SHOOT my trusty Snake Launcher!
 
 '
   m_isRightToLeft: 0
@@ -684,7 +686,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -754,7 +756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.287, y: -15.1}
+  m_AnchoredPosition: {x: 27.5, y: -14.1}
   m_SizeDelta: {x: 33.4256, y: 22.838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5396504972761328444
@@ -785,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'My health, if this goes down I''m done for
+  m_text: 'HEALTH - If this goes down, I''m done for.
 
 
 '
@@ -822,7 +824,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -890,11 +892,11 @@ RectTransform:
   m_Father: {fileID: 7252347631797248707}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.621277, y: 11.7771}
-  m_SizeDelta: {x: 73.077, y: 73.5542}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -13.661499, y: 2.7}
+  m_SizeDelta: {x: 73.076996, y: 73.5542}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &6542029447007447112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -923,9 +925,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Well, people figured out I was the one to poach all the snakes so they
-    expected me of all people to fix this whole mess and kill the rodients. Since
-    I want to keep my head I came up with the soution of creating a deadly poison. '
+  m_text: 'Well, people figured out I was the one to poach all the snakes, so they
+    expected ME of all people to fix this whole mess and kill the rodents. Since
+    I want to keep my head, I came up with the soution of creating a deadly poison
+    to kill off these pesky vermin. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -1392,11 +1395,11 @@ RectTransform:
   m_Father: {fileID: 8905823860266241267}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53.7, y: 24.3}
-  m_SizeDelta: {x: 39.3, y: 22.838}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 54.1, y: -10.799988}
+  m_SizeDelta: {x: 39.3, y: 22.837997}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5174007762827767263
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1425,8 +1428,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'How many enemies are left, once enough enemies are killed the rest will
-    be marked
+  m_text: 'ENEMIES LEFT -
+
+    Once enough enemies are killed, the rest will be marked.
 
 
 '
@@ -1456,14 +1460,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1531,11 +1535,11 @@ RectTransform:
   m_Father: {fileID: 5167986796316945926}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.2, y: 11.7771}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 19.2, y: 11.7771}
   m_SizeDelta: {x: 73.077, y: 73.5542}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4328783469952842891
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1564,9 +1568,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turns out something called an "ecosysystem" exists so the rats started
-    to swarm and multiply at a rapid rate to the point that the continent was practically
-    overan with the rodents creating what we now know as "The Great Rodient Swarm".
+  m_text: Turns out something called an "ecosystem" exists that is supposed to keep
+    wild beasts in order. My "disruption", as the others call it, caused the rats
+    to swarm and multiply at such a rapid rate that the continent is now practically
+    overrun with rodents, creating what we now know as "The Great Rodent Swarm".
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -1751,7 +1756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -47.5}
+  m_AnchoredPosition: {x: 37.4, y: -34.9}
   m_SizeDelta: {x: 39.3, y: 22.838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2743254197202447342
@@ -1782,8 +1787,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Healing Bar, it goes up each time I kill an enemy and when full I can
-    use right cllick to heal
+  m_text: 'HEALING BAR - RIGHT CLICK to HEAL when full.
+
+
+    Each dead foe will
+    add to the bar!
 
 
 
@@ -1815,14 +1823,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1966,11 +1974,11 @@ RectTransform:
   m_Father: {fileID: 8905823860266241267}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64.8, y: 37.3}
-  m_SizeDelta: {x: 48.5903, y: 22.838}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 6.904846, y: -5.281006}
+  m_SizeDelta: {x: 48.5903, y: 22.837997}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &6419322638290279937
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2101,11 +2109,11 @@ RectTransform:
   m_Father: {fileID: 908568893254812540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64.8, y: -22.7}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 5.8585205, y: -24.299997}
   m_SizeDelta: {x: 40.4829, y: 10.5993}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6062580038631559382
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2134,7 +2142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use WASD to move around and R to reload
+  m_text: "Use WASD to MOVE. \n\nR to RELOAD."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -2161,14 +2169,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2720,11 +2728,11 @@ RectTransform:
   m_Father: {fileID: 3134349160205791579}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.62126, y: 11.7771}
-  m_SizeDelta: {x: 73.077, y: 73.5542}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -14.109985, y: 11.7771}
+  m_SizeDelta: {x: 73.076996, y: 73.5542}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8066450864664461452
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2753,10 +2761,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I had such a foolproof plan, but looks like it wasn't proof from this fool.
-    I poached almost every snake on the continent to produce the finest quality snake
-    oil so that I could become the richest man who ever lived. But sadly it didn't
-    work out the way I expected it to.
+  m_text: I had such a foolproof plan, but looks like it wasn't proof enough for
+    this fool. I have poached almost every snake on the continent to produce the
+    finest quality snake oil ever created. I was destined to become the richest man
+    who ever lived, but sadly it didn't work out the way I expected it to.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -2858,11 +2866,11 @@ RectTransform:
   m_Father: {fileID: 908568893254812540}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74.7, y: 37.4}
-  m_SizeDelta: {x: 28.4539, y: 11.6768}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -15.873047, y: -5.961609}
+  m_SizeDelta: {x: 28.453903, y: 11.676804}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &5137688198176511292
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2891,7 +2899,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the spacebar to jump, and again in the air to make it double
+  m_text: SPACEBAR to JUMP, and AGAIN in the air to make it DOUBLE!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -2918,14 +2926,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
-  m_fontSizeBase: 3
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3204,11 +3212,11 @@ RectTransform:
   m_Father: {fileID: 8905823860266241267}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.4, y: 1.7}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -6.13, y: 5.13}
   m_SizeDelta: {x: 33.4256, y: 22.838}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &323549428750862203
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3237,7 +3245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'My trusty Snake Launcher
+  m_text: 'My trusty SNAKE LAUNCHER!
 
 
 '
@@ -3274,7 +3282,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3418,11 +3426,11 @@ RectTransform:
   m_Father: {fileID: 7964049722446345581}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45.19998, y: 11.7771}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 14.261536, y: 3}
   m_SizeDelta: {x: 73.077, y: 73.5542}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3998960370320194630
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3451,9 +3459,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thus I am here, waiting to be the next gladiator of The Colosseum so that
-    I can get the blood of whatever horrid beast reside at the end so I can create
-    a strong enough poision to get rid of the rodients from the continent for good.
+  m_text: Thus, I am here, waiting to be the next gladiator of The Colosseum so that
+    I can get the blood of whatever horrid beast resides at the end of this difficult
+    trial. I will create a poison strong enough to rid rodents from this continent
+    for good!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -3707,11 +3716,11 @@ RectTransform:
   m_Father: {fileID: 8905823860266241267}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.6, y: -4}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 40.449997, y: -4}
   m_SizeDelta: {x: 39.3, y: 22.838}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1842507528087777799
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3740,7 +3749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ammo Counter, how many snakes I have before reloading
+  m_text: AMMO COUNTER - how many snakes I have in my launcher before reloading.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -3774,7 +3783,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
