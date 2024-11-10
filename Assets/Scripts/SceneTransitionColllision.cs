@@ -15,4 +15,9 @@ public class SceneTransitionColllision : MonoBehaviour
         SceneManager.LoadScene(TransitionScene);
         PublicEvents.StartSound.Invoke();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        OnTriggerEnter(collision.collider);
+    }
 }

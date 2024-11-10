@@ -86,6 +86,13 @@ public class JournalUI : MonoBehaviour
     /// </summary>
     public void ExitCanvas()
     {
+        if(OpenByDefault)
+        {
+            ExitCanvasToPauseMenu();
+            return;
+        }
+        OpenByDefault = false; //sorry about this part. quick fix for beta
+
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -94,6 +101,7 @@ public class JournalUI : MonoBehaviour
         group.alpha = 0f;
         group.interactable = false;
         group.blocksRaycasts = false;
+
     }
 
     /// <summary>
