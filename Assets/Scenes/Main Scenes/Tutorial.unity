@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44664675, g: 0.49649334, b: 0.57485896, a: 1}
+  m_IndirectSpecularColor: {r: 0.44664693, g: 0.49649364, b: 0.5748597, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5551,9 +5551,253 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 215626009642664962, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'My trusty SNAKE LAUNCHER!
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 215626009642664962, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 296958932226786913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 356563372746672245, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
       propertyPath: m_Name
       value: PlayerJournal
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 22.837997
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 54.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 622937474679636837, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.799988
+      objectReference: {fileID: 0}
+    - target: {fileID: 864915567943711468, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: Thus, I am here, waiting to be the next gladiator of The Colosseum so
+        that I can get the blood of whatever horrid beast resides at the end of this
+        difficult trial. I will create a poison strong enough to rid rodents from
+        this continent for good!
+      objectReference: {fileID: 0}
+    - target: {fileID: 894013406504978998, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'Well, people figured out I was the one to poach all the snakes, so
+        they expected ME of all people to fix this whole mess and kill the rodents.
+        Since I want to keep my head, I came up with the soution of creating a deadly
+        poison to kill off these pesky vermin. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 902981547605131496, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372522473994108, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'ENEMIES LEFT -
+
+        Once enough enemies are killed, the rest will
+        be marked.
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372522473994108, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372522473994108, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372522473994108, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200057900554850758, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 37.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200057900554850758, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -34.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444708465275470533, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512621536807058937, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512621536807058937, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512621536807058937, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512621536807058937, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.26152
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512621536807058937, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528530564122377625, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: "Use WASD to MOVE. \n\nR to RELOAD."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528530564122377625, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528530564122377625, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528530564122377625, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166888177027976127, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166888177027976127, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166888177027976127, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166888177027976127, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.8585205
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166888177027976127, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.299997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 73.076996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -13.661499
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489280406443191913, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872604260545936151, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872604260545936151, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872604260545936151, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872604260545936151, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40.449997
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982158398680062808, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024314502073053239, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383438919161790929, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602909919549508998, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -20.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602909919549508998, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768996699512948597, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'LEFT CLICK to SHOOT my trusty Snake Launcher!
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768996699512948597, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443444665960185773, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'HEALTH - If this goes down, I''m done for.
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443444665960185773, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552140713492370102, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: SPACEBAR to JUMP, and AGAIN in the air to make it DOUBLE!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552140713492370102, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552140713492370102, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552140713492370102, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5313124145692097918, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
       propertyPath: m_Pivot.x
@@ -5638,6 +5882,267 @@ PrefabInstance:
     - target: {fileID: 5313124145692097918, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 28.453903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 11.676804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15.873047
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430491655814709303, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.961609
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458213903465644705, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: I had such a foolproof plan, but looks like it wasn't proof enough for
+        this fool. I have poached almost every snake on the continent to produce
+        the finest quality snake oil ever created. I was destined to become the richest
+        man who ever lived, but sadly it didn't work out the way I expected it to.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951757257262734798, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048015604782054511, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: Turns out something called an "ecosystem" exists that is supposed to
+        keep wild beasts in order. My "disruption", as the others call it, caused
+        the rats to swarm and multiply at such a rapid rate that the continent is
+        now practically overrun with rodents, creating what we now know as "The Great
+        Rodent Swarm".
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125253880396126203, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125253880396126203, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125253880396126203, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125253880396126203, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 22.837997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.904846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499469825973969208, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.281006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622524178026214205, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'HEALING BAR - RIGHT CLICK to HEAL when full.
+
+
+        Each dead foe
+        will add to the bar!
+
+
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622524178026214205, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622524178026214205, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622524178026214205, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716009486027876479, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889474811846712582, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889474811846712582, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889474811846712582, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889474811846712582, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889474811846712582, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560795709235801952, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: "Oh but what to use as the base of this poison that'd be strong enough
+        to kill a swarm so grand... \nI got it! A beast resides in the fabled Colosseum
+        who's blood is rumored to be so poisonous that it can drop even mythical
+        heroes dead in seconds if they touch the stuff."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560795709235801952, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573629412969039388, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573629412969039388, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573629412969039388, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573629412969039388, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573629412969039388, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994777709969836715, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994777709969836715, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254389554952529026, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254389554952529026, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254389554952529026, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254389554952529026, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 73.076996
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254389554952529026, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -14.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710930844664805627, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: AMMO COUNTER - how many snakes I have in my launcher before reloading.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710930844664805627, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048181348340034039, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_text
+      value: 'SHIFT to DASH in any direction you are moving in.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048181348340034039, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 73.076996
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -103.8615
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216810515392235750, guid: c54a22603afe91c4d951ee80fc621b8e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9596,6 +10101,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1551434730518095635, guid: 0b52eea75f6c8d04abacc504f9570dc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2039315719}
+    - targetCorrespondingSourceObject: {fileID: 1551434730518095635, guid: 0b52eea75f6c8d04abacc504f9570dc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2039315720}
     - targetCorrespondingSourceObject: {fileID: 4952579823987309075, guid: 0b52eea75f6c8d04abacc504f9570dc6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 860201088}
@@ -10778,6 +11286,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TransitionScene: 3
+--- !u!114 &2039315720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039315718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.8933855, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 1
+  bakeKeys:
+  - {fileID: 3454997402486955451, guid: d05fa8828be199048bb709f826cc3c53, type: 3}
+  - {fileID: 5194340702381293203, guid: d05fa8828be199048bb709f826cc3c53, type: 3}
+  bakeValues:
+  - data:
+    - {x: -0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -1, y: 0, z: 0}
+    - {x: -0.84087104, y: 0.5412356, z: 0}
+    - {x: 0.84087104, y: 0.5412356, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: 0, y: 0.67312926, z: -0.7395248}
+    - {x: -0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: -0.84087104, y: 0.5412356, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 0.67312926, z: -0.7395248}
+    - {x: 0.0000005422096, y: -0.66974276, z: -0.7425932}
+    - {x: 0.5465661, y: -0.34424794, z: -0.7633865}
+    - {x: -0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.54656565, y: -0.34424827, z: -0.7633866}
+    - {x: 0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: -0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: 0.5465661, y: -0.34424794, z: -0.7633865}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.00000070805027, y: -0.8745908, z: -0.4848617}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.72847587, y: -0.45882156, z: -0.5087295}
+    - {x: 0, y: 0, z: -1}
+    - {x: -0.7284754, y: -0.45882204, z: -0.5087297}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.0000005422096, y: -0.66974276, z: -0.7425932}
+    - {x: 0.00000070805027, y: -0.8745908, z: -0.4848617}
+    - {x: 0.72847587, y: -0.45882156, z: -0.5087295}
+    - {x: 0.5465661, y: -0.34424794, z: -0.7633865}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.7284754, y: -0.45882204, z: -0.5087297}
+    - {x: -0.54656565, y: -0.34424827, z: -0.7633866}
+    - {x: 0.5465661, y: -0.34424794, z: -0.7633865}
+    - {x: 0.72847587, y: -0.45882156, z: -0.5087295}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: 0, y: 0.67312926, z: -0.7395248}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0.84087104, y: 0.5412356, z: 0}
+    - {x: 0.5411702, y: 0.34832996, z: -0.76537645}
+    - {x: -0.54656565, y: -0.34424827, z: -0.7633866}
+    - {x: 0.0000005422096, y: -0.66974276, z: -0.7425932}
+    - {x: 0, y: 0.67312926, z: -0.7395248}
+    - {x: -0.54656565, y: -0.34424827, z: -0.7633866}
+    - {x: -0.7284754, y: -0.45882204, z: -0.5087297}
+    - {x: 0.00000070805027, y: -0.8745908, z: -0.4848617}
+    - {x: 0.0000005422096, y: -0.66974276, z: -0.7425932}
+  - data:
+    - {x: 0.70710677, y: 0.6377377, z: 0.30543518}
+    - {x: 1, y: 0, z: 0}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: 0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: -0.70710677, y: 0.6377377, z: 0.30543518}
+    - {x: -0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -1, y: 0, z: 0}
+    - {x: 0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: 0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.70710677, y: 0, z: -0.70710677}
+    - {x: -0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: 0.70710677, y: 0.6377377, z: 0.30543518}
+    - {x: 0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: -0.6842099, y: 0.61708707, z: -0.38866502}
+    - {x: -0.70710677, y: 0.6377377, z: 0.30543518}
 --- !u!1001 &2041409863
 PrefabInstance:
   m_ObjectHideFlags: 0
