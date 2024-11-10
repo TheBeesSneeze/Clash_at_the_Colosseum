@@ -571,7 +571,7 @@ AnimatorStateMachine:
     m_Position: {x: 740, y: 920, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5931914659055145706}
-    m_Position: {x: 700, y: 1030, z: 0}
+    m_Position: {x: 670, y: 1010, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -712129390322308283}
     m_Position: {x: 500, y: 1120, z: 0}
@@ -846,7 +846,7 @@ MonoBehaviour:
   amountOfBoxes: 3
   launchForce: 300
   launchForceHeight: 40
-  phase2Box: {fileID: 8329771456865420373, guid: 4949fe8599163524f86f4023e39a7bbb, type: 3}
+  phase2Box: {fileID: 1354886365563451314, guid: 4949fe8599163524f86f4023e39a7bbb, type: 3}
   target1: {fileID: 6553401905325345620, guid: c0288cd0161c72d44940b0ac562a5024, type: 3}
   target2: {fileID: 6553401905325345620, guid: a5c5b301978d36a4192430f71f7b6e77, type: 3}
 --- !u!1102 &2790914023364641230
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchForce: 200
   launchForceHeight: 15
-  box: {fileID: 8329771456865420373, guid: 4949fe8599163524f86f4023e39a7bbb, type: 3}
+  box: {fileID: 1354886365563451314, guid: 4949fe8599163524f86f4023e39a7bbb, type: 3}
 --- !u!1102 &4548548848363530848
 AnimatorState:
   serializedVersion: 6
