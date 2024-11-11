@@ -86,7 +86,7 @@ public class JournalUI : MonoBehaviour
     /// </summary>
     public void ExitCanvas()
     {
-        if(OpenByDefault)
+        if(!OpenByDefault)
         {
             ExitCanvasToPauseMenu();
             return;
