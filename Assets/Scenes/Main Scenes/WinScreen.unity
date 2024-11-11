@@ -409,9 +409,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2125515931040533527, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125515931040533527, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125515931040533527, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.8039216
+      objectReference: {fileID: 0}
     - target: {fileID: 3033989290099633186, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
       propertyPath: m_Name
       value: Win Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238431369566532110, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238431369566532110, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238431369566532110, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.8039216
       objectReference: {fileID: 0}
     - target: {fileID: 4283295733617511834, guid: 8658ed01c0b6c0a4e9e4f2b00acd69cf, type: 3}
       propertyPath: m_Pivot.x
