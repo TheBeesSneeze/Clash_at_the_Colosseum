@@ -4,6 +4,7 @@
  * Creation Date :     9/3/2024
  *
  * Brief Description : Initializes different panels of the main menu.
+ * There are seperate scripts for GunSelect, Credits Menu, and Controls Menu
  * I love overcomplicating things!!!!!!!!!!!
  *****************************************************************************/
 using System.Collections;
@@ -67,6 +68,7 @@ namespace mainMenu
         [Header("Credits")]
         [SerializeField] private CanvasGroup creditsGroup;
         [SerializeField] private Button creditsBackButton;
+        [SerializeField] private RectTransform creditsBody;
         private void Start()
         {
             Time.timeScale = 1.0f;  
@@ -84,6 +86,13 @@ namespace mainMenu
             ToggleCanvasGroup(gunSelectGroup, false);
             ToggleCanvasGroup(creditsGroup, false);
             ToggleCanvasGroup(tutorialGroup, false);
+
+            RectTransform[] bruteForce = GetComponentsInChildren<RectTransform>();
+            foreach(RectTransform b in bruteForce)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(b);
+            }
+            
         }
 
         public static void ToggleCanvasGroup(CanvasGroup group, bool enabled)
