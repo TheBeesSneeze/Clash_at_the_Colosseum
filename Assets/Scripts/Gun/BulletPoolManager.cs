@@ -27,9 +27,9 @@ public class BulletPoolManager
         harpyEnemyBullet = harypyBulletPrefab;
         cyclopsEnemyBullet = cyclopsBulletPrefab;*/
 
-        for (int i = 0; i < amountPooled; i++)
+        /*for (int i = 0; i < amountPooled; i++)
         {
-            /*GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
+            GameObject enemyShot = GameObject.Instantiate(enemyBulletPrefab);
             GameObject harpyShot = GameObject.Instantiate(harypyBulletPrefab);
             GameObject cyclopsShot = GameObject.Instantiate(cyclopsBulletPrefab);
             basicEnemyBulletList.Add(enemyShot);
@@ -37,15 +37,15 @@ public class BulletPoolManager
             cyclopsEnemyBulletList.Add(cyclopsShot);
             enemyShot.SetActive(false);
             cyclopsShot.SetActive(false);
-            harpyShot.SetActive(false);*/
+            harpyShot.SetActive(false);
             CreateNewPlayerBullet().SetActive(false);
-        }
+        }*/ 
 
     }
 
     public static GameObject Instantiate(Vector3 position)
     {
-        for (int i = 0; i < bulletList.Count; i++)
+        /*for (int i = 0; i < bulletList.Count; i++)
         {
             if (!bulletList[i].activeInHierarchy)
             {
@@ -53,8 +53,9 @@ public class BulletPoolManager
                 bulletList[i].transform.position = position;
                 return bulletList[i];
             }
-        }
-        return CreateNewPlayerBullet();
+        }*/
+
+        return GameObject.Instantiate(playerBullet, position, Quaternion.identity);
     }
 
     /*public static GameObject InstantiateBasicEnemyBullet(Vector3 position)
@@ -105,7 +106,7 @@ public class BulletPoolManager
         return newShot;
     }*/
 
-    public static GameObject CreateNewPlayerBullet()
+    /*public static GameObject CreateNewPlayerBullet()
     {
         GameObject newShot = GameObject.Instantiate(playerBullet);
         bulletList.Add(newShot);
@@ -115,7 +116,7 @@ public class BulletPoolManager
             b.playerBullet = true;
         }
         return newShot;
-    }
+    }*/
 
     public static void Destroy(Bullet bullet)
     {   
