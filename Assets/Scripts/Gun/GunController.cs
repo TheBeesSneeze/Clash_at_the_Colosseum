@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
@@ -172,8 +171,7 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
 
         //var enemyBullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        GameObject bullet = GameObject.Instantiate(BulletPrefab, bulletSpawnPoint.transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().OneTimeInitalize(bulletEffects);
+        GameObject bullet = BulletPoolManager.Instantiate(bulletSpawnPoint.position);
         if (bullet == null)
         {
             return;
