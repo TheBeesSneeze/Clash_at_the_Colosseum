@@ -60,9 +60,18 @@ namespace DefaultNamespace
                 hits[i].GetComponent<EnemyTakeDamage>().TakeDamage(damage * DamageMultiplier);
                 Debug.Log(hits[i].gameObject.name + i + " took " + (damage * DamageMultiplier) + " damage");
             }
+
+            TrySpawnExplosionRotated(hit, bullet);
+        }
+
+        private void TrySpawnExplosionRotated(RaycastHit hit, Bullet bullet)
+        {
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            Vector3 direction = Vector3.Reflect(Vector3.up, hit.normal);
             GameObject explosion = Instantiate(explosionPrefab, hit.point, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * surfaceHitExplosionRadius * 2;
             explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
+            explosion.transform.LookAt(hit.point + hit.normal);
         }
 
         public override void OnDestroyBullet(Bullet bullet, float damage)

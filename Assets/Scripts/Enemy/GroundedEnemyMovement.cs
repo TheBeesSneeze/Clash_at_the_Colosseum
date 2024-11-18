@@ -145,7 +145,8 @@ public class GroundedEnemyMovement : MonoBehaviour
 
     private void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, _enemyStats.JumpForce, rb.velocity.z);
+        //rb.velocity = new Vector3(rb.velocity.x, _enemyStats.JumpForce, rb.velocity.z);
+        rb.AddForce(Vector3.up * _enemyStats.JumpForce, ForceMode.Force);
     }
 
     private Vector3 getTargetPosition()

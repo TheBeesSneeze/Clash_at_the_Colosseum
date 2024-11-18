@@ -204,7 +204,7 @@ MonoBehaviour:
   m_DecalLayerMask: 1
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0.445}
-  m_Size: {x: 1.5, y: 1.5, z: 0.89}
+  m_Size: {x: 2, y: 2, z: 0.89}
   m_FadeFactor: 1
 --- !u!1 &7275771511854018987
 GameObject:
@@ -305,8 +305,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1154451, y: 0.9504569, z: 2.1445432}
-  m_Center: {x: 0.13748696, y: -0.3302288, z: -0.11452317}
+  m_Size: {x: 2.2456756, y: 2.823909, z: 2.380395}
+  m_Center: {x: 0.07237178, y: 0.77, z: 0.00340271}
 --- !u!114 &4412249036880942908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,8 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31920dad7ac696e49afe5206ace1557b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dps: 10
+  dps: 100
   damagePlayer: 0
   damageEnemies: 1
   ApplyDamageOverTime: 1
-  SecondsBetweenDamage: 0.75
+  SecondsBetweenDamage: 0.25

@@ -13,6 +13,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private CanvasGroup deathGroup;
     [SerializeField] private Button respawnButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private BackgroundManager backgroundManager;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -21,14 +22,38 @@ public class DeathScreen : MonoBehaviour
     {
         PublicEvents.OnPlayerDeath.AddListener(showScreen);
         respawnButton.onClick.AddListener(Respawn);
-        mainMenuButton.onClick.AddListener(goToMain); 
+        mainMenuButton.onClick.AddListener(goToMain);
+
+        ToggleDeathUI(false);
+
+        if (backgroundManager == null)
+            backgroundManager = FindObjectOfType<BackgroundManager>();
+
     }
 
 
     private void showScreen()
     {
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-        TogglePauseUI(GameManager.Instance.isPaused);
+        ToggleDeathUI(GameManager.Instance.isPaused);
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            {
+                if (GameManager.Instance.isPaused)
+                {
+                    print("Made it here");
+                    backgroundManager.audioSource.Pause();
+                }
+            }
+            else
+            {
+                if (GameManager.Instance.isPaused)
+                {
+                    backgroundManager.secondaryAudio.Pause();
+                }
+            }
+        }
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
@@ -46,7 +71,7 @@ public class DeathScreen : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    private void TogglePauseUI(bool toggle)
+    private void ToggleDeathUI(bool toggle)
     {
         deathGroup.alpha = toggle ? 1 : 0;
         deathGroup.interactable = toggle;
@@ -56,7 +81,7 @@ public class DeathScreen : MonoBehaviour
     public void SetDeathState(bool state)
     {
         GameManager.Instance.isPaused = state;
-        TogglePauseUI(state);
+        ToggleDeathUI(state);
 
         Cursor.visible = state;
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;

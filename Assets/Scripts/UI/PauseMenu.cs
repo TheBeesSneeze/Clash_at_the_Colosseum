@@ -22,11 +22,13 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button restartGameButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider sensitivitySlider;
+    [SerializeField] private Tutorialmusic tutorialMusic; 
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private float baseBGMVolume;
+    private bool canPressEscape = true;
 
     private void Start()
     {
@@ -39,7 +41,17 @@ public class PauseMenu : MonoBehaviour
             backgroundManager = FindObjectOfType<BackgroundManager>();
         }
 
-        if(backgroundManager != null)
+        if (tutorialMusic == null)
+        {
+            tutorialMusic = FindObjectOfType<Tutorialmusic>();
+        }
+
+        if(tutorialMusic != null)
+        {
+            tutorialMusic.StartMusic();
+        }
+
+        if (backgroundManager != null)
         {
             baseBGMVolume = backgroundManager.audioSource.volume;
             Debug.Log("baseBGM: "+ baseBGMVolume);
@@ -57,45 +69,50 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
         PublicEvents.StartSound.Invoke();
+        PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
+        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);    
     }
     public void escPressed() {
-
-        Debug.Log("pause");
-
-        if (GameManager.Instance.pausedForUI)
-            return;
-
-        if (backgroundManager != null)
+        if(canPressEscape)
         {
-            if (backgroundManager.audioSourcePlayingCurrent)
-            {
-                if (!GameManager.Instance.isPaused)
-                {
-                    backgroundManager.audioSource.Pause();
-                }
-                else
-                {
-                    backgroundManager.audioSource.Play();
-                }
-            }
-            else
-            {
-                if(!GameManager.Instance.isPaused)
-                {
-                    backgroundManager.secondaryAudio.Pause();
-                }
-                else
-                {
-                    backgroundManager.secondaryAudio.Play();
-                }
-            }
-        }
+            Debug.Log("pause");
 
-        GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-        TogglePauseUI(GameManager.Instance.isPaused);
-        Cursor.visible = GameManager.Instance.isPaused;
-        Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
-        Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+            if (GameManager.Instance.pausedForUI)
+                return;
+
+            if (backgroundManager != null)
+            {
+                if (backgroundManager.audioSourcePlayingCurrent)
+                {
+                    if (!GameManager.Instance.isPaused)
+                    {
+                        backgroundManager.audioSource.Pause();
+                    }
+                    else
+                    {
+                        backgroundManager.audioSource.Play();
+                    }
+                }
+                else
+                {
+                    if (!GameManager.Instance.isPaused)
+                    {
+                        backgroundManager.secondaryAudio.Pause();
+                    }
+                    else
+                    {
+                        backgroundManager.secondaryAudio.Play();
+                    }
+                }
+            }
+
+            GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
+            TogglePauseUI(GameManager.Instance.isPaused);
+            Cursor.visible = GameManager.Instance.isPaused;
+            Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+            Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+        }
+        
     }
 
     public void SetPauseState(bool state)
@@ -153,6 +170,11 @@ public class PauseMenu : MonoBehaviour
                 backgroundManager.secondaryAudio.volume = sliderValue * baseBGMVolume;
             }
         }
+        if(tutorialMusic != null)
+        {
+            tutorialMusic.volumeSliderAdjustment = sliderValue;
+            tutorialMusic.UpdateVolume();
+        }
 
         Debug.Log(sliderValue * baseBGMVolume);
     }
@@ -169,5 +191,10 @@ public class PauseMenu : MonoBehaviour
         SaveDataManager.Instance.OnApplicationQuit();
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+    }
+
+    private void SetCanEsc()
+    {
+        canPressEscape = !canPressEscape;
     }
 }
