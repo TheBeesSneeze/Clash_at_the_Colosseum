@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2102548, g: 0.883931, b: 0.5953271, a: 1}
+  m_IndirectSpecularColor: {r: 1.2104746, g: 0.88403714, b: 0.595373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3790,6 +3790,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gameplay UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8037912167353501636, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: pauseGroup
+      value: 
+      objectReference: {fileID: 1723776256}
+    - target: {fileID: 8037912167353501636, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: backgroundManager
+      value: 
+      objectReference: {fileID: 883563526}
     - target: {fileID: 8209654967749561219, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12259,6 +12267,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &883563526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5287046858773437907, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
+  m_PrefabInstance: {fileID: 457740020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576b8411b7cd56c4082c54b3b1e0dfde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887793431
 GameObject:
   m_ObjectHideFlags: 0
@@ -17390,6 +17409,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!225 &1723776256 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5765658659997399380, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+  m_PrefabInstance: {fileID: 408032220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1739171460
 GameObject:
   m_ObjectHideFlags: 0

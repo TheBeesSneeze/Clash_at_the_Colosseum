@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        bulletPoolManager.OnDisable();
+        //bulletPoolManager.OnDisable();
     }
 
     private void Update()
