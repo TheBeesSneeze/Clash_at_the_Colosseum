@@ -6,9 +6,11 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.ComponentModel.Design.Serialization;
 
+namespace UI
+{
 public class JournalUI : MonoBehaviour
 {
-    public bool OpenByDefault=true;
+    public bool OpenByDefault = true;
 
     // This is a List that contains all of the pages. It can be changed in inspector.
     [Tooltip("This list should contain the pages in the canvas in hierarchy! The number you put is the actual number of pages unlike pageCap variable")]
@@ -57,7 +59,11 @@ public class JournalUI : MonoBehaviour
     public void FlipPageBack()
     {
         pages[pageNumber].SetActive(false);
-        pageNumber = Mathf.Max(0, pageNumber-1);
+        pageNumber = Mathf.Max(0, pageNumber - 1);
+        int newPage = Mathf.Min(pageCap, pageNumber + 1);
+        if (newPage != pageNumber)
+            PublicEvents.OnJournalPageFlip.Invoke();
+        pageNumber = newPage;
         FlipPageAny();
     }
 
@@ -68,7 +74,10 @@ public class JournalUI : MonoBehaviour
     {
         // Here we will add 1 to the pageNumber if we are not at the last page, this will bring us forward one page in the Journal.
         pages[pageNumber].SetActive(false);
-        pageNumber = Mathf.Min(pageCap, pageNumber+1);
+        int newPage = Mathf.Min(pageCap, pageNumber + 1);
+        if (newPage != pageNumber)
+            PublicEvents.OnJournalPageFlip.Invoke();
+        pageNumber = newPage;
         FlipPageAny();
     }
 
@@ -86,7 +95,7 @@ public class JournalUI : MonoBehaviour
     /// </summary>
     public void ExitCanvas()
     {
-        if(!OpenByDefault)
+        if (!OpenByDefault)
         {
             ExitCanvasToPauseMenu();
             return;
@@ -133,4 +142,5 @@ public class JournalUI : MonoBehaviour
         group.interactable = true;
         group.blocksRaycasts = true;
     }
+}
 }
