@@ -13,10 +13,12 @@ using UnityEngine.UI;
 public class GunGameplaySprite : MonoBehaviour
 {
     [SerializeField] private Image gunImage;
+    [SerializeField] private Image bouncingImage;
     [SerializeField] private Image lightningImage;
     [SerializeField] private Image explosionImage;
     [SerializeField] private Image iceImage;
     [SerializeField] private Image windImage;
+    [SerializeField] private Image venomImage;
 
     [SerializeField] private Sprite EmptySprite;
     private GunController gunController;
@@ -106,6 +108,8 @@ public class GunGameplaySprite : MonoBehaviour
         LoadIndividualSprite(explosionImage, sprite.bombSprite);
         LoadIndividualSprite(iceImage, sprite.iceSprite);
         LoadIndividualSprite(windImage, sprite.windSprite);
+        LoadIndividualSprite(bouncingImage, sprite.bouncingSprite);
+        LoadIndividualSprite(venomImage, sprite.venomSprite);
     }
 
     private void OnBulletEffectGet(BulletEffect effect)
@@ -119,6 +123,8 @@ public class GunGameplaySprite : MonoBehaviour
         if(type == typeof(ExplosionBullet)) { if (explosionImage != null) explosionImage.enabled = true; return; }
         if(type == typeof(SlowBullet)) { if(iceImage != null) iceImage.enabled = true; return; }
         if(type == typeof(WindBullet)) { if (windImage != null) windImage.enabled = true; return; }
+        if(type == typeof(VenomBullet)) { if (venomImage != null) venomImage.enabled = true; return; }
+        if(type == typeof(BouncingBullet)) { if (bouncingImage != null) bouncingImage.enabled = true; return; }
 
         LoadSprite(gunAnimation.sprites[index]);
     }
