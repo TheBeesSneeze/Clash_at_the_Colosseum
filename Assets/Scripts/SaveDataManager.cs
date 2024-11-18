@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
+
+namespace Managers
+{
 
 public class SaveDataManager : Singleton<SaveDataManager>
 {
@@ -61,3 +65,5 @@ public class SaveDataManager : Singleton<SaveDataManager>
     }
 
 }
+}
+

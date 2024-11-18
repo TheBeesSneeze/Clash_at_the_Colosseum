@@ -11,14 +11,15 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using Managers;
 
-
+namespace UI{
 public class UpgradeSelectUI : MonoBehaviour
 {
-    
+
     [SerializeField] private CanvasGroup group;
-    [SerializeField] private BulletEffectButton upgradeButton1=new BulletEffectButton();
-    [SerializeField] private BulletEffectButton upgradeButton2=new BulletEffectButton();
+    [SerializeField] private BulletEffectButton upgradeButton1 = new BulletEffectButton();
+    [SerializeField] private BulletEffectButton upgradeButton2 = new BulletEffectButton();
     [Space(5)]
     [SerializeField] private Button selectButton;
     [SerializeField] private Image selectButtonImage;
@@ -39,7 +40,7 @@ public class UpgradeSelectUI : MonoBehaviour
         //DisableMenu();
 
         GameManager.Instance.pausedForUI = false;
-        animator.SetBool("Left Selected",  false);
+        animator.SetBool("Left Selected", false);
         animator.SetBool("Right Selected", false);
 
         group.alpha = 0;
@@ -52,7 +53,7 @@ public class UpgradeSelectUI : MonoBehaviour
         selectButton.onClick.AddListener(OnSelectClick);
     }
 
-    public async void OpenMenu(float delaySeconds =0)
+    public async void OpenMenu(float delaySeconds = 0)
     {
         if (open) return;
         open = true;
@@ -144,7 +145,7 @@ public class UpgradeSelectUI : MonoBehaviour
 
     private void OnSelectClick()
     {
-        _gunController.AddBulletEffect (selectedEffect);
+        _gunController.AddBulletEffect(selectedEffect);
         bulletEffectPool.Remove(selectedEffect);
         DisableMenu();
         StageManager.ChangeStage();
@@ -164,7 +165,7 @@ public class UpgradeSelectUI : MonoBehaviour
             index1 = Random.Range(0, count);
             index2 = Random.Range(0, count);
         }
-        while(index1 == index2);
+        while (index1 == index2);
 
         upgradeButton1.LoadBulletEffect(bulletEffectPool[index1]);
         upgradeButton2.LoadBulletEffect(bulletEffectPool[index2]);
@@ -173,7 +174,7 @@ public class UpgradeSelectUI : MonoBehaviour
     public void OverridePool(List<BulletEffect> newList)
     {
 
-        if(newList.Count != 0)
+        if (newList.Count != 0)
             bulletEffectPool = newList;
     }
 
@@ -182,3 +183,5 @@ public class UpgradeSelectUI : MonoBehaviour
         return bulletEffectPool;
     }
 }
+}
+

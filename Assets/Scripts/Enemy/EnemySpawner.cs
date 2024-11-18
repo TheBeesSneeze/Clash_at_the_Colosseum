@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Managers { 
 public class EnemySpawner : Singleton<EnemySpawner>
 {
     [SerializeField] private EnemyPrefab[] enemyPrefabs;
@@ -133,4 +134,4 @@ public class EnemyPrefab
     public EnemySpawn enemyTag;
     public GameObject prefab;
 }
-
+}

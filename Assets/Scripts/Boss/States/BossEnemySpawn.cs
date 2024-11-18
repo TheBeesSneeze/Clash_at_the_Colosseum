@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
-
+using Managers;
 public class BossEnemySpawn : StateMachineBehaviour
 {
     [SerializeField] private TextAsset[] enemyPlacements;

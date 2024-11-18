@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Managers{
 public class BackgroundManager : MonoBehaviour
 {
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioSource secondaryAudio;
-    [SerializeField] private float  lenghtOfAudioSwitch;
-   
+    [SerializeField] private float lenghtOfAudioSwitch;
+
     private AudioClip current;
     private AudioClip previous;
     private int stageIndex;
     private StageStats[] stageStats;
-    
+
     [HideInInspector] public bool audioSourcePlayingCurrent = true;
-    [HideInInspector] public float volumeSliderAdjustment = 1; 
+    [HideInInspector] public float volumeSliderAdjustment = 1;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class BackgroundManager : MonoBehaviour
 
     private void StartSound()
     {
-        audioSource.volume = audioSource.volume * volumeSliderAdjustment; 
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment;
         audioSource.Play();
     }
     private void Transition()
@@ -38,11 +39,11 @@ public class BackgroundManager : MonoBehaviour
         previous = current;
         current = stageStats[stageIndex].BackgroundAudio;
 
-        if(current == previous)
+        if (current == previous)
         {
-            return; 
+            return;
         }
-        if(current == null)
+        if (current == null)
         {
             return;
         }
@@ -79,9 +80,9 @@ public class BackgroundManager : MonoBehaviour
     {
         float time = 0;
         float startValue = downVol.volume;
-        while(time < duration)
+        while (time < duration)
         {
-            downVol.volume = Mathf.Lerp(startValue, endVolume, time/duration);
+            downVol.volume = Mathf.Lerp(startValue, endVolume, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
@@ -93,13 +94,15 @@ public class BackgroundManager : MonoBehaviour
     {
         float time = 0;
         float startValue = upVol.volume;
-        while(time < duration)
+        while (time < duration)
         {
-            upVol.volume = Mathf.Lerp(startValue,endVolume, time/duration);
+            upVol.volume = Mathf.Lerp(startValue, endVolume, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
         upVol.volume = endVolume;
     }
+
+}
 
 }

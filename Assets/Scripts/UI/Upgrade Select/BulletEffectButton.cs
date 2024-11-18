@@ -9,6 +9,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace UI
+{
 [System.Serializable]
 public class BulletEffectButton
 {
@@ -34,6 +36,8 @@ public class BulletEffectButton
         upgradeText.text = bulletEffect.UpgradeName;
         upgradeDescription.text = bulletEffect.UpgradeDescription;
         bodyImage.color = bulletEffect.bodyColor;
-        effectIcon.sprite = bulletEffect.UpgradeIcon;
+        effectIcon.sprite = bulletEffect.UpgradeIcon[0];
     }
 }
+}
+

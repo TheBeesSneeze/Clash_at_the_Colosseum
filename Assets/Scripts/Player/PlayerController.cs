@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static AudioManager;
+using Managers;
 
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour

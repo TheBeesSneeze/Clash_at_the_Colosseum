@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using Managers;
 
+namespace UI { 
 public class DeathScreen : MonoBehaviour
 {
 
@@ -87,4 +89,5 @@ public class DeathScreen : MonoBehaviour
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = state ? 0 : 1;
     }
+}
 }

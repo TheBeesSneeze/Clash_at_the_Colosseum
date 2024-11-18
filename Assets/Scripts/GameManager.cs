@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
+namespace Managers
+{ 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -104,11 +106,12 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        bulletPoolManager.OnDisable();
+        //bulletPoolManager.OnDisable();
     }
 
     private void Update()
     {
         pathManager.Update();
     }
+}
 }
