@@ -10,24 +10,42 @@ using UnityEngine.UI;
 public class UISpriteAnimation : MonoBehaviour
 {
     [SerializeField] private Image image;
-    [SerializeField] private List<Sprite> frames;
+    [SerializeField] private Sprite[] frames;
     [SerializeField] private float animationLengthSeconds = 1;
     [SerializeField] private bool alwaysAnimate = false;
 
     public float secondsBetweenFrames;
     private float lastFrameChangeTime;
     private CanvasGroup group;
-    public int spriteFrameIndex = 0;
+    private int spriteFrameIndex = 0;
+
+    public void SetSprites(Sprite[] sprites)
+    {
+        if(sprites.Length<=0)
+        {
+            Debug.LogError("No sprites!");
+            return;
+        }
+
+        frames = sprites;
+        spriteFrameIndex = 0;
+        secondsBetweenFrames = animationLengthSeconds / ((float)frames.Length);
+        lastFrameChangeTime = Time.time;
+        NextSprite();
+    }
+
 
     private void Start()
     {
-        if (frames.Count <= 0)
+        if (frames.Length <= 0)
         {
-            Debug.LogWarning("Animation not set properly");
-            Destroy(this);
+            //this is intended behaviour now
+            //Debug.LogWarning("Animation not set properly");
+            //Destroy(this); 
+            return;
         }
 
-        secondsBetweenFrames = animationLengthSeconds / ((float)frames.Count);
+        secondsBetweenFrames = animationLengthSeconds / ((float)frames.Length);
         lastFrameChangeTime = Time.time;
         group = GetComponent<CanvasGroup>();
     }
@@ -36,8 +54,11 @@ public class UISpriteAnimation : MonoBehaviour
     private void Update()
     {
         //if (group != null)
-            //if (group.alpha <= 0 && !alwaysAnimate)
-                //return;
+        //if (group.alpha <= 0 && !alwaysAnimate)
+        //return;
+
+        if (frames.Length <= 0) return;
+        
 
         if (Time.unscaledTime < lastFrameChangeTime + secondsBetweenFrames)
             return;
@@ -47,8 +68,12 @@ public class UISpriteAnimation : MonoBehaviour
     }
     private void NextSprite()
     {
+        Debug.Log("hi");
         lastFrameChangeTime = Time.unscaledTime;
-        spriteFrameIndex = (spriteFrameIndex + 1) % frames.Count;
+        secondsBetweenFrames = animationLengthSeconds / ((float)frames.Length);
+        spriteFrameIndex = (spriteFrameIndex + 1) % frames.Length;
         image.sprite = frames[spriteFrameIndex];
     }
+
+    
 }
