@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         InitializeCellManager();
         InitializePathManager();
-        InitializeBulletPoolManager();
+        //InitializeBulletPoolManager();
         InitializeStageTransitionManager();
         InitializeStageManager();
         //InitializeEnemySpawnManager(); //not yet

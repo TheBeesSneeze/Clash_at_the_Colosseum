@@ -4,7 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 
 public class AudioManager : MonoBehaviour
-{
+{ 
 
     private GunController gunController;
     private PlayerBehaviour player;
@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
     public SoundClip CyclopsDeathSound;
     public SoundClip HarpyDeathSound;
     public SoundClip MinoutarDeathSound;
+    public SoundClip PageFlipSound;
 
 
     public static float masterVolume=1;
@@ -53,7 +54,7 @@ public class AudioManager : MonoBehaviour
         PublicEvents.CyclopsDeath.AddListener(CyclopsDeath);
         PublicEvents.HarpyDeath.AddListener(HarpyDeath);
         PublicEvents.MinoutarDeath.AddListener(MinotaurDeath);
-
+        PublicEvents.OnJournalPageFlip.AddListener(PageFlipSound.PlaySound);
 
         gunController = GameObject.FindObjectOfType<GunController>();
         player = GameObject.FindObjectOfType<PlayerBehaviour>();

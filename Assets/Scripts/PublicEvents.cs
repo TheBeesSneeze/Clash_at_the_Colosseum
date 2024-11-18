@@ -1,7 +1,7 @@
 ///
 /// So many unity events used by like every script ever.
 /// Initialized in GameManager
-/// Toby
+/// Toby, Sky, Clare
 /// 
 
 
@@ -9,6 +9,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -40,6 +41,7 @@ public class PublicEvents
     public static UnityEvent MinoutarDeath = new UnityEvent();
     public static UnityEvent Reloading = new UnityEvent();
     public static UnityEvent StartSound = new UnityEvent();
+    public static UnityEvent OnJournalPageFlip = new UnityEvent();
    
 
     // actions???? what the fuck!!!
