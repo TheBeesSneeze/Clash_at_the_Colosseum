@@ -68,7 +68,6 @@ public class UISpriteAnimation : MonoBehaviour
     }
     private void NextSprite()
     {
-        Debug.Log("hi");
         lastFrameChangeTime = Time.unscaledTime;
         secondsBetweenFrames = animationLengthSeconds / ((float)frames.Length);
         spriteFrameIndex = (spriteFrameIndex + 1) % frames.Length;
