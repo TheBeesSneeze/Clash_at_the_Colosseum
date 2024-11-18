@@ -18,7 +18,12 @@ MonoBehaviour:
   DestroyBulletOnEntityContact: 1
   UpgradeName: Boreas' Blessing
   UpgradeDescription: Shortly slows enemy movement speed after hitting the enemy
-  UpgradeIcon: {fileID: -1915554117, guid: 4024981bdff2b244ebef423ebc75f430, type: 3}
+  UpgradeIcon:
+  - {fileID: -2091119882, guid: 32f42b2285a448f41888736060edb544, type: 3}
+  - {fileID: 763969006, guid: 32f42b2285a448f41888736060edb544, type: 3}
+  - {fileID: 1055216241, guid: 32f42b2285a448f41888736060edb544, type: 3}
+  - {fileID: -61156330, guid: 32f42b2285a448f41888736060edb544, type: 3}
+  - {fileID: -1622079288, guid: 32f42b2285a448f41888736060edb544, type: 3}
   bodyColor: {r: 0.35283017, g: 1, b: 0.96955156, a: 1}
   secondaryColor: {r: 0.35557136, g: 0.68058825, b: 0.8301887, a: 1}
   SlowBulletSpeed: 2
