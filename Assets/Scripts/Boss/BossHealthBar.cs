@@ -11,56 +11,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Enemy.Boss;
 
-[RequireComponent(typeof(CanvasGroup))]
-public class BossHealthBar : MonoBehaviour  //I don't know why i didn't just derive from health bar
+namespace UI
 {
-    public Slider slider;
-    private BossTakeDamage bossTakeDamage;
-    private CanvasGroup group;
-
-    private void Start()
+    [RequireComponent(typeof(CanvasGroup))]
+    public class BossHealthBar : MonoBehaviour  //I don't know why i didn't just derive from health bar
     {
-        group = GetComponent<CanvasGroup>();    
-        group.alpha = 0;
+        public Slider slider;
+        private BossTakeDamage bossTakeDamage;
+        private CanvasGroup group;
 
-        PublicEvents.OnBossStart.AddListener(EnableBar);
-        PublicEvents.OnBossPhaseTwoStart.AddListener(HalfOpacity);
-        PublicEvents.OnBossPhaseThreeStart.AddListener(ReturnFullOpacity);
-        PublicEvents.HydraDeath.AddListener(DisableBar);
-    }
+        private void Start()
+        {
+            group = GetComponent<CanvasGroup>();
+            group.alpha = 0;
 
-    public void SetHealth(float health)
-    {
-        slider.value = health;
-    }
+            PublicEvents.OnBossStart.AddListener(EnableBar);
+            PublicEvents.OnBossPhaseTwoStart.AddListener(HalfOpacity);
+            PublicEvents.OnBossPhaseThreeStart.AddListener(ReturnFullOpacity);
+            PublicEvents.HydraDeath.AddListener(DisableBar);
+        }
 
-    public void SetMaxHealth(float health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
-    }
+        public void SetHealth(float health)
+        {
+            slider.value = health;
+        }
 
-    private void EnableBar()
-    {
-        group.alpha = 1;
-        bossTakeDamage = GameObject.FindObjectOfType<BossTakeDamage>();
-        bossTakeDamage.bossHealthBar = this;
-        SetMaxHealth(bossTakeDamage.GetComponent<BossStats>().BossHealth);
-    }
-    private void HalfOpacity()
-    {
-        group.alpha = 0.5f;
-    }
+        public void SetMaxHealth(float health)
+        {
+            slider.maxValue = health;
+            slider.value = health;
+        }
 
-    private void ReturnFullOpacity()
-    {
-        group.alpha = 1;
-    }
+        private void EnableBar()
+        {
+            group.alpha = 1;
+            bossTakeDamage = GameObject.FindObjectOfType<BossTakeDamage>();
+            bossTakeDamage.bossHealthBar = this;
+            SetMaxHealth(bossTakeDamage.GetComponent<BossStats>().BossHealth);
+        }
+        private void HalfOpacity()
+        {
+            group.alpha = 0.5f;
+        }
 
-    private void DisableBar()
-    {
-        group.alpha = 0;
+        private void ReturnFullOpacity()
+        {
+            group.alpha = 1;
+        }
+
+        private void DisableBar()
+        {
+            group.alpha = 0;
+        }
     }
 }
+
 

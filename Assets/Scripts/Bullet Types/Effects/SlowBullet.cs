@@ -7,8 +7,10 @@
  *****************************************************************************/
 
 using UnityEngine;
+using Enemy;
+using Enemy.Boss;
 
-namespace DefaultNamespace
+namespace BulletEffects
 {
     [CreateAssetMenu(fileName = "SlowBullet", menuName = "BulletEffects/SlowBullet")]
     public class SlowBullet : BulletEffect

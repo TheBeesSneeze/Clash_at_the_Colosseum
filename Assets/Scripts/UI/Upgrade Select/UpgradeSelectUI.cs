@@ -12,6 +12,8 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using Managers;
+using BulletEffects;
+using Player;
 
 namespace UI{
 public class UpgradeSelectUI : MonoBehaviour

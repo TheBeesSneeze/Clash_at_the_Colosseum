@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy.Boss;
 
 namespace Managers { 
 public class EnemySpawner : Singleton<EnemySpawner>

@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Managers;
 
+
 public class InputEvents : Singleton<InputEvents>
 {
     // Events

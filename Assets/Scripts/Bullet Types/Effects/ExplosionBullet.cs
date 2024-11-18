@@ -10,7 +10,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
-namespace DefaultNamespace
+using Enemy;
+
+namespace BulletEffects
 {
     [CreateAssetMenu(fileName = "Card")]
     public class ExplosionBullet : BulletEffect

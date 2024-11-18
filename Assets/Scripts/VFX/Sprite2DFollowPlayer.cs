@@ -6,8 +6,9 @@ using UnityEngine;
 // File Name :         Sprite2DFollowPlayer.cs
 // Author :            Toby
 //
-// Brief Description : Four sprite script to visualize enemies
+// Brief Description : 1 sprite script to visualize enemies
 *****************************************************************************/
+using Player;
 
 public class Sprite2DFollowPlayer : MonoBehaviour
 {

@@ -5,238 +5,247 @@
 *
 * Brief Description : Projectile Bullet Physics
  *****************************************************************************/
+using Enemy;
 using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
-using static AudioManager;
-using static UnityEngine.EventSystems.EventTrigger;
+using Player;
 
+namespace BulletEffects
+{
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+        // Start is called before the first frame update
 
-    [SerializeField] public float despawnTime = 5f;
-    [SerializeField] public float bulletGravity = 1f;
-    [SerializeField] private LayerMask hitLayers;
-    [SerializeField] private bool DealPlayerDamage = true;
-    [SerializeField] private bool DealEnemyDamage = true;
-    [SerializeField] private GameObject wallHitParticle; 
+        [SerializeField] public float despawnTime = 5f;
+        [SerializeField] public float bulletGravity = 1f;
+        [SerializeField] private LayerMask hitLayers;
+        [SerializeField] private bool DealPlayerDamage = true;
+        [SerializeField] private bool DealEnemyDamage = true;
+        [SerializeField] private GameObject wallHitParticle;
 
-    private Rigidbody rb;
-    private Vector3 lastPosition;
-    private float timeActive;
-    private GunController gunController;
-    private List<BulletEffect> effects;
-    
-    [HideInInspector]public bool playerBullet = false;
-    [HideInInspector] public float damageAmount = 10f;
-    [HideInInspector] public float bulletForce = 200f;
+        private Rigidbody rb;
+        private Vector3 lastPosition;
+        private float timeActive;
+        private GunController gunController;
+        private List<BulletEffect> effects;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        gunController = GameObject.FindObjectOfType<GunController>();
-        effects = new List<BulletEffect>();
-    }
+        [HideInInspector] public bool playerBullet = false;
+        [HideInInspector] public float damageAmount = 10f;
+        [HideInInspector] public float bulletForce = 200f;
 
-    /// <summary>
-    /// only called for player bullets
-    /// </summary>
-    public void OneTimeInitalize(List<BulletEffect> bulletEffects)
-    {
-        foreach (BulletEffect effect in bulletEffects)
+        private void Awake()
         {
-            AddEffect(effect);
+            rb = GetComponent<Rigidbody>();
+            gunController = GameObject.FindObjectOfType<GunController>();
+            effects = new List<BulletEffect>();
         }
 
-    }
-
-    /// <summary>
-    /// was previously start function, changed to get called in GunController
-    /// </summary>
-    public void OnBulletShoot(Vector3 dir)
-    {
-        rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
-
-        lastPosition = transform.position;
-
-        if (effects == null)
-            return; //who cares probably an enemy
-
-        foreach (BulletEffect effect in effects)
+        /// <summary>
+        /// only called for player bullets
+        /// </summary>
+        public void OneTimeInitalize(List<BulletEffect> bulletEffects)
         {
-            effect.OnShoot(this);
-        }
-    }
-
-
-    public void ResetBullet()
-    {
-        lastPosition = transform.position;
-        timeActive = 0;
-    }
-    private void applyGravity() {
-        Vector3 direction = new Vector3();
-        direction.y = -bulletGravity;
-        rb.AddForce(direction);
-    }
-    private void FixedUpdate()
-    {
-        applyGravity();
-        if (!gameObject.activeInHierarchy)
-            return;
-
-        if (timeActive >= despawnTime)
-        {
-            if(playerBullet)
+            foreach (BulletEffect effect in bulletEffects)
             {
-                BulletPoolManager.Destroy(this);
-                return;
+                AddEffect(effect);
             }
-            Destroy(gameObject);
-            return;
-        }
-        timeActive += Time.fixedDeltaTime;
-        Debug.DrawRay(lastPosition, transform.forward);
-        transform.LookAt(transform.position + rb.velocity);
 
-        RaycastHit hit;
-        if (!Physics.Raycast(lastPosition, transform.forward, out hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
-            QueryTriggerInteraction.Ignore))
+        }
+
+        /// <summary>
+        /// was previously start function, changed to get called in GunController
+        /// </summary>
+        public void OnBulletShoot(Vector3 dir)
+        {
+            rb.AddForce(dir.normalized * bulletForce, ForceMode.Impulse);
+
+            lastPosition = transform.position;
+
+            if (effects == null)
+                return; //who cares probably an enemy
+
+            foreach (BulletEffect effect in effects)
+            {
+                effect.OnShoot(this);
+            }
+        }
+
+
+        public void ResetBullet()
         {
             lastPosition = transform.position;
-            return; // nothing happened
+            timeActive = 0;
         }
-
-        if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy ))
+        private void applyGravity()
         {
-            OnEnemyHit(enemy);
-            return;
+            Vector3 direction = new Vector3();
+            direction.y = -bulletGravity;
+            rb.AddForce(direction);
         }
-        if (DealPlayerDamage && hit.collider.TryGetComponent(out PlayerBehaviour player))
+        private void FixedUpdate()
         {
-            print("hit player");
-            OnPlayerHit(player);
-            return;
-        }
-        //if hit something that isnt enemy
-        
-        OnHitSurface(hit);
-    }
+            applyGravity();
+            if (!gameObject.activeInHierarchy)
+                return;
 
-
-    /// <summary>
-    /// Called in bulletpoolmanager
-    /// </summary>
-    public void AddEffect(BulletEffect effect)
-    {
-        if (effect == null)
-            return ;
-        if(effects == null)
-            effects = new List<BulletEffect>();
-
-        BulletEffect copy = Instantiate(effect);
-        effects.Add(copy);
-        copy.DefaultInitialize(this, gunController);
-    }
-   
-    private void OnEnemyHit(EnemyTakeDamage enemy)
-    {
-        enemy.TakeDamage(damageAmount);
-        foreach(BulletEffect effect in effects)
-        {
-            effect.OnEnemyHit(enemy, damageAmount, this);
-        }
-
-        if(DestroyOnEntityHit())
-        {
-            if (playerBullet)
+            if (timeActive >= despawnTime)
             {
-                BulletPoolManager.Destroy(this);
+                if (playerBullet)
+                {
+                    //BulletPoolManager.Destroy(this);
+                    Destroy(this.gameObject);
+                    return;
+                }
+                Destroy(gameObject);
                 return;
             }
+            timeActive += Time.fixedDeltaTime;
+            Debug.DrawRay(lastPosition, transform.forward);
+            transform.LookAt(transform.position + rb.velocity);
 
-            Destroy(gameObject);
-        }
-            
-    }
-
-    private void OnPlayerHit(PlayerBehaviour player)
-    {
-
-        player.TakeDamage(damageAmount);
-
-        if (DestroyOnEntityHit())
-        {
-            if (playerBullet)
+            RaycastHit hit;
+            if (!Physics.Raycast(lastPosition, transform.forward, out hit, Vector3.Distance(transform.position, lastPosition), hitLayers,
+                QueryTriggerInteraction.Ignore))
             {
-                BulletPoolManager.Destroy(this);
+                lastPosition = transform.position;
+                return; // nothing happened
+            }
+
+            if (DealEnemyDamage && hit.collider.TryGetComponent(out EnemyTakeDamage enemy))
+            {
+                OnEnemyHit(enemy);
                 return;
             }
-            Destroy(gameObject);
-        }
-
-    }
-
-    private void OnHitSurface(RaycastHit hit)
-    {
-        for (int i=0; i< effects.Count; i++)
-        {
-            effects[i].OnHitOther(hit, damageAmount, this);
-        }
-        if (wallHitParticle != null)
-            Instantiate(wallHitParticle, transform.position, Quaternion.identity);
-
-        if (DestroyOnSurfaceHit())
-        {
-            if (playerBullet)
+            if (DealPlayerDamage && hit.collider.TryGetComponent(out PlayerBehaviour player))
             {
-                BulletPoolManager.Destroy(this);
+                print("hit player");
+                OnPlayerHit(player);
                 return;
             }
-            Destroy(gameObject);
+            //if hit something that isnt enemy
+
+            OnHitSurface(hit);
         }
 
 
-
-    }
-
-    private bool DestroyOnEntityHit()
-    {
-        bool destroy = true;
-
-        foreach (BulletEffect effect in effects)
+        /// <summary>
+        /// Called in bulletpoolmanager
+        /// </summary>
+        public void AddEffect(BulletEffect effect)
         {
-            if (!effect.DestroyBulletOnEntityContact)
-                destroy = false;
+            if (effect == null)
+                return;
+            if (effects == null)
+                effects = new List<BulletEffect>();
+
+            BulletEffect copy = Instantiate(effect);
+            effects.Add(copy);
+            copy.DefaultInitialize(this, gunController);
         }
 
-        return destroy;
-    }
-
-    private bool DestroyOnSurfaceHit()
-    {
-        bool destroy = true;
-
-        foreach (BulletEffect effect in effects)
+        private void OnEnemyHit(EnemyTakeDamage enemy)
         {
-            if (!effect.DestroyBulletOnSurfaceContact)
-                destroy = false;
+            enemy.TakeDamage(damageAmount);
+            foreach (BulletEffect effect in effects)
+            {
+                effect.OnEnemyHit(enemy, damageAmount, this);
+            }
+
+            if (DestroyOnEntityHit())
+            {
+                if (playerBullet)
+                {
+                        //BulletPoolManager.Destroy(this);
+                        Destroy(this.gameObject);
+                    return;
+                }
+
+                Destroy(gameObject);
+            }
+
         }
 
-        return destroy;
-    }
-
-    public void OnDisableBullet()
-    {
-        foreach(BulletEffect effect in effects)
+        private void OnPlayerHit(PlayerBehaviour player)
         {
-            effect.OnDestroyBullet(this, damageAmount);
-        }
-    }
 
+            player.TakeDamage(damageAmount);
+
+            if (DestroyOnEntityHit())
+            {
+                if (playerBullet)
+                {
+                    //BulletPoolManager.Destroy(this);
+                    Destroy(this.gameObject);
+                    return;
+                }
+                Destroy(gameObject);
+            }
+
+        }
+
+        private void OnHitSurface(RaycastHit hit)
+        {
+            for (int i = 0; i < effects.Count; i++)
+            {
+                effects[i].OnHitOther(hit, damageAmount, this);
+            }
+            if (wallHitParticle != null)
+                Instantiate(wallHitParticle, transform.position, Quaternion.identity);
+
+            if (DestroyOnSurfaceHit())
+            {
+                if (playerBullet)
+                {
+                    //BulletPoolManager.Destroy(this);
+                    Destroy(this.gameObject);
+                    return;
+                }
+                Destroy(gameObject);
+            }
+
+
+
+        }
+
+        private bool DestroyOnEntityHit()
+        {
+            bool destroy = true;
+
+            foreach (BulletEffect effect in effects)
+            {
+                if (!effect.DestroyBulletOnEntityContact)
+                    destroy = false;
+            }
+
+            return destroy;
+        }
+
+        private bool DestroyOnSurfaceHit()
+        {
+            bool destroy = true;
+
+            foreach (BulletEffect effect in effects)
+            {
+                if (!effect.DestroyBulletOnSurfaceContact)
+                    destroy = false;
+            }
+
+            return destroy;
+        }
+
+        public void OnDisableBullet()
+        {
+            foreach (BulletEffect effect in effects)
+            {
+                effect.OnDestroyBullet(this, damageAmount);
+            }
+        }
+
+    }
 }
+

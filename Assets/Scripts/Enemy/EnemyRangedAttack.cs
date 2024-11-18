@@ -8,17 +8,21 @@
 * Checks if player is in the attack range 
 * If is shoot enemyBullet
  *****************************************************************************/
+using BulletEffects;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Player;
 
+namespace Enemy
+{
 public class EnemyRangedAttack : MonoBehaviour
 {
     private EnemyStats stats;
     private static GameObject playerObject;
-    private float coolDown; 
+    private float coolDown;
     private float fireRate;
     private float slowFireRate;
     private float nextFireTime;
@@ -29,23 +33,23 @@ public class EnemyRangedAttack : MonoBehaviour
 
     [SerializeField] private ShootingMode shootingMode;
     [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField]private BulletEffect bulletEffect1;
+    [SerializeField] private BulletEffect bulletEffect1;
     [SerializeField] private BulletEffect bulletEffect2;
     [SerializeField] private GameObject bulletPrefab;
 
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        if(playerObject == null)
+        if (playerObject == null)
             playerObject = GameObject.FindObjectOfType<PlayerBehaviour>().gameObject;
         animator = GetComponent<EnemyAnimator>();
         damage = GetComponent<EnemyTakeDamage>();
         fireRate = stats.AttackRate;
         slowFireRate = fireRate * 2;
-        coolDown = stats.AttackRate + Random.Range(0,4); // random offset
+        coolDown = stats.AttackRate + Random.Range(0, 4); // random offset
         canMultiShoot = stats.canConsecutiveShoot;
         shotsFired = 0;
-        
+
     }
 
     private void Update()
@@ -63,7 +67,7 @@ public class EnemyRangedAttack : MonoBehaviour
         if (coolDown <= 0f)
         {
             float distanceFromPlayer = GetDistanceFromPlayer();
-           
+
             if (distanceFromPlayer <= stats.EnemyAttackRange)
             {
                 Attacking();
@@ -78,21 +82,21 @@ public class EnemyRangedAttack : MonoBehaviour
         float distanceFrom = distance.magnitude;
         return distanceFrom;
     }
-    
+
     private void Attacking()
-    {   
+    {
         if (shootingMode == null)
         {
             return;
         }
-        if(playerObject == null)
+        if (playerObject == null)
         {
             return;
         }
 
-        if(canMultiShoot)
+        if (canMultiShoot)
         {
-            if(shotsFired < stats.numberOfConsecutiveShots)
+            if (shotsFired < stats.numberOfConsecutiveShots)
             {
                 Fire();
                 ++shotsFired;
@@ -109,7 +113,7 @@ public class EnemyRangedAttack : MonoBehaviour
             Fire();
             coolDown = stats.TimeBetweenAttacks;
         }
-        
+
     }
 
     private void Fire()
@@ -138,7 +142,7 @@ public class EnemyRangedAttack : MonoBehaviour
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset),
             Random.Range(-shootingMode.BulletAccuracyOffset, shootingMode.BulletAccuracyOffset));
         Vector3 direction = destination - transform.position;
-        return direction; 
+        return direction;
     }
 
     /*private GameObject InstantiateBullet(EnemyType type)
@@ -165,3 +169,5 @@ public class EnemyRangedAttack : MonoBehaviour
         Destroy(this);
     }
 }
+}
+

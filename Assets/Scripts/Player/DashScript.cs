@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+namespace Player
+{
 public class DashScript : MonoBehaviour
 {
     public GameObject facing;
@@ -19,12 +21,15 @@ public class DashScript : MonoBehaviour
         pb = gameObject.GetComponent<PlayerBehaviour>();
         pc = gameObject.GetComponent<PlayerController>();
     }
-    public void getKeyPressed() { 
-        
+    public void getKeyPressed()
+    {
+
     }
-    public void startDash() {
+    public void startDash()
+    {
         Vector3 direction = InputEvents.Instance.InputDirection;
-        if (!dashCooldown && recentlyGrounded) {
+        if (!dashCooldown && recentlyGrounded)
+        {
             pb.canTakeDamage = false;
             rb.AddForce(direction * stats.DashSpeed);
             PublicEvents.OnDash.Invoke();
@@ -45,3 +50,5 @@ public class DashScript : MonoBehaviour
         dashCooldown = false;
     }
 }
+}
+
