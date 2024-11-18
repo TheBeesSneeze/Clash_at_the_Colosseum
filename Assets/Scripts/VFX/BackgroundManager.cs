@@ -12,10 +12,10 @@ public class BackgroundManager : MonoBehaviour
     private AudioClip previous;
     private int stageIndex;
     private StageStats[] stageStats;
-
+    
     [HideInInspector] public bool audioSourcePlayingCurrent = true;
-    [HideInInspector] public float volumeSliderAdjustment = 1;
-   
+    [HideInInspector] public float volumeSliderAdjustment = 1; 
+
     private void Start()
     {
         stageIndex = StageManager.stageIndex;
@@ -29,7 +29,7 @@ public class BackgroundManager : MonoBehaviour
 
     private void StartSound()
     {
-        audioSource.volume = audioSource.volume * volumeSliderAdjustment;
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment; 
         audioSource.Play();
     }
     private void Transition()
@@ -60,7 +60,7 @@ public class BackgroundManager : MonoBehaviour
         secondaryAudio.Play();
 
         StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, audioSource));
-        StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume * volumeSliderAdjustment, lenghtOfAudioSwitch, secondaryAudio));   
+        StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume * volumeSliderAdjustment, lenghtOfAudioSwitch, secondaryAudio));
         audioSourcePlayingCurrent = false;
     }
 
