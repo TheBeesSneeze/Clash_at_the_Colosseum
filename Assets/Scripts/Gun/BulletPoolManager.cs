@@ -55,10 +55,7 @@ public class BulletPoolManager
             }
         }*/
 
-        GameObject bullet =  GameObject.Instantiate(playerBullet, position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().OneTimeInitalize(gunController.bulletEffects);
-        return bullet;
-        
+        return GameObject.Instantiate(playerBullet, position, Quaternion.identity);
     }
 
     /*public static GameObject InstantiateBasicEnemyBullet(Vector3 position)

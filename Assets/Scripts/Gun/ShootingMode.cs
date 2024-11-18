@@ -65,11 +65,10 @@ public class GunSprite
     [SerializeField] public Sprite OneSnakes;
     [SerializeField] public Sprite NoneSnakes;
     [Header("Effects")]
-    [SerializeField] public Sprite bouncingSprite;
     [SerializeField] public Sprite bombSprite;
     [SerializeField] public Sprite lightningSprite;
     [SerializeField] public Sprite iceSprite;
-    [SerializeField] public Sprite venomSprite;
+    //[SerializeField] public Sprite venomSprite;
     //[SerializeField] public Sprite moreSnakes;
     [SerializeField] public Sprite windSprite;
 }

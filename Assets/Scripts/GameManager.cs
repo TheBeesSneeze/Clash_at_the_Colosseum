@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         InitializeCellManager();
         InitializePathManager();
-        //InitializeBulletPoolManager();
+        InitializeBulletPoolManager();
         InitializeStageTransitionManager();
         InitializeStageManager();
         //InitializeEnemySpawnManager(); //not yet
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        bulletPoolManager.OnDisable();
+        //bulletPoolManager.OnDisable();
     }
 
     private void Update()

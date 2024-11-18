@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
@@ -91,7 +90,7 @@ public class GunController : MonoBehaviour
             Application.Quit(); //this is so extreme lol i love this
         }
         shootingMode = shootMode;
-        shootHeld = true; 
+        //shootHeld = true;  I removed this and it fixed the shooting after death bug??? ok.
     }
     public void AddBulletEffect(BulletEffect bulletEffect, bool save=true)
     {
@@ -172,8 +171,7 @@ public class GunController : MonoBehaviour
         Vector3 dir = destination - bulletSpawnPoint.position;
 
         //var enemyBullet = Instantiate(BulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        GameObject bullet = GameObject.Instantiate(BulletPrefab, bulletSpawnPoint.transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().OneTimeInitalize(bulletEffects);
+        GameObject bullet = BulletPoolManager.Instantiate(bulletSpawnPoint.position);
         if (bullet == null)
         {
             return;
