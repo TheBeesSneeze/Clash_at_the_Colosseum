@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
         tip_button.onClick.AddListener(SelectNewRandomTip);
 
-        //PublicEvents.StartSound.Invoke();
+        PublicEvents.StartSound.Invoke();
         PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
         PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);
     }
