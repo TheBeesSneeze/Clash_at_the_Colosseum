@@ -68,9 +68,9 @@ public class PauseMenu : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
 
-        PublicEvents.StartSound.Invoke();
+        //PublicEvents.StartSound.Invoke();
         PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
-        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);    
+        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);
     }
     public void escPressed() {
         if(canPressEscape)
