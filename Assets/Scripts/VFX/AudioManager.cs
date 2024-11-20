@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 { 
@@ -58,6 +59,8 @@ public class AudioManager : MonoBehaviour
 
         gunController = GameObject.FindObjectOfType<GunController>();
         player = GameObject.FindObjectOfType<PlayerBehaviour>();
+
+        StageTransitionSound.sound.LoadAudioData();
     }
     //snake, trident, bow sound
     private void OnGunShoot()
