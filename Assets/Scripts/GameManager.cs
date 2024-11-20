@@ -61,13 +61,14 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this);
 
+        InitializePublicEvents();
         InitializeCellManager();
         InitializePathManager();
         //InitializeBulletPoolManager();
         InitializeStageTransitionManager();
         InitializeStageManager();
         //InitializeEnemySpawnManager(); //not yet
-        InitializePublicEvents();
+        
     }
     private void InitializeCellManager()
     {

@@ -24,14 +24,17 @@ public class BackgroundManager : MonoBehaviour
         previous = current;
         audioSource.clip = current;
         PublicEvents.OnStageTransition.AddListener(Transition);
-        PublicEvents.StartSound.AddListener(StartSound);
-    }
-
-    private void StartSound()
-    {
+        //PublicEvents.StartSound.AddListener(StartSound);
         audioSource.volume = audioSource.volume * volumeSliderAdjustment;
         audioSource.Play();
     }
+
+    /*private void StartSound()
+    {
+        print("HI");
+        audioSource.volume = audioSource.volume * volumeSliderAdjustment;
+        audioSource.Play();
+    }*/ 
     private void Transition()
     {
         ++stageIndex;
