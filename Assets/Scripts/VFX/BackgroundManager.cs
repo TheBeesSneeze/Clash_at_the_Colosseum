@@ -14,6 +14,7 @@ public class BackgroundManager : MonoBehaviour
     private StageStats[] stageStats;
 
     [HideInInspector] public bool audioSourcePlayingCurrent = true;
+    [HideInInspector] public bool needToPlayAudio = true;
     [HideInInspector] public float volumeSliderAdjustment = 1;
    
     private void Start()
@@ -24,17 +25,26 @@ public class BackgroundManager : MonoBehaviour
         previous = current;
         audioSource.clip = current;
         PublicEvents.OnStageTransition.AddListener(Transition);
-        //PublicEvents.StartSound.AddListener(StartSound);
-        audioSource.volume = audioSource.volume * volumeSliderAdjustment;
-        audioSource.Play();
+        PublicEvents.StartSound.AddListener(StartSound);
+
+        if(audioSource.isPlaying)
+        {
+            needToPlayAudio = false;
+        }
+
+        if(needToPlayAudio)
+        {
+            audioSource.volume = audioSource.volume * volumeSliderAdjustment;
+            audioSource.Play();
+        }
     }
 
-    /*private void StartSound()
+    private void StartSound()
     {
         print("HI");
         audioSource.volume = audioSource.volume * volumeSliderAdjustment;
         audioSource.Play();
-    }*/ 
+    }
     private void Transition()
     {
         ++stageIndex;
