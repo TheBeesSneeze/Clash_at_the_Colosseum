@@ -72,6 +72,9 @@ public class StageManager
     /// </summary>
     public static void ChangeStage()
     {
+        if (StageTransitionManager.ActiveTransitioning)
+            return; //dont do it twice
+
         Debug.Log("changing stage");
         if(stageIndex+1 == _stages.Length) 
         {
@@ -87,7 +90,7 @@ public class StageManager
 
         currentStage = _stages[stageIndex];
 
-        StageTransitionManager.TransitionStage(pastStage.StageLayout, currentStage.StageLayout);
+        StageTransitionManager.TransitionStageAnimation(pastStage.StageLayout, currentStage.StageLayout);
 
 
         PublicEvents.OnStageTransition.Invoke();

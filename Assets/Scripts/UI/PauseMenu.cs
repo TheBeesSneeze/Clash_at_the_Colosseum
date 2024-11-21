@@ -12,9 +12,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
+using TMPro;
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private BackgroundManager backgroundManager;
+    [SerializeField] private string[] tips;
+
+     private BackgroundManager backgroundManager;
 
     [SerializeField] private CanvasGroup pauseGroup;
     [SerializeField] private Button resumeButton;
@@ -22,13 +25,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button restartGameButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider sensitivitySlider;
-    [SerializeField] private Tutorialmusic tutorialMusic; 
+    [SerializeField] private Tutorialmusic tutorialMusic;
+    [SerializeField] private TMP_Text tip_text;
+    [SerializeField] private Button tip_button;
 
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private float baseBGMVolume;
     private bool canPressEscape = true;
+    private int tip_index = 0;
 
     private void Start()
     {
@@ -37,7 +43,7 @@ public class PauseMenu : MonoBehaviour
 
         if(backgroundManager == null)
         {
-            Debug.LogWarning("no background music set.");
+            //Debug.LogWarning("no background music set.");
             backgroundManager = FindObjectOfType<BackgroundManager>();
         }
 
@@ -67,10 +73,11 @@ public class PauseMenu : MonoBehaviour
         restartGameButton.onClick.AddListener(RestartGame);
         volumeSlider.onValueChanged.AddListener(volumeChanged);
         sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
+        tip_button.onClick.AddListener(SelectNewRandomTip);
 
         PublicEvents.StartSound.Invoke();
         PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
-        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);    
+        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);
     }
     public void escPressed() {
         if(canPressEscape)
@@ -79,6 +86,8 @@ public class PauseMenu : MonoBehaviour
 
             if (GameManager.Instance.pausedForUI)
                 return;
+
+            SelectNewRandomTip();
 
             if (backgroundManager != null)
             {
@@ -196,5 +205,22 @@ public class PauseMenu : MonoBehaviour
     private void SetCanEsc()
     {
         canPressEscape = !canPressEscape;
+    }
+
+    private void SelectNewRandomTip()
+    {
+        if (tips.Length <= 1)
+            return;
+
+        int new_index = -1;
+        do
+        {
+            new_index = UnityEngine.Random.Range(0, tips.Length);
+        }
+        while(new_index == tip_index);
+        tip_index = new_index;
+        tip_text.text = tips[tip_index];
+
+        GetComponent<UICorrection>().Correct();
     }
 }

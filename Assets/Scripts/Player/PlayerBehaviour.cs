@@ -96,7 +96,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void Die()
     {
         PublicEvents.OnPlayerDeath.Invoke();
-        
+        print("died");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -91,7 +91,7 @@ public class GunController : MonoBehaviour
             Application.Quit(); //this is so extreme lol i love this
         }
         shootingMode = shootMode;
-        shootHeld = true; 
+        //shootHeld = true;  I removed this and it fixed the shooting after death bug??? ok.
     }
     public void AddBulletEffect(BulletEffect bulletEffect, bool save=true)
     {
