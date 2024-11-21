@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2104746, g: 0.88403714, b: 0.595373, a: 1}
+  m_IndirectSpecularColor: {r: 1.2102548, g: 0.883931, b: 0.5953271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6687,35 +6687,35 @@ PrefabInstance:
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
+      objectReference: {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 7a2707490ac7cd643ae50e588db891ea, type: 2}
+      objectReference: {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 181988a15e856e644ac28863949015f5, type: 2}
+      objectReference: {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
+      objectReference: {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
+      objectReference: {fileID: 11400000, guid: 54a31e2970de47d4f92637d33a23d068, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 54a31e2970de47d4f92637d33a23d068, type: 2}
+      objectReference: {fileID: 11400000, guid: 8df19c5d3d9a3f344ae56493be1d3018, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 8df19c5d3d9a3f344ae56493be1d3018, type: 2}
+      objectReference: {fileID: 11400000, guid: d7bb3a15ee172b34bbf1ebf3b7119875, type: 2}
     - target: {fileID: 6670010424615105723, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: stages.Array.data[7]
       value: 
-      objectReference: {fileID: 11400000, guid: d7bb3a15ee172b34bbf1ebf3b7119875, type: 2}
+      objectReference: {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
     - target: {fileID: 9219035785655578122, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: m_Name
       value: GameManager
