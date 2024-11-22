@@ -96,16 +96,18 @@ public class EnemyTakeDamage : MonoBehaviour
         Debug.Log("die");
         if (enemyRedParticle != null)
             Instantiate(enemyRedParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
         EnemySpawner.OnEnemyDeath();
         isStillAlive = false;
         healthSystem.addCharge(stats.healCharge);
 
         PublicEvents.OnAnyEnemyDeath.Invoke(stats);
 
-        if(stats.bulletType == EnemyType.Melee){PublicEvents.MinoutarDeath.Invoke();}
-        else if(stats.bulletType == EnemyType.Cyclops) { PublicEvents.CyclopsDeath.Invoke(); }
-        else if(stats.bulletType == EnemyType.Harpy) { PublicEvents.HarpyDeath.Invoke(); }
+        //if(stats.bulletType == EnemyType.Melee){PublicEvents.MinoutarDeath.Invoke();}
+        //else if(stats.bulletType == EnemyType.Cyclops) { PublicEvents.CyclopsDeath.Invoke(); }
+        //else if(stats.bulletType == EnemyType.Harpy) { PublicEvents.HarpyDeath.Invoke(); }
+
+        Destroy(gameObject);
+
     }
     private void OnCollisionEnter(Collision collision)
     {
