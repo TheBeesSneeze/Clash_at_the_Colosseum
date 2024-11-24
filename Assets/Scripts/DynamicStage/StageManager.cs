@@ -93,7 +93,7 @@ public class StageManager
         StageTransitionManager.TransitionStageAnimation(pastStage.StageLayout, currentStage.StageLayout);
 
 
-        PublicEvents.OnStageTransition.Invoke();
+        PublicEvents.OnStageTransition?.Invoke();
 
         //add the dynamic stage code here to actually change stage 
     }
