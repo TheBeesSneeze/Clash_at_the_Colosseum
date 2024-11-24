@@ -12,6 +12,10 @@ public class DashCameraZoom : MonoBehaviour
     [SerializeField]
     private AnimationCurve dashEnd;
 
+    [SerializeField]
+    [Tooltip("This will be the most zoomed in/out the camera will get at the aphex of the animation")]
+    private float PeakFOV;
+
     private float defaultFOV;
     private Camera mainCamera;
 
@@ -23,15 +27,15 @@ public class DashCameraZoom : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        defaultFOV = Camera.main.fieldOfView;
+        defaultFOV = mainCamera.fieldOfView;
 
         // sets animation time to start at 0
         refitAnimationCurve(dashBegin);
         refitAnimationCurve(dashEnd);
 
         //scales animation curves start and end at defaultFOV, while maintaining, the original shape
-        scaleAnimationCurveByFirstValue(dashBegin, defaultFOV);
-        scaleAnimationCurveByLastValue(dashEnd, dashBegin.keys[dashBegin.keys.Length-1].value, defaultFOV);
+        scaleAnimationCurve(dashBegin, defaultFOV, PeakFOV);
+        scaleAnimationCurve(dashEnd, PeakFOV, defaultFOV);
 
         begin_animationDuration = dashBegin.keys[dashBegin.keys.Length - 1].time;
         begin_startValue = dashBegin.keys[0].value;
@@ -91,24 +95,12 @@ public class DashCameraZoom : MonoBehaviour
         curve.keys = frames;
     }
 
-    public static void scaleAnimationCurveByFirstValue(AnimationCurve curve, float scalar) 
-    {
-        Keyframe[] frames = curve.keys;
-        float firstValue = frames[0].value;
-        for (int i = 0; i < frames.Length; i++)
-        {
-            frames[i].value = frames[i].value/firstValue * scalar;
-        }
-        curve.keys = frames;
-    }
-
     /// <summary>
     /// rescales end animation curve
     /// </summary>
-    public static void scaleAnimationCurveByLastValue(AnimationCurve curve, float startPoint, float endPoint)
+    public static void scaleAnimationCurve(AnimationCurve curve, float startPoint, float endPoint)
     {
         Keyframe[] frames = curve.keys;
-        float lastValue = frames[frames.Length-1].value;
 
         float a = frames[0].value;
         float b = frames[frames.Length-1].value;
@@ -117,7 +109,6 @@ public class DashCameraZoom : MonoBehaviour
         {
             //there isnt an InverseLerpUnclamped function ig
             float t = (frames[i].value - a)/(b - a);
-            Debug.Log(t);
             frames[i].value = Mathf.LerpUnclamped(startPoint, endPoint,t);
         }
 
@@ -126,5 +117,13 @@ public class DashCameraZoom : MonoBehaviour
         curve.keys = frames;
     }
 
+    [Button]
+    public void DebugRescale()
+    {
+        defaultFOV = Camera.main.fieldOfView;
+        scaleAnimationCurve(dashBegin, defaultFOV, PeakFOV);
+        scaleAnimationCurve(dashEnd, PeakFOV, defaultFOV);
+
+    }
     
 }
