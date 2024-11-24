@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance*2, groundLayers))
         {
-            ds.recentlyGrounded = true;
             return true;
         }
         return false;

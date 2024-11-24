@@ -52,7 +52,6 @@ public class ScreenShake : MonoBehaviour
                 cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
             }
 
-            
             await Task.Yield();
         }
         transform.localPosition = startPos; 

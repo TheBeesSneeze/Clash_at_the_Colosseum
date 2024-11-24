@@ -18,23 +18,63 @@ public class DashCameraZoom : MonoBehaviour
     private float begin_animationDuration;
     private float begin_startValue; //values are scaled 
     private float begin_endValue;
+    private Coroutine currentAnimation;
 
     void Start()
     {
         mainCamera = Camera.main;
         defaultFOV = Camera.main.fieldOfView;
 
+        // sets animation time to start at 0
         refitAnimationCurve(dashBegin);
         refitAnimationCurve(dashEnd);
 
+        //scales animation curves start and end at defaultFOV, while maintaining, the original shape
         scaleAnimationCurveByFirstValue(dashBegin, defaultFOV);
-        scaleAnimationCurveByLastValue(dashEnd, defaultFOV);
+        scaleAnimationCurveByLastValue(dashEnd, dashBegin.keys[dashBegin.keys.Length-1].value, defaultFOV);
 
         begin_animationDuration = dashBegin.keys[dashBegin.keys.Length - 1].time;
         begin_startValue = dashBegin.keys[0].value;
         begin_startValue = dashBegin.keys[dashBegin.keys.Length - 1].value;
 
-        PublicEvents.OnDash.AddListener(dashAnimation);
+        PublicEvents.OnDash.AddListener(startDashAnimation);
+        PublicEvents.OnDashAvailable.AddListener(endDashAnimation);
+    }
+
+    private void startDashAnimation()
+    {
+        if (currentAnimation != null)
+            StopCoroutine(currentAnimation);
+        currentAnimation = StartCoroutine(dashAnimation(dashBegin));
+    }
+
+    private void endDashAnimation()
+    {
+        if (currentAnimation != null)
+            StopCoroutine(currentAnimation);
+        currentAnimation = StartCoroutine(dashAnimation(dashEnd));
+    }
+
+    private IEnumerator dashAnimation(AnimationCurve curve)
+    {
+        
+        float animationLength = curve.keys[curve.keys.Length - 1].time - curve.keys[0].time;
+        float startTime = Time.time;
+        while (startTime + animationLength >= Time.time)
+        {
+            if (this == null || mainCamera == null)
+                break;
+
+            if (Time.timeScale != 0) // if not paused
+            {
+                float newFOV = curve.Evaluate(Time.time - startTime);
+                mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, newFOV, Time.fixedDeltaTime * 16); // smooth with a lerp
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
+        mainCamera.fieldOfView = curve.keys[curve.keys.Length-1].value;
+        currentAnimation = null;
     }
 
     /// <summary>
@@ -62,49 +102,29 @@ public class DashCameraZoom : MonoBehaviour
         curve.keys = frames;
     }
 
+    /// <summary>
+    /// rescales end animation curve
+    /// </summary>
     public static void scaleAnimationCurveByLastValue(AnimationCurve curve, float startPoint, float endPoint)
     {
         Keyframe[] frames = curve.keys;
         float lastValue = frames[frames.Length-1].value;
-        for (int i = 0; i < frames.Length; i++)
+
+        float a = frames[0].value;
+        float b = frames[frames.Length-1].value;
+
+        for (int i = 1; i < frames.Length-1; i++)
         {
-            frames[i].value = frames[i].value / lastValue * scalar;
+            //there isnt an InverseLerpUnclamped function ig
+            float t = (frames[i].value - a)/(b - a);
+            Debug.Log(t);
+            frames[i].value = Mathf.LerpUnclamped(startPoint, endPoint,t);
         }
+
+        frames[0].value = startPoint;
+        frames[frames.Length - 1].value = endPoint;
         curve.keys = frames;
     }
 
-    async private void dashAnimation()
-    {
-        float startTime = Time.time;
-        float fov;
-        float t;
-        while (startTime + begin_animationDuration >= Time.time)
-        {
-            if (this == null || mainCamera == null) 
-                return;
-
-            if (Time.timeScale != 0) // if not paused
-            {
-                
-                fov = dashBegin.Evaluate(Time.time - startTime);
-                t = (Time.time - startTime) / begin_animationDuration;
-                //main.localPosition = startPos + (Random.insideUnitSphere * intensity);
-
-            }
-
-
-            await Task.Yield();
-        }
-        //transform.localPosition = startPos;
-    }
-
-    [Button]
-    public void DebugRescaleCurves()
-    {
-        refitAnimationCurve(dashBegin);
-        refitAnimationCurve(dashEnd);
-
-        scaleAnimationCurveByFirstValue(dashBegin, GetComponent<Camera>().fieldOfView);
-        scaleAnimationCurveByLastValue(dashEnd, GetComponent<Camera>().fieldOfView);
-    }
+    
 }

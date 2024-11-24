@@ -27,6 +27,7 @@ public class PublicEvents
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
     public static UnityEvent OnGrapple = new UnityEvent();
     public static UnityEvent OnDash = new UnityEvent();
+    public static UnityEvent OnDashAvailable = new UnityEvent();
     public static UnityEvent OnStageTransition = new UnityEvent();
     public static UnityEvent OnStageTransitionFinish = new UnityEvent();
     public static UnityEvent OnBossSpawn = new UnityEvent();
