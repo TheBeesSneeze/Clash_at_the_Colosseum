@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         //bulletPoolManager.OnDisable();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         pathManager.Update();
     }
