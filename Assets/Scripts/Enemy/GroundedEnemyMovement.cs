@@ -170,8 +170,6 @@ public class GroundedEnemyMovement : MonoBehaviour
         //if (path.nextPath == null)
             return (path.position.y > transform.position.y);
 
-        //return (path.position.y < path.nextPath.position.y);
-        //return Physics.Raycast(transform.position, direction, out RaycastHit hit, direction.magnitude*2, ~groundlm);
     }
 
     private bool isGrounded()

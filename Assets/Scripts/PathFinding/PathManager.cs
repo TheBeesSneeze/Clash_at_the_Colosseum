@@ -15,11 +15,13 @@ namespace PathFinding
         private int groundMask;
         public static Cell PlayerCell;
 
+        private PlayerPath playerPath; // the last node of every path chain
         private int pathUpdateIndex = 0;
 
         public PathManager() 
         {
             _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+            playerPath = new PlayerPath(_player);
             groundMask = LayerMask.NameToLayer("Default");
 
             PublicEvents.OnEnemySpawned  += OnEnemySpawn; 
@@ -36,7 +38,9 @@ namespace PathFinding
                 return null;
             }
 
-            return Navigate(navigator, PlayerCell, canGoDown);
+            Path path = Navigate(navigator, PlayerCell, canGoDown);
+            //path.nextPath = playerPath;
+            return path;
         }
 
         //doesnt account for if start / end are right next to each other
@@ -51,7 +55,8 @@ namespace PathFinding
 
             List<Path> nextCells = new List<Path>();
             List<Cell> exploredCells = new List<Cell>();
-            Path startNode = new Path(target, navigator);
+            //Path startNode = new Path(target, navigator);
+            PlayerPath startNode = new PlayerPath(_player);
 
             foreach (Cell cell in target.SideNeighbors)
             {
