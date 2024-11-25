@@ -1142,6 +1142,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7795032412208802762}
     m_Modifications:
+    - target: {fileID: 5776343123810830128, guid: 5677438216a4cd04b97fdc11245cc56c, type: 3}
+      propertyPath: m_DrawDistance
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8240295024281213316, guid: 5677438216a4cd04b97fdc11245cc56c, type: 3}
       propertyPath: m_Name
       value: Shadow

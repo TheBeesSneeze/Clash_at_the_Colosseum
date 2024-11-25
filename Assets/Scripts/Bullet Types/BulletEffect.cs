@@ -11,11 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
-using Enemy;
-using Player;
-
-namespace BulletEffects
-{
 public abstract class BulletEffect : ScriptableObject
 {
     [Header("Gameplay")]
@@ -26,17 +21,17 @@ public abstract class BulletEffect : ScriptableObject
             "shootmodes damage (per bullet) by this number")]
     public float DamageMultiplier; //you might have to implement this manually on a effect by effect basis. sorry guys
     [InfoBox("Setting any bullet effect to be destroyed = false will override every other effect")]
-    public bool DestroyBulletOnSurfaceContact = true;
+    public bool DestroyBulletOnSurfaceContact=true;
     [Tooltip("Entity refers to player OR enemies")]
-    public bool DestroyBulletOnEntityContact = true;
+    public bool DestroyBulletOnEntityContact=true;
 
     [Header("UI")]
     public string UpgradeName;
     public string UpgradeDescription;
     //[ShowAssetPreview]
     public Sprite[] UpgradeIcon;
-    public Color bodyColor = Color.white;
-    public Color secondaryColor = Color.white;
+    public Color bodyColor=Color.white;
+    public Color secondaryColor=Color.white;
 
     protected GunController _playerGunController;
 
@@ -54,5 +49,4 @@ public abstract class BulletEffect : ScriptableObject
 
     public abstract void OnDestroyBullet(Bullet bullet, float damage);
 
-}
 }

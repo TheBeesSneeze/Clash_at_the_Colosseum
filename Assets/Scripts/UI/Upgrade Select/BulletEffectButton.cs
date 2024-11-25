@@ -8,10 +8,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using BulletEffects;
 
-namespace UI
-{
 [System.Serializable]
 public class BulletEffectButton
 {
@@ -20,7 +17,7 @@ public class BulletEffectButton
     [SerializeField] private TMP_Text upgradeText;
     [SerializeField] private TMP_Text upgradeDescription;
     [SerializeField] private Image bodyImage;
-    [SerializeField] private Image effectIcon;
+    [SerializeField] private UISpriteAnimation effectIcon;
 
     private BulletEffect _bulletEffect;
 
@@ -37,8 +34,7 @@ public class BulletEffectButton
         upgradeText.text = bulletEffect.UpgradeName;
         upgradeDescription.text = bulletEffect.UpgradeDescription;
         bodyImage.color = bulletEffect.bodyColor;
-        effectIcon.sprite = bulletEffect.UpgradeIcon[0];
+        //effectIcon.sprite = bulletEffect.UpgradeIcon;
+        effectIcon.SetSprites(bulletEffect.UpgradeIcon);
     }
 }
-}
-

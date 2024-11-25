@@ -1,12 +1,11 @@
-using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Managers;
+using NaughtyAttributes;
+using System.Threading.Tasks;
 
-namespace UI { 
 public class DeathScreen : MonoBehaviour
 {
 
@@ -20,47 +19,46 @@ public class DeathScreen : MonoBehaviour
     [Scene]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
+    
     void Start()
-    {
-        PublicEvents.OnPlayerDeath.AddListener(showScreen);
-        respawnButton.onClick.AddListener(Respawn);
-        mainMenuButton.onClick.AddListener(goToMain);
-
+    { 
         ToggleDeathUI(false);
 
         if (backgroundManager == null)
             backgroundManager = FindObjectOfType<BackgroundManager>();
+
+        PublicEvents.OnPlayerDeath.AddListener(showScreen);
+        respawnButton.onClick.AddListener(Respawn);
+        mainMenuButton.onClick.AddListener(goToMain);
 
     }
 
 
     private void showScreen()
     {
+        Music();
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
         ToggleDeathUI(GameManager.Instance.isPaused);
-        if (backgroundManager != null)
-        {
-            if (backgroundManager.audioSourcePlayingCurrent)
-            {
-                if (GameManager.Instance.isPaused)
-                {
-                    print("Made it here");
-                    backgroundManager.audioSource.Pause();
-                }
-            }
-            else
-            {
-                if (GameManager.Instance.isPaused)
-                {
-                    backgroundManager.secondaryAudio.Pause();
-                }
-            }
-        }
         Cursor.visible = GameManager.Instance.isPaused;
         Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
     }
 
+    private void Music()
+    {
+        if (backgroundManager != null)
+        {
+            if (backgroundManager.audioSourcePlayingCurrent)
+            {
+                backgroundManager.audioSource.Stop();
+            }
+            else
+            {
+                backgroundManager.secondaryAudio.Stop();
+            }
+
+        }
+    }
     private void Respawn()
     {
         SetDeathState(false);
@@ -89,5 +87,4 @@ public class DeathScreen : MonoBehaviour
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         Time.timeScale = state ? 0 : 1;
     }
-}
 }

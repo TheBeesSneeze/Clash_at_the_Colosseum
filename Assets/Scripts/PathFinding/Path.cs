@@ -9,18 +9,22 @@ namespace PathFinding
     [System.Serializable]
     public class Path : IComparable<Path>
     {
-        public Vector3 position { get =>  cell.PathPosition; } 
+        public virtual Vector3 position { get =>  cell.PathPosition; } 
         public int Cost { get => (_distanceToStart + _distanceToTarget + (int)(_heightDifference*100)); }
 
         public Cell cell;
         public Path nextPath;
 
-        private int _distanceToTarget;
-        private int _distanceToStart;
-        private float _heightDifference;
+        protected int _distanceToTarget;
+        protected int _distanceToStart;
+        protected float _heightDifference;
 
         public float DistanceToStart { get => _distanceToStart; }
         public float DistanceToTarget { get => _distanceToTarget; }
+
+
+        public Path() {}
+        //public Path(Transform targetTransform){}
 
         public Path(Cell cell, Cell target)
         {

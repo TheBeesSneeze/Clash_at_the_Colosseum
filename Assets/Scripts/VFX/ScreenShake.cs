@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
-
+using NaughtyAttributes;
 
 public class ScreenShake : MonoBehaviour
 {
@@ -52,7 +52,6 @@ public class ScreenShake : MonoBehaviour
                 cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
             }
 
-            
             await Task.Yield();
         }
         transform.localPosition = startPos; 
