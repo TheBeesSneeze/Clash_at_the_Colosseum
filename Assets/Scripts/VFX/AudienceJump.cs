@@ -6,11 +6,19 @@ public class AudienceJump : MonoBehaviour
 {
     public float speed = 1;
     public float height = 2;
+    public float animationTime = 5;
     Transform[] audienceMembers;
+    float[] audienceMembersPosition;
     private void Start()
     {
         PublicEvents.OnStageTransition.AddListener(StartAudienceCoroutine);
-        Transform[] audienceMembers = GetComponentsInChildren<Transform>();
+        audienceMembers = GetComponentsInChildren<Transform>();
+        audienceMembersPosition = new float[audienceMembers.Length];
+
+        for (int i = 0; i < audienceMembers.Length; i++)
+        {
+            audienceMembersPosition[i] = audienceMembers[i].position.y;
+        }
     }
 
     private void StartAudienceCoroutine()
@@ -20,17 +28,22 @@ public class AudienceJump : MonoBehaviour
 
     private IEnumerator AudienceJumping()
     {
-        bool running = true;
-        while (running)
-        for (int i = 0; i < audienceMembers.Length; i++)
+        float startTime = Time.time;
+        while (animationTime > Time.time - startTime)
         {
-            float position = Mathf.Sin(Time.time * speed + i) * height / 2;
-            Vector3 temp = audienceMembers[i].position;
-            temp.y = position;
-            audienceMembers[i].position = temp;
-        }
+            for (int i = 0; i < audienceMembers.Length; i++)
+            {
+                float position = Mathf.Sin(Time.time * speed + i) * height / 2;
+                Vector3 temp = audienceMembers[i].position;
+                temp.y = position + audienceMembersPosition[i];
+                audienceMembers[i].position = temp;
 
-        yield break;
+                Debug.Log("yippie! yippie!");
+            }
+
+            yield return null;
+        }
+ 
     }
 
 }
