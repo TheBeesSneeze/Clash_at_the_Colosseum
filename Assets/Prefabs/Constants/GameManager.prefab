@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6670010424615105723}
   - component: {fileID: -3221912983751877588}
   - component: {fileID: 2573591770749130960}
-  - component: {fileID: 566620861554067315}
   - component: {fileID: 1046506135144920525}
   - component: {fileID: 5416194387029784043}
   m_Layer: 0
@@ -56,6 +55,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08b26cac9c4c3ee41b136ea2bc590410, type: 2}
   - {fileID: 11400000, guid: 306c64858ccd5f74895534cedbb666c9, type: 2}
   - {fileID: 11400000, guid: 54a31e2970de47d4f92637d33a23d068, type: 2}
+  - {fileID: 11400000, guid: 8df19c5d3d9a3f344ae56493be1d3018, type: 2}
+  - {fileID: 11400000, guid: d7bb3a15ee172b34bbf1ebf3b7119875, type: 2}
   - {fileID: 11400000, guid: 2aebc22ab13ab07499540a86b288431b, type: 2}
   transitonSeconds: 5
   transitonDelay: 1
@@ -90,8 +91,8 @@ MonoBehaviour:
   GunSound:
     Volume: 0.529
     sound: {fileID: 8300000, guid: 165da82ba6d13fb48bd2de370bf8e68f, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 3
   EnemyDamageSound:
     Volume: 0.769
     sound: {fileID: 8300000, guid: fc9146c2fc5e66841afe442e655f4def, type: 3}
@@ -110,13 +111,13 @@ MonoBehaviour:
   EnemyShootSound:
     Volume: 0.188
     sound: {fileID: 8300000, guid: 9de62ce3eeb682b49b7ea11eafe14147, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 6
   MeleeAttackSound:
     Volume: 0.33
     sound: {fileID: 8300000, guid: 9237b42ca9fd0a64fb900ba0d44bf844, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 4
   GrappleSound:
     Volume: 0.836
     sound: {fileID: 8300000, guid: bacea27e58568d445b390043df528efe, type: 3}
@@ -140,8 +141,8 @@ MonoBehaviour:
   SnakeCooldownSound:
     Volume: 1
     sound: {fileID: 8300000, guid: d297f7b2c3a2fe249860fcd6d126fa7d, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 10
   HydraIntroSound:
     Volume: 1
     sound: {fileID: 8300000, guid: 8770b93ea14ad0a47b6dd4c16b0d2b74, type: 3}
@@ -160,21 +161,26 @@ MonoBehaviour:
   CyclopsAttackSound:
     Volume: 1
     sound: {fileID: 8300000, guid: f76d16a0caafb70418a49ef8183542f9, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 4
   CyclopsDeathSound:
     Volume: 0.5
     sound: {fileID: 8300000, guid: 87b11277fde1c424b8f25752abe4f5cc, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 3
   HarpyDeathSound:
     Volume: 0.232
     sound: {fileID: 8300000, guid: 21b1943bce60f594cae16ff8a780d77b, type: 3}
-    RandomizePitch: 0
-    randomPitchRange: 0.1
+    RandomizePitch: 1
+    randomPitchRange: 5
   MinoutarDeathSound:
     Volume: 0.7
     sound: {fileID: 8300000, guid: 1defb620513a33249af0f879713b1a04, type: 3}
+    RandomizePitch: 1
+    randomPitchRange: 5
+  PageFlipSound:
+    Volume: 1
+    sound: {fileID: 0}
     RandomizePitch: 0
     randomPitchRange: 0.1
 --- !u!114 &2573591770749130960
@@ -189,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f920a2384b9c4d4f8ff940809804309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   enemyPrefabs:
   - enemyTag: 3
     prefab: {fileID: 7996317265162831292, guid: 64fe747179742714f88a72b6a3615aa2, type: 3}
@@ -198,35 +205,6 @@ MonoBehaviour:
     prefab: {fileID: 1661017455119386389, guid: 3971b1da6b5c8f04988ae686dda3ed7c, type: 3}
   - enemyTag: 4
     prefab: {fileID: 3195422292412472386, guid: 210ba51f22f7dd04e934a2e83dfccc4b, type: 3}
---- !u!114 &566620861554067315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9219035785655578122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7faca236ac507944ba6bff15b0fc8d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemySpawns:
-    particles:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    PlayOnStart: 1
-  PlayerHeal:
-    particles:
-    - {fileID: 0}
-    PlayOnStart: 0
 --- !u!114 &1046506135144920525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ca6398707405c4c9d5fbbb3c5533e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
 --- !u!114 &5416194387029784043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +230,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62fe2aca10468f428175f6d2871fc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GodGun: {fileID: 11400000, guid: 673bcee9065c1504fbc821362d8587b3, type: 2}
