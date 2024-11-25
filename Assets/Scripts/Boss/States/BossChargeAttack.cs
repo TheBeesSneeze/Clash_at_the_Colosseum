@@ -2,40 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossChargeAttack : StateMachineBehaviour
+namespace Enemy.Boss
 {
-    [SerializeField] private float launchForce;
-    [SerializeField] private float launchForceHeight;
-    [SerializeField] private GameObject box;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class BossChargeAttack : StateMachineBehaviour
     {
-        GameObject boxInstatiated = Instantiate(box, animator.gameObject.transform.position, Quaternion.identity);
-        Rigidbody boxRB = boxInstatiated.GetComponent<Rigidbody>();
-        Vector3 direction = (BossController.Player.transform.position - animator.transform.position);
-        direction.y = 0;
-        direction = direction.normalized;
-        direction *= launchForce;
-        direction.y = launchForceHeight;
-        boxRB.transform.LookAt(boxInstatiated.transform.position+direction);
-        boxRB.transform.eulerAngles = new Vector3(0, boxRB.transform.eulerAngles.y, 0);
-        boxRB.AddForce(direction, ForceMode.Impulse);
-    }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        animator.SetBool("Charge", false);
-        if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
+        [SerializeField] private float launchForce;
+        [SerializeField] private float launchForceHeight;
+        [SerializeField] private GameObject box;
+        // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetBool("HalfHealth", true);
-            return;
+            GameObject boxInstatiated = Instantiate(box, animator.gameObject.transform.position, Quaternion.identity);
+            Rigidbody boxRB = boxInstatiated.GetComponent<Rigidbody>();
+            Vector3 direction = (BossController.Player.transform.position - animator.transform.position);
+            direction.y = 0;
+            direction = direction.normalized;
+            direction *= launchForce;
+            direction.y = launchForceHeight;
+            boxRB.transform.LookAt(boxInstatiated.transform.position + direction);
+            boxRB.transform.eulerAngles = new Vector3(0, boxRB.transform.eulerAngles.y, 0);
+            boxRB.AddForce(direction, ForceMode.Impulse);
         }
-    }
 
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        animator.SetBool("Charge", false);
+        // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+        override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            animator.SetBool("Charge", false);
+            if (BossController.bossTakeDamage.currentHealth <= BossController.Stats.BossHealth / 2)
+            {
+                animator.SetBool("HalfHealth", true);
+                return;
+            }
+        }
+
+        // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+        override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            animator.SetBool("Charge", false);
+        }
     }
 }

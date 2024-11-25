@@ -10,7 +10,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
+namespace Enemy.Boss
+{
 public class BossTakeDamage : EnemyTakeDamage
 {
     private BossStats bstats;
@@ -35,19 +38,21 @@ public class BossTakeDamage : EnemyTakeDamage
             {
                 Die();
             }
-            
+
         }
-           
+
     }
 
 
     public override void Die()
     {
-        
+
         PublicEvents.HydraDeath.Invoke();
         Debug.Log("i died");
         //Destroy(gameObject);
     }
 
- 
+
 }
+}
+

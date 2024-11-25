@@ -139,7 +139,7 @@ Transform:
   - {fileID: 5219701433872048125}
   - {fileID: 7034516543608017994}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2902660548986709720
 MeshFilter:
@@ -257,7 +257,7 @@ MonoBehaviour:
   Speed: 60
   MaxSpeed: 50
   DashSpeed: 1000
-  DashCoolDown: 1.5
+  DashCoolDown: 0.25
   DashInvincibilityTime: 0.5
   Friction: 3
   AirMovementMultiplier: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 3274248623167992823}
   bulletEffects: []
   secondsSinceLastShoot: 0
+  shotsTillCoolDown: 0
   overheatCoolDown: 2
 --- !u!114 &5964920643477375803
 MonoBehaviour:
@@ -336,7 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facing: {fileID: 8574478487850517060}
-  recentlyGrounded: 0
 --- !u!330 &7454822048578869477
 ParticleSystemForceField:
   m_ObjectHideFlags: 0
@@ -1152,6 +1152,7 @@ GameObject:
   - component: {fileID: 4517530145506046257}
   - component: {fileID: 5195436381023329895}
   - component: {fileID: 7560038672324414093}
+  - component: {fileID: 8418828838782500517}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1340,6 +1341,85 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &8418828838782500517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613831879522448468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765cf13443175804b8655d7014015943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashBegin:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.000823034
+      value: 60
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.09914988
+      value: 53.90981
+      inSlope: -75.915115
+      outSlope: -75.915115
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07096402
+    - serializedVersion: 3
+      time: 0.33571187
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dashEnd:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.002909645
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.094666265
+      value: 60.493504
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1254152
+      value: 60
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  PeakFOV: 50
 --- !u!1001 &1339228779314207374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1672,9 +1752,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9054523835055469481}
     m_Modifications:
+    - target: {fileID: 585788483023874295, guid: 82628544b5e396946899739874105823, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1917150817808451163, guid: 82628544b5e396946899739874105823, type: 3}
       propertyPath: m_Name
       value: BackGroundMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007083087363597282, guid: 82628544b5e396946899739874105823, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8310054296799349570, guid: 82628544b5e396946899739874105823, type: 3}
       propertyPath: m_RootOrder

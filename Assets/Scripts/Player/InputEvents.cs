@@ -2,6 +2,8 @@ using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Managers;
+
 
 public class InputEvents : Singleton<InputEvents>
 {

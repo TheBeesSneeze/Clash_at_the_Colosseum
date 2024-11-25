@@ -1,8 +1,10 @@
+using Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+namespace UI
+{
 public class StageUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text text;
@@ -13,6 +15,8 @@ public class StageUI : MonoBehaviour
     }
     public void StageUIChanger()
     {
-        text.text = "Stage " + (StageManager.GetStageIndex()+1).ToString();
+        text.text = "Stage " + (StageManager.GetStageIndex() + 1).ToString();
     }
 }
+}
+

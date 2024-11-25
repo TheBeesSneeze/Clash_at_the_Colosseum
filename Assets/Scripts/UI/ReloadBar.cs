@@ -1,36 +1,42 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReloadBar : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Slider reloadBar;
-    [SerializeField] private CanvasGroup group;
-    private bool isVisible;
-    private GunController gunController;
-
-    private void Start()
+    public class ReloadBar : MonoBehaviour
     {
-        gunController = GameObject.FindObjectOfType<GunController>();
-    }
+        [SerializeField] private Slider reloadBar;
+        [SerializeField] private CanvasGroup group;
+        private bool isVisible;
+        private GunController gunController;
 
-    private void Update()
-    {
-        if (gunController.secondsSinceLastShoot > 1 / gunController.shootingMode.ShotsPerSecond)
+        private void Start()
         {
-            group.alpha = 0;
+            gunController = GameObject.FindObjectOfType<GunController>();
         }
-        if (gunController.secondsSinceLastShoot < 1 / gunController.shootingMode.ShotsPerSecond)
+
+        private void Update()
         {
-            group.alpha = 1;
-            BarRefill();
+            if (gunController.secondsSinceLastShoot > 1 / gunController.shootingMode.ShotsPerSecond)
+            {
+                group.alpha = 0;
+            }
+            if (gunController.secondsSinceLastShoot < 1 / gunController.shootingMode.ShotsPerSecond)
+            {
+                group.alpha = 1;
+                BarRefill();
+            }
+        }
+        public void BarRefill()
+        {
+            reloadBar.value = Mathf.Lerp(0, 1, gunController.secondsSinceLastShoot / (1 / gunController.shootingMode.ShotsPerSecond));
+
+
         }
     }
-    public void BarRefill()
-    {
-        reloadBar.value = Mathf.Lerp(0, 1, gunController.secondsSinceLastShoot / (1/gunController.shootingMode.ShotsPerSecond));
 
-
-    }
 }
+

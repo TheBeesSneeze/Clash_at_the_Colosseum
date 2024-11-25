@@ -6,24 +6,28 @@ using UnityEngine;
 // File Name :         Sprite2DFollowPlayer.cs
 // Author :            Toby
 //
-// Brief Description : Four sprite script to visualize enemies
+// Brief Description : 1 sprite script to visualize enemies
 *****************************************************************************/
+using Player;
 
-public class Sprite2DFollowPlayer : MonoBehaviour
+namespace Utilities
 {
-    private static Transform player;
-
-    // Use this for initialization
-    void Start()
+    public class Sprite2DFollowPlayer : MonoBehaviour
     {
-        if(player  == null)
-            player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+        private static Transform player;
+
+        // Use this for initialization
+        void Start()
+        {
+            if (player == null)
+                player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+        }
+
+        void LateUpdate()
+        {
+            transform.LookAt(player.position);
+
+        }
+
     }
-
-    void LateUpdate()
-    {
-        transform.LookAt(player.position);
-
-    }
-
 }

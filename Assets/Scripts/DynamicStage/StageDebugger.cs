@@ -28,7 +28,7 @@ namespace Utilities
             if (_startLayout == null || _endLayout == null)
                 return ;
 
-            StageTransitionManager.TransitionStagePercent(_startLayout, _endLayout,transitionPercent);
+            StageTransitionManager.TransitionStagePercentByFile(_startLayout, _endLayout,transitionPercent);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Utilities
                 return;
             }
 
-            StageTransitionManager.TransitionStagePercent(stageToLoad, stageToLoad, 0);
+            StageTransitionManager.TransitionStagePercentByFile(stageToLoad, stageToLoad, 0);
 
             /*
 

@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
+namespace UI
+{ 
 public class EnemyCounterUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text text;
@@ -26,4 +29,5 @@ public class EnemyCounterUI : MonoBehaviour
     {
         text.enabled = false;
     }
+}
 }

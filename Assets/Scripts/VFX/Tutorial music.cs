@@ -3,27 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tutorialmusic : MonoBehaviour
+namespace Managers
 {
-    [HideInInspector] public float volumeSliderAdjustment;
-    [SerializeField] private AudioSource musicSource;
-
-    private float baseVolume = 1; 
-    // Start is called before the first frame update
-    void Start()
+    public class Tutorialmusic : MonoBehaviour
     {
-        musicSource.playOnAwake = false;
-        baseVolume = musicSource.volume;
-    }
+        [HideInInspector] public float volumeSliderAdjustment;
+        [SerializeField] private AudioSource musicSource;
 
-    public void StartMusic()
-    {
-        musicSource.volume = baseVolume * volumeSliderAdjustment;
-        musicSource.Play();
-    }
+        private float baseVolume = 1;
+        // Start is called before the first frame update
+        void Start()
+        {
+            musicSource.playOnAwake = false;
+            baseVolume = musicSource.volume;
+        }
 
-    public void UpdateVolume()
-    {
-        musicSource.volume = baseVolume * volumeSliderAdjustment;
+        public void StartMusic()
+        {
+            musicSource.volume = baseVolume * volumeSliderAdjustment;
+            musicSource.Play();
+        }
+
+        public void UpdateVolume()
+        {
+            musicSource.volume = baseVolume * volumeSliderAdjustment;
+        }
     }
 }

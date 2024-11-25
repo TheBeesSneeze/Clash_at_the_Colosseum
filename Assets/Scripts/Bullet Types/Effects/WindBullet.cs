@@ -1,8 +1,12 @@
+using Enemy;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //created by alec
 
+namespace BulletEffects
+{
 [CreateAssetMenu(menuName = "BulletEffects/WindBullet", fileName = "WindBullet")]
 public class WindBullet : BulletEffect
 {
@@ -21,7 +25,9 @@ public class WindBullet : BulletEffect
             enemy.ApplyVelocityDamage();
         }
     }
-    public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet) {}
+    public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet) { }
 
-    public override void OnDestroyBullet(Bullet bullet, float damage) {}
+    public override void OnDestroyBullet(Bullet bullet, float damage) { }
 }
+}
+

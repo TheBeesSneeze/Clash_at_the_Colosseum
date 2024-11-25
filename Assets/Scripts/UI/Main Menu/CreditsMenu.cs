@@ -1,24 +1,27 @@
-using mainMenu;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditsMenu
+namespace UI.MainMenu
 {
-    public static CanvasGroup group;
-    private Button backButton;
-    public CreditsMenu(CanvasGroup Group, Button backButton)
+    public class CreditsMenu
     {
-        group = Group;
-        this.backButton = backButton;
+        public static CanvasGroup group;
+        private Button backButton;
+        public CreditsMenu(CanvasGroup Group, Button backButton)
+        {
+            group = Group;
+            this.backButton = backButton;
 
-        backButton.onClick.AddListener(OnBackButtonPressed);
-    }
+            backButton.onClick.AddListener(OnBackButtonPressed);
+        }
 
-    void OnBackButtonPressed()
-    {
-        MainMenuInitializer.ToggleCanvasGroup(StartMenu.group, true);
-        MainMenuInitializer.ToggleCanvasGroup(group, false);
+        void OnBackButtonPressed()
+        {
+            MainMenuInitializer.ToggleCanvasGroup(StartMenu.group, true);
+            MainMenuInitializer.ToggleCanvasGroup(group, false);
+        }
     }
 }
+

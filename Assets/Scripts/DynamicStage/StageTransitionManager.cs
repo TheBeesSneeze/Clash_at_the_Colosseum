@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 
 public class StageTransitionManager
 {
+    public static bool ActiveTransitioning=false;
+
     private static Cell[] allCells;
     private static EnemySpawnPoint[] allSpawnPoints;
     private static float _stageTransitonTime;
@@ -34,31 +36,37 @@ public class StageTransitionManager
     /// <param name="end"></param>
     public static void TransitionStage(TextAsset end)
     {
-        TransitionStagePercent(end, end, 1);
+        TransitionStagePercentByFile(end, end, 1);
         PublicEvents.OnStageTransitionFinish.Invoke();
         Debug.Log("stage transition finish");
     }
 
-    public async static void TransitionStage(TextAsset start, TextAsset end)
+    public async static void TransitionStageAnimation(TextAsset start, TextAsset end)
     {
+        ActiveTransitioning = true;
         await Task.Delay((int)(_stageTransitionDelay * 1000));
 
         float startTime = Time.time;
         float t = 0;
+
+        StageLayout startLayout = GetStageElements(start);
+        StageLayout endLayout = GetStageElements(end);
+
         while (t < 1)
         {
             t = (Time.time - startTime) / _stageTransitonTime;
             t = Mathf.Min(1, t);
-            
-            TransitionStagePercent(start, end, t);
+
+            TransitionStagePercent(startLayout, endLayout, t);
 
             await Task.Yield();
         }
         Debug.Log("invoking");
+        ActiveTransitioning = false;
         PublicEvents.OnStageTransitionFinish.Invoke();
     }
 
-    public static void TransitionStagePercent(TextAsset start, TextAsset end, float transitionPercent)
+    public static void TransitionStagePercentByFile(TextAsset start, TextAsset end, float transitionPercent)
     {
         if (start == null || end == null)
             return;
@@ -66,15 +74,23 @@ public class StageTransitionManager
         StageLayout startLayout = GetStageElements(start);
         StageLayout endLayout = GetStageElements(end);
 
+
+        TransitionStagePercent(startLayout, endLayout, transitionPercent);
+    }
+
+    public static void TransitionStagePercent(StageLayout startLayout, StageLayout endLayout, float transitionPercent)
+    {
+        if (startLayout == null || endLayout == null)
+        {
+            Debug.LogWarning("Stage is null");
+            return;
+        }
+
         Cell[] activeCells = GameObject.FindObjectsOfType<Cell>();
         EnemySpawnPoint[] activeSpawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
         Decor[] activeDecor = GameObject.FindObjectsOfType<Decor>();
 
-        //Assert.AreEqual(stageElements.SceneName, SceneManager.GetActiveScene().name); // Yeah. we went there. deal with it.
-        if (startLayout.SceneName != endLayout.SceneName)
-            Debug.LogWarning("Stages were built in seperate unity scenes");
         Assert.AreEqual(startLayout.elements.Length, endLayout.elements.Length);
-        //Assert.AreEqual(startLayout.spawnPoints.Length, endLayout.spawnPoints.Length);
 
         CellObject[] startCellData = startLayout.elements;
         CellObject[] endCellData = endLayout.elements;
@@ -90,10 +106,10 @@ public class StageTransitionManager
         SpawnPointElement[] endSpawnPoints = endLayout.spawnPoints;
         for (int i = 0; i < activeSpawnPoints.Length; i++)
         {
-            if(i>= startSpawnPoints.Length || i >= endSpawnPoints.Length)
+            if (i >= startSpawnPoints.Length || i >= endSpawnPoints.Length)
             {
                 continue;
-            }    
+            }
             activeSpawnPoints[i].transform.position = Vector3.Lerp(startSpawnPoints[i].pos, endSpawnPoints[i].pos, transitionPercent);
             activeSpawnPoints[i].enemyToSpawn = (Mathf.Round(transitionPercent) == 0) ? (EnemySpawn)startSpawnPoints[i].enemyIndex : (EnemySpawn)endSpawnPoints[i].enemyIndex;
         }

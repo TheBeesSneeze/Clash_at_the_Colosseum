@@ -12,33 +12,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class HealthBar : MonoBehaviour
+namespace UI
 {
 
-    [SerializeField] private Slider slider;
-    [SerializeField] private Animator animator;
-    private float value;
-    public float shakeIntensity;
-    private void Start()
-    {
-        PublicEvents.OnPlayerDamage.AddListener(shakeHelathBar);
-    }
-    public void shakeHelathBar() {
-        animator.SetTrigger("Health");
-    }
-    private void Update()
-    {
-        slider.value = Mathf.Lerp(slider.value, value, 4*Time.deltaTime);
-    }
 
-    public void SetHealth(float health)
+    public class HealthBar : MonoBehaviour
     {
-        value = health;
-    }
 
-    public void SetMaxHealth(float health)
-    {
-        slider.maxValue = health;
-        value = health;
+        [SerializeField] private Slider slider;
+        [SerializeField] private Animator animator;
+        private float value;
+        public float shakeIntensity;
+        private void Start()
+        {
+            PublicEvents.OnPlayerDamage.AddListener(shakeHelathBar);
+        }
+        public void shakeHelathBar()
+        {
+            animator.SetTrigger("Health");
+        }
+        private void Update()
+        {
+            slider.value = Mathf.Lerp(slider.value, value, 4 * Time.deltaTime);
+        }
+
+        public void SetHealth(float health)
+        {
+            value = health;
+        }
+
+        public void SetMaxHealth(float health)
+        {
+            slider.maxValue = health;
+            value = health;
+        }
     }
 }

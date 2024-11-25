@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using System;
 
+[Obsolete]
 public class GrapplingHook : MonoBehaviour
 {
     // Start is called before the first frame update

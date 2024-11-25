@@ -1,39 +1,45 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class BulletLeftUI : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private GunController gunController;
-    [SerializeField] private Slider slider;
-
-    private bool canInfiniteFire;
-    // Start is called before the first frame update
-    void Start()
+    public class BulletLeftUI : MonoBehaviour
     {
-        if (gunController == null) 
-            gunController = GameObject.FindObjectOfType<GunController>();
+        [SerializeField] private GunController gunController;
+        [SerializeField] private Slider slider;
 
-        canInfiniteFire = gunController.shootingMode.canInfiniteFire;
-        
-        if(!canInfiniteFire)
+        private bool canInfiniteFire;
+        // Start is called before the first frame update
+        void Start()
         {
-            PublicEvents.OnPlayerShoot.AddListener(BulletUI);
-            PublicEvents.OnPlayerReload.AddListener(BulletUI);
+            if (gunController == null)
+                gunController = GameObject.FindObjectOfType<GunController>();
+
+            canInfiniteFire = gunController.shootingMode.canInfiniteFire;
+
+            if (!canInfiniteFire)
+            {
+                PublicEvents.OnPlayerShoot.AddListener(BulletUI);
+                PublicEvents.OnPlayerReload.AddListener(BulletUI);
+            }
+            BulletUI();
+            slider.maxValue = gunController.shootingMode.ClipSize;
+            slider.value = gunController.shootingMode.ClipSize;
         }
-        BulletUI();
-        slider.maxValue = gunController.shootingMode.ClipSize;
-        slider.value = gunController.shootingMode.ClipSize; 
+
+        private void SetValue(int value)
+        {
+            slider.value = value;
+        }
+
+        private void BulletUI()
+        {
+            SetValue(gunController.GetShotsLeft());
+        }
     }
 
-    private void SetValue(int value)
-    {
-        slider.value = value;
-    }
-
-    private void BulletUI()
-    {
-        SetValue(gunController.GetShotsLeft());
-    }
 }
+

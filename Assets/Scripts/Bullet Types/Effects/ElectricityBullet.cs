@@ -12,8 +12,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using Enemy;
+using Enemy.Boss;
 
-namespace DefaultNamespace
+namespace BulletEffects
 {
     [CreateAssetMenu(fileName = "ElectricityBullet", menuName = "BulletEffects/Electricity")]
     public class ElectricityBullet : BulletEffect

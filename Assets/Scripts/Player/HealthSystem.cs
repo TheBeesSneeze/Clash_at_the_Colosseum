@@ -11,8 +11,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Player;
 
-
+namespace UI
+{
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private Slider healCharge;
@@ -31,7 +33,7 @@ public class HealthSystem : MonoBehaviour
         InputEvents.Instance.HealStarted.AddListener(heal);
         // healCharge.value = 0;
         healCharge.maxValue = maxChargeNeeded;
-        addCharge(maxChargeNeeded/2);
+        addCharge(maxChargeNeeded / 2);
 
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         playerStats = playerBehaviour.GetComponent<PlayerStats>();
@@ -44,17 +46,17 @@ public class HealthSystem : MonoBehaviour
     private void Update()
     {
         //little animation :)
-        healCharge.value = Mathf.Lerp(healCharge.value, value, 8*Time.deltaTime);
+        healCharge.value = Mathf.Lerp(healCharge.value, value, 8 * Time.deltaTime);
 
         if (isHealing)
         {
             timeElapsed += Time.deltaTime;
-            if(timeElapsed <= playerStats.secondsTillFull)
+            if (timeElapsed <= playerStats.secondsTillFull)
             {
                 float newHealth = Mathf.Max(CalculateHealth(), playerBehaviour.CurrentHealth);
                 playerBehaviour.RegenHealth(Mathf.Min(newHealth, playerStats.DefaultHealth));
             }
-            else 
+            else
             {
                 playerBehaviour.RegenHealth(playerStats.DefaultHealth);
                 isHealing = false;
@@ -66,7 +68,7 @@ public class HealthSystem : MonoBehaviour
     {
         float newHealth = timeElapsed * healPerSecond;
         return newHealth;
-    }    
+    }
 
     public void addCharge(float charge)
     {
@@ -95,4 +97,5 @@ public class HealthSystem : MonoBehaviour
         return;
     }
 
+}
 }
