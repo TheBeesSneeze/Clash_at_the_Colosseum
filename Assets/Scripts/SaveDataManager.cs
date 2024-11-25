@@ -25,7 +25,7 @@ public class SaveDataManager : Singleton<SaveDataManager>
         //gc.bulletEffects.Clear();
         foreach(BulletEffect be in SaveData.gotBulletEffects)
         {
-            gc.AddBulletEffect(be,false);
+            gc.AddBulletEffect(be,true);
         }
 
         ui = GameObject.FindObjectOfType<UpgradeSelectUI>();
