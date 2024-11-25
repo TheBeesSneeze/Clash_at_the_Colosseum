@@ -5,14 +5,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
+namespace Enemy
+{
 public class FlyingEnemyMovement : MonoBehaviour
 {
     private float _horizontalSpeed;
     private float _verticalSpeed;
     private float _heightAboveGround;
     private float _stoppingDistanceToPlayer;
-    private float _flyingOffset; 
+    private float _flyingOffset;
     private float r;
     private Transform _player;
     private int _groundMask;
@@ -35,7 +38,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
         _groundMask = LayerMask.GetMask(new string[] { "Fill Cell", "Default" });
-        
+
         enemyStats = GetComponent<EnemyStats>();
         _horizontalSpeed = enemyStats.MoveSpeed;
         _verticalSpeed = enemyStats.VerticalSpeed;
@@ -51,7 +54,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         Vector3 targetPosition = GetHorizontalPosition(y);
         Vector3 direction = targetPosition - transform.position;
 
-        rb.velocity = direction; 
+        rb.velocity = direction;
     }
 
     private float GetYPosition()
@@ -77,7 +80,7 @@ public class FlyingEnemyMovement : MonoBehaviour
         playerPos.y = y;
 
         playerPos.x += r;
-        playerPos.z += r ;
+        playerPos.z += r;
 
         //stay still
         float distance = Vector3.Distance(enemyPos, playerPos);
@@ -87,3 +90,6 @@ public class FlyingEnemyMovement : MonoBehaviour
         return Vector3.MoveTowards(enemyPos, playerPos, _horizontalSpeed);// * Time.deltaTime);
     }
 }
+}
+
+

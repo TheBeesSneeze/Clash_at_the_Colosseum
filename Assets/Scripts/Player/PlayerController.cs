@@ -10,18 +10,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
+using Managers;
 
+namespace Player
+{
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour
 {
-    [Header ("Jump Stats")]
-    [Tooltip ("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
+    [Header("Jump Stats")]
+    [Tooltip("How far raycast can see for jumps. Lower = closer to ground before jump. Higher = further off ground before jump")]
     [SerializeField] private float jumpRaycastDistance;
     public bool ConsistentJumps = true;
-    
 
-    [Header ("Camera References")]
+
+    [Header("Camera References")]
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform playerOrientationTracker;
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody RB => rb;
     [SerializeField] private LayerMask groundLayers;
 
-    [Header ("Movement")]
+    [Header("Movement")]
     [SerializeField] private float groundDrag;
     [SerializeField] private float airDrag;
     private float xMovement;
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private Vector3 movementDirection;
     private DashScript ds;
-    
+
 
     private int airJumpCounter;
 
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
         verticalInput = input.y;
 
         SpeedControl();
-        if(IsGrounded())
+        if (IsGrounded())
         {
             rb.drag = groundDrag;
         }
@@ -116,9 +118,8 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance*2, groundLayers))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, jumpRaycastDistance * 2, groundLayers))
         {
-            ds.recentlyGrounded = true;
             return true;
         }
         return false;
@@ -130,8 +131,8 @@ public class PlayerController : MonoBehaviour
     }
 
     /*
-     * Clare worked in DoMovement to change from  gradually hit max speed to max speed at start 
-     */
+        * Clare worked in DoMovement to change from  gradually hit max speed to max speed at start 
+        */
     private void DoMovement()
     {
 
@@ -140,7 +141,7 @@ public class PlayerController : MonoBehaviour
         float xMag = mag.x;
         float yMag = mag.y;
 
-        movementDirection = playerOrientationTracker.forward * verticalInput + playerOrientationTracker.right *horizontalInput;
+        movementDirection = playerOrientationTracker.forward * verticalInput + playerOrientationTracker.right * horizontalInput;
 
         rb.AddForce(movementDirection.normalized * stats.Speed, ForceMode.Force);
         /*ApplyCounterMovement(input.x, input.y, mag);
@@ -173,7 +174,7 @@ public class PlayerController : MonoBehaviour
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //limit velocity as needed\
-        if(flatVelocity.magnitude > stats.MaxSpeed)
+        if (flatVelocity.magnitude > stats.MaxSpeed)
         {
             Vector3 limitedVelocity = flatVelocity.normalized * stats.Speed;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
@@ -198,9 +199,9 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * (Mathf.Sqrt(2 * stats.JumpHeight * grav)), ForceMode.Impulse);
             airJumpCounter = stats.AirJumps;
         }
-        if(!IsGrounded() && (airJumpCounter > 0))
+        if (!IsGrounded() && (airJumpCounter > 0))
         {
-            rb.AddForce(Vector3.up * (Mathf.Sqrt(2 * stats.SecondJumpHeight * (grav*2))), ForceMode.Impulse);
+            rb.AddForce(Vector3.up * (Mathf.Sqrt(2 * stats.SecondJumpHeight * (grav * 2))), ForceMode.Impulse);
             airJumpCounter--;
         }
     }
@@ -245,7 +246,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCameraRotation()
     {
-       if (GameManager.Instance.isPaused) return;
+        if (GameManager.Instance.isPaused) return;
 
         var mouse = InputEvents.Instance.LookDelta;
         //float mouseX = mouse.x * OptionInstance.sensitivity * Time.fixedDeltaTime;
@@ -259,4 +260,5 @@ public class PlayerController : MonoBehaviour
         cameraHolder.localRotation = Quaternion.Euler(yMovement, xMovement, 0);
         playerOrientationTracker.localRotation = Quaternion.Euler(0, xMovement, 0);
     }
+}
 }

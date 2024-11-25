@@ -5,6 +5,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
+using Player;
 
 public class DeathPlane : MonoBehaviour
 {

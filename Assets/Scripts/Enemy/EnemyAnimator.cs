@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using Player;
 
+namespace Enemy
+{
 [RequireComponent(typeof(Animator))]
 public class EnemyAnimator : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
-    [SerializeField] private float topDownSpriteDistance=3;
+    [SerializeField] private float topDownSpriteDistance = 3;
     [Tooltip("goes into front face sprite mode when within distance")]
     [SerializeField] private float playerSpriteChangeDistance;
     [SerializeField] private Transform rotationReference;
 
     private static Transform player;
-    private bool dead=false;
-    private bool damaged=false;
+    private bool dead = false;
+    private bool damaged = false;
     private bool attacking = false;
     private EnemyTakeDamage damage;
-    
-    [ReadOnly]public AnimationState state;
+
+    [ReadOnly] public AnimationState state;
     public enum AnimationState
     {
         Front, Left, Right, Death, Damage, Attack, Top, Back
@@ -28,13 +31,13 @@ public class EnemyAnimator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if(animator == null)
+        if (animator == null)
             animator = GetComponent<Animator>();
-        if(rotationReference == null)
+        if (rotationReference == null)
             rotationReference = transform;
         if (player == null)
             player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
-        damage = GetComponent<EnemyTakeDamage>();   
+        damage = GetComponent<EnemyTakeDamage>();
     }
 
     /// <summary>
@@ -49,7 +52,7 @@ public class EnemyAnimator : MonoBehaviour
 
         if (newHealth < 0)
         {
-            animator.SetBool("Death",true);
+            animator.SetBool("Death", true);
             dead = true;
             return;
         }
@@ -85,7 +88,7 @@ public class EnemyAnimator : MonoBehaviour
 
         if (dead || damaged || attacking)
             return;
-        
+
         float yDiff = player.position.y - rotationReference.position.y;
         if (yDiff > topDownSpriteDistance)
         {
@@ -93,14 +96,14 @@ public class EnemyAnimator : MonoBehaviour
                 Mathf.Pow(player.position.x - transform.position.x, 2) +
                 Mathf.Pow(player.position.z - transform.position.z, 2)))
             {
-                if(state != AnimationState.Top)
+                if (state != AnimationState.Top)
                     animator.SetTrigger("Top");
                 state = AnimationState.Top;
                 return;
             }
         }
 
-        if(Vector3.Distance(player.position, transform.position) <= playerSpriteChangeDistance)
+        if (Vector3.Distance(player.position, transform.position) <= playerSpriteChangeDistance)
         {
             if (state != AnimationState.Front)
                 animator.SetTrigger("Front");
@@ -112,13 +115,13 @@ public class EnemyAnimator : MonoBehaviour
         angle = (angle + 360) % 360;
 
         //Update sprites     
-        if(angle < 60 || angle > 300) // (angle < 45 || angle > 315)
+        if (angle < 60 || angle > 300) // (angle < 45 || angle > 315)
         {
             if (state != AnimationState.Front)
                 animator.SetTrigger("Front");
             state = AnimationState.Front;
         }
-        if (angle >60 && angle < 180) // (angle > 45 && angle < 135)
+        if (angle > 60 && angle < 180) // (angle > 45 && angle < 135)
         {
             if (state != AnimationState.Right)
                 animator.SetTrigger("Right");
@@ -132,7 +135,7 @@ public class EnemyAnimator : MonoBehaviour
         }*/
         if (angle > 180 && angle < 360) // (angle > 225 && angle < 315)
         {
-            if(state != AnimationState.Left)
+            if (state != AnimationState.Left)
                 animator.SetTrigger("Left");
             state = AnimationState.Left;
         }
@@ -142,6 +145,8 @@ public class EnemyAnimator : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position+transform.forward);
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward);
     }
 }
+}
+

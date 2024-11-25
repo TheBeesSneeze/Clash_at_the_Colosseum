@@ -12,7 +12,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using BulletEffects;
 
+namespace Managers
+{ 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -112,4 +115,5 @@ public class GameManager : MonoBehaviour
     {
         pathManager.Update();
     }
+}
 }

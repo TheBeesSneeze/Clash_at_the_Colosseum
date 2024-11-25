@@ -1,32 +1,39 @@
-using mainMenu;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class OutlineBehaviour : MonoBehaviour
+using Managers;
+
+namespace Enemy
 {
-    
-    [Tooltip ("The amount of enemies remaining to activate outliner.")][Min(1)]
-    public int EnemiesLeftToEnableOutline;
-    public void Start()
+    public class OutlineBehaviour : MonoBehaviour
     {
-        PublicEvents.OnAnyEnemyDeath += OnEnemyDeath;
-    }
 
-    public void OnEnemyDeath(EnemyStats stats)
-    {
-        if (EnemySpawner.ReturnEnemyCount() <= EnemiesLeftToEnableOutline)
+        [Tooltip("The amount of enemies remaining to activate outliner.")]
+        [Min(1)]
+        public int EnemiesLeftToEnableOutline;
+        public void Start()
         {
-            Outline outline = gameObject.GetComponentInChildren<Outline>();
+            PublicEvents.OnAnyEnemyDeath += OnEnemyDeath;
+        }
 
-            if (outline != null)
+        public void OnEnemyDeath(EnemyStats stats)
+        {
+            if (EnemySpawner.ReturnEnemyCount() <= EnemiesLeftToEnableOutline)
             {
-                outline.enabled = true;
+                Outline outline = gameObject.GetComponentInChildren<Outline>();
+
+                if (outline != null)
+                {
+                    outline.enabled = true;
+                }
             }
         }
-    }
 
-    public void OnDestroy()
-    {
-        PublicEvents.OnAnyEnemyDeath -= OnEnemyDeath;
+        public void OnDestroy()
+        {
+            PublicEvents.OnAnyEnemyDeath -= OnEnemyDeath;
+        }
     }
 }
+
+

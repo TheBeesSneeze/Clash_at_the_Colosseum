@@ -11,8 +11,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
+using Enemy;
+//using Managers;
 
-namespace DefaultNamespace
+namespace BulletEffects
 {
     [CreateAssetMenu(fileName = "BouncingBullet", menuName = "BulletEffects/Bouncing")]
     public class BouncingBullet : BulletEffect
@@ -53,7 +55,8 @@ namespace DefaultNamespace
             {
                 if (bullet.playerBullet)
                 {
-                    BulletPoolManager.Destroy(bullet);
+                    //BulletPoolManager.Destroy(bullet);
+                    Destroy(bullet.gameObject);
                     return;
                 }
                 Destroy(bullet.gameObject);

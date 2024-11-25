@@ -7,21 +7,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICorrection : MonoBehaviour
+namespace Utilities
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UICorrection : MonoBehaviour
     {
-        Correct();
-    }
-
-    public void Correct()
-    {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-        RectTransform[] bruteForce = GetComponentsInChildren<RectTransform>();
-        foreach (RectTransform b in bruteForce)
+        // Start is called before the first frame update
+        void Start()
         {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(b);
+            Correct();
+        }
+
+        public void Correct()
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+            RectTransform[] bruteForce = GetComponentsInChildren<RectTransform>();
+            foreach (RectTransform b in bruteForce)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(b);
+            }
         }
     }
 }

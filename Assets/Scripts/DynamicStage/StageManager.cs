@@ -13,7 +13,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UI;
+using Player;
 
+namespace Managers
+{
 public class StageManager
 {
     public static StageStats[] _stages;
@@ -97,4 +101,5 @@ public class StageManager
 
         //add the dynamic stage code here to actually change stage 
     }
+}
 }

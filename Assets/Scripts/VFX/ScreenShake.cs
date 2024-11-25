@@ -8,53 +8,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using NaughtyAttributes;
 
-
-public class ScreenShake : MonoBehaviour
+namespace Player
 {
-    [Tooltip("x axis (time) needs to be synced with damageShakeDuration")]
-    [SerializeField] private AnimationCurve playerDamageIntensityCurve;
-    private float damageShakeDuration = 0.1f;
-
-    //[SerializeField] private float playerShootIntensity = 0.25f;
-    //[SerializeField] private float shootShakeDuration = 0.1f;
-
-    private Transform cameraTransform;
-    private Vector3 startPos;
-
-    // Start is called before the first frame update
-    void Start()
+    public class ScreenShake : MonoBehaviour
     {
-        cameraTransform = Camera.main.transform;
-        startPos = cameraTransform.localPosition;
+        [Tooltip("x axis (time) needs to be synced with damageShakeDuration")]
+        [SerializeField] private AnimationCurve playerDamageIntensityCurve;
+        private float damageShakeDuration = 0.1f;
 
-        //automatically get animation time
-        damageShakeDuration = playerDamageIntensityCurve.keys[playerDamageIntensityCurve.keys.Length - 1].time;
+        //[SerializeField] private float playerShootIntensity = 0.25f;
+        //[SerializeField] private float shootShakeDuration = 0.1f;
 
-        PublicEvents.OnPlayerDamage.AddListener(DamageShake);
-        //PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
-    }
+        private Transform cameraTransform;
+        private Vector3 startPos;
 
-    async private void DamageShake()
-    {
-        float startTime = Time.time;
-        float intensity;
-        float t;
-        while(startTime + damageShakeDuration >= Time.time)
+        // Start is called before the first frame update
+        void Start()
         {
-            if (this==null || cameraTransform == null) //crazy that this is a problem
-                return;
+            cameraTransform = Camera.main.transform;
+            startPos = cameraTransform.localPosition;
 
-            if(Time.timeScale != 0) // if not paused
-            {
-                t = (Time.time - startTime) / damageShakeDuration;
-                intensity = playerDamageIntensityCurve.Evaluate(Time.time - startTime);
-                cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
-            }
+            //automatically get animation time
+            damageShakeDuration = playerDamageIntensityCurve.keys[playerDamageIntensityCurve.keys.Length - 1].time;
 
-            
-            await Task.Yield();
+            PublicEvents.OnPlayerDamage.AddListener(DamageShake);
+            //PublicEvents.OnPlayerShoot.AddListener(OnPlayerShoot);
         }
-        transform.localPosition = startPos; 
+
+        async private void DamageShake()
+        {
+            float startTime = Time.time;
+            float intensity;
+            float t;
+            while (startTime + damageShakeDuration >= Time.time)
+            {
+                if (this == null || cameraTransform == null) //crazy that this is a problem
+                    return;
+
+                if (Time.timeScale != 0) // if not paused
+                {
+                    t = (Time.time - startTime) / damageShakeDuration;
+                    intensity = playerDamageIntensityCurve.Evaluate(Time.time - startTime);
+                    cameraTransform.localPosition = startPos + (Random.insideUnitSphere * intensity);
+                }
+
+                await Task.Yield();
+            }
+            transform.localPosition = startPos;
+        }
     }
 }

@@ -12,10 +12,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Player;
 
+namespace Enemy
+{
 public class EnemyMelee : MonoBehaviour
 {
-    
+
     private EnemyStats stats;
     private static PlayerBehaviour player;
     private GameObject playerObject;
@@ -27,13 +30,13 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<EnemyStats>();
-        if(player == null)
+        if (player == null)
             player = GameObject.FindObjectOfType<PlayerBehaviour>();
         playerObject = player.gameObject;
         timeBetweenAttacks = stats.AttackRate;
         animator = GetComponent<EnemyAnimator>();
-        damage = GetComponent<EnemyTakeDamage>();   
-        coolDown =timeBetweenAttacks;
+        damage = GetComponent<EnemyTakeDamage>();
+        coolDown = timeBetweenAttacks;
     }
     private void Update()
     {
@@ -49,9 +52,9 @@ public class EnemyMelee : MonoBehaviour
         if (coolDown <= 0f)
         {
             float distanceToPlayer = GetDistanceFromPlayer();
-            
+
             if (distanceToPlayer <= stats.EnemyAttackRange)
-            { 
+            {
                 player.TakeDamage(stats.EnemyDamage);
 
                 PublicEvents.OnMeleeEnemyAttack.Invoke();
@@ -73,3 +76,5 @@ public class EnemyMelee : MonoBehaviour
         return distanceFrom;
     }
 }
+}
+

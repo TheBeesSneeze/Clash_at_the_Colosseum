@@ -15,7 +15,7 @@ using UnityEngine.UI;
 using TMPro;
 using NaughtyAttributes;
 
-namespace mainMenu
+namespace UI.MainMenu
 {
     public class MainMenuInitializer : MonoBehaviour
     {

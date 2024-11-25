@@ -4,53 +4,56 @@ using UnityEngine;
 //using UnityEngine.ParticleSystemModule;
 using UnityEngine.ParticleSystemJobs;
 
-public class ParticleManager : Singleton<ParticleManager>
+namespace Managers
 {
-    public ParticleGroup EnemySpawns;
-    public ParticleGroup PlayerHeal;
-    public void Start()
+    public class ParticleManager : Singleton<ParticleManager>
     {
-        //PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
-        //InitalizeParticles(EnemySpawns);
-        //EnemySpawns.Play(); // it also needs to play at beiginning at game
-
-        PublicEvents.OnPlayerHeal.AddListener(PlayerHeal.Play);
-        InitalizeParticles(PlayerHeal);
-
-    }
-
-    public void InitalizeParticles(ParticleGroup particles)
-    {
-        if(particles.PlayOnStart)
+        public ParticleGroup EnemySpawns;
+        public ParticleGroup PlayerHeal;
+        public void Start()
         {
-            particles.Play();
-            return;
+            //PublicEvents.OnStageTransitionFinish.AddListener(EnemySpawns.Play);
+            //InitalizeParticles(EnemySpawns);
+            //EnemySpawns.Play(); // it also needs to play at beiginning at game
+
+            PublicEvents.OnPlayerHeal.AddListener(PlayerHeal.Play);
+            InitalizeParticles(PlayerHeal);
+
         }
 
-        foreach (ParticleSystem particle in particles.particles)
+        public void InitalizeParticles(ParticleGroup particles)
         {
-            if (!particles.PlayOnStart && particle != null)
-                particle.Stop();
+            if (particles.PlayOnStart)
+            {
+                particles.Play();
+                return;
+            }
+
+            foreach (ParticleSystem particle in particles.particles)
+            {
+                if (!particles.PlayOnStart && particle != null)
+                    particle.Stop();
+            }
         }
     }
-}
 
-[System.Serializable]
-public class ParticleGroup
-{
-    //public float PlayDuration = 1;
-    public List<ParticleSystem> particles;
-    public bool PlayOnStart = false;
-
-    public void Play()
+    [System.Serializable]
+    public class ParticleGroup
     {
-        //ParticleManager.Instance.StartCoroutine(ParticleManager.PlayParticleGroups(this));
-        foreach (ParticleSystem particle in particles)
+        //public float PlayDuration = 1;
+        public List<ParticleSystem> particles;
+        public bool PlayOnStart = false;
+
+        public void Play()
         {
-            if (particle != null)
-                particle.Play();
-            else
-                Debug.LogWarning("No Particles set");
+            //ParticleManager.Instance.StartCoroutine(ParticleManager.PlayParticleGroups(this));
+            foreach (ParticleSystem particle in particles)
+            {
+                if (particle != null)
+                    particle.Play();
+                else
+                    Debug.LogWarning("No Particles set");
+            }
         }
     }
 }

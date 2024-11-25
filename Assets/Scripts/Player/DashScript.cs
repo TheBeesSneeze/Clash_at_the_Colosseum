@@ -1,47 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-public class DashScript : MonoBehaviour
+
+namespace Player
 {
-    public GameObject facing;
-    bool dashCooldown = false;
-    Rigidbody rb;
-    PlayerStats stats;
-    PlayerBehaviour pb;
-    PlayerController pc;
-    public bool recentlyGrounded;
-    void Start()
+    public class DashScript : MonoBehaviour
     {
-        InputEvents.Instance.DashStarted.AddListener(startDash);
-        InputEvents.Instance.MoveStarted.AddListener(getKeyPressed);
-        rb = gameObject.GetComponent<Rigidbody>();
-        stats = GetComponent<PlayerStats>();
-        pb = gameObject.GetComponent<PlayerBehaviour>();
-        pc = gameObject.GetComponent<PlayerController>();
-    }
-    public void getKeyPressed() { 
-        
-    }
-    public void startDash() {
-        Vector3 direction = InputEvents.Instance.InputDirection;
-        if (!dashCooldown && recentlyGrounded) {
-            pb.canTakeDamage = false;
-            rb.AddForce(direction * stats.DashSpeed);
-            PublicEvents.OnDash.Invoke();
-            dashCooldown = true;
-            StartCoroutine(DashCoolDown());
-            StartCoroutine(DashInvincibilityTime());
-            recentlyGrounded = pc.IsGrounded();
+        public GameObject facing;
+        bool dashCooldown = false;
+        Rigidbody rb;
+        PlayerStats stats;
+        PlayerBehaviour _playerBehaviour;
+        PlayerController _playerController;
+        Camera _mainCamera;
+
+        private bool canDash = true;
+        void Start()
+        {
+            InputEvents.Instance.DashStarted.AddListener(startDash);
+            rb = gameObject.GetComponent<Rigidbody>();
+            stats = GetComponent<PlayerStats>();
+            _playerBehaviour = gameObject.GetComponent<PlayerBehaviour>();
+            _playerController = gameObject.GetComponent<PlayerController>();
+            _mainCamera = Camera.main;
         }
-    }
-    IEnumerator DashInvincibilityTime()
-    {
-        yield return new WaitForSeconds(stats.DashInvincibilityTime);
-        pb.canTakeDamage = true;
-    }
-    IEnumerator DashCoolDown()
-    {
-        yield return new WaitForSeconds(stats.DashCoolDown);
-        dashCooldown = false;
+        public void startDash()
+        {
+            if (canDash)
+            {
+                Vector3 direction = InputEvents.Instance.InputDirection;
+
+                if (direction == Vector3.zero) //if player isnt pressing any keys
+                    direction = _mainCamera.transform.forward;
+
+                _playerBehaviour.canTakeDamage = false;
+                rb.AddForce(direction.normalized * stats.DashSpeed);
+                PublicEvents.OnDash.Invoke();
+                dashCooldown = true;
+                StartCoroutine(DashCoolDown());
+                StartCoroutine(DashInvincibilityTime());
+            }
+        }
+        IEnumerator DashInvincibilityTime()
+        {
+            yield return new WaitForSeconds(stats.DashInvincibilityTime);
+            _playerBehaviour.canTakeDamage = true;
+        }
+        IEnumerator DashCoolDown()
+        {
+            yield return new WaitForSeconds(stats.DashCoolDown);
+
+            //wait for player to not be grounded
+            while (!_playerController.IsGrounded())
+                yield return null;
+
+            canDash = true;
+            PublicEvents.OnDashAvailable?.Invoke();
+
+        }
     }
 }

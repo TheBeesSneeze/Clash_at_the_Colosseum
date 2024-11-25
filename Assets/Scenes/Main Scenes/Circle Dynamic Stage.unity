@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.2102548, g: 0.883931, b: 0.5953271, a: 1}
+  m_IndirectSpecularColor: {r: 1.2104746, g: 0.88403714, b: 0.595373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6517,6 +6517,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: ExplosionSound.sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b2c916bf72f1ca4aa39f91691702038, type: 3}
+    - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
+      propertyPath: ExplosionSound.Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3221912983751877588, guid: 57f9c81730533404896e422cdfe220dd, type: 3}
       propertyPath: GunSound.RandomizePitch
       value: 1
       objectReference: {fileID: 0}
@@ -8734,6 +8742,10 @@ PrefabInstance:
       propertyPath: backgroundManager
       value: 
       objectReference: {fileID: 883563526}
+    - target: {fileID: 8158703902223346645, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8209654967749561219, guid: 70f8d23297fc1e545a0a22488eee5bd8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9574,35 +9586,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: bulletEffects.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: bulletEffects.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b778850c34dc3a244a4ce09017ff2414, type: 2}
-    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-      propertyPath: bulletEffects.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0248c8e3531785045b0f5756db23ece9, type: 2}
-    - target: {fileID: 18831259720661764, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-      propertyPath: bulletEffects.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: b778850c34dc3a244a4ce09017ff2414, type: 2}
-    - target: {fileID: 918488309744613213, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: cc1100b5625a2534da4e041ff4e37414, type: 2}
     - target: {fileID: 3199585334150164854, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675508027080997960, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7151011196388326143, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
-      propertyPath: DashCoolDown
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7911197565489766704, guid: 9d9779a117deffa4fa5bbe89a01e7752, type: 3}
       propertyPath: redVignette

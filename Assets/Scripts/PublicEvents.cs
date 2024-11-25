@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using Enemy;
+using BulletEffects;
 
 public class PublicEvents
 {
@@ -27,6 +29,7 @@ public class PublicEvents
     public static UnityEvent OnMeleeEnemyAttack = new UnityEvent();
     public static UnityEvent OnGrapple = new UnityEvent();
     public static UnityEvent OnDash = new UnityEvent();
+    public static UnityEvent OnDashAvailable = new UnityEvent();
     public static UnityEvent OnStageTransition = new UnityEvent();
     public static UnityEvent OnStageTransitionFinish = new UnityEvent();
     public static UnityEvent OnBossSpawn = new UnityEvent();
@@ -42,6 +45,7 @@ public class PublicEvents
     public static UnityEvent Reloading = new UnityEvent();
     public static UnityEvent StartSound = new UnityEvent();
     public static UnityEvent OnJournalPageFlip = new UnityEvent();
+    public static UnityEvent OnExplosion = new UnityEvent();
    
 
     // actions???? what the fuck!!!

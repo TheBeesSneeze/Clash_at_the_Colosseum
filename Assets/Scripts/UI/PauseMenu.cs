@@ -13,214 +13,222 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using TMPro;
-public class PauseMenu : MonoBehaviour
+using Managers;
+using Utilities;
+
+namespace UI
 {
-    [SerializeField] private string[] tips;
-
-     private BackgroundManager backgroundManager;
-
-    [SerializeField] private CanvasGroup pauseGroup;
-    [SerializeField] private Button resumeButton;
-    [SerializeField] private Button mainMenuButton;
-    [SerializeField] private Button restartGameButton;
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private Slider sensitivitySlider;
-    [SerializeField] private Tutorialmusic tutorialMusic;
-    [SerializeField] private TMP_Text tip_text;
-    [SerializeField] private Button tip_button;
-
-    [Scene]
-    [SerializeField] private string mainMenuSceneName = "MainMenu";
-
-    private float baseBGMVolume;
-    private bool canPressEscape = true;
-    private int tip_index = 0;
-
-    private void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
-        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
+        [SerializeField] private string[] tips;
 
-        if(backgroundManager == null)
+        private BackgroundManager backgroundManager;
+
+        [SerializeField] private CanvasGroup pauseGroup;
+        [SerializeField] private Button resumeButton;
+        [SerializeField] private Button mainMenuButton;
+        [SerializeField] private Button restartGameButton;
+        [SerializeField] private Slider volumeSlider;
+        [SerializeField] private Slider sensitivitySlider;
+        [SerializeField] private Tutorialmusic tutorialMusic;
+        [SerializeField] private TMP_Text tip_text;
+        [SerializeField] private Button tip_button;
+
+        [Scene]
+        [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+        private float baseBGMVolume;
+        private bool canPressEscape = true;
+        private int tip_index = 0;
+
+        private void Start()
         {
-            //Debug.LogWarning("no background music set.");
-            backgroundManager = FindObjectOfType<BackgroundManager>();
+            volumeSlider.value = PlayerPrefs.GetFloat("volume", 1);
+            sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", GameManager.Instance.DefaultSensitivity);
+
+            if (backgroundManager == null)
+            {
+                //Debug.LogWarning("no background music set.");
+                backgroundManager = FindObjectOfType<BackgroundManager>();
+            }
+
+            if (tutorialMusic == null)
+            {
+                tutorialMusic = FindObjectOfType<Tutorialmusic>();
+            }
+
+            if (tutorialMusic != null)
+            {
+                tutorialMusic.StartMusic();
+            }
+
+            if (backgroundManager != null)
+            {
+                baseBGMVolume = backgroundManager.audioSource.volume;
+                Debug.Log("baseBGM: " + baseBGMVolume);
+                backgroundManager.audioSource.volume = baseBGMVolume * volumeSlider.value;
+                backgroundManager.volumeSliderAdjustment = volumeSlider.value;
+            }
+            TogglePauseUI(false);
+
+            InputEvents.Instance.PauseStarted.AddListener(escPressed);
+
+            resumeButton.onClick.AddListener(ResumeClicked);
+            mainMenuButton.onClick.AddListener(mainMenuClicked);
+            restartGameButton.onClick.AddListener(RestartGame);
+            volumeSlider.onValueChanged.AddListener(volumeChanged);
+            sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
+            tip_button.onClick.AddListener(SelectNewRandomTip);
+
+            PublicEvents.StartSound.Invoke();
+            PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
+            PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);
+        }
+        public void escPressed()
+        {
+            if (canPressEscape)
+            {
+                Debug.Log("pause");
+
+                if (GameManager.Instance.pausedForUI)
+                    return;
+
+                SelectNewRandomTip();
+
+                if (backgroundManager != null)
+                {
+                    if (backgroundManager.audioSourcePlayingCurrent)
+                    {
+                        if (!GameManager.Instance.isPaused)
+                        {
+                            backgroundManager.audioSource.Pause();
+                        }
+                        else
+                        {
+                            backgroundManager.audioSource.Play();
+                        }
+                    }
+                    else
+                    {
+                        if (!GameManager.Instance.isPaused)
+                        {
+                            backgroundManager.secondaryAudio.Pause();
+                        }
+                        else
+                        {
+                            backgroundManager.secondaryAudio.Play();
+                        }
+                    }
+                }
+
+                GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
+                TogglePauseUI(GameManager.Instance.isPaused);
+                Cursor.visible = GameManager.Instance.isPaused;
+                Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+                Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
+            }
+
         }
 
-        if (tutorialMusic == null)
+        public void SetPauseState(bool state)
         {
-            tutorialMusic = FindObjectOfType<Tutorialmusic>();
+            GameManager.Instance.isPaused = state;
+            TogglePauseUI(state);
+
+            Cursor.visible = state;
+            Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+            Time.timeScale = state ? 0 : 1;
         }
 
-        if(tutorialMusic != null)
+        private void TogglePauseUI(bool toggle)
         {
-            tutorialMusic.StartMusic();
+            pauseGroup.alpha = toggle ? 1 : 0;
+            pauseGroup.interactable = toggle;
+            pauseGroup.blocksRaycasts = toggle;
         }
 
-        if (backgroundManager != null)
+        public void ResumeClicked()
         {
-            baseBGMVolume = backgroundManager.audioSource.volume;
-            Debug.Log("baseBGM: "+ baseBGMVolume);
-            backgroundManager.audioSource.volume = baseBGMVolume * volumeSlider.value;
-            backgroundManager.volumeSliderAdjustment = volumeSlider.value;
-        }
-        TogglePauseUI(false);
-
-        InputEvents.Instance.PauseStarted.AddListener(escPressed);
-
-        resumeButton.onClick.AddListener(ResumeClicked);
-        mainMenuButton.onClick.AddListener(mainMenuClicked);
-        restartGameButton.onClick.AddListener(RestartGame);
-        volumeSlider.onValueChanged.AddListener(volumeChanged);
-        sensitivitySlider.onValueChanged.AddListener(sensitivityChanged);
-        tip_button.onClick.AddListener(SelectNewRandomTip);
-
-        PublicEvents.StartSound.Invoke();
-        PublicEvents.OnPlayerDeath.AddListener(SetCanEsc);
-        PublicEvents.OnPlayerRespawn.AddListener(SetCanEsc);
-    }
-    public void escPressed() {
-        if(canPressEscape)
-        {
-            Debug.Log("pause");
-
-            if (GameManager.Instance.pausedForUI)
-                return;
-
-            SelectNewRandomTip();
-
+            SetPauseState(false);
             if (backgroundManager != null)
             {
                 if (backgroundManager.audioSourcePlayingCurrent)
                 {
-                    if (!GameManager.Instance.isPaused)
-                    {
-                        backgroundManager.audioSource.Pause();
-                    }
-                    else
-                    {
-                        backgroundManager.audioSource.Play();
-                    }
+                    backgroundManager.audioSource.Play();
                 }
                 else
                 {
-                    if (!GameManager.Instance.isPaused)
-                    {
-                        backgroundManager.secondaryAudio.Pause();
-                    }
-                    else
-                    {
-                        backgroundManager.secondaryAudio.Play();
-                    }
+                    backgroundManager.secondaryAudio.Play();
                 }
             }
-
-            GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-            TogglePauseUI(GameManager.Instance.isPaused);
-            Cursor.visible = GameManager.Instance.isPaused;
-            Cursor.lockState = GameManager.Instance.isPaused ? CursorLockMode.None : CursorLockMode.Locked;
-            Time.timeScale = GameManager.Instance.isPaused ? 0 : 1;
         }
-        
-    }
 
-    public void SetPauseState(bool state)
-    {
-        GameManager.Instance.isPaused = state;
-        TogglePauseUI(state);
-
-        Cursor.visible = state;
-        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
-        Time.timeScale = state ? 0 : 1;
-    }    
-
-    private void TogglePauseUI(bool toggle)
-    {
-        pauseGroup.alpha = toggle ? 1 : 0;
-        pauseGroup.interactable = toggle;
-        pauseGroup.blocksRaycasts = toggle;
-    }
-
-    public void ResumeClicked()
-    {
-        SetPauseState(false);
-        if (backgroundManager != null)
+        public void mainMenuClicked()
         {
-            if (backgroundManager.audioSourcePlayingCurrent)
+            SaveDataManager.Instance.OnApplicationQuit();
+            SceneManager.LoadScene(mainMenuSceneName);
+        }
+
+        public void volumeChanged(float value)
+        {
+            float sliderValue = value;
+            backgroundManager.volumeSliderAdjustment = sliderValue;
+            PlayerPrefs.SetFloat("volume", sliderValue);
+            AudioManager.masterVolume = sliderValue;
+            if (backgroundManager != null)
             {
-                backgroundManager.audioSource.Play();
+                if (backgroundManager.audioSourcePlayingCurrent)
+                {
+                    backgroundManager.audioSource.volume = sliderValue * baseBGMVolume;
+                }
+                else
+                {
+                    backgroundManager.secondaryAudio.volume = sliderValue * baseBGMVolume;
+                }
             }
-            else
+            if (tutorialMusic != null)
             {
-                backgroundManager.secondaryAudio.Play();
+                tutorialMusic.volumeSliderAdjustment = sliderValue;
+                tutorialMusic.UpdateVolume();
             }
+
+            Debug.Log(sliderValue * baseBGMVolume);
         }
-    }
 
-    public void mainMenuClicked() {
-        SaveDataManager.Instance.OnApplicationQuit();
-        SceneManager.LoadScene(mainMenuSceneName);
-    }
-
-    public void volumeChanged(float value)
-    {
-        float sliderValue = value;
-        backgroundManager.volumeSliderAdjustment = sliderValue;
-        PlayerPrefs.SetFloat("volume", sliderValue);
-        AudioManager.masterVolume = sliderValue;
-        if (backgroundManager != null)
+        public void sensitivityChanged(float value)
         {
-            if (backgroundManager.audioSourcePlayingCurrent)
-            { 
-                backgroundManager.audioSource.volume = sliderValue * baseBGMVolume;
-            }
-            else
+            float sliderValue = sensitivitySlider.value;
+            PlayerPrefs.SetFloat("sensitivity", sliderValue);
+            PublicEvents.OnSensitivitySliderChanged.Invoke();
+        }
+
+        public void RestartGame()
+        {
+            SaveDataManager.Instance.OnApplicationQuit();
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+
+        private void SetCanEsc()
+        {
+            canPressEscape = !canPressEscape;
+        }
+
+        private void SelectNewRandomTip()
+        {
+            if (tips.Length <= 1)
+                return;
+
+            int new_index = -1;
+            do
             {
-                backgroundManager.secondaryAudio.volume = sliderValue * baseBGMVolume;
+                new_index = UnityEngine.Random.Range(0, tips.Length);
             }
+            while (new_index == tip_index);
+            tip_index = new_index;
+            tip_text.text = tips[tip_index];
+
+            GetComponent<UICorrection>().Correct();
         }
-        if(tutorialMusic != null)
-        {
-            tutorialMusic.volumeSliderAdjustment = sliderValue;
-            tutorialMusic.UpdateVolume();
-        }
-
-        Debug.Log(sliderValue * baseBGMVolume);
-    }
-
-    public void sensitivityChanged(float value)
-    {
-        float sliderValue = sensitivitySlider.value;
-        PlayerPrefs.SetFloat("sensitivity", sliderValue);
-        PublicEvents.OnSensitivitySliderChanged.Invoke();
-    }
-
-    public void RestartGame()
-    {
-        SaveDataManager.Instance.OnApplicationQuit();
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
-    }
-
-    private void SetCanEsc()
-    {
-        canPressEscape = !canPressEscape;
-    }
-
-    private void SelectNewRandomTip()
-    {
-        if (tips.Length <= 1)
-            return;
-
-        int new_index = -1;
-        do
-        {
-            new_index = UnityEngine.Random.Range(0, tips.Length);
-        }
-        while(new_index == tip_index);
-        tip_index = new_index;
-        tip_text.text = tips[tip_index];
-
-        GetComponent<UICorrection>().Correct();
     }
 }

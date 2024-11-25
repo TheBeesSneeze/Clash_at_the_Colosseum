@@ -1,4 +1,3 @@
-using mainMenu;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +7,7 @@ using UnityEngine.UI;
 using System.Threading.Tasks;
 using UnityEditor;
 
-namespace mainMenu
+namespace UI.MainMenu
 {
     public class GunSelectMenu
     {
