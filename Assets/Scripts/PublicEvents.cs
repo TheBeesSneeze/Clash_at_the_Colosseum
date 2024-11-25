@@ -45,6 +45,7 @@ public class PublicEvents
     public static UnityEvent Reloading = new UnityEvent();
     public static UnityEvent StartSound = new UnityEvent();
     public static UnityEvent OnJournalPageFlip = new UnityEvent();
+    public static UnityEvent OnExplosion = new UnityEvent();
    
 
     // actions???? what the fuck!!!

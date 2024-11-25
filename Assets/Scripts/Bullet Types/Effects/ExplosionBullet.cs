@@ -50,6 +50,7 @@ namespace BulletEffects
             }
             GameObject explosion = Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * enemyHitExplotionRadius * 2;
+            PublicEvents.OnExplosion.Invoke();
             explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
         }
         public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet)
@@ -72,6 +73,7 @@ namespace BulletEffects
             Vector3 direction = Vector3.Reflect(Vector3.up, hit.normal);
             GameObject explosion = Instantiate(explosionPrefab, hit.point, Quaternion.identity);
             explosion.transform.localScale = Vector3.one * surfaceHitExplosionRadius * 2;
+            PublicEvents.OnExplosion.Invoke();
             explosion.GetComponent<DestroyObjectAfterSeconds>().DestroyTimer(0.3f);
             explosion.transform.LookAt(hit.point + hit.normal);
         }
