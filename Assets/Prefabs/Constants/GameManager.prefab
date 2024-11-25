@@ -135,7 +135,7 @@ MonoBehaviour:
     randomPitchRange: 0.1
   StageTransitionSound:
     Volume: 1
-    sound: {fileID: 8300000, guid: 159bd3b663b378948a5ffbbdd6cbcc4c, type: 3}
+    sound: {fileID: 8300000, guid: 61dd6ebdb734ef649ad1c985863ee1cf, type: 3}
     RandomizePitch: 0
     randomPitchRange: 0.1
   SnakeCooldownSound:
@@ -180,7 +180,12 @@ MonoBehaviour:
     randomPitchRange: 5
   PageFlipSound:
     Volume: 1
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 091beacfee585734f86ef323a9399346, type: 3}
+    RandomizePitch: 0
+    randomPitchRange: 0.1
+  ExplosionSound:
+    Volume: 1
+    sound: {fileID: 8300000, guid: e3150342789c23749a10aa172fe41d95, type: 3}
     RandomizePitch: 0
     randomPitchRange: 0.1
 --- !u!114 &2573591770749130960
