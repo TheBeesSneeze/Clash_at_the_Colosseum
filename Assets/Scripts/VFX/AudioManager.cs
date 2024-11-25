@@ -33,6 +33,7 @@ namespace Managers
         public SoundClip HarpyDeathSound;
         public SoundClip MinoutarDeathSound;
         public SoundClip PageFlipSound;
+        public SoundClip ExplosionSound;
 
 
         public static float masterVolume = 1;
@@ -60,6 +61,7 @@ namespace Managers
             PublicEvents.HarpyDeath.AddListener(HarpyDeath);
             PublicEvents.MinoutarDeath.AddListener(MinotaurDeath);
             PublicEvents.OnJournalPageFlip.AddListener(PageFlipSound.PlaySound);
+            PublicEvents.OnExplosion.AddListener(ExplosionSound.PlaySound);
 
             gunController = GameObject.FindObjectOfType<GunController>();
             player = GameObject.FindObjectOfType<PlayerBehaviour>();
