@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossStageFall : StateMachineBehaviour
+namespace Enemy.Boss
 {
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class BossStageFall : StateMachineBehaviour
     {
-        PublicEvents.OnBossPhaseThreeStart.Invoke();
+        // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            PublicEvents.OnBossPhaseThreeStart.Invoke();
+        }
     }
 }

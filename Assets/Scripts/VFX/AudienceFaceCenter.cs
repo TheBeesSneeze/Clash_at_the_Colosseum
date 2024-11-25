@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudienceFaceCenter : MonoBehaviour
+namespace Utilities
 {
-    // Start is called before the first frame update
-    void Start()
+    public class AudienceFaceCenter : MonoBehaviour
     {
-        OrientAllChildren();
-        Destroy(this);
-    }
-
-    void OrientAllChildren () //like a youth pastor
-    {
-        Transform[] sprites = GetComponentsInChildren<Transform>();
-        foreach (Transform t in sprites)
+        // Start is called before the first frame update
+        void Start()
         {
-            //Vector3 direction = Vector3.zero - t.position;
-            Vector3 center = new Vector3(0, t.position.y, 0);
-            t.LookAt(center);
+            OrientAllChildren();
+            Destroy(this);
         }
-    }
 
-    private void OnDrawGizmosSelected()
-    {
-        OrientAllChildren();
+        void OrientAllChildren() //like a youth pastor
+        {
+            Transform[] sprites = GetComponentsInChildren<Transform>();
+            foreach (Transform t in sprites)
+            {
+                //Vector3 direction = Vector3.zero - t.position;
+                Vector3 center = new Vector3(0, t.position.y, 0);
+                t.LookAt(center);
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            OrientAllChildren();
+        }
     }
 }

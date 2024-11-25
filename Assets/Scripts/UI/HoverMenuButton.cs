@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace mainMenu
+namespace UI.MainMenu
 {
     public class HoverMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

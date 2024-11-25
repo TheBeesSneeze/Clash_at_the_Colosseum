@@ -5,37 +5,39 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 
-
-public class FadeToBlack : MonoBehaviour
+namespace UI
 {
-    public Image FadeImage;
-    private bool fadeStart = false;
-    [SerializeField] private int Delay;
-    public float FadeTime;
-    private float timePassed;
-
-    void Start()
+    public class FadeToBlack : MonoBehaviour
     {
-        PublicEvents.HydraDeath.AddListener(Fading);
-    }
+        public Image FadeImage;
+        private bool fadeStart = false;
+        [SerializeField] private int Delay;
+        public float FadeTime;
+        private float timePassed;
 
-    async public void Fading()
-    {
-        await Task.Delay((int)(Delay*1000));
-        while (timePassed<FadeTime)
+        void Start()
         {
-            timePassed += Time.deltaTime;
-            FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, timePassed / FadeTime);
-            if (timePassed >= FadeTime)
+            PublicEvents.HydraDeath.AddListener(Fading);
+        }
+
+        async public void Fading()
+        {
+            await Task.Delay((int)(Delay * 1000));
+            while (timePassed < FadeTime)
             {
-                Debug.LogWarning("replace this");
-                SceneManager.LoadScene("WinScreen");
+                timePassed += Time.deltaTime;
+                FadeImage.color = new Color(FadeImage.color.r, FadeImage.color.g, FadeImage.color.b, timePassed / FadeTime);
+                if (timePassed >= FadeTime)
+                {
+                    Debug.LogWarning("replace this");
+                    SceneManager.LoadScene("WinScreen");
+                }
+
+                await Task.Yield();
             }
 
-            await Task.Yield();
-        }
-        
-        
-    }
 
+        }
+
+    }
 }

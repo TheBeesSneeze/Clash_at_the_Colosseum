@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace mainMenu
+namespace UI.MainMenu
 {
     public class StartMenu
     {
