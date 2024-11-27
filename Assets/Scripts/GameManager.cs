@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using BulletEffects;
+using Unity.VisualScripting;
 
 namespace Managers
 { 
@@ -71,7 +72,14 @@ public class GameManager : MonoBehaviour
         InitializeStageTransitionManager();
         InitializeStageManager();
         //InitializeEnemySpawnManager(); //not yet
-        
+
+        if(SaveData.bulletEffectPool.Count == 0)
+            {
+                foreach (BulletEffect effect in BulletEffects)
+                {
+                    SaveData.bulletEffectPool.Add(effect);
+                }
+            }
     }
     private void InitializeCellManager()
     {
@@ -111,7 +119,7 @@ public class GameManager : MonoBehaviour
         //bulletPoolManager.OnDisable();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         pathManager.Update();
     }

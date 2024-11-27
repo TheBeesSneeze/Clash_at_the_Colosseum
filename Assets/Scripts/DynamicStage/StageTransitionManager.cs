@@ -118,12 +118,13 @@ public class StageTransitionManager
         DecorElement[] endDecor = endLayout.decorObjects;
         for (int i = 0; i < activeDecor.Length; i++)
         {
+            if (i >= startDecor.Length || i >= endDecor.Length)
+                break;
+
             Transform deco = activeDecor[i].transform;
             deco.position = Vector3.Lerp(startDecor[i].pos, endDecor[i].pos, transitionPercent);
             deco.localScale = Vector3.Lerp(startDecor[i].locScale, endDecor[i].locScale, transitionPercent);
             deco.rotation = Quaternion.Lerp(startDecor[i].rot, endDecor[i].rot, transitionPercent);
-            Debug.LogWarning("implement decoration solidity");
-            Debug.LogWarning("implement decoration visibility");
         }
     }
 

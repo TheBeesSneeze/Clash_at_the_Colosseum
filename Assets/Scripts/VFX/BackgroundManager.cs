@@ -74,7 +74,7 @@ namespace Managers
             secondaryAudio.volume = 0;
             secondaryAudio.Play();
 
-            StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, audioSource));
+            StartCoroutine(LerpFunctionDown(0, lenghtOfAudioSwitch, audioSource)); //lenght
             StartCoroutine(LerpFunctionUp(stageStats[stageIndex].BackgroundVolume * volumeSliderAdjustment, lenghtOfAudioSwitch, secondaryAudio));
             audioSourcePlayingCurrent = false;
         }
@@ -101,7 +101,7 @@ namespace Managers
                 yield return null;
             }
             downVol.volume = endVolume;
-            downVol.Stop();
+            //downVol.Stop();
         }
 
         IEnumerator LerpFunctionUp(float endVolume, float duration, AudioSource upVol)

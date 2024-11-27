@@ -102,10 +102,14 @@ namespace Utilities
             EnemySpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<EnemySpawnPoint>();
             Debug.Log("Found " + spawnPoints.Length + " enemy spawn points in " + SceneManager.GetActiveScene().name);
 
+            Decor[] decors = GameObject.FindObjectsOfType<Decor>();
+            Debug.Log("Found " + decors.Length + " decor objects in " + SceneManager.GetActiveScene().name);
+
             StageLayout stageElements = new StageLayout();
             stageElements.SceneName = SceneManager.GetActiveScene().name;
             stageElements.elements = new CellObject[cells.Length];
             stageElements.spawnPoints = new SpawnPointElement[spawnPoints.Length];
+            stageElements.decorObjects = new DecorElement[decors.Length];
 
             for (int i = 0; i < cells.Length; i++)
             {
@@ -115,6 +119,11 @@ namespace Utilities
             for (int i = 0; i < spawnPoints.Length; i++)
             {
                 stageElements.spawnPoints[i] = new SpawnPointElement(spawnPoints[i]);
+            }
+
+            for (int i = 0; i < decors.Length; i++)
+            {
+                stageElements.decorObjects[i] = new DecorElement(decors[i]);
             }
 
             return stageElements;
