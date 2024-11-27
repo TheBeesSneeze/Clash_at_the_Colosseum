@@ -29,6 +29,8 @@ public class WinScreen : MonoBehaviour
 
     private void ReplayClicked()
     {
+        SaveData.ResetData();
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene(replayScene);
     }
 }
