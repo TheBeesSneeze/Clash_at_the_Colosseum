@@ -38,6 +38,10 @@ namespace Enemy.Boss
             {
                 enemy.TakeDamage(dps);
             }
+            else if (damageEnemies && other.TryGetComponent(out BossTakeDamage boss))
+            {
+                boss.TakeDamage(dps);
+            }
         }
 
         public void OnTriggerExit(Collider other)
