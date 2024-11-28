@@ -48,9 +48,9 @@ namespace BulletEffects
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             Vector3 direction = Vector3.Reflect(Vector3.up, hit.normal);
             GameObject venom = Instantiate(VenomPoolGameObject, hit.point, Quaternion.identity);
-            //venom.transform.SetParent(hit.transform);
+            venom.transform.SetParent(hit.transform);
             venom.transform.LookAt(hit.point + hit.normal);
-            //venom.transform.position = hit.point;
+            venom.transform.position = hit.point;
         }
 
         private bool getFloorPoint(Vector3 hitPoint, out Vector3 position)
