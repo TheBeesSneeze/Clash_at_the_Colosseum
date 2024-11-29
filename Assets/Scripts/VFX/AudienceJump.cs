@@ -17,7 +17,7 @@ public class AudienceJump : MonoBehaviour
 
         for (int i = 0; i < audienceMembers.Length; i++)
         {
-            audienceMembersPosition[i] = audienceMembers[i].position.y;
+            audienceMembersPosition[i] = audienceMembers[i].localPosition.y;
         }
     }
 
@@ -28,20 +28,24 @@ public class AudienceJump : MonoBehaviour
 
     private IEnumerator AudienceJumping()
     {
+        int j = 0;
         float startTime = Time.time;
         while (animationTime > Time.time - startTime)
         {
+            j++;
             for (int i = 0; i < audienceMembers.Length; i++)
             {
-                float position = Mathf.Sin(Time.time * speed + i) * height / 2;
-                Vector3 temp = audienceMembers[i].position;
-                temp.y = position + audienceMembersPosition[i];
-                audienceMembers[i].position = temp;
-
-                Debug.Log("yippie! yippie!");
+                if(i%2==j%2) //only do the thing 1/4 the time i think
+                {
+                    float position = Mathf.Sin(Time.time * speed + i) * height / 2;
+                    Vector3 temp = audienceMembers[i].localPosition;
+                    temp.y = position + audienceMembersPosition[i];
+                    audienceMembers[i].localPosition = temp;
+                }
+                
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
  
     }

@@ -1,5 +1,81 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &155709445984575506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 953532664565366461}
+  - component: {fileID: 4774854728887913657}
+  - component: {fileID: 3574042394014830471}
+  m_Layer: 5
+  m_Name: Page5 Left Click
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &953532664565366461
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155709445984575506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 908568893254812540}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4774854728887913657
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155709445984575506}
+  m_CullTransparentMesh: 1
+--- !u!114 &3574042394014830471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155709445984575506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e5ab91389adb65449a2ee0255be30274, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &260761052353317104
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,8 +145,8 @@ MonoBehaviour:
   m_text: 'Oh... but what could be strong enough to kill a swarm so grand?
 
     I
-    got it! A beast resides in the fabled Colosseum who''s blood is rumored to be
-    so poisonous that it can drop even mythical heroes dead in seconds if they touch
+    got it! A beast resides in the fabled Colosseum! The beast''s blood is rumored
+    to be so poisonous that it can kill mythical heroes in seconds if they touch
     the stuff.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
@@ -98,8 +174,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -256,7 +332,7 @@ RectTransform:
   - {fileID: 5659722690704215054}
   - {fileID: 7478969335633665043}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -398,8 +474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 20.199997, y: 4}
-  m_SizeDelta: {x: 33.4256, y: 22.838}
+  m_AnchoredPosition: {x: 25.7, y: 0}
+  m_SizeDelta: {x: 45.36, y: 22.838}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5223033199928251170
 CanvasRenderer:
@@ -494,7 +570,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 5.876478, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -538,6 +614,7 @@ RectTransform:
   - {fileID: 622937474679636837}
   - {fileID: 6499469825973969208}
   - {fileID: 2872604260545936151}
+  - {fileID: 7079439188369526617}
   m_Father: {fileID: 6405162858446882446}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -619,7 +696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.619396, y: -3.7}
+  m_AnchoredPosition: {x: -27.4, y: -6.5}
   m_SizeDelta: {x: 40.81511, y: 10.5993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7308488098137453291
@@ -650,9 +727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LEFT CLICK to SHOOT my trusty Snake Launcher!
-
-'
+  m_text: LEFT CLICK to SHOOT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -733,7 +808,7 @@ GameObject:
   - component: {fileID: 5396504972761328444}
   - component: {fileID: 4443444665960185773}
   m_Layer: 5
-  m_Name: Page5 Text Health
+  m_Name: Page6 Text Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,7 +904,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -925,9 +1000,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Well, people figured out I was the one to poach all the snakes, so they
-    expected ME of all people to fix this whole mess and kill the rodents. Since
-    I want to keep my head, I came up with the soution of creating a deadly poison
+  m_text: 'Well, people figured out I was the one to poach all the snakes. Now they
+    expect ME of all people to fix this whole mess and kill the rodents. Since I
+    want to keep my head, I came up with the soution of creating a deadly poison
     to kill off these pesky vermin. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
@@ -955,8 +1030,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1374,7 +1449,7 @@ GameObject:
   - component: {fileID: 5174007762827767263}
   - component: {fileID: 1153372522473994108}
   m_Layer: 5
-  m_Name: Page5 Text Enemy Left
+  m_Name: Page6 Text Enemy Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,7 +1472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 54.1, y: -10.799988}
+  m_AnchoredPosition: {x: 54.1, y: -4}
   m_SizeDelta: {x: 39.3, y: 22.837997}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5174007762827767263
@@ -1537,8 +1612,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 19.2, y: 11.7771}
-  m_SizeDelta: {x: 73.077, y: 73.5542}
+  m_AnchoredPosition: {x: 9, y: 2.7084}
+  m_SizeDelta: {x: 83.2267, y: 90.4703}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4328783469952842891
 CanvasRenderer:
@@ -1568,10 +1643,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turns out something called an "ecosystem" exists that is supposed to keep
-    wild beasts in order. My "disruption", as the others call it, caused the rats
-    to swarm and multiply at such a rapid rate that the continent is now practically
-    overrun with rodents, creating what we now know as "The Great Rodent Swarm".
+  m_text: "It turns out something called an \"ecosystem\" exists that is supposed
+    to keep wild beasts in order.\n My \"disruption\", as the others call it, caused
+    the rats to swarm and multiply at such a rapid rate that the continent is now
+    practically overrun with rodents. My \"unlawful acts\" resulted in what we call
+    the \"The Great Rodent Swarm\"."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -1598,8 +1674,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1657,7 +1733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &908568893254812540
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1672,11 +1748,13 @@ RectTransform:
   m_Children:
   - {fileID: 8663652979089149280}
   - {fileID: 2166888177027976127}
+  - {fileID: 525864776797443750}
   - {fileID: 3602909919549508998}
   - {fileID: 5430491655814709303}
   - {fileID: 7573629412969039388}
   - {fileID: 8105843620691700343}
   - {fileID: 3022894649636114441}
+  - {fileID: 953532664565366461}
   m_Father: {fileID: 6405162858446882446}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1735,7 +1813,7 @@ GameObject:
   - component: {fileID: 2743254197202447342}
   - component: {fileID: 6622524178026214205}
   m_Layer: 5
-  m_Name: Page5 Text Heal
+  m_Name: Page6 Text Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1758,8 +1836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.4, y: -34.9}
-  m_SizeDelta: {x: 39.3, y: 22.838}
+  m_AnchoredPosition: {x: 39.8, y: -41.6}
+  m_SizeDelta: {x: 44.05, y: 27.6029}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2743254197202447342
 CanvasRenderer:
@@ -1791,9 +1869,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HEALING BAR - RIGHT CLICK to HEAL when full.
 
-
-    Each dead foe will
-    add to the bar!
+    Each dead foe will add
+    to the bar!
 
 
 
@@ -1825,8 +1902,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 3.5
+  m_fontSizeBase: 3.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1836,7 +1913,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: -15
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -1978,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 59.7, y: 8.8}
+  m_AnchoredPosition: {x: 62.3, y: 8.8}
   m_SizeDelta: {x: 31.088, y: 10.5993}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1394262657942830530
@@ -2036,8 +2113,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2090,7 +2167,7 @@ GameObject:
   - component: {fileID: 6419322638290279937}
   - component: {fileID: 9015715332589185641}
   m_Layer: 5
-  m_Name: Page5 Text Enemy Left Descript
+  m_Name: Page6  Text Enemy Left Descript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2113,7 +2190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6.904846, y: -5.281006}
+  m_AnchoredPosition: {x: 11, y: -6}
   m_SizeDelta: {x: 48.5903, y: 22.837997}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6419322638290279937
@@ -2224,6 +2301,7 @@ GameObject:
   - component: {fileID: 2166888177027976127}
   - component: {fileID: 6062580038631559382}
   - component: {fileID: 1528530564122377625}
+  - component: {fileID: 2729225409061918789}
   m_Layer: 5
   m_Name: Page5 Text WASDR
   m_TagString: Untagged
@@ -2248,8 +2326,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5.8585205, y: -24.299997}
-  m_SizeDelta: {x: 40.4829, y: 10.5993}
+  m_AnchoredPosition: {x: 5.8585205, y: -24.1}
+  m_SizeDelta: {x: 40.4829, y: 12.38}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6062580038631559382
 CanvasRenderer:
@@ -2279,7 +2357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Use WASD to MOVE. \n\nRight Click To Heal"
+  m_text: 'Use WASD to MOVE. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -2306,8 +2384,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2348,6 +2426,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2729225409061918789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423179278686339925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &4457125038052920641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2466,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4457125038052920641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2383,7 +2475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56.3, y: -43.5}
+  m_AnchoredPosition: {x: -48.2, y: -45.5}
   m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1320032663784762232
@@ -2865,6 +2957,82 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6081034684278481506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7079439188369526617}
+  - component: {fileID: 1894155934750996816}
+  - component: {fileID: 7160796486299393348}
+  m_Layer: 5
+  m_Name: Page6 Right Click
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7079439188369526617
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081034684278481506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8905823860266241267}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 38.199997, y: -19.100002}
+  m_SizeDelta: {x: 19, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1894155934750996816
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081034684278481506}
+  m_CullTransparentMesh: 1
+--- !u!114 &7160796486299393348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6081034684278481506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dbc699e67f04dea47b99e80c3a03cd50, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6167026827909095218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,8 +3111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -14.109985, y: 11.7771}
-  m_SizeDelta: {x: 73.076996, y: 73.5542}
+  m_AnchoredPosition: {x: -15.599976, y: 7.8}
+  m_SizeDelta: {x: 73.077, y: 77.7182}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8066450864664461452
 CanvasRenderer:
@@ -2974,10 +3142,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I had such a foolproof plan, but looks like it wasn't proof enough for
-    this fool. I have poached almost every snake on the continent to produce the
-    finest quality snake oil ever created. I was destined to become the richest man
-    who ever lived, but sadly it didn't work out the way I expected it to.
+  m_text: "I had such a foolproof plan, but looks like it wasn't proof enough for
+    this fool.\n  I have poached almost every snake on the continent to produce the
+    finest quality snake oil ever created. \n  I was destined to become the richest
+    man who ever lived, but sadly it didn't work out the way I expected it to."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
@@ -3004,8 +3172,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3081,7 +3249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.873047, y: -5.961609}
+  m_AnchoredPosition: {x: -18.099976, y: -4}
   m_SizeDelta: {x: 28.453903, y: 11.676804}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5137688198176511292
@@ -3404,7 +3572,7 @@ GameObject:
   - component: {fileID: 323549428750862203}
   - component: {fileID: 215626009642664962}
   m_Layer: 5
-  m_Name: Page5 Text Launcher
+  m_Name: Page6 Text Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3524,7 +3692,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -3.8068428, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3672,7 +3840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thus, I am here, waiting to be the next gladiator of The Colosseum so that
+  m_text: Thus, I am here. Waiting to be the next gladiator of The Colosseum so that
     I can get the blood of whatever horrid beast resides at the end of this difficult
     trial. I will create a poison strong enough to rid rodents from this continent
     for good!
@@ -3702,8 +3870,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3820,6 +3988,156 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8298349453992575767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525864776797443750}
+  - component: {fileID: 5348024206112247172}
+  - component: {fileID: 5283165058258448075}
+  - component: {fileID: 9151150075612259892}
+  m_Layer: 5
+  m_Name: Page5 Text WASDR (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &525864776797443750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298349453992575767}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 908568893254812540}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 9.599976, y: -39.3}
+  m_SizeDelta: {x: 40.4829, y: 12.38}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!222 &5348024206112247172
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298349453992575767}
+  m_CullTransparentMesh: 1
+--- !u!114 &5283165058258448075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298349453992575767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Right Click To Heal
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 4.5
+  m_fontSizeBase: 4.5
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9151150075612259892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298349453992575767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &8416286295982245154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,7 +4226,7 @@ GameObject:
   - component: {fileID: 1842507528087777799}
   - component: {fileID: 8710930844664805627}
   m_Layer: 5
-  m_Name: Page5 Text Ammo
+  m_Name: Page6 Text Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3931,7 +4249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 40.449997, y: -4}
+  m_AnchoredPosition: {x: 40.449997, y: 1.2}
   m_SizeDelta: {x: 39.3, y: 22.838}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1842507528087777799
@@ -4001,7 +4319,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

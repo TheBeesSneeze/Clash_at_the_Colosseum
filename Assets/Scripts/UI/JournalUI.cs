@@ -59,8 +59,7 @@ public class JournalUI : MonoBehaviour
     public void FlipPageBack()
     {
         pages[pageNumber].SetActive(false);
-        pageNumber = Mathf.Max(0, pageNumber - 1);
-        int newPage = Mathf.Min(pageCap, pageNumber + 1);
+        int newPage = Mathf.Max(0, pageNumber - 1);
         if (newPage != pageNumber)
             PublicEvents.OnJournalPageFlip.Invoke();
         pageNumber = newPage;

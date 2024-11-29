@@ -117,6 +117,9 @@ namespace PathFinding
         {
             UpdatePlayerPosition();
 
+            //fuck it. only do it every other frame
+            if (Time.frameCount % 2 == 1) return;
+
             if (aliveGroundedEnemies.Count == 0) return;
 
             pathUpdateIndex = (pathUpdateIndex + 1) % aliveGroundedEnemies.Count;

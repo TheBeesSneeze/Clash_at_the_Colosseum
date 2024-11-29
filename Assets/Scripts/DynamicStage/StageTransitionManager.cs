@@ -125,8 +125,6 @@ public class StageTransitionManager
             deco.position = Vector3.Lerp(startDecor[i].pos, endDecor[i].pos, transitionPercent);
             deco.localScale = Vector3.Lerp(startDecor[i].locScale, endDecor[i].locScale, transitionPercent);
             deco.rotation = Quaternion.Lerp(startDecor[i].rot, endDecor[i].rot, transitionPercent);
-            Debug.LogWarning("implement decoration solidity");
-            Debug.LogWarning("implement decoration visibility");
         }
     }
 
