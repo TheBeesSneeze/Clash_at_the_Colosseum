@@ -26,12 +26,13 @@ namespace Enemy.Boss
             {
                 if (slowedDownCountdown <= 0)
                     return bossAttackRate;
-                else return slowedRate;
+                else return bossAttackRate* slowedAttackRate;
             }
         }
 
         private float slowedDownCountdown;
         private float slowedRate;
+        private float slowedAttackRate;
 
 
         #region affectors
@@ -62,10 +63,11 @@ namespace Enemy.Boss
         /// </summary>
         /// <param name="slowedAmount"></param>
         /// <param name="slowedTime"></param>
-        public void SlowBoss(float slowedAmount, float slowedTime)
+        public void SlowBoss(float slowedAmount, float slowedTime, float attackSpeedMultiplier)
         {
             slowedRate = slowedAmount;
             slowedDownCountdown = slowedTime;
+            slowedAttackRate=attackSpeedMultiplier;
         }
 
         /* public void ColorChange()
