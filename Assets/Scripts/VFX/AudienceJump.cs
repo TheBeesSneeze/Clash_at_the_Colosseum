@@ -12,6 +12,9 @@ public class AudienceJump : MonoBehaviour
     private void Start()
     {
         PublicEvents.OnStageTransition.AddListener(StartAudienceCoroutine);
+        PublicEvents.HydraDeath.AddListener(StartAudienceForever);
+
+
         audienceMembers = GetComponentsInChildren<Transform>();
         audienceMembersPosition = new float[audienceMembers.Length];
 
@@ -23,14 +26,19 @@ public class AudienceJump : MonoBehaviour
 
     private void StartAudienceCoroutine()
     {
-        StartCoroutine(AudienceJumping());
+        StartCoroutine(AudienceJumping(animationTime));
     }
 
-    private IEnumerator AudienceJumping()
+    private void StartAudienceForever()
+    {
+        StartCoroutine(AudienceJumping(9999));
+    }
+
+    private IEnumerator AudienceJumping(float jumpTime)
     {
         int j = 0;
         float startTime = Time.time;
-        while (animationTime > Time.time - startTime)
+        while (jumpTime > Time.time - startTime)
         {
             j++;
             for (int i = 0; i < audienceMembers.Length; i++)

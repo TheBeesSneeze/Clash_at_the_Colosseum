@@ -27,7 +27,7 @@ namespace BulletEffects
             }
             if (type.TryGetComponent<BossStats>(out BossStats bs))
             {
-                bs.SlowBoss(SlowBulletSpeed, EnemySlowedTime);
+                bs.SlowBoss(SlowBulletSpeed, EnemySlowedTime, EnemyAttackSpeedMultiplier);
             }
         }
         public override void OnHitOther(RaycastHit hit, float damage, Bullet bullet){}
