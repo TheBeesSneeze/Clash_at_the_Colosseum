@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 namespace Enemy
@@ -39,7 +40,7 @@ namespace Enemy
         {
             get
             {
-                if (slowedDownCountdown <= 0)
+                if (Time.time - timeOfSlowAttack > slowedDownCountdown)
                     return _enemyMovementSpeed;
                 else return slowedSpeed;
             }
@@ -50,11 +51,12 @@ namespace Enemy
         {
             get
             {
-                if (slowedDownCountdown <= 0)
+                if (Time.time-timeOfSlowAttack > slowedDownCountdown)
                     return AttackRate;
                 else return AttackRate * slowedAttackMultiplier;
             }
         }
+        private float timeOfSlowAttack;
         private float slowedDownCountdown;
         private float slowedSpeed;
         private float slowedAttackMultiplier;
@@ -73,6 +75,7 @@ namespace Enemy
 
         [Header("Particles")]
         public ParticleSystem zappedParticles;
+        public ParticleSystem slowParticles;
 
 
         private void Start()
@@ -102,22 +105,23 @@ namespace Enemy
 
         }
 
-        //updating countdown timer
-        private void Update()
-        {
-            slowedDownCountdown -= Time.deltaTime;
-        }
-
         /// <summary>
         /// slows the enemy and starts the countdown timer
         /// </summary>
         /// <param name="slowedAmount"></param>
         /// <param name="slowedTime"></param>
-        public void SlowEnemy(float slowedAmount, float slowedTime, float slowedRate)
+        public async void SlowEnemy(float slowedAmount, float slowedTime, float slowedRate)
         {
             slowedSpeed = slowedAmount;
             slowedDownCountdown = slowedTime;
             slowedAttackMultiplier = slowedRate;
+            slowParticles.Play(false);
+
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            await Task.Delay((int)(slowedDownCountdown*1000));
+
+            slowParticles.Stop(false);
         }
         #endregion
 
