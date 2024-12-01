@@ -204,7 +204,7 @@ namespace UI
 
         public void RestartGame()
         {
-            SaveDataManager.Instance.OnApplicationQuit();
+            //SaveDataManager.Instance.OnApplicationQuit();
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }

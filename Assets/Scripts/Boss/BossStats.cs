@@ -47,12 +47,12 @@ namespace Enemy.Boss
             //sorry guys this is such a long if statement
             if (slowedDownCountdown > 0 && !frostParticles.isPlaying && frostParticles != null)
             {
-                frostParticles.Play();
+                frostParticles.Play(false);
                 frostParticles.enableEmission = true;
             }
             else if (slowedDownCountdown <= 0 && frostParticles.isPlaying)
             {
-                frostParticles.Stop();
+                frostParticles.Stop(false);
                 frostParticles.enableEmission = false;
             }
         }

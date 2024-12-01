@@ -36,7 +36,7 @@ public class UpgradeSelectUI : MonoBehaviour
     private void Start()
     {
         _gunController = GameObject.FindObjectOfType<GunController>();
-        bulletEffectPool = new List<BulletEffect>(GameManager.Instance.BulletEffects);
+         bulletEffectPool = SaveData.bulletEffectPool;
         animator = GetComponent<Animator>();
 
         //DisableMenu();

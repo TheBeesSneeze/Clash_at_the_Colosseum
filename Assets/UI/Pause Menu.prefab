@@ -860,7 +860,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1271402328326452549}
   m_HandleRect: {fileID: 6944757120120254511}
   m_Direction: 0
-  m_MinValue: 0.05
+  m_MinValue: 0
   m_MaxValue: 0.8
   m_WholeNumbers: 0
   m_Value: 0.8
@@ -1122,6 +1122,7 @@ MonoBehaviour:
   - 'Tip: You can dash with shift.'
   - 'Tip: You can double jump!'
   - 'Tip: Heal with right click when your healing bar is full.'
+  - 'Tip: Click on this text to get more tips!'
   pauseGroup: {fileID: 7755659158953301440}
   resumeButton: {fileID: 3935216731706700283}
   mainMenuButton: {fileID: 8331603859803264297}
@@ -1269,7 +1270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2105440811723156335
@@ -1571,10 +1572,10 @@ RectTransform:
   m_Father: {fileID: 8708123112406269074}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 6, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &482047876409254694
 CanvasRenderer:
@@ -1667,7 +1668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6768775148115152945
@@ -2047,7 +2048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6181193328235271909

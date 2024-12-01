@@ -108,11 +108,16 @@ namespace UI
             SetGunSprite(sprite);
 
             LoadIndividualSprite(lightningImage, sprite.lightningSprite);
-            LoadIndividualSprite(explosionImage, sprite.bombSprite);
             LoadIndividualSprite(iceImage, sprite.iceSprite);
             LoadIndividualSprite(windImage, sprite.windSprite);
             LoadIndividualSprite(bouncingImage, sprite.bouncingSprite);
             LoadIndividualSprite(venomImage, sprite.venomSprite);
+
+            if(gunController.GetShotsLeft() > 1)
+                LoadIndividualSprite(explosionImage, sprite.bombSprite);
+            else
+                LoadIndividualSprite(explosionImage, EmptySprite);
+
         }
 
         private void OnBulletEffectGet(BulletEffect effect)

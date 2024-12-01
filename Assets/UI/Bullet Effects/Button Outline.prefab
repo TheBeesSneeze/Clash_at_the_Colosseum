@@ -613,7 +613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: -4320990710283752017, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
@@ -640,8 +640,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.5
-  m_fontSizeBase: 2.5
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -651,8 +651,8 @@ MonoBehaviour:
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_wordSpacing: -5
+  m_lineSpacing: -5
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 6252003704531427842}
   - component: {fileID: 7488386372087505940}
   - component: {fileID: 6359568686995970823}
+  - component: {fileID: 1584062497364586323}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -796,6 +797,29 @@ MonoBehaviour:
   - {fileID: 1675664311, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
   - {fileID: -417971371, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
   - {fileID: 1381413030, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  animationLengthSeconds: 1
+  alwaysAnimate: 0
+  secondsBetweenFrames: 0
+--- !u!114 &1584062497364586323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965066974860375946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145cddee543665a4a861038f829da157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6252003704531427842}
+  frames:
+  - {fileID: 1206386180, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  - {fileID: -417971371, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  - {fileID: -613307164, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  - {fileID: 1675664311, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  - {fileID: 1381413030, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
+  - {fileID: -2122013804, guid: f1d1b4eacf44ab243a74572935e685b2, type: 3}
   animationLengthSeconds: 1
   alwaysAnimate: 0
   secondsBetweenFrames: 0
