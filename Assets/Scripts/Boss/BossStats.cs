@@ -26,7 +26,7 @@ namespace Enemy.Boss
             {
                 if (slowedDownCountdown <= 0)
                     return bossAttackRate;
-                else return bossAttackRate* slowedAttackRate;
+                else return bossAttackRate/ slowedAttackRate;
             }
         }
 
