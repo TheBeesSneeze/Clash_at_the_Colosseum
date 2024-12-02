@@ -56,7 +56,7 @@ namespace Player
 
                 await Task.Yield();
             }
-            if(transform!=null)
+            if(this!=null && transform!=null)//last line of code before golden masters submit?
                 transform.localPosition = startPos;
         }
     }

@@ -67,7 +67,7 @@ namespace Enemy.Boss
             bullet.transform.forward = direction.normalized;
             Bullet bulletObject = bullet.GetComponent<Bullet>();
             bulletObject.damageAmount = shootingMode.BulletDamage;
-            bulletObject.bulletForce = shootingMode.BulletSpeed/ stats.bossAttackRate * stats.BossAttackRate;
+            bulletObject.bulletForce = shootingMode.BulletSpeed;
             bulletObject.OnBulletShoot(direction);
 
             PublicEvents.OnEnemyShoot.Invoke();
