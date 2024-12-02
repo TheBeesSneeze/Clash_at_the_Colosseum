@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &953532664565366461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -331,7 +331,7 @@ RectTransform:
   - {fileID: 5659722690704215054}
   - {fileID: 7478969335633665043}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1641,11 +1641,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It turns out something called an \"ecosystem\" that is supposed to keep
-    wild beasts in order.\n My \"disruption\", as the others call it, caused the
-    rats to swarm and multiply at such a rapid rate that the continent is now overrun
-    with rodents. My \"unlawful acts\" resulted in what we call the \"The Great Rodent
-    Swarm\"."
+  m_text: "It turns out there's something called an \"ecosystem.\" Apparently, it's
+    supposed to keep wild beasts in order.\n My \"disruption\", as the others call
+    it, caused the rats to swarm and multiply at such a rapid rate that the continent
+    is now overrun with rodents. My \"unlawful acts\" resulted in what we call the
+    \"The Great Rodent Swarm\"."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87964753f0785964db7bdc21adba9b68, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 37be2556e1d556d4f9d0ab4c00906cdc, type: 2}
