@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
         private GunController gunController;
         private List<BulletEffect> effects;
 
+
         [HideInInspector] public bool playerBullet = false;
         [HideInInspector] public float damageAmount = 10f;
         [HideInInspector] public float bulletForce = 200f;

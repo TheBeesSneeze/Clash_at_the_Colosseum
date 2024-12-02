@@ -56,7 +56,8 @@ namespace Player
 
                 await Task.Yield();
             }
-            transform.localPosition = startPos;
+            if(transform!=null)
+                transform.localPosition = startPos;
         }
     }
 }

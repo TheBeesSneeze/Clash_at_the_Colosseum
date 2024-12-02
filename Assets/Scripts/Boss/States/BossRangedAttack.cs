@@ -12,6 +12,7 @@ namespace Enemy.Boss
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private int numberOfBullets;
         [SerializeField] private float intervalBetweenShots;
+        [SerializeField] private BossStats stats;
         private float secondsSinceLastShot;
         private float shotsFired;
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -19,6 +20,7 @@ namespace Enemy.Boss
         {
             secondsSinceLastShot = 0;
             shotsFired = 0;
+            stats = BossController.Stats;
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -65,7 +67,7 @@ namespace Enemy.Boss
             bullet.transform.forward = direction.normalized;
             Bullet bulletObject = bullet.GetComponent<Bullet>();
             bulletObject.damageAmount = shootingMode.BulletDamage;
-            bulletObject.bulletForce = shootingMode.BulletSpeed;
+            bulletObject.bulletForce = shootingMode.BulletSpeed/ stats.bossAttackRate * stats.BossAttackRate;
             bulletObject.OnBulletShoot(direction);
 
             PublicEvents.OnEnemyShoot.Invoke();

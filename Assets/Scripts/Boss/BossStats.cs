@@ -12,7 +12,7 @@ namespace Enemy.Boss
         //[SerializeField] [Min(0)] public float BossDamage;
 
         [Header("Movement Variables")]
-        [SerializeField][Min(0)] private float bossAttackRate = 1;
+        [SerializeField][Min(0)] public float bossAttackRate = 1;
 
         [Header("Particles")]
         [SerializeField] private ParticleSystem frostParticles;
