@@ -121,7 +121,8 @@ namespace Enemy
 
             await Task.Delay((int)(slowedDownCountdown*1000));
 
-            slowParticles.Stop(false);
+            if (this != null && slowParticles!=null)
+                slowParticles.Stop(false);
         }
         #endregion
 
