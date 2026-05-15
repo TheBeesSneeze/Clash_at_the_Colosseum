@@ -54,9 +54,7 @@ namespace PathFinding
             return path;
         }
 
-        //doesnt account for if start / end are right next to each other
-        // or if start == end
-        // or if start cant navigate to end
+        // Generates a path (node list) that navigates to the cell that the player is at using A*
         public Path Navigate(Cell navigator, Cell target, bool canGoDown = true)
         {
             if (target == null || navigator == null)
