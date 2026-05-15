@@ -126,11 +126,12 @@ namespace PathFinding
         {
             UpdatePlayerPosition();
 
-            //fuck it. only do it every other frame
+            //only do it every other frame to save compute time.
             if (Time.frameCount % 2 == 1) return;
 
             if (aliveGroundedEnemies.Count == 0) return;
 
+            //only update one enemy per frame to save compute time (the game used to be sooo laggy).
             pathUpdateIndex = (pathUpdateIndex + 1) % aliveGroundedEnemies.Count;
 
             if (aliveGroundedEnemies[pathUpdateIndex] == null)
