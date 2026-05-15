@@ -1,3 +1,10 @@
+/* 
+ * Generates paths for enemies to track the player using the A* algorithm. 
+ * A custom path generation service was required because navmesh does not work with dynamic terrain.
+ * One path get regenerated every frame to reduce computing time. Enemies are cycled through so that every enemy should
+ * get their path updated after a few frames.
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +19,8 @@ namespace PathFinding
 {
     public class PathManager
     {
-        private Transform _player;
+        // player may be a static reference because this is a singleplayer game with one player.
+        private static Transform _player;
         private List<GroundedEnemyMovement> aliveGroundedEnemies = new List<GroundedEnemyMovement>();
         private int groundMask;
         public static Cell PlayerCell;
@@ -22,7 +30,8 @@ namespace PathFinding
 
         public PathManager() 
         {
-            _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
+            if(_player == null)
+                _player = GameObject.FindObjectOfType<PlayerBehaviour>().transform;
             playerPath = new PlayerPath(_player);
             groundMask = LayerMask.NameToLayer("Default");
 
@@ -112,7 +121,7 @@ namespace PathFinding
             }
         }
 
-        //called in gamemanager
+        //called every frame in gamemanager
         public void Update()
         {
             UpdatePlayerPosition();
